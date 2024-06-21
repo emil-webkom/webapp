@@ -22,17 +22,3 @@ export const LoginButton = ({
     </span>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-

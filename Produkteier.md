@@ -24,9 +24,3 @@ Hva produkteier ønsker å ha med på nettsiden av funksjonalitet/design:
 - Samme med "om emil" og om "linjeforeningen".
 - Vedtekter og bilag sammen
 - Gjerne ha en navbar med høyresentrert info og logo på venstre, mer naturlig
-
-
- 
-
-
- 

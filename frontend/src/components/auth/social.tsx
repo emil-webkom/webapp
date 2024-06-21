@@ -16,10 +16,3 @@ export const Social = () => {
     </div>
   );
 };
-
-
-
-
-
-
-

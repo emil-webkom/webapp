@@ -11,14 +11,3 @@ export const Header = ({ title, label }: HeaderProps) => {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-

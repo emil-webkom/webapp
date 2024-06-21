@@ -39,10 +39,3 @@ export const CardWrapper = ({
     </Card>
   );
 };
-
-
-
-
-
-
-

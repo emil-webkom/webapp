@@ -14,5 +14,3 @@ export const FormSuccess = ({ message }: FormSuccessProps) => {
     </div>
   );
 };
-
-
