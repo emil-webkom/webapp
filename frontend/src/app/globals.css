@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Regular.woff2') format('woff2'),
+       url('/fonts/Geist-Regular.woff') format('woff'),
+       url('/fonts/Geist-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,11 +28,15 @@ body,
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
+    /* Defining colours */
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --highlight: #9DDBAD;
+    /* Do we need foreground for highlight colour? */
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -39,6 +52,8 @@ body,
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    font-family: 'Geist', sans-serif;
   }
 
   .dark {
@@ -51,11 +66,15 @@ body,
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
+    /* Defining colors */
+    /* Make sure all colours are defined in dark mode */
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
+
+    /* --highlight: missing */
 
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -79,4 +98,18 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.link-hover-effect:hover{
+  color: var(--primary);
+  transition: 100ms;
+  transform: translateY(-5px);
+
+}
+.selected-state{
+  border-bottom: 1px solid var(--highlight);
+}
+.icon-hover:hover{
+  transform: translateY(-5px);
+  transition: 100ms;
 }
