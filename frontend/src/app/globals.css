@@ -103,13 +103,17 @@ body,
 .link-hover-effect:hover{
   color: var(--primary);
   transition: 100ms;
-  transform: translateY(-5px);
+  transform: translateY(-2px);
 
 }
 .selected-state{
   border-bottom: 1px solid var(--highlight);
 }
 .icon-hover:hover{
-  transform: translateY(-5px);
+  transform: translateY(-2px);
+  transition: 100ms;
+}
+.text-underscore:hover{
+  text-decoration: underline;
   transition: 100ms;
 }
