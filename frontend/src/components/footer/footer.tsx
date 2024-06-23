@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { FC } from "react";
 
+// The information displayed in the footer such as name of "Leder" and "kontaktinfo" should,
+// be made object oriented to allow automatic updates to be made.
+
 const Footer: FC = () => {
   return (
     <nav>
