@@ -11,33 +11,33 @@ const NavBar: FC = () => {
   };
 
   return (
-      <nav className="w-[100%] mx-auto items-center border-b border-slate-200">
+    <nav className="w-[100%] mx-auto items-center border-b border-slate-200">
       <div className="flex mx-[7%] py-4 justify-between">
         <div className="flex gap-[4vw]">
-            <a href="/">
+          <a href="/">
             <img src="/svg/leaf.svg" alt="Logo" className="icon-hover" />
-            </a>
-            <Link
-            href="/om emil"
+          </a>
+          <Link
+            href="/om_emil"
             className={`text-zinc-400 link-hover-effect ${activeLink === "omEmil" ? "selected-state" : ""}`}
             onClick={() => handleSetSelectedLink("omEmil")}
-            >
+          >
             Om Emil
-            </Link>
-            <Link
-            href="/for studenten"
+          </Link>
+          <Link
+            href="/for_studenten"
             className={`text-zinc-400 link-hover-effect ${activeLink === "forStudenten" ? "selected-state" : ""}`}
             onClick={() => handleSetSelectedLink("forStudenten")}
-            >
-            For Studenten
-            </Link>
-            <Link
-            href="/næringsliv"
+          >
+            For studenten
+          </Link>
+          <Link
+            href="/naeringsliv"
             className={`text-zinc-400 link-hover-effect ${activeLink === "næringsliv" ? "selected-state" : ""}`}
             onClick={() => handleSetSelectedLink("næringsliv")}
-            >
+          >
             Næringsliv
-            </Link>
+          </Link>
         </div>
         {/* <div className="w-[10vw] "></div> */}
         <div className="inline-flex space-x-12">

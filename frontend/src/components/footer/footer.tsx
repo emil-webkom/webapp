@@ -43,12 +43,12 @@ const Footer: FC = () => {
           </div>
           <ul className="text-[10px] font-light mt-6 space-y-1 object-cover">
             <li>
-              <Link href="/om emil" className="text-underscore">
+              <Link href="/om_emil" className="text-underscore">
                 Om Emil
               </Link>
             </li>
             <li>
-              <Link href="/for studenten" className="text-underscore">
+              <Link href="/for_studenten" className="text-underscore">
                 For studenten
               </Link>
             </li>
@@ -59,7 +59,7 @@ const Footer: FC = () => {
             </li>
             <li>
               <Link
-                href="/for studenten/varsle oss"
+                href="/for_studenten/varsle oss"
                 className="text-underscore"
               >
                 Varsle oss?
