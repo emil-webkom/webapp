@@ -112,8 +112,13 @@ body,
 .icon-hover:hover {
   transform: translateY(-2px);
   transition: 100ms;
+  color: var(--primary);
 }
+
 .text-underscore:hover {
   text-decoration: underline;
   transition: 100ms;
+}
+.svg-icon {
+  color: #a1a1aa;
 }

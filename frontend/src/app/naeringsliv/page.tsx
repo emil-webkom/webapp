@@ -1,14 +1,14 @@
-import Hero from "@/components/hero/hero1"
+import Hero2 from "@/components/hero/hero2";
 
 const NaeringslivPage = () => {
-
-  return(
+  return (
     <div className="flex flex-col m-4">
-      <div className="flex m-14 items-center justify-center space-x-5 ">
-        <Hero title="Næringsliv" undertitle="Informasjon om samarbeid med næringslivet"/>
-      </div>
+      <Hero2
+        title="Næringsliv"
+        undertitle="Her finner du informasjon om samarbeid mellom Emil og næringslivet"
+      />
     </div>
-  )
+  );
 };
 
 export default NaeringslivPage;

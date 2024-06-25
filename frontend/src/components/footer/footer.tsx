@@ -1,5 +1,3 @@
-"use-client";
-
 import Link from "next/link";
 import { FC } from "react";
 
@@ -8,7 +6,7 @@ import { FC } from "react";
 
 const Footer: FC = () => {
   return (
-    <nav>
+    <footer>
       <div className="w-[100%] flex justify-between bg-[#001D21] text-white px-10 font-bold py-5">
         <div className="flex flex-col w-[20%]">
           <div className="flex justify-left">
@@ -90,7 +88,7 @@ const Footer: FC = () => {
           className="h-4 w-4 icon-hover"
         />
       </div>
-    </nav>
+    </footer>
   );
 };
 
