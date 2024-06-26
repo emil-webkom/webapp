@@ -9,8 +9,7 @@ const Banner: FC = () => {
 
   const handleSetSelectedLink = (linkName: string) => {
     setActiveLink(linkName);
-
-    }
+  };
   return (
     <nav className="flex justify-center">
       <div className="w-[30%]">
@@ -19,7 +18,7 @@ const Banner: FC = () => {
             href="/for_studenten/ny_student"
             className={`text-zinc-400 link-hover-effect ${activeLink === "ny_student" ? "selected-state" : ""}`}
             onClick={() => handleSetSelectedLink("ny_student")}
-            >
+          >
             <div className="flex flex-col items-center justify-center py-1 ">
               <svg
                 width="25"
@@ -260,7 +259,7 @@ const Banner: FC = () => {
                   />
                 </g>
               </svg>
-            <p className="text-xs ">Komiteer</p>
+              <p className="text-xs ">Komiteer</p>
             </div>
           </Link>
           <Link
