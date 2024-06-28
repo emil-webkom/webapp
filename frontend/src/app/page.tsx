@@ -11,7 +11,7 @@ const HomePage = () => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/for_studenten/ny_student");
+    router.push("/for_studenten");
   };
 
   return (
@@ -40,7 +40,11 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
+      <div className="h-screen w-screen bg-primary ">
+        <p className="text-white">Stuff goes here</p>
+      </div>
       <TransissionOut />
+      <TransissionIn />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 const Banner: FC = () => {
-  const [activeLink, setActiveLink] = useState("ny_student");
+  const [activeLink, setActiveLink] = useState("");
 
   const handleSetSelectedLink = (linkName: string) => {
     setActiveLink(linkName);

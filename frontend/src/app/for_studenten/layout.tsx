@@ -11,7 +11,7 @@ export default function Layout({
       <div className="flex flex-col m-4">
         <Hero2
           title="For studenten"
-          undertitle="Her finner du alt du trenger som ny student på Emil"
+          undertitle="Her finner du alt du trenger som student på Emil"
         />
       </div>
       <Banner />

@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const TransissionOut: FC = () => {
   return (
-    <div className="w-full ">
+    <div className="w-screen ">
       <img
         src="\svg\transissions\transissionsOut\transissionOut.svg"
         alt="Transission in"
