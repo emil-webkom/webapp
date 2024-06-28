@@ -35,14 +35,31 @@ export const LoginForm = () => {
     },
   });
 
+  // const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  //   setError("");
+  //   setSuccess("");
+
+  //   startTransition(() => {
+  //     login(values).then((data) => {
+  //       setError(data.error);
+  //       setSuccess(data.success);
+  //     });
+  //   });
+  // };
+
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
     setSuccess("");
 
     startTransition(() => {
       login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
+        if (data) {
+          // This checks if 'data' is truthy after the 'login' call
+          setError(data.error);
+          setSuccess(data.success);
+        } else {
+          setError("An unexpected error occurred.");
+        }
       });
     });
   };
