@@ -40,7 +40,7 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-screen w-screen bg-primary ">
+      <div className="h-screen w-screen background-dark ">
         <p className="text-white">Stuff goes here</p>
       </div>
       <TransissionOut />
