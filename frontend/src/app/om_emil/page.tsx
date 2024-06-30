@@ -60,9 +60,12 @@ const omEmilPage = () => {
         <div className="flex space-x-10">
               <RetningCard name="Elektrisk energiteknikk og smarte nett" subname="Elkraft" text="Handler om hvordan elektrisk energi brukes for å redusere CO2 utslipp for en effektiv og pålitelig energiforsyning." link="https://www.ntnu.no/studier/mtenerg/mtenerees"/>
               <RetningCard name="Energiplanlegging og miljøanalyse" subname="Midtlinja" text="Handler om å kunne planlegge og velge energiløsninger basert på en samlet vurdering av øknonomi, teknologi og miljøpåvirkninger" link="https://www.ntnu.no/studier/mtenerg/mtenergeg"/>
-              <RetningCard name="Energi og prosessteknikk" subname="Prosess" text="Handler om hvordan man kan produsere nok energi og bruke den på en bærekraftig måte med tanke på klimaendringe og tilgjengelige energiressurser" link="https://www.ntnu.no/studier/mtenerg/mtenerees"/>
+              <RetningCard name="Energi og prosessteknikk" subname="Prosess" text="Handler om hvordan man kan produsere nok energi og bruke den på en bærekraftig måte med tanke på klimaendringe og tilgjengelige energiressurser" link="https://www.ntnu.no/studier/mtenerg/mtenerves"/>
         </div>
+        <div className="p-10">
+          <Button onClick={() => window.open("https://www.ntnu.no/studier/mtenerg", "_blank")} className="text-xl font-bold bg-white text-primary hover:bg-zinc-400 hover:border-primary">Les mer om energi og miljø her</Button>
         </div >
+        </div>
       </div>
       <TransissionOut />
       <div id="historie" style={{ height: "100vh" }} className=""></div>

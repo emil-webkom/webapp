@@ -17,8 +17,8 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-14 items-center justify-center space-x-5 pt-4">
-        <div className="flex ">
-          <Hero title="Energi og Miljø" undertitle="Velkommen til Emil!" />
+        <div className="flex space-x-10 ">
+          <Hero title="Energi og Miljø" undertitle="Velkommen til energi og miljøstudentenes linjeforening!" />
           <div>
             <img
               src="/image/logo.png"

@@ -1,7 +1,6 @@
 'use client'
 
 import { FC } from "react";
-import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
 interface CardProps{
@@ -11,13 +10,17 @@ interface CardProps{
     link: string;
 }
 
-const RetningCard: FC<CardProps> = ({name, subname, text, link}) =>{
-    return(
-        <div className="w-[25vw]  flex flex-col items-center align-top bg-[#003A42] rounded-md py-6">
-            <div className="text-l font-medium px-4">{name}</div>
-            <div className="text-m font-light p-2">{subname}</div>
-            <div className="text-l font-light px-14 py-6 my-4">{text}</div>
-            <Button onClick={()=> useRouter("`{link}`")} className="text-l font-medium ">Les mer om {subname} </Button>
+const RetningCard: FC<CardProps> = ({ name, subname, text, link }) => {
+    return (
+        <div className="w-[25vw] flex flex-col justify-between bg-[#003A42] rounded-md py-6">
+            <div className="text-xl font-semibold px-10 h-[4rem] overflow-hidden">{name}</div>
+            <div className="text-m font-light px-10 ">{subname}</div>
+            <div className="text-l font-light px-10 py-5 h-[6rem] overflow-hidden">{text}</div>
+            <div className="flex justify-center pt-5">
+                <Button onClick={() => window.open(link, "_blank")} className="text-l font-medium">
+                    Les mer om {subname}
+                </Button>
+            </div>
         </div>
     );
 };
