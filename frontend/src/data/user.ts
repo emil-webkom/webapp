@@ -1,10 +1,7 @@
 import { db } from "@/lib/db";
 
-/**
- * Retrieves a user by their email address.
- * @param email - The email address of the user.
- * @returns A Promise that resolves to the user object if found, or null if not found or an error occurred.
- */
+// Some helper functions to retrieve users by email or id
+
 export const getUserByEmail = async (email: string) => {
   try {
     const user = await db.user.findUnique({ where: { email } });
@@ -15,11 +12,6 @@ export const getUserByEmail = async (email: string) => {
   }
 };
 
-/**
- * Retrieves a user by their ID.
- * @param id - The ID of the user to retrieve.
- * @returns A Promise that resolves to the user object if found, or null if not found or an error occurs.
- */
 export const getUserById = async (id: string) => {
   try {
     const user = await db.user.findUnique({ where: { id } });
