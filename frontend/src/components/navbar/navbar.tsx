@@ -11,7 +11,7 @@ const NavBar: FC = () => {
   };
 
   return (
-    <nav className="w-screen mx-auto items-center border-b border-slate-200">
+    <nav className="max-w-screen items-center border-b border-slate-200">
       <div className="flex mx-[7%] py-4 justify-between">
         <div className="flex gap-[4vw]">
           <a href="/">
