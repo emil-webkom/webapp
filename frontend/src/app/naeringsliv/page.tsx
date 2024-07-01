@@ -1,6 +1,6 @@
 
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
-import Hero from "@/components/hero/hero1";
+import Hero2 from "@/components/hero/hero2";
 import TransissionIn from "@/components/hero/transissions/transiossionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
 import LogoSection from "@/components/logosection/logosection";
@@ -8,8 +8,8 @@ import LogoSection from "@/components/logosection/logosection";
 const NaeringslivPage = () => {
   return (
     <div>
-      <div className="m-7 px-80  flex text-center   ">
-        <Hero title="Næringsliv" undertitle="" />
+      <div className="mt-4">
+        <Hero2 title="Næringsliv" undertitle="Her finner du alt du trenger å vite om Emil og næringslivet" />
       </div>
       <p className="m-7 px-80 flex text-left-center ">
         Energi- og miljøstudiet har utviklet et veldig godt kontaktnett med
