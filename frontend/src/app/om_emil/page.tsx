@@ -16,7 +16,7 @@ const omEmilPage = () => {
 
   return (
     <div>
-      <div className="flex flex-col ">
+      <div className="flex flex-col mt-4">
         <Hero2
           title="Energi og miljøstudentenes linjeforening"
           undertitle="Her finner du informasjon om linjeforeningen Emil"
@@ -51,9 +51,9 @@ const omEmilPage = () => {
         <TransissionIn />
         <div
           id="om_studiet"
-          style={{ height: "125vh" }}
-          className="background-dark text-white flex flex-col items-center tracking-tighter"
-        ><div className="flex flex-col w-[65%] py-10 space-y-5">
+          style={{ height: "45rem" }}
+          className="background-dark text-white flex flex-col justify-between items-center tracking-tighter"
+        ><div className="flex flex-col w-[65%] pt-20 space-y-5">
           <div id="Top" className="font-semibold text-2xl">Studiet er et fem-årig sivilingeniørstudie ved NTNU i Trondheim. Det kombinerer <span className="text-[#579783]">energi- og prosessteknikk</span> med <span className="text-[#579783]">elkraftteknikk</span> som gjør at du får en unik forståelse av energisystemet som helhet.</div>
           <div id="Bottom" className="font-extralight text-l">Man får kunnskap til å ta del i den utviklingen som skjer i energisektoren. Fagene er tekniske og de første årene av studiet bygger på matematikk og tekniske grunnfag. Utover i studiet velger man retning og etterhvert fag selv. Retningene man kan velge mellom er:</div>
         </div>
@@ -68,7 +68,11 @@ const omEmilPage = () => {
         </div>
       </div>
       <TransissionOut />
-      <div id="historie" style={{ height: "100vh" }} className=""></div>
+      <div id="historie" style={{ height: "100vh" }} className="bg-red-400">
+        <div>
+          <header>Historie</header>
+        </div>
+      </div>
       <TransissionIn />
       <div
         id="hovedstyret"
