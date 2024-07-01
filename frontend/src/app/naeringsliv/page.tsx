@@ -1,3 +1,4 @@
+
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
 import Hero from "@/components/hero/hero1";
 import TransissionIn from "@/components/hero/transissions/transiossionIn";

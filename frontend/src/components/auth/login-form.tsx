@@ -17,8 +17,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { FormError } from "../response/form-error";
-import { FormSuccess } from "../response/form-success";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 import { login } from "@/actions/login";
 
 export const LoginForm = () => {
@@ -35,14 +35,31 @@ export const LoginForm = () => {
     },
   });
 
+  // const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  //   setError("");
+  //   setSuccess("");
+
+  //   startTransition(() => {
+  //     login(values).then((data) => {
+  //       setError(data.error);
+  //       setSuccess(data.success);
+  //     });
+  //   });
+  // };
+
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
     setSuccess("");
 
     startTransition(() => {
       login(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
+        if (data) {
+          // This checks if 'data' is truthy after the 'login' call
+          setError(data.error);
+          setSuccess(data.success);
+        } else {
+          setError("An unexpected error occurred.");
+        }
       });
     });
   };

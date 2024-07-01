@@ -12,7 +12,7 @@ const Hero: FC<HeroProps> = ({ title, undertitle }) => {
         <p className="font-bold text-[4.3rem] text-left tracking-tighter">
           {title}
         </p>
-        <p className="font-medium text-[2rem] text-left px-2 tracking-tighter">
+        <p className="font-medium text-[2rem] text-left tracking-tighter">
           {undertitle}
         </p>
       </div>

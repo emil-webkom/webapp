@@ -17,8 +17,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { FormError } from "../response/form-error";
-import { FormSuccess } from "../response/form-success";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 import { register } from "@/actions/register";
 
 export const RegisterForm = () => {
@@ -69,7 +69,7 @@ export const RegisterForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="Ulrik Fladby"
+                      placeholder="Ola Nordmann"
                     />
                   </FormControl>
                   <FormMessage />
@@ -86,7 +86,7 @@ export const RegisterForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="emil@elgen.no"
+                      placeholder="ola@gmail.no"
                       type="email"
                     />
                   </FormControl>
