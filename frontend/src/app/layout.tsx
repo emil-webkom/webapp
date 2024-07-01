@@ -4,8 +4,8 @@ import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
-  title: "Energi og Miljø",
-  description: "Linjeforeningen til Energi og Miljø",
+  title: "Emilweb",
+  description: "Energi og miljøstudentenes linjeforening",
 };
 
 export default function RootLayout({
@@ -20,9 +20,9 @@ export default function RootLayout({
           <NavBar />
         </div>
         {children}
-        {/* <div>
-          <Footer/>
-        </div> */}
+        <div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
