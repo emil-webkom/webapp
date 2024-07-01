@@ -16,9 +16,12 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col m-14 items-center justify-center space-x-5 pt-4">
-        <div className="flex space-x-10 ">
-          <Hero title="Energi og Miljø" undertitle="Velkommen til energi og miljøstudentenes linjeforening!" />
+      <div className="flex flex-col m-14 items-left justify-center pt-4">
+        <div className="flex ">
+          <Hero
+            title="Energi og Miljø"
+            undertitle="Velkommen til energi og miljøstudentenes linjeforening!"
+          />
           <div>
             <img
               src="/image/logo.png"
@@ -27,8 +30,8 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="flex items-center text-left w-[100%] space-x-5 pt-9">
-          <div className="flex items-center space-x-2">
+        <div className="flex text-left space-x-5 pt-9">
+          <div className="flex items-left space-x-2 items-center">
             <span className="font-bold text-xl tracking-tighter ">
               Ny Student?
             </span>
@@ -40,7 +43,7 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-screen w-screen background-dark ">
+      <div className="h-screen w-full background-dark ">
         <p className="text-white">Stuff goes here</p>
       </div>
       <TransissionOut />

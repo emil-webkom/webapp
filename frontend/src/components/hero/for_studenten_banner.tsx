@@ -34,7 +34,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -42,7 +42,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -50,7 +50,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_4"
@@ -58,7 +58,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -85,7 +85,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -93,7 +93,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -101,7 +101,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_4"
@@ -109,7 +109,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -136,7 +136,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -144,7 +144,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -171,7 +171,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -179,7 +179,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -187,7 +187,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_4"
@@ -195,7 +195,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_5"
@@ -203,7 +203,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -231,7 +231,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -239,7 +239,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -247,7 +247,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_4"
@@ -255,7 +255,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -282,7 +282,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -290,7 +290,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -298,7 +298,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -325,7 +325,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -333,7 +333,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -341,7 +341,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_4"
@@ -349,7 +349,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_5"
@@ -357,7 +357,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>
@@ -384,7 +384,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_2"
@@ -392,7 +392,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                   <path
                     id="Vector_3"
@@ -400,7 +400,7 @@ const Banner: FC = () => {
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                   />
                 </g>
               </svg>

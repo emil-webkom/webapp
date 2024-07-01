@@ -7,7 +7,7 @@ import { FC } from "react";
 const Footer: FC = () => {
   return (
     <footer>
-      <div className="w-[100%] flex justify-between bg-[#001D21] text-white px-10 font-bold py-5">
+      <div className="max-w-screen flex justify-between bg-[#001D21] text-white px-10 font-bold py-5">
         <div className="flex flex-col w-[20%]">
           <div className="flex justify-left">
             <span>Emil</span>
@@ -81,7 +81,7 @@ const Footer: FC = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-center bg-[#001D21] py-2">
+      <div className="flex max-w-screen items-center justify-center bg-[#001D21] py-2">
         <img
           src="svg/Three clover.svg"
           alt="Trekløver"
