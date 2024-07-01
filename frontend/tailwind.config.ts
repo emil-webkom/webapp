@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+
+
 const config = {
   darkMode: ["class"],
   content: [
@@ -8,6 +10,7 @@ const config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  
   prefix: "",
   theme: {
     container: {
@@ -53,6 +56,14 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+
+      spacing: {
+        '97': '24.25rem',
+        '98': '24.5rem',
+        '99': '24.75rem',
+        '100': '25rem',
+      },
+      
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -72,6 +83,7 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+
     },
   },
   plugins: [require("tailwindcss-animate")],
