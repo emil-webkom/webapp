@@ -1,22 +1,88 @@
 "use client";
 
-import Hero2 from "@/components/hero/hero2";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+
+import Hero2 from "@/components/hero/hero2";
 import TransissionIn from "@/components/hero/transissions/transissionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
 import React from "react";
 import RetningCard from "@/components/cards/retningCard";
-import { useRouter } from "next/navigation";
+import HSCard from "@/components/cards/styretCard";
 
-const omEmilPage = () => {
+
+const OmEmilPage = () => {
+
+  const styret = [
+    {rolle: "Kongsknekt - Leder",
+      name: "Henriette Strømsvaag",
+      text: "Kongsknekten er linjeforeningens øverste leder og har kontroll på aktiviteten i EMIL i tillegg til å opprettholde godt samarbeid internt og eksternt",
+      mail: "henriette.stromsvaag@gmail.com",
+      nummer: 46760243,
+      bilde: "image/Komiteer/HS/leder.jpg"},
+    {rolle: "Viseknekt - Nestleder",
+      name: "Sander Næss",
+      text: "Viseknekten er kongsknektens høyre hånd, og har ansvar for samarbeidet EMIL-styret har med næringsliv og andre bedriftsrelaterte institusjoner på NTNU",
+      mail: "sanderhn@stud.ntnu.no",
+      nummer: 91857070,
+      bilde: "image/Komiteer/HS/nestleder.jpg"},
+    {rolle: "Fut - Økonomiansvarlig",
+      name: "Eirik Haugsdal",
+      text: "Futen har til enhver tid oversikt over penger som flyter ut, inn og som blir værende i organisasjonen, samt organisasjonens økonomi totalt sett",
+      mail: "haugsdaleirik21@gmail.com",
+      nummer: 95484594,
+      bilde: "image/Komiteer/HS/fut.jpg"},
+    {rolle: "Hyrd - Fadderansvarlig",
+      name: "Vegard Jensen",
+      text: "Hyrden sørger for at 1. klasse får den best tenkelige starten på energi- og miljøstudiet, og NTNU forøvrig, i tillegg til å være en sosial og omgjengelig person",
+      mail: "vegard734@gmail.com",
+      nummer: 47687685,
+      bilde: "image/Komiteer/HS/hyrd.jpg"},
+    {rolle: "Trubadur - PR og webansvarlig",
+      name: "Dea Elizabeth Kåss",
+      text: "Trubaduren har ansvaret for EMILs kommunikasjon, både internt og eksternt. Dette innebærer blant annet drift organisasjonens sosiale medier og utarbeidelse av kommunikasjons- og blesteplaner",
+      mail: "deaek@stud.ntnu.no",
+      nummer: 91891307,
+      bilde: "image/Komiteer/HS/trubadur.jpg"},
+    {rolle: "Lovn - Arrangementansvarlig",
+      name: "Felix Linus Dahl",
+      text: "Lovnen er styrets arrangementsansvarlig og har ansvaret for å planlegge og gjennomføre EMILs velkjente arrangementer",
+      mail: "felixlinusdahl@gmail.com",
+      nummer: 92403716,
+      bilde: "image/Komiteer/HS/lovn.jpg"},
+    {rolle: "Gjøgler - Komiteansvarlig",
+      name: "Kamilla Engaas",
+      text: "Gjøgleren har ansvaret for å holde liv i komitéene og sørger for god informasjonsflyt og samarbeid mellom komitéene og styret",
+      mail: "kamilla.engaas@gmail.com",
+      nummer: 90414860,
+      bilde: "image/Komiteer/HS/gjøgler.jpg"}
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animate, setAnimate] = useState(false);
+  const totalCards = styret.length;
+
+
+
+  // Defining scrolling animations for cards
+  useEffect(() => {
+    if (animate) {
+      const timer = setTimeout(() => {
+        setAnimate(false);
+      }, 300); // Duration of the animation
+      return () => clearTimeout(timer);
+    }
+  }, [animate]);
+
   // Function to scroll to the target section
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Function for pushing user to another page
 const router = useRouter();
-
   const handleClick = (link:string) =>{
   router.push(link);
 }
@@ -99,10 +165,28 @@ const router = useRouter();
       <TransissionIn />
       <div
         id="hovedstyret"
-        style={{ height: "100vh" }}
-        className="background-dark max-w-screen"
+        style={{ height: "" }}
+        className="background-dark max-w-screen flex justify-center"
       >
-        <div className="flex flex-col w-[65%] text-white">Hovedstyret</div>
+        <div className="flex flex-col w-[65%] text-white py-10 space-y-10">
+          <div>
+          <p className="flex justify-center text-2xl font-bold">Hovedstyret</p>
+          <div className="flex justify-between py-10 space-x-10">
+          <div className="flex items-center justify-center" style={{overflow:"hidden"}}>
+            <img src="image/komiteer/HS/HSfelles.jpg" alt="Hovedstyret fellesbilde" className="rounded-md object-cover w-[100rem] h-[19rem]"/>
+          </div>
+          <div className="flex flex-col space-y-4">
+            <p className="font-semibold text-l tracking-tighter">er linjeforeningens øverste organ og har ansvaret for driften og ledelsen av organisasjonen i det daglige. Styret består av syv faste medlemmer med ansvarsområder innenfor alt fra arrangement og fadderuker, til økonomi og næringsliv.
+            </p>
+            <p className="font-extralight text-sm">Alle styremedlemmene fungerer på lik linje, med  alle de rettigheter og plikter som dette innebærer. Som medlem i styret tilegner du deg fort nye kunnskaper og ferdigheter, ikke bare innen ditt eget ansvarsområde, men også om EMIL som helhet, NTNU og hele studentfrivilligheten i Trondheim.</p>
+              <p className="font-extralight text-sm">
+              Etter generalforsamling konstituerer styret seg selv, noe som betyr at det nyvalgte styret selv avgjør hvem som skal ha hvilken stilling i styret. Unntaket til regelen er kongsknekten, som velges først.
+              </p>
+            </div>
+          </div>
+          </div>
+          <HSCard data={styret}/>
+        </div>
       </div>
       <TransissionOut />
       <div id="kontak_oss" style={{ height: "100vh" }} className=""></div>
@@ -111,4 +195,4 @@ const router = useRouter();
   );
 };
 
-export default omEmilPage;
+export default OmEmilPage;
