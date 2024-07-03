@@ -51,7 +51,7 @@ const Footer: FC = () => {
               </Link>
             </li>
             <li>
-              <Link href="/næringsliv" className="text-underscore">
+              <Link href="/naeringsliv" className="text-underscore">
                 Næringsliv
               </Link>
             </li>

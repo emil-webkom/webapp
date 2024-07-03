@@ -10,6 +10,8 @@ import React from "react";
 import RetningCard from "@/components/cards/retningCard";
 import HSCard from "@/components/cards/styretCard";
 import Logos from "@/components/logosection/komitelogo";
+import Fagkontakt from "@/components/cards/fag_kontakt";
+import { text } from "stream/consumers";
 
 const OmEmilPage = () => {
   const styret = [
@@ -128,6 +130,25 @@ const OmEmilPage = () => {
       side: "for_studenten/komiteer/pikestroem",
     },
   ];
+
+  const fagkontakt = [
+    {
+      navn: "Halsten Aastebøl",
+      rolle: "Faglig studieveileder",
+      text: "Ansvarlig for faglige spørsmål og spørsmål rundt studieprogrammet",
+      bilde: "image/fagkontakt/Halsten.jpg",
+      mail: "halsten.aastebol@ntnu.no",
+      nummer: 73594267,
+    },
+    {
+      navn: "Kristoffer Halseth",
+      rolle: "Student og studieveileder",
+      text: "Ansvarlig for psykososiale eller generelle spørsmål",
+      bilde: "image/fagkontakt/Halseth.jpg",
+      mail: "kristoffer.halseth@ntnu.no",
+      nummer: 73594201,
+    },
+  ];
   // Function to scroll to the target section
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -136,36 +157,46 @@ const OmEmilPage = () => {
 
   return (
     <div className="max-w-screen">
-      <div className="flex flex-col mt-4">
+      <div className="flex flex-col justify-center mt-4">
         <Hero2
           title="Energi og miljøstudentenes linjeforening"
           undertitle="Her finner du informasjon om linjeforeningen Emil"
         />
-        <div
-          className="flex justify-center pt-10 items-center space-x-24 "
-          style={{ height: "35vh" }}
-        >
-          <div style={{ width: "30vw" }} className="tracking-tighter">
-            Energi og miljø-studiet er et sivilingeniørstudie (Master of
-            technology) ved Norges teknisk-naturvitenskapelige universitet,
-            NTNU. Studiet ble først introdusert våren 1998 og med et engasjert
-            første kull ble linjeforeningen{" "}
-            <span className="font-bold">Emil</span> stiftet den 28. september
-            1998 kort tid etter første immatrikulering.
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <Button onClick={() => scrollToSection("om_studiet")}>
-              Om studiet
-            </Button>
-            <Button onClick={() => scrollToSection("historie")}>
-              Historie
-            </Button>
-            <Button onClick={() => scrollToSection("hovedstyret")}>
-              Hovedstyret
-            </Button>
-            <Button onClick={() => scrollToSection("studiemiljøet")}>
-              Studiemiljøet
-            </Button>
+        <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center w-[65%]">
+            <div
+              className="flex justify-between pt-10 items-center space-x-10"
+              style={{ height: "35vh" }}
+            >
+              <div className="tracking-tighter w-[35vw]">
+                Energi og miljø-studiet er et sivilingeniørstudie (Master of
+                technology) ved Norges teknisk-naturvitenskapelige universitet,
+                NTNU. Studiet ble først introdusert våren 1998 og med et
+                engasjert første kull ble linjeforeningen{" "}
+                <span className="font-bold">Emil</span> stiftet den 28.
+                september 1998 kort tid etter første immatrikulering.
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                <Button onClick={() => scrollToSection("om_studiet")}>
+                  Om studiet
+                </Button>
+                <Button onClick={() => scrollToSection("historie")}>
+                  Historie
+                </Button>
+                <Button onClick={() => scrollToSection("hovedstyret")}>
+                  Hovedstyret
+                </Button>
+                <Button onClick={() => scrollToSection("studiemiljøet")}>
+                  Studiemiljøet
+                </Button>
+                <Button onClick={() => scrollToSection("Fagkontakt")}>
+                  Faglige spørsmål
+                </Button>
+                <Button onClick={() => scrollToSection("varsling")}>
+                  Varsle?
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
         <TransissionIn />
@@ -273,7 +304,6 @@ const OmEmilPage = () => {
       <TransissionIn />
       <div
         id="hovedstyret"
-        style={{ height: "" }}
         className="background-dark max-w-screen flex justify-center"
       >
         <div className="flex flex-col w-[65%] text-white py-10 space-y-10">
@@ -355,9 +385,65 @@ const OmEmilPage = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div>
-          <p>Kontakt oss?</p>
+      <TransissionIn />
+      <div
+        id="Fagkontakt"
+        className="background-dark max-w-screen flex justify-center text-white"
+      >
+        <div className="flex flex-col items-center w-[65%] py-10 space-y-10">
+          <div className="text-2xl font-bold">Faglig kontakt</div>
+          <div className="font-extralight text-l">
+            Emil har mange kontaktpersoner designert til å hjelpe deg med
+            studenttilværelsen. Avhengig av hvilke formål man har er det
+            forskjellige kontaktpersoner. Her finner du kontaktinformasjon for
+            de ulike formålene.
+          </div>
+          <div className="flex space-x-5 justify-between px-10">
+            <Fagkontakt
+              name={fagkontakt[0].navn}
+              rolle={fagkontakt[0].rolle}
+              text={fagkontakt[0].text}
+              bilde={fagkontakt[0].bilde}
+              mail={fagkontakt[0].mail}
+              nummer={fagkontakt[0].nummer}
+            />
+            <Fagkontakt
+              name={fagkontakt[1].navn}
+              rolle={fagkontakt[1].rolle}
+              text={fagkontakt[1].text}
+              bilde={fagkontakt[1].bilde}
+              mail={fagkontakt[1].mail}
+              nummer={fagkontakt[1].nummer}
+            />
+          </div>
+        </div>
+      </div>
+      <TransissionOut />
+      <div id="varsling" className="max-w-screen flex justify-center">
+        <div className="flex flex-col items-center w-[65%] space-y-5">
+          <p className="text-2xl font-bold">Varsle</p>
+          <p className="font-extralight text-l">
+            Noe av det viktigste vi kan gjøre for å sikre at alle i
+            linjeforeningen kommer seg trygt gjennom studietiden, er å si ifra
+            når ting ikke er som de skal. Uansett om det er en stor eller liten
+            utfordring/hendelse, er det bedre å si ifra en gang for mye enn en
+            gang for lite.{" "}
+          </p>
+          <p className="font-extralight text-l">
+            Enhver hendelse som meldes inn her vil bli tatt på alvor. Du kan
+            velge å holde det anonymt, eller å skrive ditt navn for at
+            linjeforeningsstyret kan følge opp hendelsen/situasjonen videre med
+            deg. Uansett vil vi i denne prosessen ta hensyn til deg og andre
+            berørte, og ansvarlige for å håndtere varslingen har taushetsplikt.
+          </p>
+          <div className="space-x-5">
+            <Link href="for_studenten/varsle_oss">
+              <Button>Meld inn varslingssak her</Button>
+            </Link>
+            <Link href="for_studenten/varsle_oss">
+              <Button>Les om håndteringen her</Button>
+            </Link>
+          </div>
         </div>
       </div>
       <TransissionIn />
