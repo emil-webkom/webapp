@@ -3,7 +3,8 @@ import type { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { LoginSchema } from "@/schemas";
 import { getUserByEmail } from "@/data/user";
-import bcryptjs from "bcryptjs";
+import bcrypt from "bcryptjs";
+import { toast } from "sonner";
 
 export default {
   providers: [
@@ -19,11 +20,14 @@ export default {
           if (!user || !user.password) {
             return null;
           }
-          const passwordsMatch = await bcryptjs.compare(
+          const passwordsMatch = await bcrypt.compare(
             password,
             user.password
           );
-          if (passwordsMatch) return user;
+          if (passwordsMatch) {
+            // toast("Logged in");
+            return user;
+          }
         }
         return null;
       }

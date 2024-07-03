@@ -11,6 +11,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { Calendar } from "@/components/ui/calendar";
 import ListView from "@/components/calendar/listView";
+import BigCard from "@/components/landing/bigCard";
 
 const HomePage = () => {
   // const router = useRouter();
@@ -57,7 +58,7 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-screen w-full background-dark pt-8">
+      <div className="h-screen w-full background-dark pt-8 justify-center">
         {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
           <div className="bg-emerald-400 w-[40rem] rounded-md border">
@@ -82,6 +83,9 @@ const HomePage = () => {
               className="rounded-md border"
             />
           </div>
+        </div>
+        <div className="flex justify-center mt-4">
+          <BigCard />
         </div>
       </div>
       <TransissionOut />
