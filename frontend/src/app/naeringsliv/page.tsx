@@ -2,7 +2,7 @@
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
 import EmilLink from "@/components/EmilLink/EmilLink";
 import Hero2 from "@/components/hero/hero2";
-import TransissionIn from "@/components/hero/transissions/transiossionIn";
+import TransissionIn from "@/components/hero/transissions/transissionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
 import LogoSection from "@/components/logosection/logosection";
 
