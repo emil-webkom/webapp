@@ -13,12 +13,11 @@ const logos = [
 
   const LogoSection: React.FC = () => {
     return (
-      <div className="text-center pt-2 pb-60 bg-white  ">
-        <h2 className="text-3xl font-bold mb-10 ">En stor takk til alle våre samarbeidspartnere!</h2>
-        <p className="text-lg text-[#3A766C] mb-6 pb-36"ay->For bedrifter: <a href="#" className="text-[#3A766C] font-semibold  ">  Trykk her</a> dersom du ønsker å ta kontakt med oss.</p>
-        <div className="grid grid-cols-4 gap-36 px-35">
+      <div className="text-center pt-2 pb-36 bg-white  ">
+        <h2 className="text-2xl font-bold mb-10 pb-20 ">En stor takk til alle våre samarbeidspartnere!</h2>
+        <div className="grid grid-cols-4 gap-36 py-4 px-35">
           {logos.map((logo, index) => (
-            <div key={index} className="flex justify-center items-center p-4">
+            <div key={index} className="flex justify-center items-center py-4">
               <img src={logo.src} alt={logo.alt} className="h-16 w-auto" />
             </div>
           ))}
