@@ -11,7 +11,7 @@ const Footer: FC = () => {
         <div className="flex flex-col w-[20%]">
           <div className="flex justify-left">
             <span>Emil</span>
-            <img src="svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
+            <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-left mt-6 font-light text-[10px]">
             <p>
@@ -24,7 +24,7 @@ const Footer: FC = () => {
         <div className="flex flex-col w-[20%]">
           <div className="flex">
             <span>Kontakt</span>
-            <img src="svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
+            <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-left font-light text-[10px] mt-6">
             <p>Leder: Henriette Strømsness, +47 467 60 243</p>
@@ -37,7 +37,7 @@ const Footer: FC = () => {
         <div className="flex flex-col w-[20%]">
           <div className="flex">
             <span>Lenker</span>
-            <img src="svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
+            <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <ul className="text-[10px] font-light mt-6 space-y-1 object-cover">
             <li>
@@ -68,7 +68,7 @@ const Footer: FC = () => {
         <div className="flex flex-col w-[20%]">
           <div className="flex">
             Våre samarbeidspartnere
-            <img src="svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
+            <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-[10px] font-light mt-6">
             <p>Multiconsult</p>
@@ -83,7 +83,7 @@ const Footer: FC = () => {
 
       <div className="flex max-w-screen items-center justify-center bg-[#001D21] py-2">
         <img
-          src="svg/Three clover.svg"
+          src="/svg/Three clover.svg"
           alt="Trekløver"
           className="h-4 w-4 icon-hover"
         />
