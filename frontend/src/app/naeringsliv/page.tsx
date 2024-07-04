@@ -1,4 +1,3 @@
-
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
 import Hero2 from "@/components/hero/hero2";
 import TransissionIn from "@/components/hero/transissions/transiossionIn";
@@ -9,7 +8,10 @@ const NaeringslivPage = () => {
   return (
     <div>
       <div className="mt-4">
-        <Hero2 title="Næringsliv" undertitle="Her finner du alt du trenger å vite om Emil og næringslivet" />
+        <Hero2
+          title="Næringsliv"
+          undertitle="Her finner du alt du trenger å vite om Emil og næringslivet"
+        />
       </div>
       <p className="m-7 px-80 flex text-left-center ">
         Energi- og miljøstudiet har utviklet et veldig godt kontaktnett med
@@ -31,7 +33,6 @@ const NaeringslivPage = () => {
           linkHref="https://www.multiconsult.no/"
           buttonText="Ledige stillinger"
           buttonLinkHref=""
-          
         />
         <NaeringslivCard
           titleImageSrc="image/statkraft_logo.jpg"
@@ -45,11 +46,16 @@ const NaeringslivPage = () => {
       </div>
 
       <div className="bg-[#001D21] flex justify-center ">
-        <p className= "text-white mx-5  ">
-            For bedrifter
-            Ønsker din bedrift å promotere stillingsannonser, internships eller gi et generelt innblikk i hva din bedrift driver med? Emil-Link tilbyr flere ulike tjenester hvor bedrifter har mulighet til å komme i kontakt med våre studenter og gjøre nettopp dette. EMIL-Link er Energi- og miljøingeniørenes bedriftskontakt, en komite underlagt linjeforeningen. Våre medlemmer jobber hardt for å gi det beste tilbudet til studentene, og være deres link til arbeidslivet!
+        <p className="text-white mx-5  ">
+          For bedrifter Ønsker din bedrift å promotere stillingsannonser,
+          internships eller gi et generelt innblikk i hva din bedrift driver
+          med? Emil-Link tilbyr flere ulike tjenester hvor bedrifter har
+          mulighet til å komme i kontakt med våre studenter og gjøre nettopp
+          dette. EMIL-Link er Energi- og miljøingeniørenes bedriftskontakt, en
+          komite underlagt linjeforeningen. Våre medlemmer jobber hardt for å gi
+          det beste tilbudet til studentene, og være deres link til
+          arbeidslivet!
         </p>
-
       </div>
 
       <TransissionOut />
