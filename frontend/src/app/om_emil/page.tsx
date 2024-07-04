@@ -168,7 +168,7 @@ const OmEmilPage = () => {
               className="flex justify-between pt-10 items-center space-x-10"
               style={{ height: "35vh" }}
             >
-              <div className="tracking-tighter w-[35vw]">
+              <div className="w-[35vw] font-extralight text-l">
                 Energi og miljø-studiet er et sivilingeniørstudie (Master of
                 technology) ved Norges teknisk-naturvitenskapelige universitet,
                 NTNU. Studiet ble først introdusert våren 1998 og med et

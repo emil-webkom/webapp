@@ -12,12 +12,12 @@ const NaeringslivPage = () => {
       <div className="mt-24 ">
         <Hero2 title="Næringsliv" undertitle="Her finner du alt du trenger å vite om Emil og næringslivet" />
       </div>
-      <p className="m-3 px-80 flex text-left-center ">
-        Energi- og miljøstudiet har utviklet et veldig godt kontaktnett med
+      <p className="m-3 px-80 flex text-left-center font-extralight text-l">
+        Energi- og miljøstudiet har utviklet et godt kontaktnett med
         energibransjen og næringslivet. Energikontakten fungerer som et
         bindeledd mellom studentene på linjen, faglærere og næringslivet.
       </p>
-      <p className="m-3 flex text-left-center px-80 text-[#001D21] font-thin pt-4 mt-2  ">
+      <p className="m-3 flex text-left-center px-80 text-primary font-extralight pt-4 mt-2  ">
         Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
       </p>
 
