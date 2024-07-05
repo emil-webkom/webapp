@@ -11,7 +11,6 @@ import RetningCard from "@/components/cards/retningCard";
 import HSCard from "@/components/cards/styretCard";
 import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
-import { text } from "stream/consumers";
 
 const OmEmilPage = () => {
   const styret = [

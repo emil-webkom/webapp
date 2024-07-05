@@ -8,15 +8,16 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String    @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          UserRole  @default(USER)
-  accounts      Account[]
-  hovedstyret Hovedstyretstyret?
+  id                String             @id @default(cuid())
+  name              String?
+  email             String             @unique
+  emailVerified     DateTime?
+  image             String?
+  password          String?
+  nummer            Int?
+  role              UserRole           @default(USER)
+  accounts          Account[]
+  Hovedstyretstyret Hovedstyret?
 }
 
 model Account {
@@ -38,20 +39,19 @@ model Account {
   @@id([provider, providerAccountId])
 }
 
+model Hovedstyret {
+  rolle     String
+  text      String
+  active    Boolean
+  image     String
+  updatedAt DateTime
+  userID    String   @unique
+  User      User     @relation(fields: [userID], references: [id])
+
+  @@id([rolle, userID])
+}
+
 enum UserRole {
   ADMIN
   USER
-}
-
-model Hovedstyretstyret {
-  Rid        Int
-  rolle      String
-  text       String
-  active     Boolean
-  image      String
-  updatedAt  DateTime @updatedAt
-  userID     String @unique
-  user       User     @relation(fields: [userID], references: [id])
-
-  @@id([Rid, userID])
 }
