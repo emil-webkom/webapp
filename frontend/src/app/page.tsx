@@ -12,13 +12,10 @@ import Image from "next/image";
 import { Calendar } from "@/components/ui/calendar";
 import ListView from "@/components/calendar/listView";
 import BigCard from "@/components/landing/bigCard";
+import { cardData } from "@/static/landingInfo";
 
 const HomePage = () => {
-  // const router = useRouter();
-
-  // const handleClick = () => {
-  //   router.push("/for_studenten");
-  // };
+  const data = JSON.parse(cardData);
 
   const [date, setDate] = React.useState<Date | undefined>(new Date());
 
@@ -58,19 +55,51 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-screen w-full background-dark pt-8 justify-center">
+      <div className="h-full w-full background-dark p-8 justify-center">
         {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
-          <div className="bg-emerald-400 w-[40rem] rounded-md border">
+          <div className="">
             <ListView
               events={[
                 {
-                  title: "ragusea",
+                  id: "kuk",
+                  title: "Ragusea",
                   decscription: "Adam ragusea is a food critic and youtuber",
+                  trinn: 3,
+                  location: "Snarøya tennisbane",
+                  date: "12.06",
                 },
                 {
+                  id: "kuk",
                   title: "Cook",
                   decscription: "Adam ragusea is a food critic and youtuber",
+                  trinn: 2,
+                  location: "R7, Realfagsbygget",
+                  date: "01.06",
+                },
+                {
+                  id: "kuk",
+                  title: "Meatballs",
+                  decscription: "Adam ragusea is a food critic and youtuber",
+                  date: "03.05",
+                  trinn: 4,
+                  location: "Ragusea Lake",
+                },
+                {
+                  id: "kuk",
+                  title: "Why i season my cutting board",
+                  decscription: "Adam ragusea is a food critic and youtuber",
+                  trinn: 5,
+                  location: "R7, Realfagsbygget",
+                  date: "01.06",
+                },
+                {
+                  id: "kuk",
+                  title: "Not my steak",
+                  decscription: "Adam ragusea is a food critic and youtuber",
+                  trinn: 1,
+                  location: "R7, Realfagsbygget",
+                  date: "01.06",
                 },
               ]}
             />
@@ -85,7 +114,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="flex justify-center mt-4">
-          <BigCard />
+          <BigCard {...data} />
         </div>
       </div>
       <TransissionOut />
