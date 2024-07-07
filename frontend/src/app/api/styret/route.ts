@@ -1,1 +1,6 @@
-// Create endpoint for handeling fetch-styret request.
+import fetchStyret from "@/utils/styret/fetchers"
+
+export async function GET() {
+    const data = await fetchStyret();
+    return Response.json(data)
+}

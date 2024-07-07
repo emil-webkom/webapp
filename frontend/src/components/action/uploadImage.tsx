@@ -42,7 +42,7 @@ const UploadImageForm = () => {
                 <input type="text" placeholder="Brukeremail" onChange={handleSetUser}/>
                 <input type="file" onChange={handleFile} />
                 <button type="submit">Upload</button>
-            </form>
+                </form>
         </div>
     );
 };

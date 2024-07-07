@@ -3,6 +3,16 @@
 // to be displayed should be stored here.
 
 import { db } from "@/lib/db";
+import { number } from "zod";
+
+interface Hovedstyret {
+        rolle: string,
+        name: string,
+        text: string,
+        mail: string,
+        nummer: number,
+        bilde: string,
+}
 
 async function fetchStyret() {
   try {
@@ -11,7 +21,15 @@ async function fetchStyret() {
         User: true,
       },
     });
-    console.log(hovedstyret);
+    const hovedstyretdata: Hovedstyret[] = hovedstyret.map(item => ({
+      rolle: item.rolle,
+      name: item.User.name!,
+      text: item.text,
+      mail: item.User.email,
+      nummer: item.User.nummer!,
+      bilde: item.image
+    }));
+    return hovedstyretdata;
   } catch (error) {
     console.error("Error fetching data from Hovedstyret table:", error);
     throw error;
