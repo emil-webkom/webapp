@@ -1,4 +1,4 @@
-import { storage, auth } from "@/lib/firebase";
+import { storage } from "@/lib/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 // import { signInAnonymously } from "firebase/auth";
 

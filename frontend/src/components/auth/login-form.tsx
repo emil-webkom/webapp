@@ -19,7 +19,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { login } from "@/actions/login";
+import { login } from "@/utils/login";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");

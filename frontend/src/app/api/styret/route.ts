@@ -1,0 +1,1 @@
+// Create endpoint for handeling fetch-styret request.

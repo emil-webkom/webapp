@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import { uploadImage } from "@/lib/upload";
-import  storeData  from "@/actions/uploadHS"
+import  storeData  from "@/utils/styret/uploadHS"
 
 const UploadImageForm = () => {
     const [rolle, setRolle] = useState("");
