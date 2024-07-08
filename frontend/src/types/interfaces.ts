@@ -14,7 +14,13 @@ export  interface komiteInput{
     text3?: string
     bildeurl: string
     mail?: string
-    mappe?: string
+    mappe: string
+};
+
+export interface KomiteLogo{
+    komite: string
+    bilde: string
+    mappe: string
 };
 
 export interface Hovedstyret {

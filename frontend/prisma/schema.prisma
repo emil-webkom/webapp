@@ -60,7 +60,7 @@ model komite {
   text3     String?
   bilde     String
   mail      String?
-  Mappe      String?
+  mappe      String
 }
 
 enum UserRole {

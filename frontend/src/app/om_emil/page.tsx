@@ -13,75 +13,20 @@ import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
 
 const OmEmilPage = () => {
-    const [styret, setStyret] = useState([])
+    const [styret, setStyret] = useState([]);
+    const [logos, setLogos] = useState([]);
 
     useEffect(()=> {
-      const fetchStyret = async ()=>{
-        const response = await fetch("api/styret");
-        const data = await response.json();
-        setStyret(data);
+
+      const fetchData = async () => {
+        const fetchStyretPromise = fetch("api/styret").then(response => response.json());
+        const fetchLogosPromise = fetch("api/komite/logo").then(response => response.json());
+        const [styretData, logosData] = await Promise.all([fetchStyretPromise, fetchLogosPromise]);
+        setStyret(styretData);
+        setLogos(logosData);
       };
-      fetchStyret();
+      fetchData();
     }, []);
-
-
-  const logos = [
-    {
-      komite: "ølkom",
-      bilde: "image/Komiteer/ølkom.png",
-      side: "for_studenten/komiteer/oelkom",
-    },
-    {
-      komite: "miljkom",
-      bilde: "image/Komiteer/miljøkom.png",
-      side: "for_studenten/komiteer/miljoekom",
-    },
-    {
-      komite: "høystemt",
-      bilde: "image/Komiteer/høystemt.png",
-      side: "for_studenten/komiteer/hoeystemt",
-    },
-    {
-      komite: "energifk",
-      bilde: "image/Komiteer/energifk.svg",
-      side: "for_studenten/komiteer/energifk",
-    },
-    {
-      komite: "ESrevyen",
-      bilde: "image/Komiteer/ESrevyen.svg",
-      side: "for_studenten/komiteer/esrevyen",
-    },
-    {
-      komite: "brettkom",
-      bilde: "image/Komiteer/Brettkom.png",
-      side: "for_studenten/komiteer/brettkom",
-    },
-    {
-      komite: "kompåtur",
-      bilde: "image/Komiteer/kompåtur.png",
-      side: "for_studenten/komiteer/kompaatur",
-    },
-    {
-      komite: "klovneløpet",
-      bilde: "image/Komiteer/klovneløpet.png",
-      side: "for_studenten/komiteer/klovneloepet",
-    },
-    {
-      komite: "festkom",
-      bilde: "image/Komiteer/festkom.svg",
-      side: "for_studenten/komiteer/festkom",
-    },
-    {
-      komite: "kvinnekom",
-      bilde: "image/Komiteer/Kvinnekom.jpg",
-      side: "for_studenten/komiteer/kvinnekom",
-    },
-    {
-      komite: "pikestrøm",
-      bilde: "image/Komiteer/pikestrøm.png",
-      side: "for_studenten/komiteer/pikestroem",
-    },
-  ];
 
   const fagkontakt = [
     {
@@ -331,7 +276,7 @@ const OmEmilPage = () => {
                 <Button>Les mer om komiteene her</Button>
               </Link>
             </div>
-            <div>
+            <div className="flex items-center">
               <Logos data={logos} />
             </div>
           </div>

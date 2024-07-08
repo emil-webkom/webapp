@@ -17,7 +17,7 @@ async function storeData(komitedata: komiteInput){
                 text3: komitedata.text3,
                 bilde: komitedata.bildeurl,
                 mail: komitedata.mail,
-                Mappe: komitedata.mappe,
+                mappe: komitedata.mappe,
             },
         });
         console.log("Komite created successfully");

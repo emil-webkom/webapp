@@ -17,7 +17,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-14 items-left justify-center pt-4">
-        <div className="flex ">
+        <div className="flex space-x-10">
           <Hero
             title="Energi og Miljø"
             undertitle="Velkommen til energi og miljøstudentenes linjeforening!"
@@ -35,9 +35,6 @@ const HomePage = () => {
             <span className="font-bold text-xl tracking-tighter ">
               Ny Student?
             </span>
-            <p className="text-l font-light tracking-tighter">
-              Klikk her for å lese mer
-            </p>
           </div>
           <Button onClick={handleClick}>Les mer</Button>
         </div>
