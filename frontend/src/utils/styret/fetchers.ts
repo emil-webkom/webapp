@@ -1,18 +1,5 @@
-// Page for fetcher-functions used in the page.tsx folders
-// The idea is that all functions that directly fetch data from the db
-// to be displayed should be stored here.
-
 import { db } from "@/lib/db";
-import { number } from "zod";
-
-interface Hovedstyret {
-        rolle: string,
-        name: string,
-        text: string,
-        mail: string,
-        nummer: number,
-        bilde: string,
-}
+import { Hovedstyret } from "@/types/interfaces";
 
 async function fetchStyret() {
   try {

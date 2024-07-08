@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { uploadImage } from "@/lib/upload";
+import { uploadImage } from "@/utils/firebase/upload_hovedstyret";
 import  storeData  from "@/utils/styret/uploadHS"
 
 const UploadImageForm = () => {
@@ -32,6 +32,7 @@ const UploadImageForm = () => {
         }
         const downloadURL = await uploadImage(file);
         const upload = storeData(rolle, text, user, downloadURL);
+        // MAKE A RESPONSE TO THE UPLAOD PROCESS AND RESET FORM AFTER SUBMITT
     }
 
     return (
