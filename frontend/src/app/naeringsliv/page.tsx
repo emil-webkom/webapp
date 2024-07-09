@@ -1,30 +1,29 @@
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
+import EmilLink from "@/components/EmilLink/EmilLink";
 import Hero2 from "@/components/hero/hero2";
-import TransissionIn from "@/components/hero/transissions/transiossionIn";
+import TransissionIn from "@/components/hero/transissions/transissionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
 import LogoSection from "@/components/logosection/logosection";
 
 const NaeringslivPage = () => {
   return (
     <div>
-      <div className="mt-4">
-        <Hero2
-          title="Næringsliv"
-          undertitle="Her finner du alt du trenger å vite om Emil og næringslivet"
-        />
+      <div className="mt-24 ">
+        <Hero2 title="Næringsliv" undertitle="Her finner du alt du trenger å vite om Emil og næringslivet" />
       </div>
-      <p className="m-7 px-80 flex text-left-center ">
-        Energi- og miljøstudiet har utviklet et veldig godt kontaktnett med
+      <p className="m-3 px-80 flex text-left-center font-extralight text-l">
+        Energi- og miljøstudiet har utviklet et godt kontaktnett med
         energibransjen og næringslivet. Energikontakten fungerer som et
         bindeledd mellom studentene på linjen, faglærere og næringslivet.
       </p>
-      <p className="m-7 flex text-left-center px-80 text-[#001D21] font-thin pt-10 ">
+      <p className="m-3 flex text-left-center px-80 text-primary font-extralight pt-4 mt-2  ">
         Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
       </p>
 
-      <TransissionIn />
+      <TransissionIn/>
+    
 
-      <div className="bg-[#001D21] flex justify-center items-stretch space-x-24 h-full">
+      <div className="bg-[#001D21] flex justify-center items-stretch space-x-24 h-full py-16 ">
         <NaeringslivCard
           titleImageSrc="image/multiconsult.svg"
           subtitle="Hovedsamarbeidspartner"
@@ -45,18 +44,10 @@ const NaeringslivPage = () => {
         />
       </div>
 
-      <div className="bg-[#001D21] flex justify-center ">
-        <p className="text-white mx-5  ">
-          For bedrifter Ønsker din bedrift å promotere stillingsannonser,
-          internships eller gi et generelt innblikk i hva din bedrift driver
-          med? Emil-Link tilbyr flere ulike tjenester hvor bedrifter har
-          mulighet til å komme i kontakt med våre studenter og gjøre nettopp
-          dette. EMIL-Link er Energi- og miljøingeniørenes bedriftskontakt, en
-          komite underlagt linjeforeningen. Våre medlemmer jobber hardt for å gi
-          det beste tilbudet til studentene, og være deres link til
-          arbeidslivet!
-        </p>
+      <div className= "">
+        <EmilLink/>
       </div>
+
 
       <TransissionOut />
 

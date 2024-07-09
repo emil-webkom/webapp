@@ -23,11 +23,11 @@ export default {
           if (!user || !user.password) {
             return null;
           }
-          const passwordsMatch = await bcrypt.compare(password, user.password);
-          if (passwordsMatch) {
-            // toast("Logged in");
-            return user;
-          }
+          const passwordsMatch = await bcrypt.compare(
+            password,
+            user.password
+          );
+          if (passwordsMatch) return user;
         }
         return null;
       },
