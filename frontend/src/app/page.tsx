@@ -13,7 +13,6 @@ import { Calendar } from "@/components/ui/calendar";
 import ListView from "@/components/calendar/listView";
 import BigCard from "@/components/landing/bigCard";
 import { cardData } from "@/static/landingInfo";
-import Video from "next-video";
 import VideoPlayer from "@/components/landing/video-player";
 import Baerekraft from "@/components/landing/baerekraft";
 
