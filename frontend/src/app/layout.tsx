@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Emilweb",
@@ -20,6 +21,7 @@ export default function RootLayout({
           <NavBar />
         </div>
         {children}
+        {/* <Toaster /> */}
         <div>
           <Footer />
         </div>

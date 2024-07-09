@@ -1,15 +1,15 @@
 import React from "react";
 
 const logos = [
-    { src: "/image/asplanviak.svg", alt: "GK" },
-    { src: "/image/cowi.jpg", alt: "cowi" },
-    { src: "/image/DNV.svg", alt: "DNV" },
-    { src: "/image/equinor.svg", alt: "equinor" },
-    { src: "/image/GK.svg", alt: "GK" },
-    { src: "/image/lyse.png", alt: "lyse" },
-    { src: "/image/nexans.svg", alt: "nexans" },
-    { src: "/image/sit.webp", alt: "sit" },
-  ];
+  { src: "/image/asplanviak.svg", alt: "GK" },
+  { src: "/image/cowi.jpg", alt: "cowi" },
+  { src: "/image/DNV.svg", alt: "DNV" },
+  { src: "/image/equinor.svg", alt: "equinor" },
+  { src: "/image/GK.svg", alt: "GK" },
+  { src: "/image/lyse.png", alt: "lyse" },
+  { src: "/image/nexans.svg", alt: "nexans" },
+  { src: "/image/sit.webp", alt: "sit" },
+];
 
   const LogoSection: React.FC = () => {
     return (
@@ -23,7 +23,7 @@ const logos = [
           ))}
         </div>
       </div>
-    );
-  };
-  
-  export default LogoSection;
+  );
+};
+
+export default LogoSection;

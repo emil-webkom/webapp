@@ -1,4 +1,3 @@
-
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
 import EmilLink from "@/components/EmilLink/EmilLink";
 import Hero2 from "@/components/hero/hero2";
@@ -33,7 +32,6 @@ const NaeringslivPage = () => {
           linkHref="https://www.multiconsult.no/"
           buttonText="Ledige stillinger"
           buttonLinkHref=""
-          
         />
         <NaeringslivCard
           titleImageSrc="image/statkraft_logo.jpg"

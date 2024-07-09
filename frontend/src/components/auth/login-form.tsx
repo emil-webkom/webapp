@@ -55,8 +55,8 @@ export const LoginForm = () => {
       login(values).then((data) => {
         if (data) {
           // This checks if 'data' is truthy after the 'login' call
-          setError(data.error);
-          setSuccess(data.success);
+          setError(data?.error);
+          // setSuccess(data.success);
         } else {
           setError("An unexpected error occurred.");
         }
