@@ -13,6 +13,9 @@ import { Calendar } from "@/components/ui/calendar";
 import ListView from "@/components/calendar/listView";
 import BigCard from "@/components/landing/bigCard";
 import { cardData } from "@/static/landingInfo";
+import Video from "next-video";
+import VideoPlayer from "@/components/landing/video-player";
+import Baerekraft from "@/components/landing/baerekraft";
 
 const HomePage = () => {
   const data = JSON.parse(cardData);
@@ -116,9 +119,12 @@ const HomePage = () => {
         <div className="flex justify-center mt-4">
           <BigCard {...data} />
         </div>
+        <VideoPlayer />
       </div>
-      <TransissionOut />
-      <TransissionIn />
+      {/* <TransissionOut />
+      <Baerekraft />
+      <TransissionIn /> */}
+      <Image src="/svg/bg.svg" alt={"baerekraft"} className="w-full" width={1920} height={1080}/>
     </div>
   );
 };
