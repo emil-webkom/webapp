@@ -2,7 +2,13 @@
  * Array of public routes, who do not need authentication
  * @type {string[]}
  */
-export const publicRoutes = ["/", "/for_studenten", "/om_emil", "/naeringsliv"];
+export const publicRoutes = [
+  "/",
+  "/for_studenten",
+  "/om_emil",
+  "/naeringsliv",
+  "/auth/new-verification",
+];
 
 /**
  * Array of routes used for authentication

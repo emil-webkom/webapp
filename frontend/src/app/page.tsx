@@ -123,7 +123,13 @@ const HomePage = () => {
       {/* <TransissionOut />
       <Baerekraft />
       <TransissionIn /> */}
-      <Image src="/svg/bg.svg" alt={"baerekraft"} className="w-full" width={1920} height={1080}/>
+      <Image
+        src="/svg/bg.svg"
+        alt={"baerekraft"}
+        className="w-full overflow-x-hidden"
+        width={1920}
+        height={1080}
+      />
     </div>
   );
 };
