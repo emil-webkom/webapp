@@ -157,7 +157,7 @@ const OmEmilPage = () => {
 
   return (
     <div className="max-w-screen">
-      <div className="flex flex-col justify-center mt-4">
+      <div className="flex flex-col justify-center ">
         <Hero2
           title="Energi og miljøstudentenes linjeforening"
           undertitle="Her finner du informasjon om linjeforeningen Emil"
