@@ -4,7 +4,7 @@ import * as z from "zod";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginSchema } from "@/schemas";
+import { ResetSchema } from "@/schemas";
 import { CardWrapper } from "./card-wrapper";
 
 import {
@@ -21,40 +21,27 @@ import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { login } from "@/actions/login";
 import Link from "next/link";
+import { reset } from "@/actions/reset";
 
-export const LoginForm = () => {
+export const ResetForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
 
   const [isPending, startTransition] = useTransition();
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof ResetSchema>>({
+    resolver: zodResolver(ResetSchema),
     defaultValues: {
       email: "",
-      password: "",
     },
   });
 
-  // const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-  //   setError("");
-  //   setSuccess("");
-
-  //   startTransition(() => {
-  //     login(values).then((data) => {
-  //       setError(data.error);
-  //       setSuccess(data.success);
-  //     });
-  //   });
-  // };
-
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof ResetSchema>) => {
     setError("");
     setSuccess("");
 
     startTransition(() => {
-      login(values).then((data) => {
-        // This checks if 'data' is truthy after the 'login' call
+      reset(values).then((data) => {
         setError(data?.error);
         setSuccess(data?.success);
       });
@@ -63,11 +50,10 @@ export const LoginForm = () => {
 
   return (
     <CardWrapper
-      headerTitle="Logg inn"
-      headerLabel="Velkommen tilbake"
-      backButtonLabel="Har du ikke en bruker?"
-      backButtonHref="/auth/register"
-      showSocial
+      headerTitle="Glemt passord?"
+      headerLabel="Tilbakestill passord"
+      backButtonLabel="Tilbake til logg inn"
+      backButtonHref="/auth/login"
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -90,7 +76,7 @@ export const LoginForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
+            {/* <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
@@ -104,23 +90,25 @@ export const LoginForm = () => {
                       type="password"
                     />
                   </FormControl>
-                  <Button
-                    size="sm"
-                    variant="link"
-                    asChild
-                    className="px-0 font-normal"
+                  <Button 
+                  size="sm" 
+                  variant="link"
+                  asChild
+                  className="px-0 font-normal"
                   >
-                    <Link href="/auth/reset">Forgot password?</Link>
+                    <Link href="/auth/reset">
+                      Forgot password?
+                    </Link>
                   </Button>
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
           <Button type="submit" className="w-full" disabled={isPending}>
-            Logg inn
+            Tilbakestill passord
           </Button>
         </form>
       </Form>

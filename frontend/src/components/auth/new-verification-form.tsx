@@ -10,8 +10,8 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 
 export const NewVerificationForm = () => {
-    const [error, setError] = useState<string | undefined>();
-    const [success, setSuccess] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>();
+  const [success, setSuccess] = useState<string | undefined>();
 
   const searchParams = useSearchParams();
 
@@ -21,18 +21,18 @@ export const NewVerificationForm = () => {
     if (success || error) return;
 
     if (!token) {
-        setError("Missing token")
-        return;
+      setError("Missing token");
+      return;
     }
 
     newVerification(token)
-        .then((data) => {
-            setSuccess(data.success);
-            setError(data.error)
-        })
-        .catch(() => {
-            setError("Something went wrong")
-        })
+      .then((data) => {
+        setSuccess(data.success);
+        setError(data.error);
+      })
+      .catch(() => {
+        setError("Something went wrong");
+      });
   }, [token, success, error]);
 
   useEffect(() => {
@@ -47,13 +47,9 @@ export const NewVerificationForm = () => {
       headerTitle="Verify"
     >
       <div className="p-4 flex items-center w-full justify-center">
-        {!success && !error && (
-            <BeatLoader />
-        )}
-        <FormSuccess message={success}/>
-        {!success && (
-            <FormError message={error} />
-        )}
+        {!success && !error && <BeatLoader />}
+        <FormSuccess message={success} />
+        {!success && <FormError message={error} />}
       </div>
     </CardWrapper>
   );
