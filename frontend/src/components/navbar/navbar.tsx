@@ -22,7 +22,7 @@ const NavBar: FC = () => {
             className={`text-zinc-400 link-hover-effect ${activeLink === "omEmil" ? "selected-state" : ""}`}
             onClick={() => handleSetSelectedLink("omEmil")}
           >
-            Om Emil
+            Om linjeforeningen
           </Link>
           <Link
             href="/for_studenten"

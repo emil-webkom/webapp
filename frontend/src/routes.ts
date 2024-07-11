@@ -8,6 +8,8 @@ export const publicRoutes = [
   "/om_emil",
   "/naeringsliv",
   "/auth/new-verification",
+  "/api/styret",
+  "/api/komite/logo"
 ];
 
 /**

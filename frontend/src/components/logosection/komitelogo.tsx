@@ -2,18 +2,12 @@
 
 import { FC } from "react";
 import { useState } from "react";
+import { KomiteLogo } from "@/types/interfaces";
 
 import Link from "next/link";
 
-interface LogoProps {
-  data: Array<{
-    komite: string;
-    bilde: string;
-    side: string;
-  }>;
-}
 
-const Logos: FC<LogoProps> = ({ data }) => {
+const Logos: FC<{ data: KomiteLogo[] }> = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
   const itemsPerSlide = 4;
@@ -66,11 +60,11 @@ const Logos: FC<LogoProps> = ({ data }) => {
                   )
                   .map((item, index) => (
                     <div key={index} className="flex items-center">
-                      <Link href={item.side}>
+                      <Link href={item.mappe}>
                         <img
                           src={item.bilde}
                           alt={`Logo ${slideIndex * itemsPerSlide + index + 1}`}
-                          className="w-[12rem] h-[12rem] object-contain"
+                          className="w-[15rem] object-contain"
                         />
                       </Link>
                     </div>

@@ -9,7 +9,7 @@ const Hero: FC<HeroProps> = ({ title, undertitle }) => {
   return (
     <nav>
       <div className="flex-col">
-        <p className="font-bold text-[4.3rem] text-left tracking-tighter">
+        <p className="font-semibold text-[4rem] text-left tracking-tighter">
           {title}
         </p>
         <p className="font-medium text-[2rem] text-left tracking-tighter">

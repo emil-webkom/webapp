@@ -1,135 +1,42 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Hero2 from "@/components/hero/hero2";
 import TransissionIn from "@/components/hero/transissions/transissionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
-import React from "react";
 import RetningCard from "@/components/cards/retningCard";
 import HSCard from "@/components/cards/styretCard";
 import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
-import { text } from "stream/consumers";
 
 const OmEmilPage = () => {
-  const styret = [
-    {
-      rolle: "Kongsknekt - Leder",
-      name: "Henriette Strømsvaag",
-      text: "Kongsknekten er linjeforeningens øverste leder og har kontroll på aktiviteten i EMIL i tillegg til å opprettholde godt samarbeid internt og eksternt",
-      mail: "henriette.stromsvaag@gmail.com",
-      nummer: 46760243,
-      bilde: "image/Komiteer/HS/leder.jpg",
-    },
-    {
-      rolle: "Viseknekt - Nestleder",
-      name: "Sander Næss",
-      text: "Viseknekten er kongsknektens høyre hånd, og har ansvar for samarbeidet EMIL-styret har med næringsliv og andre bedriftsrelaterte institusjoner på NTNU",
-      mail: "sanderhn@stud.ntnu.no",
-      nummer: 91857070,
-      bilde: "image/Komiteer/HS/nestleder.jpg",
-    },
-    {
-      rolle: "Fut - Økonomiansvarlig",
-      name: "Eirik Haugsdal",
-      text: "Futen har til enhver tid oversikt over penger som flyter ut, inn og som blir værende i organisasjonen, samt organisasjonens økonomi totalt sett",
-      mail: "haugsdaleirik21@gmail.com",
-      nummer: 95484594,
-      bilde: "image/Komiteer/HS/fut.jpg",
-    },
-    {
-      rolle: "Hyrd - Fadderansvarlig",
-      name: "Vegard Jensen",
-      text: "Hyrden sørger for at 1. klasse får den best tenkelige starten på energi- og miljøstudiet, og NTNU forøvrig, i tillegg til å være en sosial og omgjengelig person",
-      mail: "vegard734@gmail.com",
-      nummer: 47687685,
-      bilde: "image/Komiteer/HS/hyrd.jpg",
-    },
-    {
-      rolle: "Trubadur - PR og webansvarlig",
-      name: "Dea Elizabeth Kåss",
-      text: "Trubaduren har ansvaret for EMILs kommunikasjon, både internt og eksternt. Dette innebærer blant annet drift organisasjonens sosiale medier og utarbeidelse av kommunikasjons- og blesteplaner",
-      mail: "deaek@stud.ntnu.no",
-      nummer: 91891307,
-      bilde: "image/Komiteer/HS/trubadur.jpg",
-    },
-    {
-      rolle: "Lovn - Arrangementansvarlig",
-      name: "Felix Linus Dahl",
-      text: "Lovnen er styrets arrangementsansvarlig og har ansvaret for å planlegge og gjennomføre EMILs velkjente arrangementer",
-      mail: "felixlinusdahl@gmail.com",
-      nummer: 92403716,
-      bilde: "image/Komiteer/HS/lovn.jpg",
-    },
-    {
-      rolle: "Gjøgler - Komiteansvarlig",
-      name: "Kamilla Engaas",
-      text: "Gjøgleren har ansvaret for å holde liv i komitéene og sørger for god informasjonsflyt og samarbeid mellom komitéene og styret",
-      mail: "kamilla.engaas@gmail.com",
-      nummer: 90414860,
-      bilde: "image/Komiteer/HS/gjøgler.jpg",
-    },
-  ];
+    const [styret, setStyret] = useState([]);
+    const [logos, setLogos] = useState([]);
 
-  const logos = [
-    {
-      komite: "ølkom",
-      bilde: "image/Komiteer/ølkom.png",
-      side: "for_studenten/komiteer/oelkom",
-    },
-    {
-      komite: "miljkom",
-      bilde: "image/Komiteer/miljøkom.png",
-      side: "for_studenten/komiteer/miljoekom",
-    },
-    {
-      komite: "høystemt",
-      bilde: "image/Komiteer/høystemt.png",
-      side: "for_studenten/komiteer/hoeystemt",
-    },
-    {
-      komite: "energifk",
-      bilde: "image/Komiteer/energifk.svg",
-      side: "for_studenten/komiteer/energifk",
-    },
-    {
-      komite: "ESrevyen",
-      bilde: "image/Komiteer/ESrevyen.svg",
-      side: "for_studenten/komiteer/esrevyen",
-    },
-    {
-      komite: "brettkom",
-      bilde: "image/Komiteer/Brettkom.png",
-      side: "for_studenten/komiteer/brettkom",
-    },
-    {
-      komite: "kompåtur",
-      bilde: "image/Komiteer/kompåtur.png",
-      side: "for_studenten/komiteer/kompaatur",
-    },
-    {
-      komite: "klovneløpet",
-      bilde: "image/Komiteer/klovneløpet.png",
-      side: "for_studenten/komiteer/klovneloepet",
-    },
-    {
-      komite: "festkom",
-      bilde: "image/Komiteer/festkom.svg",
-      side: "for_studenten/komiteer/festkom",
-    },
-    {
-      komite: "kvinnekom",
-      bilde: "image/Komiteer/Kvinnekom.jpg",
-      side: "for_studenten/komiteer/kvinnekom",
-    },
-    {
-      komite: "pikestrøm",
-      bilde: "image/Komiteer/pikestrøm.png",
-      side: "for_studenten/komiteer/pikestroem",
-    },
-  ];
+
+    const fetchAndSetData= async () =>{
+      const [styretData, logosData] = await Promise.all([
+        fetch("api/styret").then(response => response.json()),
+        fetch("api/komite/logo").then(response => response.json())
+      ]);
+      return {styretData, logosData};
+     }
+
+    useEffect(()=> {
+      const initData = async () =>{
+        try {
+          const {styretData, logosData} = await fetchAndSetData();
+            setStyret(styretData);
+            setLogos(logosData);
+        }catch(error){
+          console.error("Error fetching data:", error);
+        }
+      }
+      initData();
+    }, []);
 
   const fagkontakt = [
     {
@@ -379,7 +286,7 @@ const OmEmilPage = () => {
                 <Button>Les mer om komiteene her</Button>
               </Link>
             </div>
-            <div>
+            <div className="flex items-center">
               <Logos data={logos} />
             </div>
           </div>
