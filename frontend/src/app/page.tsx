@@ -31,7 +31,7 @@ const HomePage = () => {
           />
           <div className="relative max-lg:hidden w-[8rem] h-[8rem]">
             <Image
-              src="/image/logo.png"
+              src="/image/sponsorer/logo.png"
               fill
               alt="Emil Logo"
               className="object-contain"
