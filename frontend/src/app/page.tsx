@@ -54,7 +54,12 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-full w-full background-dark p-8 justify-center">
+      <div className="h-full w-full background-dark p-8 justify-center space-y-8">
+        <div className="w-full flex justify-center items-center">
+          <div className="w-[40rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
+            Hva skjer på Emil?
+          </div>
+        </div>
         {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
           <div className="">
@@ -62,15 +67,31 @@ const HomePage = () => {
               events={[
                 {
                   id: "kuk",
-                  title: "Ragusea",
+                  title: "Lunsj med Equinor",
                   decscription: "Adam ragusea is a food critic and youtuber",
                   trinn: 3,
-                  location: "Snarøya tennisbane",
+                  location: "R7, Realfagsbygget",
                   date: "12.06",
                 },
                 {
                   id: "kuk",
-                  title: "Cook",
+                  title: "BedEx",
+                  decscription: "Adam ragusea is a food critic and youtuber",
+                  trinn: 2,
+                  location: "Sentralbygget",
+                  date: "01.06",
+                },
+                {
+                  id: "kuk",
+                  title: "Grilling i parken",
+                  decscription: "Adam ragusea is a food critic and youtuber",
+                  date: "03.05",
+                  trinn: 4,
+                  location: "Høyskoleparken",
+                },
+                {
+                  id: "kuk",
+                  title: "Eksamensforelesning i C++",
                   decscription: "Adam ragusea is a food critic and youtuber",
                   trinn: 2,
                   location: "R7, Realfagsbygget",
@@ -78,26 +99,10 @@ const HomePage = () => {
                 },
                 {
                   id: "kuk",
-                  title: "Meatballs",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  date: "03.05",
-                  trinn: 4,
-                  location: "Ragusea Lake",
-                },
-                {
-                  id: "kuk",
-                  title: "Why i season my cutting board",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 5,
-                  location: "R7, Realfagsbygget",
-                  date: "01.06",
-                },
-                {
-                  id: "kuk",
-                  title: "Not my steak",
+                  title: "Emil-lekene",
                   decscription: "Adam ragusea is a food critic and youtuber",
                   trinn: 1,
-                  location: "R7, Realfagsbygget",
+                  location: "Bymarka",
                   date: "01.06",
                 },
               ]}
@@ -112,8 +117,13 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center">
           <BigCard {...data} />
+        </div>
+        <div className="w-full flex justify-center items-center">
+          <div className="w-full flex text-xl font-semibold text-white justify-center">
+            Søk Emil da vel!
+          </div>
         </div>
         <VideoPlayer />
       </div>
@@ -123,9 +133,11 @@ const HomePage = () => {
       <Image
         src="/svg/bg.svg"
         alt={"baerekraft"}
-        className="w-full overflow-x-hidden"
-        width={1920}
-        height={1080}
+        className="w-full"
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{ width: "100%", height: "auto" }} // optional
       />
     </div>
   );

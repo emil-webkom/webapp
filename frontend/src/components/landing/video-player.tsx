@@ -2,7 +2,7 @@
 
 const VideoPlayer = () => {
   return (
-    <div className="justify-center items-center w-full h-100 bg-[#001D21] hidden md:inline-flex mt-20">
+    <div className="justify-center items-center w-full h-100 bg-[#001D21] hidden md:inline-flex">
       <iframe
         width="700"
         height="400"
