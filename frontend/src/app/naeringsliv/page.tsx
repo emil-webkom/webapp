@@ -1,4 +1,3 @@
-
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
 import EmilLink from "@/components/EmilLink/EmilLink";
 import Hero2 from "@/components/hero/hero2";
@@ -21,8 +20,7 @@ const NaeringslivPage = () => {
         Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
       </p>
 
-      <TransissionIn/>
-    
+      <TransissionIn />
 
       <div className="bg-[#001D21] flex justify-center items-stretch space-x-24 h-full py-16 ">
         <NaeringslivCard
@@ -33,7 +31,6 @@ const NaeringslivPage = () => {
           linkHref="https://www.multiconsult.no/"
           buttonText="Ledige stillinger"
           buttonLinkHref=""
-          
         />
         <NaeringslivCard
           titleImageSrc="image/statkraft_logo.jpg"
@@ -46,10 +43,9 @@ const NaeringslivPage = () => {
         />
       </div>
 
-      <div className= "">
-        <EmilLink/>
+      <div className="">
+        <EmilLink />
       </div>
-
 
       <TransissionOut />
 

@@ -8,16 +8,16 @@ datasource db {
 }
 
 model User {
-  id                String       @id @default(cuid())
-  name              String?
-  email             String       @unique
-  emailVerified     DateTime?
-  image             String?
-  password          String?
-  role              UserRole     @default(USER)
-  nummer            Int?
-  accounts          Account[]
-  Hovedstyretstyret Hovedstyret?
+  id            String       @id @default(cuid())
+  name          String?
+  email         String       @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole     @default(USER)
+  nummer        Int?
+  accounts      Account[]
+  Hovedstyret   Hovedstyret?
 }
 
 model Account {
@@ -39,6 +39,24 @@ model Account {
   @@id([provider, providerAccountId])
 }
 
+model VerificationToken {
+  id String @id @default(cuid())
+  email String
+  token String @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model PasswordResetToken {
+  id String @id @default(cuid())
+  email String
+  token String @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
 model Hovedstyret {
   rolle     String
   text      String
@@ -52,15 +70,15 @@ model Hovedstyret {
 }
 
 model komite {
-  id        String @id @default(cuid())
-  navn     String
-  leder     String?
-  text1     String?
-  text2     String?
-  text3     String?
-  bilde     String
-  mail      String?
-  mappe      String
+  id    String  @id
+  navn  String
+  leder String?
+  text1 String?
+  text2 String?
+  text3 String?
+  bilde String
+  mail  String?
+  mappe String
 }
 
 enum UserRole {
