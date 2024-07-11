@@ -2,11 +2,13 @@
 import UploadKomiteForm from "@/components/action/uploadKomite"
 import UploadImageForm from "@/components/action/uploadImage"
 import { useState, useEffect } from "react"
+import { KomiteLogo } from "@/types/interfaces";
+import { Hovedstyret } from "@/types/interfaces";
 
 const Upload = () => {
 
-    const [styret, setStyret] = useState([]);
-    const [logos, setLogos] = useState([]);
+    const [styret, setStyret] = useState<Hovedstyret[]>([]);
+    const [logos, setLogos] = useState<KomiteLogo[]>([]);
 
     const fetchAndSetData= async () =>{
       const [styretData, logosData] = await Promise.all([
