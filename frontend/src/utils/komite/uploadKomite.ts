@@ -20,7 +20,6 @@ async function storeData(komitedata: komiteInput){
                 mappe: komitedata.mappe,
             },
         });
-        console.log("Komite created successfully");
         return komite;
     }
     catch (error){

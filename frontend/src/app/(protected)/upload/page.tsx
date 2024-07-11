@@ -29,8 +29,6 @@ const Upload = () => {
       initData();
     }, []);
 
-    console.log(styret);
-    console.log(logos);
     return(
         <div className="flex justify-center items-center m-10">
             <div>

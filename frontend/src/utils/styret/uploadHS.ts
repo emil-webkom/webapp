@@ -35,7 +35,6 @@ async function storeData(
         updatedAt: new Date(), // Automatically set to current date and time
       },
     });
-    console.log("Data stored successfully!");
     await db.$disconnect();
     return true;
   } catch (error) {

@@ -46,7 +46,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
     <div>
       <div className="flex items-center justify-center space-x-5">
         <button onClick={handlePrev} className="icon-hover">
-          {"<-"}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-left"><circle cx="12" cy="12" r="10"/><path d="M16 12H8"/><path d="m12 8-4 4 4 4"/></svg>
         </button>
         <div className="relative w-[80%] h-[70vh] overflow-hidden">
           <div
@@ -83,7 +83,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
           </div>
         </div>
         <button onClick={handleNext} className="icon-hover">
-          {"->"}
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-arrow-right"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="m12 16 4-4-4-4"/></svg>
         </button>
       </div>
       <div className="flex justify-center py-2">

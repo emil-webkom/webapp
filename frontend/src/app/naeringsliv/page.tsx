@@ -8,7 +8,7 @@ import LogoSection from "@/components/logosection/logosection";
 const NaeringslivPage = () => {
   return (
     <div>
-      <div className="mt-4 ">
+      <div>
         <Hero2 title="Næringsliv" undertitle="Her finner du alt du trenger å vite om Emil og næringslivet" />
       </div>
       <p className="m-3 px-80 flex text-left-center font-extralight text-l">
