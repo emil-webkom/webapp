@@ -14,6 +14,7 @@ const logos = [
 
   const LogoSection: React.FC = () => {
     return (
+      <div>
       <div className="text-center pt-2 pb-5 bg-white">
         <h2 className="text-2xl font-bold mb-10 pb-20">En stor takk til alle våre samarbeidspartnere!</h2>
         <div className="grid grid-cols-4 gap-36 py-4 px-35">

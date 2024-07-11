@@ -62,7 +62,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
               >
                 <div className="flex flex-col justify-between w-[60%] space-y-5 h-full">
                   <div>
-                    <p className="text-3xl font-semibold">{item.rolle}</p>
+                    <p className="text-2xl font-semibold">{item.rolle}</p>
                     <p className="text-l font-normal">{item.name}</p>
                   </div>
                   <p className="text-medium font-extralight">{item.text}</p>
