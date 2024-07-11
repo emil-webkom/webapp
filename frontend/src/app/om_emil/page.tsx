@@ -224,7 +224,7 @@ const OmEmilPage = () => {
                 style={{ overflow: "hidden" }}
               >
                 <img
-                  src="image/komiteer/HS/HSfelles.jpg"
+                  src="/image/komiteer/HS/HSfelles.jpg"
                   alt="Hovedstyret fellesbilde"
                   className="rounded-md object-cover w-[100rem] h-[19rem]"
                 />

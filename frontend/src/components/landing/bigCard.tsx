@@ -28,7 +28,7 @@ const BigCard = ({ title, description, ...rest }: BigCardProps) => {
               <MiniCard
                 label={"Høystemt"}
                 comitee={"Mannskoret"}
-                img="/image/Komiteer/høystemt.png"
+                img="/image/Komiteer/Høystemt.png"
                 link="/for_studenten/komiteer"
               />
               <MiniCard
@@ -54,7 +54,7 @@ const BigCard = ({ title, description, ...rest }: BigCardProps) => {
               <MiniCard
                 label={"Brettkom"}
                 comitee={"spillogmoro"}
-                img="/image/Komiteer/brettkom.png"
+                img="/image/Komiteer/Brettkom.png"
                 link="/for_studenten/komiteer"
               />
               <MiniCard
