@@ -20,7 +20,7 @@ import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { login } from "@/utils/login";
-import Link from "next/Link";
+import Link from "next/link";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -35,18 +35,6 @@ export const LoginForm = () => {
       password: "",
     },
   });
-
-  // const onSubmit = (values: z.infer<typeof LoginSchema>) => {
-  //   setError("");
-  //   setSuccess("");
-
-  //   startTransition(() => {
-  //     login(values).then((data) => {
-  //       setError(data.error);
-  //       setSuccess(data.success);
-  //     });
-  //   });
-  // };
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
