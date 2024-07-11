@@ -29,10 +29,14 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
       existingUser.email,
     );
 
-    await sendVerificationEmail(
-      verificationToken.email,
-      verificationToken.token,
-    );
+    if (verificationToken == null) {
+      console.error("Token not valid");
+    } else {
+      await sendVerificationEmail(
+        verificationToken.email,
+        verificationToken.token
+      );
+    }
 
     return { success: "Confirmation email sent!" };
   }

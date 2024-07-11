@@ -41,10 +41,18 @@ export const RegisterForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      register(values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
-      });
+      register(values)
+        .then((data) => {
+          if (data) {
+            setError(data.error ?? "");
+            setSuccess(data.success ?? "");
+          } else {
+            setError("An unexpected error occurred.");
+          }
+        })
+        .catch((error) => {
+          setError("An error occurred during registration.");
+        });
     });
   };
 

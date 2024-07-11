@@ -70,7 +70,7 @@ model Hovedstyret {
 }
 
 model komite {
-  id    String  @id
+  id    String  @id @default(cuid())
   navn  String
   leder String?
   text1 String?

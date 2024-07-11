@@ -39,8 +39,12 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   });
 
   const verificationToken = await generateVerificationToken(email);
-
+  if (!verificationToken){
+    console.error("Verification token is invalid")
+  }
+  else{
   await sendVerificationEmail(verificationToken.email, verificationToken.token);
 
   return { success: "Confirmation email sent" };
+  }
 };

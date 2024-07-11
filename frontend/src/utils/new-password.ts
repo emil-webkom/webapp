@@ -9,7 +9,7 @@ import { getUserByEmail } from "@/data/user";
 
 export const newPassword = async (
   values: z.infer<typeof NewPasswordSchema>,
-  token?: string | null,
+  token?: string | null
 ) => {
   if (!token) {
     return { error: "Missing token" };
@@ -17,7 +17,7 @@ export const newPassword = async (
 
   const validatedFields = NewPasswordSchema.safeParse(values);
 
-  if (!validatedFields) {
+  if (!validatedFields.success) {
     return { error: "Invalid fields" };
   }
 

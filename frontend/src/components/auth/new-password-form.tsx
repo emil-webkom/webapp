@@ -1,7 +1,7 @@
 "use client";
 import * as z from "zod";
 
-import { useState, useTransition } from "react";
+import { Suspense, useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -78,34 +78,6 @@ export const NewPasswordForm = () => {
                 </FormItem>
               )}
             />
-            {/* <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Passord</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="******"
-                      type="password"
-                    />
-                  </FormControl>
-                  <Button 
-                  size="sm" 
-                  variant="link"
-                  asChild
-                  className="px-0 font-normal"
-                  >
-                    <Link href="/auth/reset">
-                      Forgot password?
-                    </Link>
-                  </Button>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
