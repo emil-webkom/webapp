@@ -8,7 +8,7 @@ export default function Layout({
 }>) {
   return (
     <div>
-      <div className="flex flex-col mt-4">
+      <div className="flex flex-col ">
         <Hero2
           title="For studenten"
           undertitle="Her finner du alt du trenger som student på Emil"

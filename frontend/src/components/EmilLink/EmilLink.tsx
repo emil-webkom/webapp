@@ -17,7 +17,8 @@ const EmilLink = () => {
       </p>
       <div className="py-6">
         <Link href="https://www.emil-link.no/">
-          <button className="bg-white text-[#001D21] py-2 px-4 rounded hover:underline text-sm">
+            <button className="bg-white text-[#001D21] py-2 px-4 rounded hover hover:text-gray-400 active:text-grey-500  text-sm">
+
             Kontakt oss her
           </button>
         </Link>
