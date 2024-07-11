@@ -1,12 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import Hero2 from "@/components/hero/hero2";
 import TransissionIn from "@/components/hero/transissions/transissionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
-import React, { useEffect, useState } from "react";
 import RetningCard from "@/components/cards/retningCard";
 import HSCard from "@/components/cards/styretCard";
 import Logos from "@/components/logosection/komitelogo";
@@ -16,16 +16,26 @@ const OmEmilPage = () => {
     const [styret, setStyret] = useState([]);
     const [logos, setLogos] = useState([]);
 
-    useEffect(()=> {
 
-      const fetchData = async () => {
-        const fetchStyretPromise = fetch("api/styret").then(response => response.json());
-        const fetchLogosPromise = fetch("api/komite/logo").then(response => response.json());
-        const [styretData, logosData] = await Promise.all([fetchStyretPromise, fetchLogosPromise]);
-        setStyret(styretData);
-        setLogos(logosData);
-      };
-      fetchData();
+    const fetchAndSetData= async () =>{
+      const [styretData, logosData] = await Promise.all([
+        fetch("api/styret").then(response => response.json()),
+        fetch("api/komite/logo").then(response => response.json())
+      ]);
+      return {styretData, logosData};
+     }
+
+    useEffect(()=> {
+      const initData = async () =>{
+        try {
+          const {styretData, logosData} = await fetchAndSetData();
+            setStyret(styretData);
+            setLogos(logosData);
+        }catch(error){
+          console.error("Error fetching data:", error);
+        }
+      }
+      initData();
     }, []);
 
   const fagkontakt = [

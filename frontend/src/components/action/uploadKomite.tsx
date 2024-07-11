@@ -5,7 +5,7 @@ import { komiteInput } from "@/types/interfaces";
 import  storeData  from "@/utils/komite/uploadKomite";
 
 const UploadKomiteForm = () => {
-    
+
     const [formData, setFormData] = useState<komiteInput>({
         navn: "",
         leder: "",
@@ -26,6 +26,7 @@ const UploadKomiteForm = () => {
         }
         const downloadURL = await uploadKomiteImage(bilde);
         const upload = storeData({...formData, bildeurl: downloadURL});
+        window.location.reload();
     };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,66 +44,80 @@ const UploadKomiteForm = () => {
      };
 
     return (
-        <div className="flex flex-col w-[65%] h-[50vh] justify-center">
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="navn"
-                    placeholder="Navn"
-                    value={formData.navn}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    name="leder"
-                    placeholder="Leder"
-                    value={formData.leder}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    name="text1"
-                    placeholder="Text1"
-                    value={formData.text1}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    name="text2"
-                    placeholder="Text2"
-                    value={formData.text2}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    name="text3"
-                    placeholder="Text3"
-                    value={formData.text3}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    name="mail"
-                    placeholder="Mail"
-                    value={formData.mail}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="text"
-                    name="mappe"
-                    placeholder="Mappe"
-                    value={formData.mappe}
-                    onChange={handleInputChange}
-                />
-                <input
-                    type="file"
-                    name="bilde"
-                    placeholder="Bilde"
-                    onChange={handleFileChange}
-                />
-                <button type="submit">Upload</button>
-            </form>
-        </div>
+<div className="flex flex-col w-[65%] justify-center items-center bg-gray-100 p-6 rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+        <input
+            type="text"
+            name="navn"
+            placeholder="Navn"
+            value={formData.navn}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            name="leder"
+            placeholder="Leder"
+            value={formData.leder}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            name="text1"
+            placeholder="Text1"
+            value={formData.text1}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            name="text2"
+            placeholder="Text2"
+            value={formData.text2}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            name="text3"
+            placeholder="Text3"
+            value={formData.text3}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            name="mail"
+            placeholder="Mail"
+            value={formData.mail}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            name="mappe"
+            placeholder="Mappe"
+            value={formData.mappe}
+            onChange={handleInputChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="file"
+            name="bilde"
+            placeholder="Bilde"
+            onChange={handleFileChange}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <button
+            type="submit"
+            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        >
+            Upload
+        </button>
+    </form>
+</div>
+
     );
 };
 

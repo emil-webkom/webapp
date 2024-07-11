@@ -2,7 +2,7 @@
  * Array of public routes, who do not need authentication
  * @type {string[]}
  */
-export const publicRoutes = ["/", "/for_studenten", "/om_emil", "/naeringsliv"];
+export const publicRoutes = ["/", "/for_studenten", "/om_emil", "/naeringsliv", "/api/styret", "/api/komite/logo"];
 
 /**
  * Array of routes used for authentication

@@ -32,19 +32,44 @@ const UploadImageForm = () => {
         }
         const downloadURL = await uploadImage(file);
         const upload = storeData(rolle, text, user, downloadURL);
-        // MAKE A RESPONSE TO THE UPLAOD PROCESS AND RESET FORM AFTER SUBMITT
+        window.location.reload();
     }
 
     return (
-        <div className="flex flex-col w-[65%] h-[50vh] justify-center">
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Rolle" onChange={handleSetRolle}/>
-                <input type="text" placeholder="Tekst" onChange={handleSetText}/>
-                <input type="text" placeholder="Brukeremail" onChange={handleSetUser}/>
-                <input type="file" onChange={handleFile} />
-                <button type="submit">Upload</button>
-                </form>
-        </div>
+<div className="flex flex-col w-[65%] justify-center items-center bg-gray-100 p-6 rounded-lg shadow-lg">
+    <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
+        <input
+            type="text"
+            placeholder="Rolle"
+            onChange={handleSetRolle}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            placeholder="Tekst"
+            onChange={handleSetText}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="text"
+            placeholder="Brukeremail"
+            onChange={handleSetUser}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <input
+            type="file"
+            onChange={handleFile}
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <button
+            type="submit"
+            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        >
+            Upload
+        </button>
+    </form>
+</div>
+
     );
 };
 
