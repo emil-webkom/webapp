@@ -1,6 +1,7 @@
 import React from "react";
 
 const logos = [
+
     { src: "/image/sponsorer/asplanviak.svg", alt: "GK", url:"https://www.asplanviak.no/" },
     { src: "/image/sponsorer/cowi.jpg", alt: "cowi", url:"https://www.cowi.com/" },
     { src: "/image/sponsorer/DNV.svg", alt: "DNV", url:" https://www.dnv.no/" },
@@ -25,7 +26,8 @@ const logos = [
           ))}
         </div>
       </div>
-    );
-  };
-  
-  export default LogoSection;
+    </div>
+  );
+};
+
+export default LogoSection;

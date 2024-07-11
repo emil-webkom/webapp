@@ -19,7 +19,8 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import { login } from "@/actions/login";
+import { login } from "@/utils/login";
+import Link from "next/Link";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -53,13 +54,9 @@ export const LoginForm = () => {
 
     startTransition(() => {
       login(values).then((data) => {
-        if (data) {
-          // This checks if 'data' is truthy after the 'login' call
-          setError(data.error);
-          setSuccess(data.success);
-        } else {
-          setError("An unexpected error occurred.");
-        }
+        // This checks if 'data' is truthy after the 'login' call
+        setError(data?.error);
+        setSuccess(data?.success);
       });
     });
   };
@@ -107,6 +104,14 @@ export const LoginForm = () => {
                       type="password"
                     />
                   </FormControl>
+                  <Button
+                    size="sm"
+                    variant="link"
+                    asChild
+                    className="px-0 font-normal"
+                  >
+                    <Link href="/auth/reset">Forgot password?</Link>
+                  </Button>
                   <FormMessage />
                 </FormItem>
               )}

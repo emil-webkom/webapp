@@ -1,4 +1,3 @@
-
 import NaeringslivCard from "@/components/cards/naeringsliv_cards";
 import EmilLink from "@/components/EmilLink/EmilLink";
 import Hero2 from "@/components/hero/hero2";
@@ -9,7 +8,7 @@ import LogoSection from "@/components/logosection/logosection";
 const NaeringslivPage = () => {
   return (
     <div>
-      <div className=" ">
+      <div className="mt-4 ">
         <Hero2 title="Næringsliv" undertitle="Her finner du alt du trenger å vite om Emil og næringslivet" />
       </div>
       <p className="m-3 px-80 flex text-left-center font-extralight text-l">
@@ -21,8 +20,7 @@ const NaeringslivPage = () => {
         Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
       </p>
 
-      <TransissionIn/>
-    
+      <TransissionIn />
 
       <div className="bg-[#001D21] flex justify-center items-stretch space-x-24 h-full py-16 ">
         <NaeringslivCard
@@ -48,10 +46,9 @@ const NaeringslivPage = () => {
         />        
       </div>
 
-      <div className= "">
-        <EmilLink/>
+      <div className="">
+        <EmilLink />
       </div>
-
 
       <TransissionOut />
 

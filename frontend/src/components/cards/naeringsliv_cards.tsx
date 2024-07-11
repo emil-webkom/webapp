@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import "./naeringsliv_cards";
-import React from 'react';
+import React from "react";
 
 interface NaeringslivCardProps {
   titleImageSrc: string; 
@@ -22,13 +22,12 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
   linkText,
   buttonText,
   linkHref,
-  buttonLinkHref
-
+  buttonLinkHref,
 }) => {
   return (
     <div className="bg-white rounded-lg border-2 border-[#001D21] w-96 p-6 flex flex-col items-center">
-
       <div className="flex flex-col justify-between h-full ">
+
 
       <div className="flex justify-center">
           <a href={imageLinkHref} target="_blank" rel="noopener noreferrer" className="transform transition duration-300 hover:scale-105 active:scale-95">
@@ -50,15 +49,15 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
         
 
         <div className="flex justify-center mt-4">
+
             <a href={buttonLinkHref} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#001D21] text-white py-2 px-4 rounded hover hover:text-gray-400 active:text-grey-500 ">{buttonText} </Button>
             </a>
-        </div>
-    </div>
 
+        </div>
+      </div>
     </div>
   );
 };
 
 export default NaeringslivCard;
-
