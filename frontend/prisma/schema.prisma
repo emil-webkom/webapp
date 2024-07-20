@@ -71,7 +71,7 @@ model Hovedstyret {
 
 model komite {
   id    String  @id @default(cuid())
-  navn  String
+  navn  String @unique
   leder String?
   text1 String?
   text2 String?
