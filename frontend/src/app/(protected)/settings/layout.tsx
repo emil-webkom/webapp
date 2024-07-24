@@ -1,13 +1,16 @@
+"use client";
+
 import { Metadata } from "next"
 import Image from "next/image"
 
 import { Separator } from "@/components/ui/separator"
 import { SidebarNav } from "@/components/settings/sidebar-nav"
+import { useCurrentUser } from "@/hooks/use-current-user";
 
-export const metadata: Metadata = {
-  title: "Innstillinger",
-  description: "Endre dine innstillinger",
-}
+// export const metadata: Metadata = {
+//   title: "Innstillinger",
+//   description: "Endre dine innstillinger",
+// }
 
 const sidebarNavItems = [
   {
@@ -24,11 +27,23 @@ const sidebarNavItems = [
   },
 ]
 
+const debug = {
+    title: "Debug",
+    href: "/settings/debug",
+}
+
 interface SettingsLayoutProps {
   children: React.ReactNode
 }
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
+    const user = useCurrentUser();
+    if (sidebarNavItems.length <= 3) {
+        if (user && user.role === "ADMIN") {
+            sidebarNavItems.push(debug);
+        }
+    }
+
   return (
     <>
       <div className="md:hidden">
@@ -47,7 +62,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
           className="hidden dark:block"
         />
       </div>
-      <div className="hidden space-y-6 p-10 pb-16 md:block">
+      <div className="hidden space-y-6 p-10 pb-16 md:block max-w-[1200px] m-auto">
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Innstillinger</h2>
           <p className="text-muted-foreground">

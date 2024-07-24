@@ -115,7 +115,7 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Brukernavn</FormLabel>
               <FormControl>
-                <Input placeholder="elgen" {...field} />
+                <Input placeholder={`@${user?.name}`} {...field} />
               </FormControl>
               <FormDescription>
                 Dette er brukernavnet ditt. Dersom du endrer dette må du vente i 30 dager for å kunne endre brukernavnet på nytt.
@@ -133,7 +133,7 @@ export function ProfileForm() {
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="Velg trinnet du går her" />
+                    <SelectValue placeholder="Velg trinn" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
