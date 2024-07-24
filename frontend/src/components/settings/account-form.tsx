@@ -74,7 +74,7 @@ export function AccountForm() {
             <FormItem>
               <FormLabel>Navn</FormLabel>
               <FormControl>
-                <Input placeholder="Your name" {...field} />
+                <Input placeholder="Navnet ditt" {...field} />
               </FormControl>
               <FormDescription>
                 Dette er navnet som vil bli vist på profilen din.

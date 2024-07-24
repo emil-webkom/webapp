@@ -25,6 +25,9 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { FaUser } from "react-icons/fa"
+import { useCurrentUser } from "@/hooks/use-current-user"
 
 
 const profileFormSchema = z.object({
@@ -41,6 +44,7 @@ const profileFormSchema = z.object({
       required_error: "Please select an email to display.",
     })
     .email(),
+    avatar: z.string().optional(),
   bio: z.string().max(160).min(4),
   urls: z
     .array(
@@ -63,6 +67,8 @@ const defaultValues: Partial<ProfileFormValues> = {
 }
 
 export function ProfileForm() {
+    const user = useCurrentUser();
+    
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,
@@ -81,6 +87,27 @@ export function ProfileForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <FormField
+          control={form.control}
+          name="avatar"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Profilbilde</FormLabel>
+              <FormControl>
+                <Avatar className="w-12 h-12 cursor-pointer ml-1">
+                <AvatarImage src={user?.image || ""} />
+                <AvatarFallback className="background-dark">
+                    <FaUser size={20} className="text-white" />
+                </AvatarFallback>
+                </Avatar>
+              </FormControl>
+              <FormDescription>
+                Her kan du laste opp et profilbilde.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="username"
@@ -124,6 +151,7 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
+        
         <FormField
           control={form.control}
           name="bio"

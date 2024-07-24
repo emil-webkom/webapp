@@ -19,16 +19,8 @@ const sidebarNavItems = [
     href: "/settings/account",
   },
   {
-    title: "Appearance",
-    href: "/examples/forms/appearance",
-  },
-  {
-    title: "Notifications",
-    href: "/examples/forms/notifications",
-  },
-  {
-    title: "Display",
-    href: "/examples/forms/display",
+    title: "Varslinger",
+    href: "/settings/notifications",
   },
 ]
 
