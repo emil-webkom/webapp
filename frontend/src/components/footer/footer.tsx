@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
@@ -5,7 +6,6 @@ import { FC, useEffect, useState } from "react";
 // be made object oriented to allow automatic updates to be made.
 
 const Footer: FC = () => {
-
   return (
     <footer>
       <div className="max-w-screen flex justify-between bg-[#001D21] text-white px-10 font-bold py-5">

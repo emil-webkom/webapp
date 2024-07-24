@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/toaster"
+import { SessionProvider } from "next-auth/react";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 
 export const metadata: Metadata = {
   title: "Emilweb",
@@ -15,17 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <div>
+    <SessionProvider>
+      <html lang="en">
+        <body>
           <NavBar />
-        </div>
-        {children}
-        {/* <Toaster /> */}
-        <div>
+          <TooltipProvider>{children}</TooltipProvider>
+          <Toaster />
           <Footer />
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }
