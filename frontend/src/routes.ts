@@ -9,7 +9,7 @@ export const publicRoutes = [
   "/naeringsliv",
   "/auth/new-verification",
   "/api/styret",
-  "/api/komite/logo"
+  "/api/komite/logo",
 ];
 
 /**

@@ -13,30 +13,29 @@ import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
 
 const OmEmilPage = () => {
-    const [styret, setStyret] = useState([]);
-    const [logos, setLogos] = useState([]);
+  const [styret, setStyret] = useState([]);
+  const [logos, setLogos] = useState([]);
 
+  const fetchAndSetData = async () => {
+    const [styretData, logosData] = await Promise.all([
+      fetch("api/styret").then((response) => response.json()),
+      fetch("api/komite/logo").then((response) => response.json()),
+    ]);
+    return { styretData, logosData };
+  };
 
-    const fetchAndSetData= async () =>{
-      const [styretData, logosData] = await Promise.all([
-        fetch("api/styret").then(response => response.json()),
-        fetch("api/komite/logo").then(response => response.json())
-      ]);
-      return {styretData, logosData};
-     }
-
-    useEffect(()=> {
-      const initData = async () =>{
-        try {
-          const {styretData, logosData} = await fetchAndSetData();
-            setStyret(styretData);
-            setLogos(logosData);
-        }catch(error){
-          console.error("Error fetching data:", error);
-        }
+  useEffect(() => {
+    const initData = async () => {
+      try {
+        const { styretData, logosData } = await fetchAndSetData();
+        setStyret(styretData);
+        setLogos(logosData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-      initData();
-    }, []);
+    };
+    initData();
+  }, []);
 
   const fagkontakt = [
     {

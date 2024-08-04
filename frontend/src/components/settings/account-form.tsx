@@ -1,21 +1,33 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { format } from "date-fns"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CalendarIcon, CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
+import { format } from "date-fns";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { cn } from "@/lib/utils"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { Button } from "../ui/button"
-import { Calendar } from "../ui/calendar"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../ui/command"
-
-
-
+import { cn } from "@/lib/utils";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Button } from "../ui/button";
+import { Calendar } from "../ui/calendar";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "../ui/command";
 
 const languages = [
   { label: "English", value: "en" },
@@ -27,7 +39,7 @@ const languages = [
   { label: "Japanese", value: "ja" },
   { label: "Korean", value: "ko" },
   { label: "Chinese", value: "zh" },
-] as const
+] as const;
 
 const accountFormSchema = z.object({
   name: z
@@ -44,24 +56,24 @@ const accountFormSchema = z.object({
   language: z.string({
     required_error: "Please select a language.",
   }),
-})
+});
 
-type AccountFormValues = z.infer<typeof accountFormSchema>
+type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<AccountFormValues> = {
   // name: "Your name",
   // dob: new Date("2023-01-23"),
-}
+};
 
 export function AccountForm() {
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues,
-  })
+  });
 
   function onSubmit(data: AccountFormValues) {
-    console.log(data)
+    console.log(data);
   }
 
   return (
@@ -96,7 +108,7 @@ export function AccountForm() {
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -121,7 +133,8 @@ export function AccountForm() {
                 </PopoverContent>
               </Popover>
               <FormDescription>
-                Fødselsdatoen din brukes til regne ut alderen din. Det er viktig at denne informasjonen stemmer.
+                Fødselsdatoen din brukes til regne ut alderen din. Det er viktig
+                at denne informasjonen stemmer.
               </FormDescription>
               <FormMessage />
             </FormItem>
@@ -141,12 +154,12 @@ export function AccountForm() {
                       role="combobox"
                       className={cn(
                         "w-[200px] justify-between",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value
                         ? languages.find(
-                            (language) => language.value === field.value
+                            (language) => language.value === field.value,
                           )?.label
                         : "Select language"}
                       <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -164,7 +177,7 @@ export function AccountForm() {
                             value={language.label}
                             key={language.value}
                             onSelect={() => {
-                              form.setValue("language", language.value)
+                              form.setValue("language", language.value);
                             }}
                           >
                             <CheckIcon
@@ -172,7 +185,7 @@ export function AccountForm() {
                                 "mr-2 h-4 w-4",
                                 language.value === field.value
                                   ? "opacity-100"
-                                  : "opacity-0"
+                                  : "opacity-0",
                               )}
                             />
                             {language.label}
@@ -190,8 +203,10 @@ export function AccountForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Lagre innstillinger</Button>
+        <Button className="bg-[#001d21] hover:bg-[#2b666e]" type="submit">
+          Lagre innstillinger
+        </Button>
       </form>
     </Form>
-  )
+  );
 }

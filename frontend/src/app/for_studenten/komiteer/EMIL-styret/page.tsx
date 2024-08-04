@@ -2,7 +2,6 @@ import Hero from "@/components/hero/hero1";
 import HSCard from "@/components/cards/styretCard";
 import InfoAndScrollbarLeft from "@/components/ForStudenten/InfoAndScrollbarLeft";
 
-
 const styret = [
   {
     rolle: "Kongsknekt - Leder",
@@ -62,29 +61,24 @@ const styret = [
   },
 ];
 
-
-
-
 const forStudentenPage = () => {
   return (
     <div className="   ">
-
       <InfoAndScrollbarLeft
         title={"EMIL-Styret"}
         imageUrl={"/image/Komiteer/HS/HSfelles.jpg"}
-        text={"EMIL-styret er linjeforeningens øverste organ og har ansvaretfor driften og ledelsen av organisasjonen i det daglige. Styret består av syv faste medlemmer, med ansvarsområder innenfor alt fra arrangementog fadderuker, til økonomi og næringsliv."}
-        info={"Alle styremedlemmene fungerer på lik linje, med alle de rettigheter og plikter som dette innebærer. Som medlem i styret tilegner du deg fort nye kunnskaper og ferdigheter, ikke bare innen ditt eget ansvarsområde, men også om EMIL som helhet, NTNU og hele studentfrivilligheten i Trondheim. Etter generalforsamling konstituerer styret seg selv, noe som betyr at det nyvalgte styret selv avgjør hvem som skal ha hvilken stilling i styret. Unntaket til regelen er kongsknekten, som velges først."} >
+        text={
+          "EMIL-styret er linjeforeningens øverste organ og har ansvaretfor driften og ledelsen av organisasjonen i det daglige. Styret består av syv faste medlemmer, med ansvarsområder innenfor alt fra arrangementog fadderuker, til økonomi og næringsliv."
+        }
+        info={
+          "Alle styremedlemmene fungerer på lik linje, med alle de rettigheter og plikter som dette innebærer. Som medlem i styret tilegner du deg fort nye kunnskaper og ferdigheter, ikke bare innen ditt eget ansvarsområde, men også om EMIL som helhet, NTNU og hele studentfrivilligheten i Trondheim. Etter generalforsamling konstituerer styret seg selv, noe som betyr at det nyvalgte styret selv avgjør hvem som skal ha hvilken stilling i styret. Unntaket til regelen er kongsknekten, som velges først."
+        }
+      >
         <div className="mt-12 mb-12">
           <HSCard data={styret}></HSCard>
         </div>
       </InfoAndScrollbarLeft>
-
-      
-        
-      
-   </div>
-
-
+    </div>
   );
 };
 

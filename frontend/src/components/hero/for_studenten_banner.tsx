@@ -306,9 +306,9 @@ const Banner: FC = () => {
             </div>
           </Link>
           <Link
-            href="/for_studenten/soeknad"
+            href="/for_studenten/booking"
             className={`text-zinc-400 link-hover-effect ${activeLink === "soeknad" ? "selected-state" : ""}`}
-            onClick={() => handleSetSelectedLink("soeknad")}
+            onClick={() => handleSetSelectedLink("booking")}
           >
             <div className="flex flex-col items-center justify-center py-1 ">
               <svg

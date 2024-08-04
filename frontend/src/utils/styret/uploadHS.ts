@@ -21,7 +21,7 @@ async function storeData(
     throw new Error("No user found.");
   }
   const userID = userRecord.id;
-  const active = true;
+  const isActive = true;
   const image = downloadURL;
 
   try {
@@ -29,7 +29,7 @@ async function storeData(
       data: {
         rolle,
         text,
-        active,
+        isActive,
         image,
         userID,
         updatedAt: new Date(), // Automatically set to current date and time

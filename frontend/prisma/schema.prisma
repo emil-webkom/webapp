@@ -10,6 +10,7 @@ datasource db {
 model User {
   id            String       @id @default(cuid())
   name          String?
+  username      String?      @unique
   email         String       @unique
   emailVerified DateTime?
   image         String?
@@ -18,6 +19,9 @@ model User {
   nummer        Int?
   accounts      Account[]
   Hovedstyret   Hovedstyret?
+  bookings      Booking[]
+  paameldinger  ArrangementPaamelding[]
+  isActive      Boolean      @default(true)
 }
 
 model Account {
@@ -58,9 +62,9 @@ model PasswordResetToken {
 }
 
 model Hovedstyret {
-  rolle     String
+  rolle     String   @unique
   text      String
-  active    Boolean
+  isActive  Boolean  @default(true)
   image     String
   updatedAt DateTime
   userID    String   @unique
@@ -70,19 +74,73 @@ model Hovedstyret {
 }
 
 model komite {
-  id    String  @id @default(cuid())
-  navn  String
-  leder String?
-  text1 String?
-  text2 String?
-  text3 String?
-  bilde String
-  mail  String?
-  mappe String
+  id            String        @id @default(cuid())
+  navn          String        @unique
+  leder         String?
+  text1         String?
+  text2         String?
+  text3         String?
+  bilde         String
+  mail          String?
+  mappe         String
+  arrangementer Arrangement[]
+  bookings      Booking[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Arrangement {
+  id          String   @id @default(cuid())
+  navn        String
+  sted        String
+  dato        DateTime
+  bilde       String?
+  kapasitet   Int?
+  beskrivelse String
+  trinn       String[] @default([])
+  arrangorID  String
+  arrangor    komite   @relation(fields: [arrangorID], references: [id])
+  paameldinger  ArrangementPaamelding[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Booking {
+  id       String     @id @default(cuid())
+  userID   String
+  user     User       @relation(fields: [userID], references: [id])
+  komiteID String?
+  komite   komite?    @relation(fields: [komiteID], references: [id]) // Optional relation to Komite
+  item     BookedItem
+  bookedAt DateTime
+  duration Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ArrangementPaamelding {
+  id            String      @id @default(cuid())
+  userID        String
+  arrangementID String
+  user          User        @relation(fields: [userID], references: [id], onDelete: Cascade)
+  arrangement   Arrangement @relation(fields: [arrangementID], references: [id], onDelete: Cascade)
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@unique([userID, arrangementID])
+}
+
+enum BookedItem {
+  KONTOR
+  ONE_SOUNDBOX
+  TWO_SOUNDBOXES
 }
 
 enum UserRole {
   ADMIN
   USER
 }
-

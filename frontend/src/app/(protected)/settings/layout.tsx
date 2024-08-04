@@ -1,10 +1,10 @@
 "use client";
 
-import { Metadata } from "next"
-import Image from "next/image"
+import { Metadata } from "next";
+import Image from "next/image";
 
-import { Separator } from "@/components/ui/separator"
-import { SidebarNav } from "@/components/settings/sidebar-nav"
+import { Separator } from "@/components/ui/separator";
+import { SidebarNav } from "@/components/settings/sidebar-nav";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
 // export const metadata: Metadata = {
@@ -25,24 +25,24 @@ const sidebarNavItems = [
     title: "Varslinger",
     href: "/settings/notifications",
   },
-]
+];
 
 const debug = {
-    title: "Debug",
-    href: "/settings/debug",
-}
+  title: "Debug",
+  href: "/settings/debug",
+};
 
 interface SettingsLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function SettingsLayout({ children }: SettingsLayoutProps) {
-    const user = useCurrentUser();
-    if (sidebarNavItems.length <= 3) {
-        if (user && user.role === "ADMIN") {
-            sidebarNavItems.push(debug);
-        }
+  const user = useCurrentUser();
+  if (sidebarNavItems.length <= 3) {
+    if (user && user.role === "ADMIN") {
+      sidebarNavItems.push(debug);
     }
+  }
 
   return (
     <>
@@ -66,7 +66,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         <div className="space-y-0.5">
           <h2 className="text-2xl font-bold tracking-tight">Innstillinger</h2>
           <p className="text-muted-foreground">
-          Administrer kontoinnstillingene dine og sett e-postpreferanser.
+            Administrer kontoinnstillingene dine og sett e-postpreferanser.
           </p>
         </div>
         <Separator className="my-6" />
@@ -78,5 +78,5 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
         </div>
       </div>
     </>
-  )
+  );
 }

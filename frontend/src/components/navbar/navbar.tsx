@@ -1,24 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import UserButton from "@/components/auth/user-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Sun } from "lucide-react";
 import ThemeButton from "../user/theme-button";
+import { User, AuthContextType } from "@/components/auth/auth-provider";
 
 const NavBar: FC = () => {
-  const { data: session } = useSession();
+  // const { data: session } = useSession();
   // Check for admin privileges
   // const isAdmin = session?.user.role === "ADMIN";
-  const user = useCurrentUser();
-  const isAdmin = user?.role === "ADMIN";
+  const currentUser = useCurrentUser();
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [activeLink, setActiveLink] = useState("");
   const handleSetSelectedLink = (linkName: string) => {
     setActiveLink(linkName);
   };
+
+  useEffect(() => {
+    setUser(currentUser || null);
+    setIsAdmin(currentUser?.role === "ADMIN");
+  }, [currentUser]);
 
   return (
     <nav className="max-w-screen items-center border-b border-slate-200">

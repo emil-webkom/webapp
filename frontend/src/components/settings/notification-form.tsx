@@ -1,16 +1,22 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
-import { Switch } from "../ui/switch"
-import { Button } from "../ui/button"
-import { Checkbox } from "../ui/checkbox"
-
-
+import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { Switch } from "../ui/switch";
+import { Button } from "../ui/button";
+import { Checkbox } from "../ui/checkbox";
 
 const notificationsFormSchema = z.object({
   type: z.enum(["all", "mentions", "none"], {
@@ -21,27 +27,27 @@ const notificationsFormSchema = z.object({
   social_emails: z.boolean().default(false).optional(),
   marketing_emails: z.boolean().default(false).optional(),
   security_emails: z.boolean(),
-})
+});
 
-type NotificationsFormValues = z.infer<typeof notificationsFormSchema>
+type NotificationsFormValues = z.infer<typeof notificationsFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<NotificationsFormValues> = {
-    type: "all",
+  type: "all",
   communication_emails: false,
   marketing_emails: false,
   social_emails: true,
   security_emails: true,
-}
+};
 
 export function NotificationsForm() {
   const form = useForm<NotificationsFormValues>({
     resolver: zodResolver(notificationsFormSchema),
     defaultValues,
-  })
+  });
 
   function onSubmit(data: NotificationsFormValues) {
-    console.log(data) // backend
+    console.log(data); // backend
   }
 
   return (
@@ -118,7 +124,7 @@ export function NotificationsForm() {
                   <div className="space-y-0.5">
                     <FormLabel className="text-base">Sikkerhet</FormLabel>
                     <FormDescription>
-                    Motta e-poster om din kontoaktivitet og sikkerhet.
+                      Motta e-poster om din kontoaktivitet og sikkerhet.
                     </FormDescription>
                   </div>
                   <FormControl>
@@ -134,8 +140,10 @@ export function NotificationsForm() {
             />
           </div>
         </div>
-        <Button type="submit">Oppdater varslinger</Button>
+        <Button className="bg-[#001d21] hover:bg-[#2b666e]" type="submit">
+          Oppdater varslinger
+        </Button>
       </form>
     </Form>
-  )
+  );
 }

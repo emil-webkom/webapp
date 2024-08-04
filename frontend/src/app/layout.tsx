@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 import { TooltipProvider } from "@/components/ui/tooltip";
-
+import { AuthProvider } from "@/components/auth/auth-provider";
 
 export const metadata: Metadata = {
   title: "Emilweb",

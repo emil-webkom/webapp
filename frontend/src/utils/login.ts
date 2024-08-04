@@ -34,7 +34,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     } else {
       await sendVerificationEmail(
         verificationToken.email,
-        verificationToken.token
+        verificationToken.token,
       );
     }
 
