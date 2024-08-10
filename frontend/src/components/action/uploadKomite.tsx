@@ -49,7 +49,7 @@ const UploadKomiteForm = () => {
         <input
             type="text"
             name="navn"
-            placeholder="Navn"
+            placeholder="Navn*"
             value={formData.navn}
             onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
@@ -97,7 +97,7 @@ const UploadKomiteForm = () => {
         <input
             type="text"
             name="mappe"
-            placeholder="Mappe"
+            placeholder="Mappe*"
             value={formData.mappe}
             onChange={handleInputChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"

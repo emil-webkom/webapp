@@ -58,7 +58,7 @@ model PasswordResetToken {
 }
 
 model Hovedstyret {
-  rolle     String
+  rolle     String @unique
   text      String
   active    Boolean
   image     String
@@ -66,12 +66,12 @@ model Hovedstyret {
   userID    String   @unique
   User      User     @relation(fields: [userID], references: [id])
 
-  @@id([rolle, userID])
+  @@id(name: "id", [rolle, userID])
 }
 
 model komite {
   id    String  @id @default(cuid())
-  navn  String
+  navn  String @unique
   leder String?
   text1 String?
   text2 String?
