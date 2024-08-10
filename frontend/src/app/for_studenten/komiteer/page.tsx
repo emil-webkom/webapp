@@ -1,7 +1,6 @@
 import Hero from "@/components/hero/hero1";
-import InfoAndScrollbarLeft from "@/components/ForStudenten/InfoAndScrollbarLeft";
-import InfoAndScrollbarRight from "@/components/ForStudenten/InfoAndScrollbarRight";
 import { Button } from "@/components/ui/button";
+import InfoAndScrollbarWithButton from "@/components/ForStudenten/InfoAndScrollbarWithButton";
 
 
 
@@ -10,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const forStudentenPage = () => {
   return (
     <div className="   ">
-        <InfoAndScrollbarRight 
+        <InfoAndScrollbarWithButton 
         title={"EMIL sine komitéer"} 
         imageUrl={"/image/skalikkebrukessenere/therizzz.JPG"} 
         text={"Energi og miljø har et helt unikt studentmiljø, noe som i stor grad kommer av studentfrivilligheten, og våre 29 ulike komiteer."} 
@@ -18,7 +17,7 @@ const forStudentenPage = () => {
         <Button className="ml-48 mb-20 hover:text-gray-400 active:text-grey-500">
             Søk komité her!
         </Button>
-        </InfoAndScrollbarRight>
+        </InfoAndScrollbarWithButton>
       
    </div>
 
