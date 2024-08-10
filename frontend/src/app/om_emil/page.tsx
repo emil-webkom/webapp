@@ -72,8 +72,7 @@ const OmEmilPage = () => {
         <div className="flex justify-center items-center">
           <div className="flex justify-center items-center w-[65%]">
             <div
-              className="flex justify-between pt-10 items-center space-x-10"
-              style={{ height: "35vh" }}
+            className="flex flex-col space-y-10 lg:flex-row justify-between pt-10 items-center space-x-10 "
             >
               <div className="w-[35vw] font-extralight text-l">
                 Energi og miljø-studiet er et sivilingeniørstudie (Master of
@@ -84,22 +83,22 @@ const OmEmilPage = () => {
                 september 1998 kort tid etter første immatrikulering.
               </div>
               <div className="grid grid-cols-3 gap-4">
-                <Button onClick={() => scrollToSection("om_studiet")}>
+                <Button className="px-4" onClick={() => scrollToSection("om_studiet")}>
                   Om studiet
                 </Button>
-                <Button onClick={() => scrollToSection("historie")}>
+                <Button className="px-4" onClick={() => scrollToSection("historie")}>
                   Historie
                 </Button>
-                <Button onClick={() => scrollToSection("hovedstyret")}>
+                <Button className="px-4" onClick={() => scrollToSection("hovedstyret")}>
                   Hovedstyret
                 </Button>
-                <Button onClick={() => scrollToSection("studiemiljøet")}>
+                <Button className="px-4" onClick={() => scrollToSection("studiemiljøet")}>
                   Studiemiljøet
                 </Button>
-                <Button onClick={() => scrollToSection("Fagkontakt")}>
+                <Button className="py-2 text-wrap" onClick={() => scrollToSection("Fagkontakt")}>
                   Faglige spørsmål
                 </Button>
-                <Button onClick={() => scrollToSection("varsling")}>
+                <Button className="px-4" onClick={() => scrollToSection("varsling")}>
                   Varsle?
                 </Button>
               </div>
@@ -127,7 +126,7 @@ const OmEmilPage = () => {
               mellom er:
             </div>
           </div>
-          <div className="flex space-x-10 w-[65%]">
+          <div className="flex flex-col items-center space-y-10 lg:flex-row lg:space-x-10 lg:space-y-0 w-[65%]">
             <RetningCard
               name="Elektrisk energiteknikk og smarte nett"
               subname="Elkraft"
@@ -166,7 +165,7 @@ const OmEmilPage = () => {
       >
         <div className="flex flex-col w-[65%]">
           <div className="flex justify-center text-2xl font-bold">Historie</div>
-          <div className="flex justify-between space-x-10">
+          <div className="lg:flex justify-between lg:space-x-10">
             <div id="Text" className="flex flex-col py-10 space-y-4 ">
               <p className="font-semibold text-xl">Elektrisk start...</p>
               <p className="text-l font-extralight">
@@ -216,10 +215,9 @@ const OmEmilPage = () => {
             <p className="flex justify-center text-2xl font-bold">
               Hovedstyret
             </p>
-            <div className="flex justify-between py-10 space-x-10">
+            <div className="flex flex-col justify-between space-y-10 py-10 lg:flex-row lg:space-x-10 lg:space-y-0 ">
               <div
                 className="flex items-center justify-center"
-                style={{ overflow: "hidden" }}
               >
                 <img
                   src="/image/Komiteer/HS/HSfelles.jpg"
@@ -284,7 +282,7 @@ const OmEmilPage = () => {
                 <Button>Les mer om komiteene her</Button>
               </Link>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center overflow-hidden">
               <Logos data={logos} />
             </div>
           </div>

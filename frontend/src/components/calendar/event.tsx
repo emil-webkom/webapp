@@ -18,10 +18,10 @@ const Event = ({ title, decscription, date, trinn, location }: EventProps) => {
   return (
     <>
       <Link
-        className="w-full rounded-md h-full flex flex-row bg-[#003A42] hover:bg-[#426e72] cursor-pointer"
+        className="w-[100%] rounded-md flex flex-row justify-between bg-[#003A42] hover:bg-[#426e72] cursor-pointer"
         href={`/for_studenten/arrangement`}
       >
-        <div className="flex flex-col w-1/2 text-left p-2">
+        <div className="flex flex-col text-left p-2">
           <div className="font-normal">{title}</div>
           <div className="flex flex-row px-0.5 gap-x-1">
             <div className="flex items-center justify-center">

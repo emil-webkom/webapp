@@ -12,13 +12,20 @@
   font-style: normal;
 }
 
-html,
-body,
-:root {
-  height: 100%;
-  letter-spacing: -0.0025em;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.0025em;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

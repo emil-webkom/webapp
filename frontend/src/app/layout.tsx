@@ -16,15 +16,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <div>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body >
           <NavBar />
-        </div>
-        {children}
+          <div className="w-full flex-grow">
+          {children}
+          </div>
         {/* <Toaster /> */}
-        <div>
           <Footer />
-        </div>
       </body>
     </html>
   );

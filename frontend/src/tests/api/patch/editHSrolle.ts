@@ -4,7 +4,7 @@ export async function testEditHSRolle(rolle : string, userID : string) {
         text: "Kongsknekten er linjeforeningens øverste leder og har kontroll på aktiviteten i EMIL i tillegg til å opprettholde godt samarbeid internt og eksternt",
         userID: "mauritzs@stud.ntnu.no",
         image: "https://firebasestorage.googleapis.com/v0/b/emilweb-3181b.appspot.com/o/images%2FHS%2Fleder.jpg?alt=media&token=eeb2b36a-1e27-4e07-97f3-3eefdf50d0f9",
-        active: true
+        IsActive: true
     };
 
     try {

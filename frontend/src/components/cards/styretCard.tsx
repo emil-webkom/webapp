@@ -48,7 +48,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
         <button onClick={handlePrev} className="icon-hover">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-circle-arrow-left"><circle cx="12" cy="12" r="10"/><path d="M16 12H8"/><path d="m12 8-4 4 4 4"/></svg>
         </button>
-        <div className="relative w-[80%] h-[70vh] overflow-hidden">
+        <div className="relative w-[100%] overflow-hidden">
           <div
             className={`flex transition-transform duration-300 ease-in-out transform ${
               isSliding ? "delay-300" : ""
@@ -58,9 +58,9 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full flex items-center justify-between space-x-5 p-10 bg-[#003A42] rounded-md"
+                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-[#003A42] rounded-md py-5 space-y-5 lg:flex-row lg:space-x-5 lg:p-10"
               >
-                <div className="flex flex-col justify-between w-[60%] space-y-5 h-full">
+                <div className="flex flex-col justify-between px-5 lg:w-[60%] space-y-5 h-full">
                   <div>
                     <p className="text-2xl font-semibold">{item.rolle}</p>
                     <p className="text-l font-normal">{item.name}</p>

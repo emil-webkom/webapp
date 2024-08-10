@@ -55,14 +55,14 @@ const HomePage = () => {
       </div>
       <TransissionIn />
       <div className="h-full w-full background-dark p-8 justify-center space-y-8">
-        <div className="w-full flex justify-center items-center">
+        <div className="flex justify-center items-center"> 
           <div className="w-[40rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
             Hva skjer på Emil?
           </div>
         </div>
         {/* <p className="text-white">Stuff goes here</p> */}
-        <div className="gap-4 flex justify-center">
-          <div className="">
+        <div className="gap-4 flex justify-between">
+          <div className="w-[60rem]">
             <ListView
               events={[
                 {
@@ -108,7 +108,7 @@ const HomePage = () => {
               ]}
             />
           </div>
-          <div className="bg-white inline-block rounded-md max-lg:hidden">
+          <div className="bg-white inline-block rounded-md max-md:hidden">
             <Calendar
               mode="single"
               selected={date}

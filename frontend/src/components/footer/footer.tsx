@@ -67,7 +67,7 @@ const Footer: FC = () => {
           </ul>
         </div>
         <div className="flex flex-col w-[20%]">
-          <div className="flex">
+          <div className="flex overflow-hidden">
             Våre samarbeidspartnere
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>

@@ -76,7 +76,7 @@ export async function PATCH(request: NextRequest) {
                 rolle: body.rolle,
                 text: body.text,
                 image: body.image,
-                active: body.active,
+                isActive: body.active,
                 updatedAt: new Date(),
             },
         });
