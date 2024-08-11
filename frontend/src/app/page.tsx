@@ -15,11 +15,16 @@ import BigCard from "@/components/landing/bigCard";
 import { cardData } from "@/static/landingInfo";
 import VideoPlayer from "@/components/landing/video-player";
 import Baerekraft from "@/components/landing/baerekraft";
+import useFetch from "@/hooks/use-fetch";
+import { Arrangement } from "@/schemas/arrangement";
 
 const HomePage = () => {
-  const data = JSON.parse(cardData);
+  const dataS = JSON.parse(cardData);
 
   const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const { data } = useFetch<{ arrangementer: Arrangement[] }>(
+    "/api/arrangementer",
+  );
 
   return (
     <div className="flex flex-col items-center">
@@ -63,50 +68,7 @@ const HomePage = () => {
         {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
           <div className="">
-            <ListView
-              events={[
-                {
-                  id: "kuk",
-                  title: "Lunsj med Equinor",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 3,
-                  location: "R7, Realfagsbygget",
-                  date: "12.06",
-                },
-                {
-                  id: "kuk",
-                  title: "BedEx",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 2,
-                  location: "Sentralbygget",
-                  date: "01.06",
-                },
-                {
-                  id: "kuk",
-                  title: "Grilling i parken",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  date: "03.05",
-                  trinn: 4,
-                  location: "Høyskoleparken",
-                },
-                {
-                  id: "kuk",
-                  title: "Eksamensforelesning i C++",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 2,
-                  location: "R7, Realfagsbygget",
-                  date: "01.06",
-                },
-                {
-                  id: "kuk",
-                  title: "Emil-lekene",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 1,
-                  location: "Bymarka",
-                  date: "01.06",
-                },
-              ]}
-            />
+            <ListView events={data?.arrangementer || []} />
           </div>
           <div className="bg-white inline-block rounded-md max-lg:hidden">
             <Calendar
@@ -118,7 +80,7 @@ const HomePage = () => {
           </div>
         </div>
         <div className="flex justify-center">
-          <BigCard {...data} />
+          <BigCard {...dataS} />
         </div>
         <div className="w-full flex justify-center items-center">
           <div className="w-full flex text-xl font-semibold text-white justify-center">

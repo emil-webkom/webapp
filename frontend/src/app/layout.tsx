@@ -5,7 +5,7 @@ import Footer from "@/components/footer/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { AuthProvider } from "@/components/auth/auth-provider";
+
 
 export const metadata: Metadata = {
   title: "Emilweb",

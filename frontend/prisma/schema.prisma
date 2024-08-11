@@ -98,7 +98,7 @@ model Arrangement {
   bilde       String?
   kapasitet   Int?
   beskrivelse String
-  trinn       String[] @default([])
+  trinn       Int[] @default([])
   arrangorID  String
   arrangor    komite   @relation(fields: [arrangorID], references: [id])
   paameldinger  ArrangementPaamelding[]

@@ -1,5 +1,8 @@
 import { db } from "@/lib/db";
-import { ArrangementSchema } from "@/schemas/arrangement";
+import {
+  ArrangementSchema,
+  createArrangementSchema,
+} from "@/schemas/arrangement";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -25,15 +28,16 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const parsedData = ArrangementSchema.parse(await req.json());
-    const booking = await db.arrangement.create({
+    const parsedData = createArrangementSchema.parse(await req.json());
+    const arrangement = await db.arrangement.create({
       data: parsedData,
     });
     return NextResponse.json(
-      { message: "Arrangement created", booking },
+      { message: "Arrangement created", arrangement },
       { status: 201 },
     );
   } catch (error) {
+    console.log("Error in the POST request");
     return NextResponse.json({ error: error }, { status: 400 });
   }
 }
