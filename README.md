@@ -10,4 +10,4 @@ For restAPI manipulasjon bruker vi følgende måte å transportere informasjon a
 - POST: request.body
 - Get: Ingen informasjon sendes
 - Delete: URL parameter
-- Patch: request.body
+- PUT/Patch: request.body
