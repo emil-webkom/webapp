@@ -1,6 +1,10 @@
-import Hero from "@/components/hero/hero1";
+
 import HSCard from "@/components/cards/styretCard";
-import InfoAndScrollbarLeft from "@/components/ForStudenten/InfoAndScrollbarLeft";
+import InfoAndScrollbarStyret from "@/components/ForStudenten/InfoAndScrollbarStyret";
+
+
+
+
 
 const styret = [
   {
@@ -63,9 +67,10 @@ const styret = [
 
 const forStudentenPage = () => {
   return (
-    <div className="   ">
-      <InfoAndScrollbarLeft
-        title={"EMIL-Styret"}
+    <div className="  ">
+
+      <InfoAndScrollbarStyret
+        title={"EMIL-styret"}
         imageUrl={"/image/Komiteer/HS/HSfelles.jpg"}
         text={
           "EMIL-styret er linjeforeningens øverste organ og har ansvaretfor driften og ledelsen av organisasjonen i det daglige. Styret består av syv faste medlemmer, med ansvarsområder innenfor alt fra arrangementog fadderuker, til økonomi og næringsliv."
@@ -77,8 +82,13 @@ const forStudentenPage = () => {
         <div className="mt-12 mb-12">
           <HSCard data={styret}></HSCard>
         </div>
-      </InfoAndScrollbarLeft>
-    </div>
+      </InfoAndScrollbarStyret>
+
+        
+      
+   </div>
+
+
   );
 };
 

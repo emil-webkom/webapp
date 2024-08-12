@@ -47,12 +47,18 @@ model VerificationToken {
   id      String   @id @default(cuid())
   email   String
   token   String   @unique
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   expires DateTime
 
   @@unique([email, token])
 }
 
 model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
   id      String   @id @default(cuid())
   email   String
   token   String   @unique
@@ -63,14 +69,15 @@ model PasswordResetToken {
 
 model Hovedstyret {
   rolle     String   @unique
+  rolle     String   @unique
   text      String
-  isActive  Boolean  @default(true)
   image     String
   updatedAt DateTime
   userID    String   @unique
+  isActive  Boolean  @default(true)
   User      User     @relation(fields: [userID], references: [id])
 
-  @@id([rolle, userID])
+  @@id([rolle, userID], name: "id")
 }
 
 model komite {
@@ -143,4 +150,10 @@ enum BookedItem {
 enum UserRole {
   ADMIN
   USER
+}
+
+enum BookedItem {
+  KONTOR
+  ONE_SOUNDBOX
+  TWO_SOUNDBOXES
 }

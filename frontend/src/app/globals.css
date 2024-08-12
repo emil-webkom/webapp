@@ -123,3 +123,18 @@ body,
   text-decoration: underline;
   transition: 100ms;
 }
+
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; 
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+
+.hover-shadow:hover {
+  text-shadow: 0 0 10px #579783;
+}

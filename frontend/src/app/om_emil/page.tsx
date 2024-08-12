@@ -108,7 +108,6 @@ const OmEmilPage = () => {
         <TransissionIn />
         <div
           id="om_studiet"
-          style={{ height: "45rem" }}
           className="background-dark max-w-screen text-white flex flex-col justify-between items-center tracking-tighter space-y-10"
         >
           <div className="flex flex-col w-[65%] pt-20 space-y-5">
@@ -162,7 +161,6 @@ const OmEmilPage = () => {
       <TransissionOut />
       <div
         id="historie"
-        style={{ height: "fit" }}
         className="flex justify-center"
       >
         <div className="flex flex-col w-[65%]">
