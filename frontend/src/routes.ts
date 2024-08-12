@@ -9,7 +9,8 @@ export const publicRoutes = [
   "/naeringsliv",
   "/auth/new-verification",
   "/api/styret",
-  "/api/komite/logo"
+  "/api/komite/logo",
+  "/api/arrangementer",
 ];
 
 /**
@@ -36,4 +37,4 @@ export const apiAuthPrefix = "/api/auth";
  * The default login redirect path.
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/settings";
+export const DEFAULT_LOGIN_REDIRECT = "/";

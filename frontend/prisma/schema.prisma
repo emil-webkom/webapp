@@ -8,20 +8,20 @@ datasource db {
 }
 
 model User {
-  id                    String                  @id @default(cuid())
-  name                  String?
-  email                 String                  @unique
-  emailVerified         DateTime?
-  image                 String?
-  password              String?
-  role                  UserRole                @default(USER)
-  nummer                Int?
-  isActive              Boolean                 @default(true)
-  username              String?                 @unique
-  accounts              Account[]
-  ArrangementPaamelding ArrangementPaamelding[]
-  Booking               Booking[]
-  Hovedstyret           Hovedstyret?
+  id            String       @id @default(cuid())
+  name          String?
+  username      String?      @unique
+  email         String       @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole     @default(USER)
+  nummer        Int?
+  accounts      Account[]
+  Hovedstyret   Hovedstyret?
+  bookings      Booking[]
+  paameldinger  ArrangementPaamelding[]
+  isActive      Boolean      @default(true)
 }
 
 model Account {
@@ -74,69 +74,73 @@ model Hovedstyret {
 }
 
 model komite {
-  id          String        @id @default(cuid())
-  navn        String        @unique
-  leder       String?
-  text1       String?
-  text2       String?
-  text3       String?
-  bilde       String
-  mail        String?
-  mappe       String
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime
-  Arrangement Arrangement[]
-  Booking     Booking[]
+  id            String        @id @default(cuid())
+  navn          String        @unique
+  leder         String?
+  text1         String?
+  text2         String?
+  text3         String?
+  bilde         String
+  mail          String?
+  mappe         String
+  arrangementer Arrangement[]
+  bookings      Booking[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Arrangement {
-  id                    String                  @id
-  navn                  String
-  sted                  String
-  dato                  DateTime
-  bilde                 String?
-  kapasitet             Int?
-  beskrivelse           String
-  trinn                 String[]                @default([])
-  arrangorID            String
-  createdAt             DateTime                @default(now())
-  updatedAt             DateTime
-  komite                komite                  @relation(fields: [arrangorID], references: [id])
-  ArrangementPaamelding ArrangementPaamelding[]
-}
+  id          String   @id @default(cuid())
+  navn        String
+  sted        String
+  dato        DateTime
+  bilde       String?
+  kapasitet   Int?
+  beskrivelse String
+  trinn       Int[] @default([])
+  arrangorID  String
+  arrangor    komite   @relation(fields: [arrangorID], references: [id])
+  paameldinger  ArrangementPaamelding[]
 
-model ArrangementPaamelding {
-  id            String      @id
-  userID        String
-  arrangementID String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime
-  Arrangement   Arrangement @relation(fields: [arrangementID], references: [id])
-  User          User        @relation(fields: [userID], references: [id])
-
-  @@unique([userID, arrangementID])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Booking {
-  id        String     @id
-  userID    String
-  komiteID  String?
-  item      BookedItem
-  bookedAt  DateTime
-  duration  Int
-  createdAt DateTime   @default(now())
-  updatedAt DateTime
-  komite    komite?    @relation(fields: [komiteID], references: [id])
-  User      User       @relation(fields: [userID], references: [id])
+  id       String     @id @default(cuid())
+  userID   String
+  user     User       @relation(fields: [userID], references: [id])
+  komiteID String?
+  komite   komite?    @relation(fields: [komiteID], references: [id]) // Optional relation to Komite
+  item     BookedItem
+  bookedAt DateTime
+  duration Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-enum UserRole {
-  ADMIN
-  USER
+model ArrangementPaamelding {
+  id            String      @id @default(cuid())
+  userID        String
+  arrangementID String
+  user          User        @relation(fields: [userID], references: [id], onDelete: Cascade)
+  arrangement   Arrangement @relation(fields: [arrangementID], references: [id], onDelete: Cascade)
+
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@unique([userID, arrangementID])
 }
 
 enum BookedItem {
   KONTOR
   ONE_SOUNDBOX
   TWO_SOUNDBOXES
+}
+
+enum UserRole {
+  ADMIN
+  USER
 }

@@ -1,18 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import UserButton from "@/components/auth/user-button";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { Sun } from "lucide-react";
+import ThemeButton from "../user/theme-button";
+import { User, AuthContextType } from "@/components/auth/auth-provider";
 
 const NavBar: FC = () => {
-  const [activeLink, setActiveLink] = useState("");
+  // const { data: session } = useSession();
+  // Check for admin privileges
+  // const isAdmin = session?.user.role === "ADMIN";
+  const currentUser = useCurrentUser();
+  const [user, setUser] = useState<User | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
+  const [activeLink, setActiveLink] = useState("");
   const handleSetSelectedLink = (linkName: string) => {
     setActiveLink(linkName);
   };
 
+  useEffect(() => {
+    setUser(currentUser || null);
+    setIsAdmin(currentUser?.role === "ADMIN");
+  }, [currentUser]);
+
   return (
     <nav className="max-w-screen items-center border-b border-slate-200">
-      <div className="flex mx-[7%] py-4 justify-between">
+      <div className="flex mx-[7%] py-4 justify-between items-center">
         <div className="flex gap-[4vw]">
           <a href="/">
             <img src="/svg/leaf.svg" alt="Logo" className="icon-hover" />
@@ -38,15 +55,26 @@ const NavBar: FC = () => {
           >
             Næringsliv
           </Link>
+          {isAdmin && (
+            <Link
+              href="/admin"
+              className={`text-zinc-400 link-hover-effect ${activeLink === "admin" ? "selected-state" : ""}`}
+              onClick={() => handleSetSelectedLink("admin")}
+            >
+              Admin
+            </Link>
+          )}
         </div>
         {/* <div className="w-[10vw] "></div> */}
         <div className="inline-flex space-x-12">
-          <a href="/auth/login">
-            <img src="/svg/Avatar.svg" alt="LOGIN" className="icon-hover" />
-          </a>
-          <a href="/displayboards">
-            <img src="/svg/sun.svg" alt="DARKMODE" className="icon-hover" />
-          </a>
+          {/* <a href="/auth/login">
+            <img src="/svg/Avatar.svg" alt="LOGIN" className="" />
+          </a> */}
+          <UserButton />
+          {/* <a href="/displayboards">
+            <img src="/svg/sun.svg" alt="DARKMODE" className="" />
+          </a> */}
+          <ThemeButton />
         </div>
       </div>
     </nav>

@@ -1,39 +1,38 @@
-'use client'
-import UploadKomiteForm from "@/components/action/uploadKomite"
-import UploadImageForm from "@/components/action/uploadImage"
-import { useState, useEffect } from "react"
+"use client";
+import UploadKomiteForm from "@/components/action/uploadKomite";
+import UploadImageForm from "@/components/action/uploadImage";
+import { useState, useEffect } from "react";
 import { KomiteLogo } from "@/types/interfaces";
 import { Hovedstyret } from "@/types/interfaces";
 import { testDeleteKomite } from "@/tests/api/delete/deleteKomite";
 import { testEditHSRolle } from "@/tests/api/patch/editHSrolle";
 
 const Upload = () => {
-
-    const [styret, setStyret] = useState<Hovedstyret[]>([]);
-    const [logos, setLogos] = useState<KomiteLogo[]>([]);
+  const [styret, setStyret] = useState<Hovedstyret[]>([]);
+  const [logos, setLogos] = useState<KomiteLogo[]>([]);
     const [addKomite, setAddKomite] = useState(false);
     const [addStyret, setAddStyret] = useState(false);
 
-    const fetchAndSetData= async () =>{
-      const [styretData, logosData] = await Promise.all([
-        fetch("api/styret").then(response => response.json()),
-        fetch("api/komite/logo").then(response => response.json())
-      ]);
-      return {styretData, logosData};
-     }
+  const fetchAndSetData = async () => {
+    const [styretData, logosData] = await Promise.all([
+      fetch("api/styret").then((response) => response.json()),
+      fetch("api/komite/logo").then((response) => response.json()),
+    ]);
+    return { styretData, logosData };
+  };
 
-    useEffect(()=> {
-      const initData = async () =>{
-        try {
-          const {styretData, logosData} = await fetchAndSetData();
-            setStyret(styretData);
-            setLogos(logosData);
-        }catch(error){
-          console.error("Error fetching data:", error);
-        }
+  useEffect(() => {
+    const initData = async () => {
+      try {
+        const { styretData, logosData } = await fetchAndSetData();
+        setStyret(styretData);
+        setLogos(logosData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-      initData();
-    }, []);
+    };
+    initData();
+  }, []);
 
     const showform = (input : string) =>{
       if (input==="komite"){

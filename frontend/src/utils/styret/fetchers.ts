@@ -8,13 +8,13 @@ async function fetchStyret() {
         User: true,
       },
     });
-    const hovedstyretdata: Hovedstyret[] = hovedstyret.map(item => ({
+    const hovedstyretdata: Hovedstyret[] = hovedstyret.map((item) => ({
       rolle: item.rolle,
       name: item.User.name!,
       text: item.text,
       mail: item.User.email,
       nummer: item.User.nummer!,
-      bilde: item.image
+      bilde: item.image,
     }));
     return hovedstyretdata;
   } catch (error) {

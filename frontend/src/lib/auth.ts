@@ -31,7 +31,7 @@ export const {
 
       if (!existingUser?.emailVerified) return false;
 
-      // TODO: 2FA Check
+      // TODO: 2FA Check? Maybe not
 
       return true;
     },
