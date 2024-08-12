@@ -7,7 +7,7 @@ import { Arrangement } from "@/schemas/arrangement";
 import { fetchArrangementer } from "@/utils/arrangement/arrangement";
 import { useEffect, useState } from "react";
 
-const forStudentenPage = () => {
+const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -52,4 +52,4 @@ const forStudentenPage = () => {
   );
 };
 
-export default forStudentenPage;
+export default ForStudentenPage;

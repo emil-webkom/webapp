@@ -35,7 +35,6 @@ const BookingPage = () => {
       title: "Annet",
       logo: <FileQuestion />,
       description: "Hei hei heo",
-      buttonLabel: "Book kontoret",
       href: "https://youtube.com",
     },
   ];

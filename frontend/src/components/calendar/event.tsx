@@ -34,7 +34,6 @@ const Event = ({
               {date.toLocaleDateString("no-NO", {
                 day: "numeric",
                 month: "long",
-                year: "numeric",
               })}
             </div>
             <div

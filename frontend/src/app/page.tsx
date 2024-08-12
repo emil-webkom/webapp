@@ -22,7 +22,7 @@ const HomePage = () => {
   const dataS = JSON.parse(cardData);
 
   const [date, setDate] = React.useState<Date | undefined>(new Date());
-  const { data } = useFetch<{ arrangementer: Arrangement[] }>(
+  const { data, loading, error } = useFetch<{ arrangementer: Arrangement[] }>(
     "/api/arrangementer",
   );
 
@@ -67,8 +67,15 @@ const HomePage = () => {
         </div>
         {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
-          <div className="">
+          {/* <div className="">
             <ListView events={data?.arrangementer || []} />
+          </div> */}
+          <div className="flex justify-center items-center w-[40rem] h-[338px]">
+            {loading ? (
+              <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+            ) : (
+              <ListView events={data?.arrangementer || []} />
+            )}
           </div>
           <div className="bg-white inline-block rounded-md max-lg:hidden">
             <Calendar
