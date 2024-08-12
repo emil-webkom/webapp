@@ -27,4 +27,6 @@ For RestAPI manipulasjon bruker vi følgende måte å transportere informasjon a
 
 ## UI
 Vi bruker for det meste [shadcn-ui](https://ui.shadcn.com/docs) for de mest primitive UI-komponentene og endrer disse til vår smak.
-- Konvensjon: Alle shadcn-ui komponenter havner i ```@/Components/ui```
+- Konvensjon: Alle shadcn-ui komponenter havner i ```@/components/ui```
+
+For å innstallere en komponent brukes kommandoen: ```npx shadcn-ui@latest add "component"```
