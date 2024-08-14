@@ -29,7 +29,7 @@ For å hente brukerinformasjon i en client component kan man bruke: ```useCurren
 Samme kan gjøres for å hente info om bruker er Admin med: ```useCurrentRole()```.
 
 Info:
-- _I **Production** er ikke Google eller Resend provideren konfigurert ferdig, dvs at man nektes innlogging i _Production_ (emilntnu.vercel.app). Trenger DNS-domenet og litt config for å få dette ferdig._
+- _I **Production** er ikke Google konfigurert ferdig, dvs at man nektes innlogging i _Production_ (emilntnu.vercel.app). Trenger DNS-domenet og litt config for å få dette ferdig._
 - _I **Dev** funker innlogging med Google som normalt._
 
 ## UI
