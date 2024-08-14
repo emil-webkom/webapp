@@ -5,7 +5,7 @@ import { FC, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import UserButton from "@/components/auth/user-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { Sun } from "lucide-react";
+import { Sun, Leaf } from "lucide-react";
 import ThemeButton from "../user/theme-button";
 import { User, AuthContextType } from "@/components/auth/auth-provider";
 
@@ -32,7 +32,8 @@ const NavBar: FC = () => {
       <div className="flex mx-[7%] py-4 justify-between items-center">
         <div className="flex gap-[4vw]">
           <a href="/">
-            <img src="/svg/leaf.svg" alt="Logo" className="icon-hover" />
+            {/* <img src="/svg/leaf.svg" alt="Logo" className="icon-hover" /> */}
+            <Leaf size={24} strokeWidth={1.8} className="stroke-[#003A42]" />
           </a>
           <Link
             href="/om_emil"
