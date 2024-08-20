@@ -22,47 +22,57 @@ const BigCard = ({ title, description, ...rest }: BigCardProps) => {
             </Link>
           </div>
         </div>
-        <div className=" hidden lg:block p-4 space-x-4 justify-center">
-          <div className="flex-col space-y-4">
-            <div className="space-x-4">
+        <div className=" hidden md:block p-4 space-x-4 justify-center">
+          <div className="flex-col space-y-4 ">
+            <div className="grid grid-cols-3 grid-rows-2 gap-3">
+              <div>
               <MiniCard
                 label={"Høystemt"}
                 comitee={"Mannskoret"}
                 img="/image/Komiteer/Høystemt.png"
                 link="/for_studenten/komiteer"
               />
+              </div>
+              <div>
               <MiniCard
                 label={"Pikestrøm"}
                 comitee={"pikestrøm"}
                 img="/image/Komiteer/pikestrøm.png"
                 link="/for_studenten/komiteer"
               />
+              </div>
+              <div>
               <MiniCard
                 label={"Klovneløpet"}
                 comitee={"klovnen"}
                 img="/image/Komiteer/klovneløpet.png"
                 link="/for_studenten/komiteer"
               />
-            </div>
-            <div className="space-x-4">
+              </div>
+              <div>
               <MiniCard
                 label={"Ølkom"}
                 comitee={"olkom"}
                 img="/image/Komiteer/ølkom.png"
                 link="/for_studenten/komiteer"
               />
+              </div>
+              <div>
               <MiniCard
                 label={"Brettkom"}
                 comitee={"spillogmoro"}
                 img="/image/Komiteer/Brettkom.png"
                 link="/for_studenten/komiteer"
               />
+              </div>
+              <div>
               <MiniCard
                 label={"Kvinnekom"}
                 comitee={"morendin"}
                 img="/image/Komiteer/pikestrøm.png"
                 link="/for_studenten/komiteer"
               />
+              </div>
             </div>
           </div>
         </div>
