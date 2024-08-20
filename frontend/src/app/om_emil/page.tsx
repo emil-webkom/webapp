@@ -64,17 +64,17 @@ const OmEmilPage = () => {
 
   return (
     <div className="max-w-screen">
-      <div className="flex flex-col justify-center ">
+      <div className="flex flex-col justify-center w-[90%] lg:w-[100%]">
         <Hero2
           title="Energi og miljøstudentenes linjeforening"
           undertitle="Her finner du informasjon om linjeforeningen Emil"
         />
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center w-[65%]">
+        <div className="flex justify-center items-center m-4">
+          <div className="flex justify-center items-center ">
             <div
-            className="flex flex-col space-y-10 lg:flex-row justify-between pt-10 items-center space-x-10 "
+            className="flex flex-col space-y-10 lg:flex-row justify-between pt-10 items-center"
             >
-              <div className="w-[35vw] font-extralight text-l">
+              <div className="px-6 lg:w-[100%] font-extralight text-l">
                 Energi og miljø-studiet er et sivilingeniørstudie (Master of
                 technology) ved Norges teknisk-naturvitenskapelige universitet,
                 NTNU. Studiet ble først introdusert våren 1998 og med et
@@ -82,23 +82,23 @@ const OmEmilPage = () => {
                 <span className="font-bold">Emil</span> stiftet den 28.
                 september 1998 kort tid etter første immatrikulering.
               </div>
-              <div className="grid grid-cols-3 gap-4">
-                <Button className="px-4" onClick={() => scrollToSection("om_studiet")}>
+              <div className="grid grid-cols-3 gap-2">
+                <Button className="" onClick={() => scrollToSection("om_studiet")}>
                   Om studiet
                 </Button>
-                <Button className="px-4" onClick={() => scrollToSection("historie")}>
+                <Button className="" onClick={() => scrollToSection("historie")}>
                   Historie
                 </Button>
-                <Button className="px-4" onClick={() => scrollToSection("hovedstyret")}>
+                <Button className="" onClick={() => scrollToSection("hovedstyret")}>
                   Hovedstyret
                 </Button>
-                <Button className="px-4" onClick={() => scrollToSection("studiemiljøet")}>
+                <Button className="" onClick={() => scrollToSection("studiemiljøet")}>
                   Studiemiljøet
                 </Button>
-                <Button className="py-2 text-wrap" onClick={() => scrollToSection("Fagkontakt")}>
+                <Button className="text-wrap" onClick={() => scrollToSection("Fagkontakt")}>
                   Faglige spørsmål
                 </Button>
-                <Button className="px-4" onClick={() => scrollToSection("varsling")}>
+                <Button className="" onClick={() => scrollToSection("varsling")}>
                   Varsle?
                 </Button>
               </div>
@@ -108,17 +108,17 @@ const OmEmilPage = () => {
         <TransissionIn />
         <div
           id="om_studiet"
-          className="background-dark max-w-screen text-white flex flex-col justify-between items-center tracking-tighter space-y-10"
+          className="background-dark text-white flex flex-col justify-between items-center tracking-tighter space-y-10"
         >
-          <div className="flex flex-col w-[65%] pt-20 space-y-5">
-            <div id="Top" className="font-semibold text-2xl">
+          <div className="flex flex-col pt-20 space-y-5 w-[90%] lg:w-[65%]">
+            <div id="Top" className="font-semibold text-l lg:text-2xl">
               Studiet er et fem-årig sivilingeniørstudie ved NTNU i Trondheim.
               Det kombinerer{" "}
               <span className="text-[#579783]">energi- og prosessteknikk</span>{" "}
               med <span className="text-[#579783]">elkraftteknikk</span> som
               gjør at du får en unik forståelse av energisystemet som helhet.
             </div>
-            <div id="Bottom" className="font-extralight text-l">
+            <div id="Bottom" className="font-extralight text-sm lg:text-l">
               Man får kunnskap til å ta del i den utviklingen som skjer i
               energisektoren. Fagene er tekniske og de første årene av studiet
               bygger på matematikk og tekniske grunnfag. Utover i studiet velger
@@ -126,7 +126,7 @@ const OmEmilPage = () => {
               mellom er:
             </div>
           </div>
-          <div className="flex flex-col items-center space-y-10 lg:flex-row lg:space-x-10 lg:space-y-0 w-[65%]">
+          <div className="flex flex-col items-center space-y-10 lg:flex-row lg:space-x-10 lg:space-y-0">
             <RetningCard
               name="Elektrisk energiteknikk og smarte nett"
               subname="Elkraft"
@@ -163,7 +163,7 @@ const OmEmilPage = () => {
         id="historie"
         className="flex justify-center"
       >
-        <div className="flex flex-col w-[65%]">
+        <div className="flex flex-col w-[90%] lg:w-[65%]">
           <div className="flex justify-center text-2xl font-bold">Historie</div>
           <div className="lg:flex justify-between lg:space-x-10">
             <div id="Text" className="flex flex-col py-10 space-y-4 ">

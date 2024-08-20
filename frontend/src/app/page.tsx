@@ -111,12 +111,12 @@ const HomePage = () => {
             />
           </div>
         </div>
-          <div className="bg-white hidden md:block rounded-md">
+          <div className="bg-white hidden md:block rounded">
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
-              className="rounded-md border"
+              className="rounded-md border "
             />
           </div>
         </div>
