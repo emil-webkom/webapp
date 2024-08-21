@@ -4,7 +4,6 @@ import TransissionIn from "@/components/hero/transissions/transissionIn";
 const forStudentenPage = () => {
   return (
     <div>
-      <TransissionIn />
     </div>
   );
 };
