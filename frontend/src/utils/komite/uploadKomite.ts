@@ -17,7 +17,9 @@ async function storeData(komitedata: komiteInput) {
         bilde: komitedata.bildeurl,
         mail: komitedata.mail,
         mappe: komitedata.mappe,
+
         updatedAt: new Date(),
+
       },
     });
     return komite;

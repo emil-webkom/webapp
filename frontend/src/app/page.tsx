@@ -15,11 +15,16 @@ import BigCard from "@/components/landing/bigCard";
 import { cardData } from "@/static/landingInfo";
 import VideoPlayer from "@/components/landing/video-player";
 import Baerekraft from "@/components/landing/baerekraft";
+import useFetch from "@/hooks/use-fetch";
+import { Arrangement } from "@/schemas/arrangement";
 
 const HomePage = () => {
-  const data = JSON.parse(cardData);
+  const dataS = JSON.parse(cardData);
 
   const [date, setDate] = React.useState<Date | undefined>(new Date());
+  const { data, loading, error } = useFetch<{ arrangementer: Arrangement[] }>(
+    "/api/arrangementer",
+  );
 
   return (
     <div className="flex flex-col items-center">
@@ -61,78 +66,32 @@ const HomePage = () => {
               Hva skjer på Emil?
             </div>
           </div>
-          {/* <p className="text-white">Stuff goes here</p> */}
-          <div className="flex justify-center">
-            <div className="flex justify-between w-[42.1rem]">
-              <div className="w-[100%] lg:mr-3">
-                <ListView
-                  events={[
-                    {
-                      id: "kuk",
-                      title: "Lunsj med Equinor",
-                      decscription:
-                        "Adam ragusea is a food critic and youtuber",
-                      trinn: 3,
-                      location: "R7, Realfagsbygget",
-                      date: "12.06",
-                    },
-                    {
-                      id: "kuk",
-                      title: "BedEx",
-                      decscription:
-                        "Adam ragusea is a food critic and youtuber",
-                      trinn: 2,
-                      location: "Sentralbygget",
-                      date: "01.06",
-                    },
-                    {
-                      id: "kuk",
-                      title: "Grilling i parken",
-                      decscription:
-                        "Adam ragusea is a food critic and youtuber",
-                      date: "03.05",
-                      trinn: 4,
-                      location: "Høyskoleparken",
-                    },
-                    {
-                      id: "kuk",
-                      title: "Eksamensforelesning i C++",
-                      decscription:
-                        "Adam ragusea is a food critic and youtuber",
-                      trinn: 2,
-                      location: "R7, Realfagsbygget",
-                      date: "01.06",
-                    },
-                    {
-                      id: "kuk",
-                      title: "Emil-lekene",
-                      decscription:
-                        "Adam ragusea is a food critic and youtuber",
-                      trinn: 1,
-                      location: "Bymarka",
-                      date: "01.06",
-                    },
-                  ]}
-                />
-              </div>
-            </div>
-            <div className="bg-white hidden md:block rounded">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                className="rounded-md border "
-              />
-            </div>
+
+        </div>
+        {/* <p className="text-white">Stuff goes here</p> */}
+        <div className="gap-4 flex justify-center">
+          {/* <div className="">
+            <ListView events={data?.arrangementer || []} />
+          </div> */}
+          <div className="flex justify-center items-center w-[40rem] h-[338px]">
+            {loading ? (
+              <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+            ) : (
+              <ListView events={data?.arrangementer || []} />
+            )}
           </div>
 
           <div className="flex justify-center">
             <BigCard {...data} />
           </div>
-          <div className="w-full flex justify-center items-center">
-            <div className="w-full flex text-xl font-semibold text-white justify-center">
-              Søk Emil da vel!
-            </div>
+        </div>
+        <div className="flex justify-center">
+          <BigCard {...dataS} />
+        </div>
+        <div className="w-full flex justify-center items-center">
+          <div className="w-full flex text-xl font-semibold text-white justify-center">
+            Søk Emil da vel!
+
           </div>
           <VideoPlayer />
         </div>
