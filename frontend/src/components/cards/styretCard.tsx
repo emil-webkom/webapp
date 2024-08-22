@@ -97,7 +97,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center px-6">
+                <div className=" items-center px-6 hidden lg:flex">
                   <img
                     src={item.bilde}
                     alt={item.rolle}

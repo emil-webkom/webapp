@@ -29,7 +29,7 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-14 items-left justify-center pt-4">
-        <div className="flex flex-col items-center space-y-6 lg:flex-row lg:space-x-6">
+        <div className= "flex flex-col items-center space-y-6 lg:flex-row lg:space-x-6">
           <Hero
             title="Energi og Miljø"
             undertitle="Velkommen til energi og miljøstudentenes linjeforening!"
@@ -45,11 +45,10 @@ const HomePage = () => {
         </div>
         <div className="flex justify-center space-x-5 pt-6 text-center lg:justify-start lg:text-left ">
           <div className="flex lg:items-left space-x-2 items-center">
-            <div className="font-bold text-sm lg:text-xl tracking-tighter ">
+            <div className="font-bold text-sm lg:text-xl tracking-tighter">
               Ny Student?
             </div>
           </div>
-          {/* <Button onClick={handleClick}>Les mer</Button> */}
           <Link href="/for_studenten">
             <Button className="text-sm lg:text-lg">
               Les mer
@@ -59,39 +58,26 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-full w-full background-dark p-8 flex justify-center ">
-        <div className="flex flex-col w-[95%] lg:w-[65%] space-y-10">
-          <div className="flex justify-center items-center">
-            <div className="w-[42.1rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
+      <div className="w-full background-dark p-8 flex flex-col justify-center items-center">
+        <div className="flex flex-col w-[90%] lg:w-[65%] gap-y-6 " >
+            <div className="text-2xl font-semibold text-white pl-1">
               Hva skjer på Emil?
             </div>
-          </div>
-
-        </div>
-        {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
-          {/* <div className="">
-            <ListView events={data?.arrangementer || []} />
-          </div> */}
-          <div className="flex justify-center items-center w-[40rem] h-[338px]">
+          <div className="flex justify-center items-center w-full h-[338px]">
             {loading ? (
               <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
             ) : (
               <ListView events={data?.arrangementer || []} />
             )}
           </div>
-
-          <div className="flex justify-center">
-            <BigCard {...data} />
-          </div>
         </div>
         <div className="flex justify-center">
           <BigCard {...dataS} />
         </div>
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full flex flex-col gap-y-6 justify-center items-center">
           <div className="w-full flex text-xl font-semibold text-white justify-center">
             Søk Emil da vel!
-
           </div>
           <VideoPlayer />
         </div>
@@ -99,6 +85,7 @@ const HomePage = () => {
       {/* <TransissionOut />
       <Baerekraft />
       <TransissionIn /> */}
+      </div>
       <Image
         src="/svg/bg.svg"
         alt={"baerekraft"}
