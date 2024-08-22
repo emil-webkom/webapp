@@ -28,7 +28,7 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col m-14 items-left justify-center pt-4">
+      <div className="flex flex-col m-6 lg:m-14 items-left justify-center">
         <div className= "flex flex-col items-center space-y-6 lg:flex-row lg:space-x-6">
           <Hero
             title="Energi og Miljø"

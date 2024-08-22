@@ -29,7 +29,7 @@ const NavBar: FC = () => {
   }, [currentUser]);
 
   return (
-    <nav className="w-screen items-center lg:border-b border-slate-200">
+    <nav className="max-w-screen items-center lg:border-b border-slate-200">
       <div className="flex mx-[7%] py-4 justify-between items-center">
         <div className="flex gap-x-6">
           <div className="flex space-x-10">

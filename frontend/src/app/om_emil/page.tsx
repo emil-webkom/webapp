@@ -352,7 +352,7 @@ const OmEmilPage = () => {
             deg. Uansett vil vi i denne prosessen ta hensyn til deg og andre
             berørte, og ansvarlige for å håndtere varslingen har taushetsplikt.
           </p>
-          <div className="flex flex-col space-y-3 items-center lg:flex-row lg:space-x-5">
+          <div className="flex flex-col space-y-3 items-center lg:flex-row lg:space-x-5 lg:space-y-0">
             <Link href="for_studenten/varsle_oss">
               <Button>Meld inn varslingssak her</Button>
             </Link>
