@@ -5,7 +5,6 @@ import { FC, useEffect, useState } from "react";
 // be made object oriented to allow automatic updates to be made.
 
 const Footer: FC = () => {
-
   return (
     <footer>
       <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-[#001D21] text-white px-10 font-bold py-5">

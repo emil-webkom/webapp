@@ -33,7 +33,9 @@ const Fagkontakt: FC<CardProps> = ({
         </div>
         <div className="text-sm lg:text-l font-semibold px-10 ">{rolle}</div>
       </div>
-      <div className="text-xs lg:text-l font-light px-10 text-center h-[10vh] lg:h-[13vh]">{text}</div>
+      <div className="text-xs lg:text-l font-light px-10 text-center h-[10vh] lg:h-[13vh]">
+        {text}
+      </div>
 
       <div className="flex flex-col items-center">
         <div className="text-xs lg:text-l font-light underline">Kontakt:</div>

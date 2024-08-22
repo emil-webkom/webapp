@@ -26,52 +26,52 @@ const BigCard = ({ title, description, ...rest }: BigCardProps) => {
           <div className="flex-col space-y-4 ">
             <div className="grid grid-cols-3 grid-rows-2 gap-3">
               <div>
-              <MiniCard
-                label={"Høystemt"}
-                comitee={"Mannskoret"}
-                img="/image/Komiteer/Høystemt.png"
-                link="/for_studenten/komiteer"
-              />
+                <MiniCard
+                  label={"Høystemt"}
+                  comitee={"Mannskoret"}
+                  img="/image/Komiteer/Høystemt.png"
+                  link="/for_studenten/komiteer"
+                />
               </div>
               <div>
-              <MiniCard
-                label={"Pikestrøm"}
-                comitee={"pikestrøm"}
-                img="/image/Komiteer/pikestrøm.png"
-                link="/for_studenten/komiteer"
-              />
+                <MiniCard
+                  label={"Pikestrøm"}
+                  comitee={"pikestrøm"}
+                  img="/image/Komiteer/pikestrøm.png"
+                  link="/for_studenten/komiteer"
+                />
               </div>
               <div>
-              <MiniCard
-                label={"Klovneløpet"}
-                comitee={"klovnen"}
-                img="/image/Komiteer/klovneløpet.png"
-                link="/for_studenten/komiteer"
-              />
+                <MiniCard
+                  label={"Klovneløpet"}
+                  comitee={"klovnen"}
+                  img="/image/Komiteer/klovneløpet.png"
+                  link="/for_studenten/komiteer"
+                />
               </div>
               <div>
-              <MiniCard
-                label={"Ølkom"}
-                comitee={"olkom"}
-                img="/image/Komiteer/ølkom.png"
-                link="/for_studenten/komiteer"
-              />
+                <MiniCard
+                  label={"Ølkom"}
+                  comitee={"olkom"}
+                  img="/image/Komiteer/ølkom.png"
+                  link="/for_studenten/komiteer"
+                />
               </div>
               <div>
-              <MiniCard
-                label={"Brettkom"}
-                comitee={"spillogmoro"}
-                img="/image/Komiteer/Brettkom.png"
-                link="/for_studenten/komiteer"
-              />
+                <MiniCard
+                  label={"Brettkom"}
+                  comitee={"spillogmoro"}
+                  img="/image/Komiteer/Brettkom.png"
+                  link="/for_studenten/komiteer"
+                />
               </div>
               <div>
-              <MiniCard
-                label={"Kvinnekom"}
-                comitee={"morendin"}
-                img="/image/Komiteer/pikestrøm.png"
-                link="/for_studenten/komiteer"
-              />
+                <MiniCard
+                  label={"Kvinnekom"}
+                  comitee={"morendin"}
+                  img="/image/Komiteer/pikestrøm.png"
+                  link="/for_studenten/komiteer"
+                />
               </div>
             </div>
           </div>

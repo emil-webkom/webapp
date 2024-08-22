@@ -97,10 +97,10 @@ model Arrangement {
   bilde                 String?
   kapasitet             Int?
   beskrivelse           String
-  trinn                 String[]                @default([])
   arrangorID            String
   createdAt             DateTime                @default(now())
   updatedAt             DateTime
+  trinn                 Int[]                   @default([])
   komite                komite                  @relation(fields: [arrangorID], references: [id])
   ArrangementPaamelding ArrangementPaamelding[]
 }
@@ -111,8 +111,8 @@ model ArrangementPaamelding {
   arrangementID String
   createdAt     DateTime    @default(now())
   updatedAt     DateTime
-  Arrangement   Arrangement @relation(fields: [arrangementID], references: [id])
-  User          User        @relation(fields: [userID], references: [id])
+  Arrangement   Arrangement @relation(fields: [arrangementID], references: [id], onDelete: Cascade)
+  User          User        @relation(fields: [userID], references: [id], onDelete: Cascade)
 
   @@unique([userID, arrangementID])
 }

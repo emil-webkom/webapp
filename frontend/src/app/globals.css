@@ -12,8 +12,8 @@
   font-style: normal;
 }
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -131,16 +131,14 @@ body {
   transition: 100ms;
 }
 
-
 .custom-scrollbar::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .custom-scrollbar {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
 
 .hover-shadow:hover {
   text-shadow: 0 0 10px #579783;

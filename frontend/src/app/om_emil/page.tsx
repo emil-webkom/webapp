@@ -13,30 +13,29 @@ import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
 
 const OmEmilPage = () => {
-    const [styret, setStyret] = useState([]);
-    const [logos, setLogos] = useState([]);
+  const [styret, setStyret] = useState([]);
+  const [logos, setLogos] = useState([]);
 
+  const fetchAndSetData = async () => {
+    const [styretData, logosData] = await Promise.all([
+      fetch("api/styret").then((response) => response.json()),
+      fetch("api/komite/logo").then((response) => response.json()),
+    ]);
+    return { styretData, logosData };
+  };
 
-    const fetchAndSetData= async () =>{
-      const [styretData, logosData] = await Promise.all([
-        fetch("api/styret").then(response => response.json()),
-        fetch("api/komite/logo").then(response => response.json())
-      ]);
-      return {styretData, logosData};
-     }
-
-    useEffect(()=> {
-      const initData = async () =>{
-        try {
-          const {styretData, logosData} = await fetchAndSetData();
-            setStyret(styretData);
-            setLogos(logosData);
-        }catch(error){
-          console.error("Error fetching data:", error);
-        }
+  useEffect(() => {
+    const initData = async () => {
+      try {
+        const { styretData, logosData } = await fetchAndSetData();
+        setStyret(styretData);
+        setLogos(logosData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-      initData();
-    }, []);
+    };
+    initData();
+  }, []);
 
   const fagkontakt = [
     {
@@ -64,16 +63,14 @@ const OmEmilPage = () => {
 
   return (
     <div className="max-w-screen">
-        <Hero2
-          title="Energi og miljøstudentenes linjeforening"
-          undertitle="Her finner du informasjon om linjeforeningen Emil"
-        />
+      <Hero2
+        title="Energi og miljøstudentenes linjeforening"
+        undertitle="Her finner du informasjon om linjeforeningen Emil"
+      />
       <div className="flex flex-col justify-center items-center">
         <div className="flex justify-center items-center w-[95%] lg:w-[65%]">
           <div className="flex justify-center items-center ">
-            <div
-            className="flex flex-col space-y-10 lg:space-y-0 lg:flex-row justify-between pt-3 items-center"
-            >
+            <div className="flex flex-col space-y-10 lg:space-y-0 lg:flex-row justify-between pt-3 items-center">
               <div className="px-6 lg:w-[70%] font-extralight text-sm lg:text-l">
                 Energi og miljø-studiet er et sivilingeniørstudie (Master of
                 technology) ved Norges teknisk-naturvitenskapelige universitet,
@@ -83,22 +80,40 @@ const OmEmilPage = () => {
                 september 1998 kort tid etter første immatrikulering.
               </div>
               <div className="grid grid-cols-3 gap-2">
-                <Button className="p-2 lg:p-5" onClick={() => scrollToSection("om_studiet")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("om_studiet")}
+                >
                   Om studiet
                 </Button>
-                <Button className="p-2 lg:p-5" onClick={() => scrollToSection("historie")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("historie")}
+                >
                   Historie
                 </Button>
-                <Button className="p-2 lg:p-5" onClick={() => scrollToSection("hovedstyret")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("hovedstyret")}
+                >
                   Hovedstyret
                 </Button>
-                <Button className="p-2 lg:p-5" onClick={() => scrollToSection("studiemiljøet")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("studiemiljøet")}
+                >
                   Studiemiljøet
                 </Button>
-                <Button className="text-wrap p-2 lg:p-5" onClick={() => scrollToSection("Fagkontakt")}>
+                <Button
+                  className="text-wrap p-2 lg:p-5"
+                  onClick={() => scrollToSection("Fagkontakt")}
+                >
                   Faglige spørsmål
                 </Button>
-                <Button className="p-2 lg:p-5" onClick={() => scrollToSection("varsling")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("varsling")}
+                >
                   Varsle?
                 </Button>
               </div>
@@ -159,10 +174,7 @@ const OmEmilPage = () => {
         </div>
       </div>
       <TransissionOut />
-      <div
-        id="historie"
-        className="flex justify-center"
-      >
+      <div id="historie" className="flex justify-center">
         <div className="flex flex-col w-[90%] lg:w-[65%]">
           <div className="flex justify-center text-2xl font-bold">Historie</div>
           <div className="lg:flex justify-between lg:space-x-10">
@@ -216,9 +228,7 @@ const OmEmilPage = () => {
               Hovedstyret
             </p>
             <div className="flex flex-col justify-between py-6 gap-y-3 lg:flex-row lg:gap-x-10 ">
-              <div
-                className="flex items-center justify-center"
-              >
+              <div className="flex items-center justify-center">
                 <img
                   src="/image/Komiteer/HS/HSfelles.jpg"
                   alt="Hovedstyret fellesbilde"
@@ -278,7 +288,10 @@ const OmEmilPage = () => {
                 lav. Man kan dermed ta kontakt med hovedstyret for en prat og
                 for å lage en plan på hvordan man kan starte en ny komite.
               </p>
-              <Link href={"for_studenten/komiteer"} className="flex justify-center">
+              <Link
+                href={"for_studenten/komiteer"}
+                className="flex justify-center"
+              >
                 <Button>Les mer om komiteene her</Button>
               </Link>
             </div>

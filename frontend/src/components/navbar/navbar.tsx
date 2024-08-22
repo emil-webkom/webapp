@@ -71,38 +71,40 @@ const NavBar: FC = () => {
         </button>
       </div>
       {menuOpen && (
-        <div className="md:hidden flex gap-4 px-4 py-2 border-b border-slate-200"> {/* Added text-left class */}
+        <div className="md:hidden flex gap-4 px-4 py-2 border-b border-slate-200">
+          {" "}
+          {/* Added text-left class */}
           <div className="flex flex-col text-right ml-auto">
-          <Link
-            href="/om_emil"
-            className={`text-zinc-400 link-hover-effect ${
-              activeLink === "omEmil" ? "selected-state" : ""
+            <Link
+              href="/om_emil"
+              className={`text-zinc-400 link-hover-effect ${
+                activeLink === "omEmil" ? "selected-state" : ""
               }`}
               onClick={() => handleSetSelectedLink("omEmil")}
-              >
-            Om linjeforeningen
-          </Link>
-          <Link
-            href="/for_studenten"
-            className={`text-zinc-400 link-hover-effect ${
-              activeLink === "forStudenten" ? "selected-state" : ""
+            >
+              Om linjeforeningen
+            </Link>
+            <Link
+              href="/for_studenten"
+              className={`text-zinc-400 link-hover-effect ${
+                activeLink === "forStudenten" ? "selected-state" : ""
               }`}
               onClick={() => handleSetSelectedLink("forStudenten")}
-              >
-            For studenten
-          </Link>
-          <Link
-            href="/naeringsliv"
-            className={`text-zinc-400 link-hover-effect ${
-              activeLink === "næringsliv" ? "selected-state" : ""
+            >
+              For studenten
+            </Link>
+            <Link
+              href="/naeringsliv"
+              className={`text-zinc-400 link-hover-effect ${
+                activeLink === "næringsliv" ? "selected-state" : ""
               }`}
               onClick={() => handleSetSelectedLink("næringsliv")}
-              >
-            Næringsliv
-          </Link>
-          <a href="/auth/login" className="text-zinc-400 link-hover-effect">
-            Login
-          </a>
+            >
+              Næringsliv
+            </Link>
+            <a href="/auth/login" className="text-zinc-400 link-hover-effect">
+              Login
+            </a>
           </div>
         </div>
       )}

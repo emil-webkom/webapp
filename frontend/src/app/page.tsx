@@ -56,82 +56,87 @@ const HomePage = () => {
       <TransissionIn />
       <div className="h-full w-full background-dark p-8 flex justify-center ">
         <div className="flex flex-col w-[95%] lg:w-[65%] space-y-10">
-        <div className="flex justify-center items-center"> 
-          <div className="w-[42.1rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
-            Hva skjer på Emil?
+          <div className="flex justify-center items-center">
+            <div className="w-[42.1rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
+              Hva skjer på Emil?
+            </div>
           </div>
-        </div>
-        {/* <p className="text-white">Stuff goes here</p> */}
-        <div className="flex justify-center">
-        <div className="flex justify-between w-[42.1rem]">
-          <div className="w-[100%] lg:mr-3">
-            <ListView
-              events={[
-                {
-                  id: "kuk",
-                  title: "Lunsj med Equinor",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 3,
-                  location: "R7, Realfagsbygget",
-                  date: "12.06",
-                },
-                {
-                  id: "kuk",
-                  title: "BedEx",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 2,
-                  location: "Sentralbygget",
-                  date: "01.06",
-                },
-                {
-                  id: "kuk",
-                  title: "Grilling i parken",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  date: "03.05",
-                  trinn: 4,
-                  location: "Høyskoleparken",
-                },
-                {
-                  id: "kuk",
-                  title: "Eksamensforelesning i C++",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 2,
-                  location: "R7, Realfagsbygget",
-                  date: "01.06",
-                },
-                {
-                  id: "kuk",
-                  title: "Emil-lekene",
-                  decscription: "Adam ragusea is a food critic and youtuber",
-                  trinn: 1,
-                  location: "Bymarka",
-                  date: "01.06",
-                },
-              ]}
-            />
+          {/* <p className="text-white">Stuff goes here</p> */}
+          <div className="flex justify-center">
+            <div className="flex justify-between w-[42.1rem]">
+              <div className="w-[100%] lg:mr-3">
+                <ListView
+                  events={[
+                    {
+                      id: "kuk",
+                      title: "Lunsj med Equinor",
+                      decscription:
+                        "Adam ragusea is a food critic and youtuber",
+                      trinn: 3,
+                      location: "R7, Realfagsbygget",
+                      date: "12.06",
+                    },
+                    {
+                      id: "kuk",
+                      title: "BedEx",
+                      decscription:
+                        "Adam ragusea is a food critic and youtuber",
+                      trinn: 2,
+                      location: "Sentralbygget",
+                      date: "01.06",
+                    },
+                    {
+                      id: "kuk",
+                      title: "Grilling i parken",
+                      decscription:
+                        "Adam ragusea is a food critic and youtuber",
+                      date: "03.05",
+                      trinn: 4,
+                      location: "Høyskoleparken",
+                    },
+                    {
+                      id: "kuk",
+                      title: "Eksamensforelesning i C++",
+                      decscription:
+                        "Adam ragusea is a food critic and youtuber",
+                      trinn: 2,
+                      location: "R7, Realfagsbygget",
+                      date: "01.06",
+                    },
+                    {
+                      id: "kuk",
+                      title: "Emil-lekene",
+                      decscription:
+                        "Adam ragusea is a food critic and youtuber",
+                      trinn: 1,
+                      location: "Bymarka",
+                      date: "01.06",
+                    },
+                  ]}
+                />
+              </div>
+            </div>
+            <div className="bg-white hidden md:block rounded">
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={setDate}
+                className="rounded-md border "
+              />
+            </div>
           </div>
-        </div>
-          <div className="bg-white hidden md:block rounded">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border "
-            />
-          </div>
-        </div>
 
-        <div className="flex justify-center">
-          <BigCard {...data} />
-        </div>
-        <div className="w-full flex justify-center items-center">
-          <div className="w-full flex text-xl font-semibold text-white justify-center">
-            Søk Emil da vel!
+          <div className="flex justify-center">
+            <BigCard {...data} />
           </div>
+          <div className="w-full flex justify-center items-center">
+            <div className="w-full flex text-xl font-semibold text-white justify-center">
+              Søk Emil da vel!
+            </div>
+          </div>
+          <VideoPlayer />
         </div>
-        <VideoPlayer />
       </div>
-        </div>
       {/* <TransissionOut />
       <Baerekraft />
       <TransissionIn /> */}
