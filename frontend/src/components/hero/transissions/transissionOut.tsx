@@ -2,7 +2,7 @@ import { FC } from "react";
 
 const TransissionOut: FC = () => {
   return (
-    <div className="w-full ">
+    <div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"

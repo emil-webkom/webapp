@@ -19,6 +19,7 @@ const Event = ({
   const date = new Date(dato);
   const isFull = paameldinger.length === kapasitet;
   return (
+
     <>
       <Link
         className="w-full rounded-md h-18 flex flex-row bg-[#003A42] hover:bg-[#426e72] cursor-pointer"
@@ -55,10 +56,11 @@ const Event = ({
             <div className="flex items-center justify-center">
               <MapPin size={14} />
             </div>
+
           </div>
         </div>
-      </Link>
-    </>
+      </div>
+    </Link>
   );
 };
 

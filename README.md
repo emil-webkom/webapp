@@ -2,6 +2,7 @@
 
 Nettsiden for energi og miljø-studentenes linjeforening
 
+
 ## API
 Alle endpoints som treffes av applikasjonen er definert som API Routes, gjennom Next.js dynamisk routing; gjennom mappestruktur.
 
@@ -47,5 +48,4 @@ Anbefaler å lese [docs](https://ui.shadcn.com/docs)
 
 ## Icons
 Vi bruker for det meste ```lucide-react``` ikoner. Link [her](https://lucide.dev/icons/) men er ikke begrenset til kun disse. Finnes masse bra der ute. 
-
 

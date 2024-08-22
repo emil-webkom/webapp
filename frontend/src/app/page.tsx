@@ -29,12 +29,12 @@ const HomePage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-14 items-left justify-center pt-4">
-        <div className="flex space-x-10">
+        <div className="flex flex-col items-center space-y-6 lg:flex-row lg:space-x-6">
           <Hero
             title="Energi og Miljø"
             undertitle="Velkommen til energi og miljøstudentenes linjeforening!"
           />
-          <div className="relative max-lg:hidden w-[8rem] h-[8rem]">
+          <div className="relative w-[6rem] h-[6rem] lg:w-[8rem] lg:h-[8rem]">
             <Image
               src="/image/sponsorer/logo.png"
               fill
@@ -43,15 +43,15 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="flex text-left space-x-5 pt-9 px-1">
-          <div className="flex items-left space-x-2 items-center">
-            <span className="font-bold text-xl tracking-tighter ">
+        <div className="flex justify-center space-x-5 pt-6 text-center lg:justify-start lg:text-left ">
+          <div className="flex lg:items-left space-x-2 items-center">
+            <div className="font-bold text-sm lg:text-xl tracking-tighter ">
               Ny Student?
-            </span>
+            </div>
           </div>
           {/* <Button onClick={handleClick}>Les mer</Button> */}
           <Link href="/for_studenten">
-            <Button>
+            <Button className="text-sm lg:text-lg">
               Les mer
               <ArrowRight className="h-4 w-4 ml-2" />
             </Button>
@@ -59,11 +59,14 @@ const HomePage = () => {
         </div>
       </div>
       <TransissionIn />
-      <div className="h-full w-full background-dark p-8 justify-center space-y-8">
-        <div className="w-full flex justify-center items-center">
-          <div className="w-[40rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
-            Hva skjer på Emil?
+      <div className="h-full w-full background-dark p-8 flex justify-center ">
+        <div className="flex flex-col w-[95%] lg:w-[65%] space-y-10">
+          <div className="flex justify-center items-center">
+            <div className="w-[42.1rem] lg:w-[58.4rem] text-2xl font-semibold text-white pl-1">
+              Hva skjer på Emil?
+            </div>
           </div>
+
         </div>
         {/* <p className="text-white">Stuff goes here</p> */}
         <div className="gap-4 flex justify-center">
@@ -77,13 +80,9 @@ const HomePage = () => {
               <ListView events={data?.arrangementer || []} />
             )}
           </div>
-          <div className="bg-white inline-block rounded-md max-lg:hidden">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border"
-            />
+
+          <div className="flex justify-center">
+            <BigCard {...data} />
           </div>
         </div>
         <div className="flex justify-center">
@@ -92,9 +91,10 @@ const HomePage = () => {
         <div className="w-full flex justify-center items-center">
           <div className="w-full flex text-xl font-semibold text-white justify-center">
             Søk Emil da vel!
+
           </div>
+          <VideoPlayer />
         </div>
-        <VideoPlayer />
       </div>
       {/* <TransissionOut />
       <Baerekraft />

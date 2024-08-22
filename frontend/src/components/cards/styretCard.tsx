@@ -56,6 +56,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+
             className="lucide lucide-circle-arrow-left"
           >
             <circle cx="12" cy="12" r="10" />
@@ -63,7 +64,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             <path d="m12 8-4 4 4 4" />
           </svg>
         </button>
-        <div className="relative w-[80%] h-[70vh] overflow-hidden">
+        <div className="relative w-[100%] overflow-hidden">
           <div
             className={`flex transition-transform duration-300 ease-in-out transform ${
               isSliding ? "delay-300" : ""
@@ -73,24 +74,34 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full flex items-center justify-between space-x-5 p-10 bg-[#003A42] rounded-md"
+                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-[#003A42] rounded-md py-5 space-y-5 lg:flex-row lg:space-x-5 lg:p-6"
               >
-                <div className="flex flex-col justify-between w-[60%] space-y-5 h-full">
-                  <div>
-                    <p className="text-2xl font-semibold">{item.rolle}</p>
-                    <p className="text-l font-normal">{item.name}</p>
+                <div className="flex flex-col space-y-3 px-5 lg:w-[60%] lg:space-y-5 lg:h-4/5 lg:justify-between">
+                  <div className="">
+                    <p className="text-base lg:text-2xl font-semibold">
+                      {item.rolle}
+                    </p>
+                    <p className="text-sm lg:text-xl font-normal">
+                      {item.name}
+                    </p>
                   </div>
-                  <p className="text-medium font-extralight">{item.text}</p>
+                  <p className="text-xs lg:text-sm font-extralight">
+                    {item.text}
+                  </p>
                   <div className="flex flex-col">
-                    <p className="text-xs font-light">Kontakt: {item.mail}</p>
-                    <p className="text-xs font-light">Tlf: +78{item.nummer}</p>
+                    <p className="text-xs lg:text-sm font-light">
+                      Kontakt: {item.mail}
+                    </p>
+                    <p className="text-xs lg:text-sm font-light">
+                      Tlf: +78{item.nummer}
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center px-6">
                   <img
                     src={item.bilde}
                     alt={item.rolle}
-                    className="w-[50vh] h-[50vh] object-cover rounded-md"
+                    className="w-[20vh] h-[20vh] lg:w-[50vh] lg:h-[50vh] object-cover rounded-md"
                   />
                 </div>
               </div>
@@ -108,6 +119,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+
             className="lucide lucide-circle-arrow-right"
           >
             <circle cx="12" cy="12" r="10" />

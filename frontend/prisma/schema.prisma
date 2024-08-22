@@ -131,6 +131,7 @@ model ArrangementPaamelding {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 
+
   @@unique([userID, arrangementID])
 }
 
