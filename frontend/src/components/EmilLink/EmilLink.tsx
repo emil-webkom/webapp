@@ -4,9 +4,9 @@ import Link from "next/link";
 
 const EmilLink = () => {
   return (
-    <div className="bg-[#001D21] flex flex-col items-center justify-center  text-center py-18">
+    <div className="bg-[#001D21] flex flex-col items-center justify-center text-left py-18">
       <p className="font-extrabold text-2xl text-white py-6 ">EMIL-Link</p>
-      <p className="text-white mx-5 font-extralight text-l leading-relaxed max-w-4xl">
+      <p className="text-white font-extralight text-sm lg:text-l leading-relaxed max-w-4xl">
         Ønsker din bedrift å promotere stillingsannonser, internships eller gi
         et generelt innblikk i hva din bedrift driver med? Emil-Link tilbyr
         flere ulike tjenester hvor bedrifter har mulighet til å komme i kontakt
@@ -17,7 +17,7 @@ const EmilLink = () => {
       </p>
       <div className="py-6">
         <Link href="https://www.emil-link.no/">
-          <button className="bg-white text-[#001D21] py-2 px-4 rounded hover hover:text-gray-400 active:text-grey-500  text-sm">
+          <button className="bg-white text-[#001D21] py-2 px-4 rounded hover hover:text-gray-400 active:text-grey-500  text-base">
             Kontakt oss her
           </button>
         </Link>

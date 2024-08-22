@@ -25,8 +25,8 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
   buttonLinkHref,
 }) => {
   return (
-    <div className="bg-white rounded-lg border-2 border-[#001D21] w-96 p-6 flex flex-col items-center">
-      <div className="flex flex-col justify-between h-full ">
+    <div className="bg-white rounded-lg border-2 border-[#001D21] lg:w-96 p-6 flex flex-col items-center">
+      <div className="flex flex-col justify-between">
         <div className="flex justify-center">
           <a
             href={imageLinkHref}
@@ -45,7 +45,7 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
           {subtitle}
         </h3>
 
-        <p className="text-gray-700 h-64 font-extralight text-l pb-0">
+        <p className="text-gray-700 h-60 lg:h-64 font-extralight text-sm lg:text-l pb-0">
           {description}
           <a
             href={linkHref}

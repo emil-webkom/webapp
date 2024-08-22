@@ -34,11 +34,11 @@ const logos = [
 const LogoSection: React.FC = () => {
   return (
     <div>
-      <div className="text-center pt-2 pb-5 bg-white">
-        <h2 className="text-2xl font-bold mb-10 pb-20">
+      <div className="text-center pt-2 bg-white ">
+        <h2 className="text-2xl font-bold ">
           En stor takk til alle våre samarbeidspartnere!
         </h2>
-        <div className="grid grid-cols-4 gap-36 py-4 px-35">
+        <div className="grid grid-cols-2 gap-20 lg:grid-cols-4 lg:gap-36 p-6 ">
           {logos.map((logo, index) => (
             <div key={index} className="flex justify-center items-center py-4">
               <a
