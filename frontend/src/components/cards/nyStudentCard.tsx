@@ -14,7 +14,7 @@ export interface nyStudentCardProps {
 const NyStudentCard = ({title,icon,description,frist,href, buttonText} :nyStudentCardProps) => {
 
   return (
-    <div className='flex gap-2 min-w-60 max-w-[512px] p-2'>
+    <div className='flex gap-2 min-w-60 max-w-[512px] p-2 rounded-md border-[#a8a8a83f] border-2'>
         <div className='pt-1'>
             {icon}
         </div>
@@ -30,7 +30,7 @@ const NyStudentCard = ({title,icon,description,frist,href, buttonText} :nyStuden
                         <p className='text-[#cbcbcb]'>{frist}</p>
                     </div> : <></>}
                 {buttonText && href?
-                <Link href={href} target='_blank' rel='noopener norefferer' className='border-2 rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 p-1 hover:bg-slate-40 w-fit'>
+                <Link href={href} target='_blank' rel='noopener norefferer' className='border-[1px] rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 py-1 px-2 hover:bg-slate-40 w-fit'>
                               {buttonText}
                               <ArrowUpRight className='w-4'></ArrowUpRight>
                     </Link>
