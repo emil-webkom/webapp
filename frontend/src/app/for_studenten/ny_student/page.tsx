@@ -126,8 +126,8 @@ const ForStudentPage = () => {
         </div>
       </div>
 
-      <HeaderText className="text-xl bg-[#457969] pt-2">Hva vil du lese om?</HeaderText>
-      <div className="flex flex-row flex-wrap justify-center p-2 gap-2 bg-[#457969] sticky top-0">
+      <HeaderText className="text-xl bg-[#457969] pt-4">Hva vil du lese om?</HeaderText>
+      <div className="flex flex-row flex-wrap justify-center p-2 gap-4 bg-[#457969] sticky top-0">
       {pageSections.map((s,i) =>(
         <button key={i} onClick={()=>scrollToSection(s.tag)} className='border-[1px] rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 p-1 hover:bg-slate-40 w-fit'>
                             {s.tag}
@@ -142,7 +142,7 @@ const ForStudentPage = () => {
       intro={s.intro} 
       tag={s.tag} 
       content={s.content} 
-      bg={i % 2 !== 0 ? '' : '[#225654]'}
+      bg={i % 2 !== 0 ? '' : 'bg-[#225654]'}
     />)}
     </div>
   </>

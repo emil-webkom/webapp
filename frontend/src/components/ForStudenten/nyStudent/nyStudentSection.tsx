@@ -10,10 +10,9 @@ export interface nyStudentSectionProps {
 
 const NyStudentSection = ({title,intro,tag,bg,content} : nyStudentSectionProps) => {
   return (
-    <div id={tag} key={tag} className={`bg-${bg} py-10 px-12 justify-center flex flex-col items-center`}>
+    <div id={tag} key={tag} className={`${bg} py-10 px-12 justify-center flex flex-col items-center`}>
         <HeaderText>{title}</HeaderText>
-        <p className="max-w-[512px] mt-2 mb-4">{intro}
-        </p>
+        {intro}
         {content}
     </div>
   )
