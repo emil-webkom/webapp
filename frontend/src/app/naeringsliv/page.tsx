@@ -15,12 +15,12 @@ const NaeringslivPage = () => {
           undertitle="Her finner du alt du trenger å vite om Emil og næringslivet"
           />
       </div>
-      <p className="font-extralight text-sm lg:text-l">
+      <p className="font-extralight text-sm lg:text-base">
         Energi- og miljøstudiet har utviklet et godt kontaktnett med
         energibransjen og næringslivet. Energikontakten fungerer som et
         bindeledd mellom studentene på linjen, faglærere og næringslivet.
       </p>
-      <p className="font-extralight text-sm lg:text-l">
+      <p className="font-extralight text-sm lg:text-base">
         Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
       </p>
       </div>
