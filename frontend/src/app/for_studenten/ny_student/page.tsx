@@ -3,6 +3,7 @@ import DropdownCard, { dropdownCardProps } from "@/components/cards/dropdownCard
 import NyStudentCard, { nyStudentCardProps } from "@/components/cards/nyStudentCard";
 import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
+import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
 import { FaFacebookF } from "react-icons/fa";
@@ -132,15 +133,7 @@ const ForStudentPage = () => {
         </div>
       </div>
 
-      <HeaderText className="text-xl bg-[#457969] pt-4">Hva vil du lese om?</HeaderText>
-      <div className="flex flex-row flex-wrap justify-center p-2 gap-4 bg-[#457969] sticky top-0">
-        {pageSections.map((s, i) => (
-          <button key={i} onClick={() => scrollToSection(s.tag)} className='border-[1px] rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 p-1 hover:bg-slate-40 w-fit'>
-            {s.tag}
-          </button>
-        ))}
-
-      </div>
+      <StickyNavbar tags={[... pageSections.map(s => s.tag)]}></StickyNavbar>
       {pageSections.map((s, i) =>
         <NyStudentSection
           key={i}
