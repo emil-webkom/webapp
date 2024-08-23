@@ -33,7 +33,9 @@ const NyStudentCard = ({title,icon,description,frist,href, buttonText} :nyStuden
                 {buttonText && href?
                 <Button variant={'transparent'}>
                 <Link href={href} target='_blank' rel='noopener norefferer' className='flex-row justify-center items-center gap-1'>
+                              <p>
                               {buttonText}
+                              </p>
                               <ArrowUpRight className='w-4'></ArrowUpRight>
                     </Link>
                 </Button>

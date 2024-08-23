@@ -12,14 +12,14 @@ const Banner: FC = () => {
   };
   return (
     <nav className="flex justify-center">
-      <div className="w-[30%]">
+      <div className="w-[80%] lg:w-[30%]">
         <div className="justify-center space-x-2 py-3 grid grid-cols-4 gap-6 ">
           <Link
             href="/for_studenten/ny_student"
             className={`text-zinc-400 link-hover-effect ${activeLink === "ny_student" ? "selected-state" : ""}`}
             onClick={() => handleSetSelectedLink("ny_student")}
           >
-            <div className="flex flex-col items-center justify-center py-1 ">
+            <div className="flex flex-col items-center justify-center py-1 flex-shrink-0">
               <svg
                 width="25"
                 height="25"
@@ -62,7 +62,7 @@ const Banner: FC = () => {
                   />
                 </g>
               </svg>
-              <p className="text-xs ">Ny student?</p>
+              <p className="text-xs text-center">Ny student</p>
             </div>
           </Link>
           <Link
@@ -113,7 +113,7 @@ const Banner: FC = () => {
                   />
                 </g>
               </svg>
-              <p className="text-xs ">Arrangementer</p>
+              <p className="text-xs">Arrangementer</p>
             </div>
           </Link>
           <Link
@@ -404,7 +404,7 @@ const Banner: FC = () => {
                   />
                 </g>
               </svg>
-              <p className="text-xs ">Varsle oss</p>
+              <p className="text-xs text-center">Varsle oss</p>
             </div>
           </Link>
         </div>
