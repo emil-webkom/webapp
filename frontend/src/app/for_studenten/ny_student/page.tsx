@@ -1,4 +1,5 @@
 'use client'
+import DropdownCard, { dropdownCardProps } from "@/components/cards/dropdownCard";
 import NyStudentCard, { nyStudentCardProps } from "@/components/cards/nyStudentCard";
 import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
@@ -66,28 +67,30 @@ const ForStudentPage = () => {
     href: "https://www.facebook.com/groups/622786496486913/"
   }]
 
-  const forsteUkeneCards: nyStudentCardProps[] = [
+  const forsteUkeneCards: dropdownCardProps[] = [
     {
       title: "Immatrikulering",
-      description: "Skoleåret begynner med felles samling og immatrikulering på Gløshaugen. Dette skjer mandag 14. august i EL5 fra 12:00-13:00"
+      content: "Skoleåret begynner med felles samling og immatrikulering på Gløshaugen. Dette skjer mandag 14. august i EL5 fra 12:00-13:00",
+      time: "14. august 12:00 - 13:00",
+      place: "Gløshaugen EL5",
+      oneLiner: "Skoleåret begynner med felles samling og immatrikulering på..."
     }, {
       title: "Fadderperioden",
-      description: "Fadderperioden består av to uker med arrangementer hver eneste dag. Målet er at alle som starter på energi og miljø skal få den ultimate starten på studiet og en herlig velkomst til studentbyen Trondheim. Disse ukene er hele byen preget av festivalstemning og terskelen for å hilse på nye folk er ikke-eksisterende."
+      content: "Fadderperioden består av to uker med arrangementer hver eneste dag. Målet er at alle som starter på energi og miljø skal få den ultimate starten på studiet og en herlig velkomst til studentbyen Trondheim. Disse ukene er hele byen preget av festivalstemning og terskelen for å hilse på nye folk er ikke-eksisterende."
     },
     {
       title: "Renselsen",
-      description: "Dette er en innvielsessermoni til linjeforeningen for alle nye studenter og er tradisjonelt for sivil-ingienørlinjene på NTNU. Det skjer i september."
+      content: "Dette er en innvielsessermoni til linjeforeningen for alle nye studenter og er tradisjonelt for sivil-ingienørlinjene på NTNU. Det skjer i september."
     }, {
       title: "Immatrikuleringsball",
-      description: " En velkomstfest for ny-studentene i linjeforeningen. Hele linjeforeningen samles til en helaften med mat, drikke og underholdning for å feire de nye studentene. Det skjer kvelden etter renselsen."
+      content: " En velkomstfest for ny-studentene i linjeforeningen. Hele linjeforeningen samles til en helaften med mat, drikke og underholdning for å feire de nye studentene. Det skjer kvelden etter renselsen."
     },
   ]
   const pageSections: nyStudentSectionProps[] = [
     {
       title: "Sjekkliste for nye EMIL-studenter",
       tag: "Sjekkliste",
-      intro: <p className="max-w-[512px] mt-2 mb-6 text-center">De viktigste tingene å få unnagjort når du har fått plass på studiet. NTNUs offisielle sjekkliste kan du lese <Link href={"https://i.ntnu.no/ny-student"} target='_blank' rel='noopener norefferer' className="text-green-300 underline">her</Link>.
-      </p>,
+      intro: <>De viktigste tingene å få unnagjort når du har fått plass på studiet. NTNUs offisielle sjekkliste kan du lese <Link href={"https://i.ntnu.no/ny-student"} target='_blank' rel='noopener norefferer' className="text-green-300 underline">her</Link>.</>,
       content: <div className="grid gap-8 lg:grid-cols-2">
         {unnagjortCards.map((c, i) =>
           <NyStudentCard key={i} title={c.title} description={c.description} frist={c.frist} icon={c.icon} buttonText={c.buttonText} href={c.href}></NyStudentCard>
@@ -96,9 +99,9 @@ const ForStudentPage = () => {
     }, {
       title: "De første ukene på studiet",
       tag: "De første ukene",
-      content: <div className="grid gap-4 lg:grid-cols-1">
+      content: <div className="flex flex-col self-center w-full max-w-[512px] gap-4 lg:grid-cols-1">
         {forsteUkeneCards.map((c, i) =>
-          <NyStudentCard key={i} title={c.title} description={c.description} frist={c.frist} icon={c.icon} buttonText={c.buttonText} href={c.href}></NyStudentCard>
+          <DropdownCard key={i} title={c.title} content={c.content} time={c.time} place={c.place} oneLiner={c.oneLiner}/>
         )}
       </div>
     },

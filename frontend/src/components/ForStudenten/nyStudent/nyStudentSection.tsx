@@ -12,7 +12,7 @@ const NyStudentSection = ({title,intro,tag,bg,content} : nyStudentSectionProps) 
   return (
     <div id={tag} key={tag} className={`${bg} py-10 px-12 justify-center flex flex-col items-center`}>
         <HeaderText>{title}</HeaderText>
-        {intro}
+        <p className="max-w-[512px] mb-6 text-center">{intro}</p>
         {content}
     </div>
   )
