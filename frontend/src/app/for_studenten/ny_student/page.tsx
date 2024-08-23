@@ -4,7 +4,6 @@ import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
 import { Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
-import { ReactNode } from "react";
 import { FaFacebookF } from "react-icons/fa";
 
 const ForStudentPage = () => {
@@ -67,7 +66,6 @@ const ForStudentPage = () => {
     href: "https://www.facebook.com/groups/622786496486913/"
   }]
 
-
   const forsteUkeneCards: nyStudentCardProps[] = [
     {
       title: "Immatrikulering",
@@ -90,7 +88,7 @@ const ForStudentPage = () => {
       tag: "Sjekkliste",
       intro: <p className="max-w-[512px] mt-2 mb-6 text-center">De viktigste tingene å få unnagjort når du har fått plass på studiet. NTNUs offisielle sjekkliste kan du lese <Link href={"https://i.ntnu.no/ny-student"} target='_blank' rel='noopener norefferer' className="text-green-300 underline">her</Link>.
       </p>,
-      content: <div className="grid gap-4 lg:grid-cols-2">
+      content: <div className="grid gap-8 lg:grid-cols-2">
         {unnagjortCards.map((c, i) =>
           <NyStudentCard key={i} title={c.title} description={c.description} frist={c.frist} icon={c.icon} buttonText={c.buttonText} href={c.href}></NyStudentCard>
         )}
@@ -108,9 +106,6 @@ const ForStudentPage = () => {
       title: "Tips og verktøy",
       tag: "Tips og verktøy",
       content: <div className="grid gap-4 lg:grid-cols-1">
-        {forsteUkeneCards.map((c, i) =>
-          <NyStudentCard key={i} title={c.title} description={c.description} frist={c.frist} icon={c.icon} buttonText={c.buttonText} href={c.href}></NyStudentCard>
-        )}
       </div>
     },]
 
@@ -118,6 +113,14 @@ const ForStudentPage = () => {
   return <>
     <div className="text-white w-[100%]">
       <div className="p-12 justify-center flex flex-col items-center space-y-6">
+      <div className="relative flex h-52 w-full rounded-md overflow-hidden">
+        <img 
+          src="/image/EMIL/nyStudentHeader.jpg" 
+          alt="emil" 
+          className="absolute h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#011c21cc] z-10"></div>
+      </div>
         <HeaderText className="text-3xl">Velkommen til <span className="text-[#c7ff96]">Energi og Miljø!</span></HeaderText>
         <div className="space-y-4 text-base max-w-[512px]">
           <p>Og velkommen til linjeforeningen for Energi og miljø-studiet, også kalt EMIL. EMIL driftes av studentene ved studiet og er ansvarlig for at alle studentene på energi og miljø-studiet har det bra under studietiden sin.</p>
@@ -128,22 +131,22 @@ const ForStudentPage = () => {
 
       <HeaderText className="text-xl bg-[#457969] pt-4">Hva vil du lese om?</HeaderText>
       <div className="flex flex-row flex-wrap justify-center p-2 gap-4 bg-[#457969] sticky top-0">
-      {pageSections.map((s,i) =>(
-        <button key={i} onClick={()=>scrollToSection(s.tag)} className='border-[1px] rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 p-1 hover:bg-slate-40 w-fit'>
-                            {s.tag}
-                  </button>
-      ))}
-      
+        {pageSections.map((s, i) => (
+          <button key={i} onClick={() => scrollToSection(s.tag)} className='border-[1px] rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 p-1 hover:bg-slate-40 w-fit'>
+            {s.tag}
+          </button>
+        ))}
+
       </div>
-      {pageSections.map((s, i) => 
-      <NyStudentSection 
-      key={i}
-      title={s.title} 
-      intro={s.intro} 
-      tag={s.tag} 
-      content={s.content} 
-      bg={i % 2 !== 0 ? '' : 'bg-[#225654]'}
-    />)}
+      {pageSections.map((s, i) =>
+        <NyStudentSection
+          key={i}
+          title={s.title}
+          intro={s.intro}
+          tag={s.tag}
+          content={s.content}
+          bg={i % 2 !== 0 ? '' : 'bg-[#225654]'}
+        />)}
     </div>
   </>
 };
