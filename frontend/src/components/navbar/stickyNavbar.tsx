@@ -14,8 +14,8 @@ const StickyNavbar = (props : stickyNavbarProps) => {
 
   return (
     <>
-    <HeaderText className="text-xl bg-[#457969] pt-4">Hva vil du lese om?</HeaderText>
-    <div className="flex flex-row flex-wrap justify-center p-2 gap-4 bg-[#457969] sticky top-0">
+    <HeaderText className="text-xl bg-[#579783] pt-4">Hva vil du lese om?</HeaderText>
+    <div className="flex flex-row flex-wrap justify-center p-2 gap-4 bg-[#579783] sticky top-0">
       {props.tags.map((s, i) => (
         <Button key={i} onClick={() => scrollToSection(s)} variant={'transparent'} size={'pill'} >
           {s}

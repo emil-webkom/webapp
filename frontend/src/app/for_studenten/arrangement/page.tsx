@@ -7,6 +7,9 @@ import { Arrangement } from "@/schemas/arrangement";
 import { fetchArrangementer } from "@/utils/arrangement/arrangement";
 import { useEffect, useState } from "react";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
+import NyStudentCard from "@/components/cards/nyStudentCard";
+import SmallTransissionDarkHighligt from "@/components/hero/transissions/smallTransissionDarkHighlight";
+import SmallTransissionHighlightSPC from "@/components/hero/transissions/smallTransissionHighlightSPC";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
@@ -46,7 +49,7 @@ const ForStudentenPage = () => {
   }
 
   return (
-    <div className=" flex flex-col justify-center w-full gap-y-6 text-white">
+    <div className=" flex flex-col justify-center w-full text-white">
       <div className="w-full pt-12 px-12">
         <img
           src="/image/Komiteer/HS/HSfelles.jpg"
@@ -126,6 +129,7 @@ const ForStudentenPage = () => {
         </div>
       </div>
       {/* Add small transition in*/}
+      <SmallTransissionDarkHighligt />
       <div className="w-full ">
         <StickyNavbar
           tags={[
@@ -135,22 +139,101 @@ const ForStudentenPage = () => {
             "Årlige arrangementer",
           ]}
         />
-        {/* Add small transition out */}
-        <div id="Regler" className="bg-[#25504E]">
-          relger
+        <SmallTransissionHighlightSPC />
+        <div
+          id="Regler"
+          className="bg-[#225654] flex flex-col items-center justify-center pt-8"
+        >
+          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4">
+            <p>Arrangementsregler</p>
+          </div>
+          <div className="flex justify-center items-center max-w-[512px]">
+            <div className="grid grid-cols-2 grid-rows-4 gap-4 justify-center py-4">
+              <NyStudentCard
+                title={
+                  "Ta imot medstudentene dine med åpent sinn og vis inkluderende atferd"
+                }
+                description={""}
+                icon="1."
+              />
+              <NyStudentCard
+                title={"Behandle dine medstudenter med respekt"}
+                description={""}
+                icon="2."
+              />
+              <NyStudentCard
+                title={
+                  "Bevisst på hva som bidrar til press og etterstreb å motvirke det."
+                }
+                description={""}
+                icon="3."
+              />
+              <NyStudentCard
+                title={
+                  "Si ifra. Linjeforeningen har nulltrolleranse for trakassering og mobbing."
+                }
+                description={""}
+                icon="4."
+              />
+              <NyStudentCard
+                title={
+                  "Ta ansvar for egne handlinger og vær bevisst på hvordan de påvirker andre."
+                }
+                description={""}
+                icon="5."
+              />
+              <NyStudentCard
+                title={
+                  "Bidra aktivt til et positivt og støttende fellesskap der alle føler seg velkomne."
+                }
+                description={""}
+                icon="6."
+              />
+              <NyStudentCard
+                title={
+                  "Anerkjenn og respekter forskjellige bakgrunner og perspektiver."
+                }
+                description={""}
+                icon="7."
+              />
+              <NyStudentCard
+                title={
+                  "Del ideer, bekymringer og tilbakemeldinger på en konstruktiv måte."
+                }
+                description={""}
+                icon="8."
+              />
+            </div>
+          </div>
           {/* Nystudent-card brukes her: trenger titel,description og icon. Icon= 1,2,3,4 -> wrap i <p/> */}
         </div>
-        <div id="Aktive arrangementer" className="flex flex-col items-center justify-center py-6">
-          <div className="max-w-[512px] w-full">
+        <div
+          id="Aktive arrangementer"
+          className="flex flex-col items-center justify-center py-6"
+        >
+          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-6">
+            <p>Aktive arrangementer</p>
+          </div>
+          {/* Correct transission in */}
+          <div className="max-w-[512px] w-full ">
+            <p className="pb-4">
+              Aktive arrangementer publiseres her og i relevante <span className="text-[#579783] text-underscore">
+                <a
+                  href="https://www.facebook.com/groups/emilntnu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  facebookgrupper
+                </a>
+              </span>
+              . Klikk på et arrangement for å lese mer!
+            </p>
+
             <ListView events={arrangementer} />
           </div>
         </div>
-        <div id="Lavterskel kalender">
-          LT
-        </div>
-        <div id="Årlige arrangementer">
-          Årlig ARR
-        </div>
+        <div id="Lavterskel kalender">LT</div>
+        <div id="Årlige arrangementer">Årlig ARR</div>
       </div>
     </div>
   );
