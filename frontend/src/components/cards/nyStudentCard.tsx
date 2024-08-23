@@ -12,9 +12,9 @@ export interface nyStudentCardProps {
 }
 
 const NyStudentCard = ({title,icon,description,frist,href, buttonText} :nyStudentCardProps) => {
-
+// bg-[#3333]
   return (
-    <div className='flex gap-2 min-w-60 max-w-[512px] p-2 rounded-md border-[#a8a8a83f] border-2'>
+    <div className='flex gap-2 min-w-60 max-w-[512px] p-4 rounded-md bg-[#3333]'>
         <div className='pt-1'>
             {icon}
         </div>
