@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
+import { Button } from '../ui/button'
 
 export interface nyStudentCardProps {
     title: string,
@@ -30,10 +31,12 @@ const NyStudentCard = ({title,icon,description,frist,href, buttonText} :nyStuden
                         <p className='text-[#cbcbcb]'>{frist}</p>
                     </div> : <></>}
                 {buttonText && href?
-                <Link href={href} target='_blank' rel='noopener norefferer' className='border-[1px] rounded-md flex-row justify-center items-center hover:bg-slate-400 gap-1 py-1 px-2 hover:bg-slate-40 w-fit'>
+                <Button variant={'transparent'}>
+                <Link href={href} target='_blank' rel='noopener norefferer' className='flex-row justify-center items-center gap-1'>
                               {buttonText}
                               <ArrowUpRight className='w-4'></ArrowUpRight>
                     </Link>
+                </Button>
                           : 
                 <></>}
             </div>
