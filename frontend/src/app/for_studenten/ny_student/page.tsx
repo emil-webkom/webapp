@@ -4,6 +4,7 @@ import NyStudentCard, { nyStudentCardProps } from "@/components/cards/nyStudentC
 import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
+import { Popover } from "@/components/ui/popover";
 import { Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
 import { FaFacebookF } from "react-icons/fa";
@@ -77,7 +78,23 @@ const ForStudentPage = () => {
       oneLiner: "Skoleåret begynner med felles samling og immatrikulering på..."
     }, {
       title: "Fadderperioden",
-      content: "Fadderperioden består av to uker med arrangementer hver eneste dag. Målet er at alle som starter på energi og miljø skal få den ultimate starten på studiet og en herlig velkomst til studentbyen Trondheim. Disse ukene er hele byen preget av festivalstemning og terskelen for å hilse på nye folk er ikke-eksisterende."
+      content:
+        <div className="space-y-8">
+          <div className="space-y-2">
+          <p>Fadderperioden består av to uker med arrangementer hver eneste dag. Målet er at alle som starter på energi og miljø skal få den ultimate starten på studiet og en herlig velkomst til studentbyen Trondheim. Disse ukene er hele byen preget av festivalstemning og terskelen for å hilse på nye folk er ikke-eksisterende.</p>
+          <p>Husk å melde deg på ved å fylle ut påmeldingskjema <Link href={"https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform"} target='_blank' rel='noopener norefferer' className="text-green-300 underline">her</Link>!</p>
+          </div>
+          <div className="">
+            <img className='rounded-md' src="/image/EMIL/fadderukaPlan.png" alt="" />
+          </div>
+
+          <div>
+            <h2 className="font-semibold">Fadderansvarlig</h2>
+
+          </div>
+
+        </div>,
+      time: "14. august - 25. august"
     },
     {
       title: "Renselsen",
@@ -100,9 +117,9 @@ const ForStudentPage = () => {
     }, {
       title: "De første ukene på studiet",
       tag: "De første ukene",
-      content: <div className="flex flex-col self-center w-full max-w-[512px] gap-4 lg:grid-cols-1">
+      content: <div className="flex flex-col self-center w-full max-w-[512px] gap-4">
         {forsteUkeneCards.map((c, i) =>
-          <DropdownCard key={i} title={c.title} content={c.content} time={c.time} place={c.place} oneLiner={c.oneLiner}/>
+          <DropdownCard key={i} title={c.title} content={c.content} time={c.time} place={c.place} oneLiner={c.oneLiner} />
         )}
       </div>
     },
@@ -115,16 +132,16 @@ const ForStudentPage = () => {
 
 
   return <>
-    <div className="text-white w-[100%]">
+    <div className="text-white w-full">
       <div className="p-12 justify-center flex flex-col items-center space-y-6">
-      <div className="relative flex h-52 w-full rounded-md overflow-hidden">
-        <img 
-          src="/image/EMIL/nyStudentHeader.jpg" 
-          alt="emil" 
-          className="absolute h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#011c21cc] z-10"></div>
-      </div>
+        <div className="relative flex h-52 w-full rounded-md overflow-hidden">
+          <img
+            src="/image/EMIL/nyStudentHeader.jpg"
+            alt="EMIL linjeforeningen"
+            className="absolute h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#011c21cc] z-10"></div>
+        </div>
         <HeaderText className="text-3xl">Velkommen til <span className="text-[#c7ff96]">Energi og Miljø!</span></HeaderText>
         <div className="space-y-4 text-base max-w-[512px]">
           <p>Og velkommen til linjeforeningen for Energi og miljø-studiet, også kalt EMIL. EMIL driftes av studentene ved studiet og er ansvarlig for at alle studentene på energi og miljø-studiet har det bra under studietiden sin.</p>
@@ -133,7 +150,7 @@ const ForStudentPage = () => {
         </div>
       </div>
 
-      <StickyNavbar tags={[... pageSections.map(s => s.tag)]}></StickyNavbar>
+      <StickyNavbar tags={[...pageSections.map(s => s.tag)]}></StickyNavbar>
       {pageSections.map((s, i) =>
         <NyStudentSection
           key={i}
