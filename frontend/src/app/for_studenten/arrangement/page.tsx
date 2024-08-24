@@ -5,16 +5,37 @@ import Hero from "@/components/hero/hero1";
 import { Button } from "@/components/ui/button";
 import { Arrangement } from "@/schemas/arrangement";
 import { fetchArrangementer } from "@/utils/arrangement/arrangement";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
 import SmallTransissionDarkHighligt from "@/components/hero/transissions/smallTransissionDarkHighlight";
 import SmallTransissionHighlightSPC from "@/components/hero/transissions/smallTransissionHighlightSPC";
+import Calendar from "react-calendar";
+import AarligArrangementCard from "@/components/cards/aarligArrangementCard";
+import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
+import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState("Regler");
+
+  const sectionRefs = {
+    Regler: useRef(null),
+    "Aktive arrangementer": useRef(null),
+    Lavterskelkalender: useRef(null),
+    "Årlige arrangementer": useRef(null),
+  };
+
+  const handleDateClick = (date: Date) => {
+    setSelectedDate(date.toDateString());
+  };
+
+  const closeModal = () => {
+    setSelectedDate(null);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,6 +60,37 @@ const ForStudentenPage = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.6,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    Object.values(sectionRefs).forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+
+    return () => {
+      Object.values(sectionRefs).forEach((ref) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
+    };
+  }, [sectionRefs]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -103,7 +155,7 @@ const ForStudentenPage = () => {
             </g>
           </svg>
         </div>
-        <div className="flex flex-col max-w-[512px] space-y-3 text-sm lg:text-l">
+        <div className="flex flex-col max-w-[512px] space-y-3 text-sm lg:text-l px-12">
           <p>
             Linjeforeningen arrangerer en rekke ulike arrangementer og disse kan
             være for kun komiteene eller hele linjeforeningen. Ofte arrangerer
@@ -135,89 +187,85 @@ const ForStudentenPage = () => {
           tags={[
             "Regler",
             "Aktive arrangementer",
-            "Lavterskel kalender",
+            "Lavterskelkalender",
             "Årlige arrangementer",
           ]}
+          activeTag={activeSection}
         />
         <SmallTransissionHighlightSPC />
         <div
           id="Regler"
-          className="bg-[#225654] flex flex-col items-center justify-center pt-8"
+          ref={sectionRefs["Regler"]}
+          className="bg-[#225654] flex flex-col items-center justify-center pt-8 px-12"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4">
             <p>Arrangementsregler</p>
           </div>
           <div className="flex justify-center items-center max-w-[512px]">
-            <div className="grid grid-cols-2 grid-rows-4 gap-4 justify-center py-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-4 gap-4 justify-center py-4">
               <NyStudentCard
                 title={
                   "Ta imot medstudentene dine med åpent sinn og vis inkluderende atferd"
                 }
-                description={""}
                 icon="1."
               />
               <NyStudentCard
                 title={"Behandle dine medstudenter med respekt"}
-                description={""}
                 icon="2."
               />
               <NyStudentCard
                 title={
-                  "Bevisst på hva som bidrar til press og etterstreb å motvirke det."
+                  "Vær bevisst på hva som bidrar til press og etterstreb å motvirke det."
                 }
-                description={""}
                 icon="3."
               />
               <NyStudentCard
                 title={
                   "Si ifra. Linjeforeningen har nulltrolleranse for trakassering og mobbing."
                 }
-                description={""}
                 icon="4."
               />
               <NyStudentCard
                 title={
                   "Ta ansvar for egne handlinger og vær bevisst på hvordan de påvirker andre."
                 }
-                description={""}
                 icon="5."
               />
               <NyStudentCard
                 title={
                   "Bidra aktivt til et positivt og støttende fellesskap der alle føler seg velkomne."
                 }
-                description={""}
                 icon="6."
               />
               <NyStudentCard
                 title={
                   "Anerkjenn og respekter forskjellige bakgrunner og perspektiver."
                 }
-                description={""}
                 icon="7."
               />
               <NyStudentCard
                 title={
                   "Del ideer, bekymringer og tilbakemeldinger på en konstruktiv måte."
                 }
-                description={""}
                 icon="8."
               />
             </div>
           </div>
           {/* Nystudent-card brukes her: trenger titel,description og icon. Icon= 1,2,3,4 -> wrap i <p/> */}
         </div>
+        <SmallTransissionSPCPC />
         <div
           id="Aktive arrangementer"
-          className="flex flex-col items-center justify-center py-6"
+          ref={sectionRefs["Aktive arrangementer"]}
+          className="flex flex-col items-center justify-center py-6 px-12"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-6">
             <p>Aktive arrangementer</p>
           </div>
-          {/* Correct transission in */}
           <div className="max-w-[512px] w-full ">
             <p className="pb-4">
-              Aktive arrangementer publiseres her og i relevante <span className="text-[#579783] text-underscore">
+              Aktive arrangementer publiseres her og i relevante{" "}
+              <span className="text-[#579783] text-underscore">
                 <a
                   href="https://www.facebook.com/groups/emilntnu"
                   target="_blank"
@@ -232,8 +280,91 @@ const ForStudentenPage = () => {
             <ListView events={arrangementer} />
           </div>
         </div>
-        <div id="Lavterskel kalender">LT</div>
-        <div id="Årlige arrangementer">Årlig ARR</div>
+        <SmallTransissionPCSPC />
+        <div
+          id="Lavterskelkalender"
+          ref={sectionRefs["Lavterskelkalender"]}
+          className="bg-[#225654] flex flex-col items-center justify-center py-6"
+        >
+          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
+            <p>Lavterskelkalender</p>
+          </div>
+          <div className="max-w-[512px] w-full px-12">
+            <p className="pb-4">
+              Emil har en lavterskelkalender som kan brukes for å planlegge
+              arrangementer og happenings framover i tid. Den skal være
+              tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
+              tilbud og aktiviteter som skjer på Emil skal kunne legges inn her
+              og sees av hele linjen slik at man kan koordinere rundt det.
+            </p>
+          </div>
+          <div className="w-full flex flex-col items-center">
+            <Calendar
+              className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
+              onClickDay={handleDateClick}
+              tileClassName={({ date, view }) =>
+                view === "month" &&
+                date.toDateString() === new Date().toDateString()
+                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-top items-center"
+                  : "hover:bg-[#377e5d] p-2 border border-white h-[5rem] p-2 flex flex-col justify-top items-center"
+              }
+              tileContent={({ date, view }) =>
+                view === "month" &&
+                date.toDateString() === new Date().toDateString()
+                  ? null
+                  : null
+              }
+              navigationLabel={({ date, label, locale, view }) => (
+                <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white hover:icon-hover">
+                  {label}
+                </div>
+              )}
+              next2Label={null}
+              prev2Label={null}
+              nextLabel={
+                <span className="text-white font-bold text-xl">›</span>
+              }
+              prevLabel={
+                <span className="text-white font-bold text-xl">‹</span>
+              }
+            />
+
+            {selectedDate && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div className="bg-white text-black rounded-lg shadow-lg p-6 w-1/3">
+                  <h2 className="text-xl font-bold mb-4">Selected Date</h2>
+                  <p>{selectedDate}</p>
+                  <button
+                    className="mt-6 bg-[#579783] text-white px-4 py-2 rounded hover:bg-[#377e5d]"
+                    onClick={closeModal}
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <SmallTransissionSPCPC />
+        <div
+          id="Årlige arrangementer"
+          ref={sectionRefs["Årlige arrangementer"]}
+          className="flex flex-col items-center justify-center py-6 px-12"
+        >
+          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
+            <p>Årlige arrangementer</p>
+          </div>
+          <div className="max-w-[512px] w-full ">
+            <p className="pb-4">
+              Emil har også mange faste arrangementer som går gjennom året. Det
+              varierer fra fest og morro til mer seriøse samlinger hvor vi
+              diskuterer linjeforeningens drift, mål og andre sentrale spørsmål.
+              Under finner du en oversikt.
+            </p>
+          </div>
+          {/* CREATE AarligArrangementCard Later 24.08.24*/}
+          {/* <AarligArrangementCard data={[]} /> */}
+        </div>
       </div>
     </div>
   );
