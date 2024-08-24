@@ -130,7 +130,7 @@ const ForStudentPage = () => {
         </div>
       </div>
 
-      <StickyNavbar tags={[... pageSections.map(s => s.tag)]}></StickyNavbar>
+      <StickyNavbar tags={[... pageSections.map(s => s.tag)]} activeTag={""}></StickyNavbar>
       {pageSections.map((s, i) =>
         <NyStudentSection
           key={i}
