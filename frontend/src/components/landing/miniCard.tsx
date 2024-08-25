@@ -14,9 +14,9 @@ type MiniCardProps = {
 const MiniCard = ({ label, comitee, img, img_size, link }: MiniCardProps) => {
   return (
     <>
-      <div className="inline-flex flex-col">
+      <div className="flex flex-col">
         <Link href={link}>
-          <div className="flex size-44 rounded-md bg-white">
+          <div className="flex size-20 lg:size-32 rounded-md bg-white">
             <Image
               src={img}
               width={176}

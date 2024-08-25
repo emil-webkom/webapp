@@ -63,18 +63,15 @@ const OmEmilPage = () => {
 
   return (
     <div className="max-w-screen">
-      <div className="flex flex-col justify-center ">
-        <Hero2
-          title="Energi og miljøstudentenes linjeforening"
-          undertitle="Her finner du informasjon om linjeforeningen Emil"
-        />
-        <div className="flex justify-center items-center">
-          <div className="flex justify-center items-center w-[65%]">
-            <div
-              className="flex justify-between pt-10 items-center space-x-10"
-              style={{ height: "35vh" }}
-            >
-              <div className="w-[35vw] font-extralight text-l">
+      <Hero2
+        title="Energi og miljøstudentenes linjeforening"
+        undertitle="Her finner du informasjon om linjeforeningen Emil"
+      />
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex justify-center items-center w-[95%] lg:w-[65%]">
+          <div className="flex justify-center items-center ">
+            <div className="flex flex-col space-y-10 lg:space-y-0 lg:flex-row justify-between pt-3 items-center">
+              <div className="px-6 lg:w-[70%] font-extralight text-sm lg:text-l">
                 Energi og miljø-studiet er et sivilingeniørstudie (Master of
                 technology) ved Norges teknisk-naturvitenskapelige universitet,
                 NTNU. Studiet ble først introdusert våren 1998 og med et
@@ -82,23 +79,41 @@ const OmEmilPage = () => {
                 <span className="font-bold">Emil</span> stiftet den 28.
                 september 1998 kort tid etter første immatrikulering.
               </div>
-              <div className="grid grid-cols-3 gap-4">
-                <Button onClick={() => scrollToSection("om_studiet")}>
+              <div className="grid grid-cols-3 gap-2">
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("om_studiet")}
+                >
                   Om studiet
                 </Button>
-                <Button onClick={() => scrollToSection("historie")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("historie")}
+                >
                   Historie
                 </Button>
-                <Button onClick={() => scrollToSection("hovedstyret")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("hovedstyret")}
+                >
                   Hovedstyret
                 </Button>
-                <Button onClick={() => scrollToSection("studiemiljøet")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("studiemiljøet")}
+                >
                   Studiemiljøet
                 </Button>
-                <Button onClick={() => scrollToSection("Fagkontakt")}>
+                <Button
+                  className="text-wrap p-2 lg:p-5"
+                  onClick={() => scrollToSection("Fagkontakt")}
+                >
                   Faglige spørsmål
                 </Button>
-                <Button onClick={() => scrollToSection("varsling")}>
+                <Button
+                  className="p-2 lg:p-5"
+                  onClick={() => scrollToSection("varsling")}
+                >
                   Varsle?
                 </Button>
               </div>
@@ -108,17 +123,17 @@ const OmEmilPage = () => {
         <TransissionIn />
         <div
           id="om_studiet"
-          className="background-dark max-w-screen text-white flex flex-col justify-between items-center tracking-tighter space-y-10"
+          className="background-dark w-full text-white flex flex-col justify-center items-center tracking-tighter space-y-6 lg:space-y-10"
         >
-          <div className="flex flex-col w-[65%] pt-20 space-y-5">
-            <div id="Top" className="font-semibold text-2xl">
+          <div className="flex flex-col pt-6 lg:pt-20 space-y-5 px-3 w-[90%] lg:w-[65%]">
+            <div id="Top" className="font-semibold text-l lg:text-2xl">
               Studiet er et fem-årig sivilingeniørstudie ved NTNU i Trondheim.
               Det kombinerer{" "}
               <span className="text-[#579783]">energi- og prosessteknikk</span>{" "}
               med <span className="text-[#579783]">elkraftteknikk</span> som
               gjør at du får en unik forståelse av energisystemet som helhet.
             </div>
-            <div id="Bottom" className="font-extralight text-l">
+            <div id="Bottom" className="font-extralight text-sm lg:text-l">
               Man får kunnskap til å ta del i den utviklingen som skjer i
               energisektoren. Fagene er tekniske og de første årene av studiet
               bygger på matematikk og tekniske grunnfag. Utover i studiet velger
@@ -126,7 +141,7 @@ const OmEmilPage = () => {
               mellom er:
             </div>
           </div>
-          <div className="flex space-x-10 w-[65%]">
+          <div className="flex flex-col items-center gap-3 lg:flex-row lg:space-x-10">
             <RetningCard
               name="Elektrisk energiteknikk og smarte nett"
               subname="Elkraft"
@@ -146,12 +161,12 @@ const OmEmilPage = () => {
               link="https://www.ntnu.no/studier/mtenerg/mtenerves"
             />
           </div>
-          <div className="p-10">
+          <div className="py-3">
             <Button
               onClick={() =>
                 window.open("https://www.ntnu.no/studier/mtenerg", "_blank")
               }
-              className="text-xl font-bold bg-white text-primary hover:bg-zinc-400 hover:border-primary"
+              className="text-base lg:text-xl font-bold bg-white text-primary hover:bg-zinc-400 hover:border-primary"
             >
               Les mer om energi og miljø her
             </Button>
@@ -159,38 +174,35 @@ const OmEmilPage = () => {
         </div>
       </div>
       <TransissionOut />
-      <div
-        id="historie"
-        className="flex justify-center"
-      >
-        <div className="flex flex-col w-[65%]">
+      <div id="historie" className="flex justify-center">
+        <div className="flex flex-col w-[90%] lg:w-[65%]">
           <div className="flex justify-center text-2xl font-bold">Historie</div>
-          <div className="flex justify-between space-x-10">
+          <div className="lg:flex justify-between lg:space-x-10">
             <div id="Text" className="flex flex-col py-10 space-y-4 ">
               <p className="font-semibold text-xl">Elektrisk start...</p>
-              <p className="text-l font-extralight">
+              <p className="text-sm lg:text-l font-extralight">
                 Ved linjeforeningens stiftelse ble de første vedtektene skrevet,
                 emils grunnlag ble fastsatt. Med årene har ikke engasjementet
                 blant studentene på linjen blitt noe mindre og i dag består EMIL
                 av over tjue offisielle komiteer og er en av Gløshaugens mest
                 aktive linjeforeninger.
               </p>
-              <p className="text-l font-extralight">
+              <p className="text-sm lg:text-l font-extralight">
                 Særegent for EMIL er at alle de ulike komitéene er svært
                 lavterskel. Her kan man bli med i alt fra EMIL sin turkomité,
                 festkomité, idrettskomité til linjeavisen og det er noe for
                 enhver å delta i her.
               </p>
-              <p className="text-l font-extralight">
+              <p className="text-sm lg:text-l font-extralight">
                 Etter hvert har også linjeforeningen utviklet et sterkt nettverk
                 til energibransjen og dette håndteres av Emil-Link. Mer
                 informasjon om dem her.
               </p>
             </div>
             <div id="Vedtekt" className="text-white flex items-center">
-              <div className="bg-[#003A42] flex flex-col items-center py-10 rounded-md px-10 justify-top space-y-10 ">
+              <div className="bg-[#003A42] flex flex-col items-center py-3 lg:py-10 rounded-md px-10 justify-top space-y-10 ">
                 <p className="text-xl font-semibold">Fra vedtektene</p>
-                <p className="text-l font-normal">
+                <p className="text-sm lg:text-l font-normal">
                   § 1-2 Hensikt EMIL søker å styrke de sosiale forbindelsene
                   mellom EMILs medlemmer, samt forholdet til de forskjellige
                   fakulteter, linjer og linjeforeninger, og gjennom dette
@@ -210,37 +222,34 @@ const OmEmilPage = () => {
         id="hovedstyret"
         className="background-dark max-w-screen flex justify-center"
       >
-        <div className="flex flex-col w-[65%] text-white py-10 space-y-10">
+        <div className="flex flex-col w-[90%] lg:w-[65%] text-white py-10 space-y-3 lg:gap-y-6">
           <div>
             <p className="flex justify-center text-2xl font-bold">
               Hovedstyret
             </p>
-            <div className="flex justify-between py-10 space-x-10">
-              <div
-                className="flex items-center justify-center"
-                style={{ overflow: "hidden" }}
-              >
+            <div className="flex flex-col justify-between py-6 gap-y-3 lg:flex-row lg:gap-x-10 ">
+              <div className="flex items-center justify-center">
                 <img
                   src="/image/Komiteer/HS/HSfelles.jpg"
                   alt="Hovedstyret fellesbilde"
                   className="rounded-md object-cover w-[100rem] h-[19rem]"
                 />
               </div>
-              <div className="flex flex-col space-y-4">
-                <p className="font-semibold text-l">
+              <div className="flex flex-col space-y-2 lg:space-y-4">
+                <p className="font-semibold text-base lg:text-l">
                   er linjeforeningens øverste organ og har ansvaret for driften
                   og ledelsen av organisasjonen i det daglige. Styret består av
                   syv faste medlemmer med ansvarsområder innenfor alt fra
                   arrangement og fadderuker, til økonomi og næringsliv.
                 </p>
-                <p className="font-extralight text-l">
+                <p className="font-extralight text-sm lg:text-l">
                   Alle styremedlemmene fungerer på lik linje, med alle de
                   rettigheter og plikter som dette innebærer. Som medlem i
                   styret tilegner du deg fort nye kunnskaper og ferdigheter,
                   ikke bare innen ditt eget ansvarsområde, men også om EMIL som
                   helhet, NTNU og hele studentfrivilligheten i Trondheim.
                 </p>
-                <p className="font-extralight text-l">
+                <p className="font-extralight text-sm lg:text-l">
                   Etter generalforsamling konstituerer styret seg selv, noe som
                   betyr at det nyvalgte styret selv avgjør hvem som skal ha
                   hvilken stilling i styret. Unntaket til regelen er
@@ -254,36 +263,39 @@ const OmEmilPage = () => {
       </div>
       <TransissionOut />
       <div id="studiemiljøet" className="flex justify-center">
-        <div className="flex flex-col space-y-5 w-[65%]">
+        <div className="flex flex-col space-y-5 w-[90%] lg:w-[65%]">
           <div className="flex items-center justify-center text-2xl font-bold">
             Studiemiljøet
           </div>
-          <div className="flex justify-between space-x-10">
+          <div className="flex flex-col justify-between lg:flex-row lg:space-x-10">
             <div className="flex flex-col justify-between space-y-5 ">
-              <p className="font-medium text-xl">
+              <p className="font-medium text-medium lg:text-xl">
                 Emil hadde ikke vært Emil uten studentfrivilligheten
               </p>
-              <p className="font-extralight text-l">
+              <p className="font-extralight text-sm lg:text-l">
                 I dag har Emil noe å by på for alle og enhver. Linjeforeningen
                 har over 20 offisielle komitteer som alle holder på hver sine
                 aktiviteter.{" "}
               </p>
-              <p className="font-extralight text-l">
+              <p className="font-extralight text-sm lg:text-l">
                 På Emil er deltakelse oppfordret og man kan bli med i så mange
                 komiteer man ønsker. Særegent for komiteene på Emil er at alle
                 er lavterskel og holder sterkt fokus på et sosialt tilbud.
               </p>
-              <p className="font-extralight text-l">
+              <p className="font-extralight text-sm lg:text-l">
                 Skulle du savne en komite som holder på med akkurat din
                 favorittaktivitet er også terskelen for å starte en ny komite
                 lav. Man kan dermed ta kontakt med hovedstyret for en prat og
                 for å lage en plan på hvordan man kan starte en ny komite.
               </p>
-              <Link href={"for_studenten/komiteer"}>
+              <Link
+                href={"for_studenten/komiteer"}
+                className="flex justify-center"
+              >
                 <Button>Les mer om komiteene her</Button>
               </Link>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center overflow-hidden">
               <Logos data={logos} />
             </div>
           </div>
@@ -292,17 +304,17 @@ const OmEmilPage = () => {
       <TransissionIn />
       <div
         id="Fagkontakt"
-        className="background-dark max-w-screen flex justify-center text-white"
+        className="background-dark flex justify-center text-white"
       >
-        <div className="flex flex-col items-center w-[65%] py-10 space-y-10">
+        <div className="flex flex-col items-center w-[90%] lg:w-[65%] py-6 lg:py-10 space-y-6 lg:space-y-10">
           <div className="text-2xl font-bold">Faglig kontakt</div>
-          <div className="font-extralight text-l">
+          <div className="font-extralight text-sm lg:text-l">
             Emil har mange kontaktpersoner designert til å hjelpe deg med
             studenttilværelsen. Avhengig av hvilke formål man har er det
             forskjellige kontaktpersoner. Her finner du kontaktinformasjon for
             de ulike formålene.
           </div>
-          <div className="flex space-x-5 justify-between px-10">
+          <div className="flex flex-col items-center gap-y-3 lg:flex-row lg:space-x-5 lg:justify-between lg:px-10">
             <Fagkontakt
               name={fagkontakt[0].navn}
               rolle={fagkontakt[0].rolle}
@@ -324,23 +336,23 @@ const OmEmilPage = () => {
       </div>
       <TransissionOut />
       <div id="varsling" className="max-w-screen flex justify-center">
-        <div className="flex flex-col items-center w-[65%] space-y-5">
+        <div className="flex flex-col items-center w-[90%] lg:w-[65%] space-y-5">
           <p className="text-2xl font-bold">Varsle</p>
-          <p className="font-extralight text-l">
+          <p className="font-extralight text-sm lg:text-l">
             Noe av det viktigste vi kan gjøre for å sikre at alle i
             linjeforeningen kommer seg trygt gjennom studietiden, er å si ifra
             når ting ikke er som de skal. Uansett om det er en stor eller liten
             utfordring/hendelse, er det bedre å si ifra en gang for mye enn en
             gang for lite.{" "}
           </p>
-          <p className="font-extralight text-l">
+          <p className="font-extralight text-sm lg:text-l">
             Enhver hendelse som meldes inn her vil bli tatt på alvor. Du kan
             velge å holde det anonymt, eller å skrive ditt navn for at
             linjeforeningsstyret kan følge opp hendelsen/situasjonen videre med
             deg. Uansett vil vi i denne prosessen ta hensyn til deg og andre
             berørte, og ansvarlige for å håndtere varslingen har taushetsplikt.
           </p>
-          <div className="space-x-5">
+          <div className="flex flex-col space-y-3 items-center lg:flex-row lg:space-x-5 lg:space-y-0">
             <Link href="for_studenten/varsle_oss">
               <Button>Meld inn varslingssak her</Button>
             </Link>
