@@ -34,6 +34,7 @@ export async function POST(
     if (!arrangement) {
       return NextResponse.json({ error: "Arrangement not found" });
     }
+
     const parsedData = ArrangementPaameldingSchema.parse(await req.json());
     console.log(parsedData);
     const arrangementPaamelding = await db.arrangementPaamelding.create({
