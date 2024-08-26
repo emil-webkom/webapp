@@ -1,10 +1,7 @@
 "use client";
 
 import ListView from "@/components/calendar/listView";
-import Hero from "@/components/hero/hero1";
-import { Button } from "@/components/ui/button";
 import { Arrangement } from "@/schemas/arrangement";
-import { fetchArrangementer } from "@/utils/arrangement/arrangement";
 import { useEffect, useState, useRef } from "react";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
