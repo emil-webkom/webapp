@@ -100,7 +100,12 @@ const ForStudentPage = () => {
       title: "Immatrikuleringsball",
       content: "En velkomstfest for ny-studentene i linjeforeningen. Hele linjeforeningen samles til en helaften med mat, drikke og underholdning for å feire de nye studentene. Det skjer kvelden etter renselsen.",
       time: "Kvelden etter renselsen"
+    }, {
+      title: "Teknostart",
+      content: "Teknostart er et obligatorisk oppstartsprogram for førsteårs sivilingeniørstudenter ved NTNU, og vil i 2024 pågå i den første uken av semesteret. Det arrangeres av NTNU, ikke linjeforeningenen. Den faglige starten er den andre uken av semesteret og er en introduksjon til fagene studentene skal ha.",
+      time: "Første uke"
     },
+    
   ]
   const pageSections: nyStudentSectionProps[] = [
     {
@@ -115,6 +120,7 @@ const ForStudentPage = () => {
     }, {
       title: "De første ukene på studiet",
       tag: "De første ukene",
+      intro : <p>Her kan du lese mer om opplegg som skjer de første ukene.</p>,
       content: <div className="flex flex-col self-center w-full max-w-[512px] gap-4">
         {forsteUkeneCards.map((c, i) =>
           <DropdownCard key={i} title={c.title} content={c.content} time={c.time} place={c.place} oneLiner={c.oneLiner} />
@@ -124,7 +130,8 @@ const ForStudentPage = () => {
     {
       title: "Tips og verktøy",
       tag: "Tips og verktøy",
-      content: <div className="grid gap-4 lg:grid-cols-1">
+      content: 
+      <div className="grid gap-4 lg:grid-cols-1">
       </div>
     },]
 
