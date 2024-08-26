@@ -2,6 +2,7 @@
 
 import ListView from "@/components/calendar/listView";
 import { Arrangement } from "@/schemas/arrangement";
+import { lavTerskelArrangement } from "@/schemas/lavterskelArrangement";
 import { useEffect, useState, useRef } from "react";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
@@ -14,17 +15,20 @@ import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissi
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
+  const [lavterskelArrangement, setLavterskelArrangement] = useState<lavTerskelArrangement[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState("Regler");
-  const [selectedArrangements, setSelectedArrangements] = useState<
-    Arrangement[]
-  >([]);
+  const [selectedArrangements, setSelectedArrangements] = useState<Arrangement[]>([]);
+  const [openForm, setOpenform] = useState<Boolean>(false);
 
   // Create a set of new dates that is to be displayed in the calendar
   const arrangementDates = new Set(
     arrangementer.map((a) => new Date(a.dato).toDateString()),
+  );
+  const lavterskelarrangementDates = new Set(
+    lavterskelArrangement.map((a) => new Date(a.dato).toDateString()),
   );
 
   // Sections for keeping track of what section is in view
@@ -40,15 +44,24 @@ const ForStudentenPage = () => {
     const dateString = date.toDateString();
     setSelectedDate(dateString);
     const selectedDateArrangements = arrangementer.filter(
-      (a) => new Date(a.dato).toDateString() === dateString,
+      (a) => new Date(a.dato).toDateString() === dateString
     );
     setSelectedArrangements(selectedDateArrangements);
+    const selectedDateLavterskelArrangements = lavterskelArrangement.filter(
+      (a) => new Date(a.dato).toDateString() === dateString
+    );
+    setLavterskelArrangement(selectedDateLavterskelArrangements);
   };
 
   // Close opened date
   const closeModal = () => {
     setSelectedDate(null);
+    openForm ? toggleForm() : "";
   };
+
+  const toggleForm = () => {
+    setOpenform(prevState => !prevState);
+  }
 
   // API call to fetch arrangements from DB
   useEffect(() => {
@@ -60,6 +73,7 @@ const ForStudentenPage = () => {
         }
         const data = await response.json();
         setArrangementer(data.arrangementer);
+        setLavterskelArrangement(data.lavterskelArrangement)
       } catch (err) {
         if (err instanceof Error) {
           setError(`Failed to fetch arrangementer: ${err.message}`);
@@ -334,11 +348,11 @@ const ForStudentenPage = () => {
           </div>
           <div className="w-full flex flex-col items-center">
             <div className="flex justify-start ">
-              <div className="flex gap-x-2 items-center">
+              <div className="flex gap-x-2 items-center px-4">
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                   <span>Offentlige arrangementer</span>
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span>Inter arrangementer for komiteer</span>
+                  <span>Intert arrangement</span>
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                   <span>Eksterne arrangementer</span>
                 </div>
@@ -356,9 +370,15 @@ const ForStudentenPage = () => {
                 arrangementDates.has(date.toDateString()) ? (
                   <div className="w-full flex justify-end">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    {lavterskelarrangementDates.has(date.toDateString()) ?
+
+                    // RENDER CORRECT COLOUR BASED ON TYPE PLEASE...............
+                    (<div className="w-2 h-2 bg-blue-500 rounded-full"></div>)
+                  : (<div className="w-2 h-2 bg-red-500 rounded-full"></div>)}
                   </div>
                 ) : null
               }
+
               navigationLabel={({ date, label, locale, view }) => (
                 <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
                   {label}
@@ -375,8 +395,8 @@ const ForStudentenPage = () => {
             />
 
             {selectedDate && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-white text-black rounded-lg shadow-lg px-3 py-6 w-[2/3] lg:w-1/3">
+              <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
+                <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
                   <h2 className="text-xl font-bold mb-4">{selectedDate}</h2>
                   {/* Extract information about arrangements on given date*/}
                   {selectedArrangements.length > 0 ? (
@@ -388,7 +408,7 @@ const ForStudentenPage = () => {
                         <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                         <div>
                           <a
-                            href={`arrangement/{id}`}
+                            href={`arrangement/${arrangement.id}`}
                             className="text-underscore"
                           >
                             <h2 className="font-bold text-base lg:text-lg">
@@ -417,13 +437,24 @@ const ForStudentenPage = () => {
                       Ingen planlagte arrangementer
                     </div>
                   )}
-
+                  {openForm ? (
+                    <div>
+                      Her skal vi rendere en form som lar vanlige brukere legge inne arrangementer i lavterskelkalenderen.
+                    </div>
+                  ) : (<button
+                    className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
+                    onClick={toggleForm}
+                  >
+                    Legg til arrangement?
+                  </button>)}
+                  <div className="flex lg:justify-between w-full flex-col lg:flex-row">
                   <button
-                    className="mt-6 bg-[#579783] text-white px-4 py-2 rounded hover:bg-[#377e5d]"
+                    className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
                     onClick={closeModal}
                   >
-                    Close
+                    Lukk
                   </button>
+                  </div>
                 </div>
               </div>
             )}
