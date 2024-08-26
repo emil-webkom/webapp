@@ -5,15 +5,12 @@ import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { Popover } from "@/components/ui/popover";
+import { fetchStyretRolle } from "@/utils/styret/fetchers";
 import { Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
 import { FaFacebookF } from "react-icons/fa";
 
 const ForStudentPage = () => {
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    section?.scrollIntoView({ behavior: "smooth" });
-  };
 
   const unnagjortCards: nyStudentCardProps[] = [{
     title: "Registrere deg og betale semesteravgift",
@@ -90,7 +87,6 @@ const ForStudentPage = () => {
 
           <div>
             <h2 className="font-semibold">Fadderansvarlig</h2>
-
           </div>
 
         </div>,
@@ -98,10 +94,12 @@ const ForStudentPage = () => {
     },
     {
       title: "Renselsen",
-      content: "Dette er en innvielsessermoni til linjeforeningen for alle nye studenter og er tradisjonelt for sivil-ingienørlinjene på NTNU. Det skjer i september."
+      content: "Dette er en innvielsessermoni til linjeforeningen for alle nye studenter og er tradisjonelt for sivil-ingienørlinjene på NTNU. Det skjer i september.",
+      time: "Noen uker etter fadderperioden"
     }, {
       title: "Immatrikuleringsball",
-      content: " En velkomstfest for ny-studentene i linjeforeningen. Hele linjeforeningen samles til en helaften med mat, drikke og underholdning for å feire de nye studentene. Det skjer kvelden etter renselsen."
+      content: "En velkomstfest for ny-studentene i linjeforeningen. Hele linjeforeningen samles til en helaften med mat, drikke og underholdning for å feire de nye studentene. Det skjer kvelden etter renselsen.",
+      time: "Kvelden etter renselsen"
     },
   ]
   const pageSections: nyStudentSectionProps[] = [
