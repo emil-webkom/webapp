@@ -139,4 +139,5 @@ enum BookedItem {
 enum UserRole {
   ADMIN
   USER
+  SUPER_USER
 }

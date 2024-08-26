@@ -5,12 +5,10 @@ import { useState } from "react";
 
 interface AarligArrangementCardProps {
   data: Array<{
-    rolle: string;
-    name: string;
-    text: string;
-    mail: string;
-    nummer: number;
-    bilde: string;
+    Name : string;
+    Komite? : string;
+    Tekst : string;
+    bilde : string;
   }>;
 }
 
@@ -63,7 +61,7 @@ const AarligArrangementCard: FC<AarligArrangementCardProps> = ({ data }) => {
             <path d="m12 8-4 4 4 4" />
           </svg>
         </button>
-        <div className="relative w-[100%] overflow-hidden">
+        <div className="relative w-[70%] lg:w-[50%] overflow-hidden">
           <div
             className={`flex transition-transform duration-300 ease-in-out transform ${
               isSliding ? "delay-300" : ""
@@ -73,36 +71,14 @@ const AarligArrangementCard: FC<AarligArrangementCardProps> = ({ data }) => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-[#003A42] rounded-md py-5 space-y-5 lg:flex-row lg:space-x-5 lg:p-6"
-              >
-                <div className="flex flex-col space-y-3 px-5 lg:w-[60%] lg:space-y-5 lg:h-4/5 lg:justify-between">
-                  <div className="">
-                    <p className="text-base lg:text-2xl font-semibold">
-                      {item.rolle}
-                    </p>
-                    <p className="text-sm lg:text-xl font-normal">
-                      {item.name}
-                    </p>
+                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-[#001D21]  rounded-md py-5 space-y-5  lg:space-x-5 lg:p-6">
+                  <h2 className="font-bold text-xl">{item.Name}</h2>
+                  <div>
+                    <img src={item.bilde} alt="Arrangementbilde" className="h-[15vh] lg:h-[30vh] object-cover rounded-md"/>
                   </div>
-                  <p className="text-xs lg:text-sm font-extralight">
-                    {item.text}
+                  <p className="text-xs lg:text-base font-normal px-8">
+                    <span>{item.Komite} </span>{item.Tekst}
                   </p>
-                  <div className="flex flex-col">
-                    <p className="text-xs lg:text-sm font-light">
-                      Kontakt: {item.mail}
-                    </p>
-                    <p className="text-xs lg:text-sm font-light">
-                      Tlf: +78{item.nummer}
-                    </p>
-                  </div>
-                </div>
-                <div className=" items-center px-6 hidden lg:flex">
-                  <img
-                    src={item.bilde}
-                    alt={item.rolle}
-                    className="w-[20vh] h-[20vh] lg:w-[50vh] lg:h-[50vh] object-cover rounded-md"
-                  />
-                </div>
               </div>
             ))}
           </div>

@@ -21,7 +21,16 @@ const ForStudentenPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState("Regler");
+  const [selectedArrangements, setSelectedArrangements] = useState<
+    Arrangement[]
+  >([]);
 
+  // Create a set of new dates that is to be displayed in the calendar
+  const arrangementDates = new Set(
+    arrangementer.map((a) => new Date(a.dato).toDateString()),
+  );
+
+  // Sections for keeping track of what section is in view
   const sectionRefs = {
     Regler: useRef(null),
     "Aktive arrangementer": useRef(null),
@@ -29,14 +38,22 @@ const ForStudentenPage = () => {
     "Årlige arrangementer": useRef(null),
   };
 
+  // Select date in calendar and find correct arrangements for the selected date
   const handleDateClick = (date: Date) => {
-    setSelectedDate(date.toDateString());
+    const dateString = date.toDateString();
+    setSelectedDate(dateString);
+    const selectedDateArrangements = arrangementer.filter(
+      (a) => new Date(a.dato).toDateString() === dateString,
+    );
+    setSelectedArrangements(selectedDateArrangements);
   };
 
+  // Close opened date
   const closeModal = () => {
     setSelectedDate(null);
   };
 
+  // API call to fetch arrangements from DB
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,7 +62,6 @@ const ForStudentenPage = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log(data);
         setArrangementer(data.arrangementer);
       } catch (err) {
         if (err instanceof Error) {
@@ -61,6 +77,7 @@ const ForStudentenPage = () => {
     fetchData();
   }, []);
 
+  // Logic for determining what section is in view
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -68,6 +85,7 @@ const ForStudentenPage = () => {
       threshold: 0.6,
     };
 
+    // Setting highlighting section that is in view in scroll bar.
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -76,11 +94,13 @@ const ForStudentenPage = () => {
       });
     };
 
+    //Tracking class for tracking what is in view on the screen
     const observer = new IntersectionObserver(
       observerCallback,
       observerOptions,
     );
 
+    // Making sure the tracking class changes according to what is in view
     Object.values(sectionRefs).forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
@@ -99,6 +119,23 @@ const ForStudentenPage = () => {
   if (error) {
     return <div>{error}</div>;
   }
+
+  const AarligarrangementData = [
+    {
+      Name: "Vin og Klin",
+      Komite: "FestKom",
+      Tekst:
+        "brygger vinen, linjeforeningen drikker den. Det serveres gratis i tåteflasker og det en bjelle som dikterer når vinen skal drikkes. For å slippe å drikke, er det bare å finne seg noen å kline med i stedet. Mange syns dette er Emils artigste arrangement.",
+      bilde: "/image/arrangement/V&K.png",
+    },
+    {
+      Name: "Åretur",
+      Komite: "Årekom",
+      Tekst:
+        "Her kan Emils Årekom garantere at uansett om du kommer for å stå på ski, brett eller bare for å drikke så skal alle med på afterski og byen. Det gjelder å finne den beste hangover-kuren og finne fram jaegerflasken fordi her skal tiden utnyttes best mulig.",
+      bilde: "/image/arrangement/aaretur.png",
+    },
+  ];
 
   return (
     <div className=" flex flex-col justify-center w-full text-white">
@@ -289,8 +326,8 @@ const ForStudentenPage = () => {
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
             <p>Lavterskelkalender</p>
           </div>
-          <div className="max-w-[512px] w-full px-12">
-            <p className="pb-4">
+          <div className="max-w-[512px] w-full pb-6">
+            <p className="pb-4 px-12">
               Emil har en lavterskelkalender som kan brukes for å planlegge
               arrangementer og happenings framover i tid. Den skal være
               tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
@@ -299,23 +336,34 @@ const ForStudentenPage = () => {
             </p>
           </div>
           <div className="w-full flex flex-col items-center">
+            <div className="flex justify-start ">
+              <div className="flex gap-x-2 items-center">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <span>Offentlige arrangementer</span>
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <span>Inter arrangementer for komiteer</span>
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                  <span>Eksterne arrangementer</span>
+                </div>
+            </div>
             <Calendar
               className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
               tileClassName={({ date, view }) =>
                 view === "month" &&
                 date.toDateString() === new Date().toDateString()
-                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-top items-center"
-                  : "hover:bg-[#377e5d] p-2 border border-white h-[5rem] p-2 flex flex-col justify-top items-center"
+                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                  : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative"
               }
               tileContent={({ date, view }) =>
-                view === "month" &&
-                date.toDateString() === new Date().toDateString()
-                  ? null
-                  : null
+                arrangementDates.has(date.toDateString()) ? (
+                  <div className="w-full flex justify-end">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  </div>
+                ) : null
               }
               navigationLabel={({ date, label, locale, view }) => (
-                <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white hover:icon-hover">
+                <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
                   {label}
                 </div>
               )}
@@ -331,9 +379,48 @@ const ForStudentenPage = () => {
 
             {selectedDate && (
               <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-white text-black rounded-lg shadow-lg p-6 w-1/3">
-                  <h2 className="text-xl font-bold mb-4">Selected Date</h2>
-                  <p>{selectedDate}</p>
+                <div className="bg-white text-black rounded-lg shadow-lg px-3 py-6 w-[2/3] lg:w-1/3">
+                  <h2 className="text-xl font-bold mb-4">{selectedDate}</h2>
+                  {/* Extract information about arrangements on given date*/}
+                  {selectedArrangements.length > 0 ? (
+                    selectedArrangements.map((arrangement) => (
+                      <div
+                        key={arrangement.id}
+                        className="py-2 flex justify-start items-center gap-x-2"
+                      >
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                        <div>
+                          <a
+                            href={`arrangement/{id}`}
+                            className="text-underscore"
+                          >
+                            <h2 className="font-bold text-base lg:text-lg">
+                              {arrangement.navn}:
+                              <p className="font-normal text-base">
+                                {" "}
+                                {arrangement.sted}
+                                <span>
+                                  {" "}
+                                  -{" "}
+                                  {new Date(
+                                    arrangement.dato,
+                                  ).toLocaleTimeString([], {
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  })}
+                                </span>
+                              </p>
+                            </h2>
+                          </a>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="font-normal text-base">
+                      Ingen planlagte arrangementer
+                    </div>
+                  )}
+
                   <button
                     className="mt-6 bg-[#579783] text-white px-4 py-2 rounded hover:bg-[#377e5d]"
                     onClick={closeModal}
@@ -349,12 +436,12 @@ const ForStudentenPage = () => {
         <div
           id="Årlige arrangementer"
           ref={sectionRefs["Årlige arrangementer"]}
-          className="flex flex-col items-center justify-center py-6 px-12"
+          className="flex flex-col items-center justify-center py-6 gap-y-4"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
+          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 px-12">
             <p>Årlige arrangementer</p>
           </div>
-          <div className="max-w-[512px] w-full ">
+          <div className="max-w-[512px] w-full px-12">
             <p className="pb-4">
               Emil har også mange faste arrangementer som går gjennom året. Det
               varierer fra fest og morro til mer seriøse samlinger hvor vi
@@ -362,8 +449,9 @@ const ForStudentenPage = () => {
               Under finner du en oversikt.
             </p>
           </div>
-          {/* CREATE AarligArrangementCard Later 24.08.24*/}
-          {/* <AarligArrangementCard data={[]} /> */}
+          <div className="px-4 lg:px-12">
+            <AarligArrangementCard data={AarligarrangementData} />
+          </div>
         </div>
       </div>
     </div>
