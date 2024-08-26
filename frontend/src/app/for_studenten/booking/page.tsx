@@ -1,4 +1,5 @@
-import BackgroundMain from "@/components/ForStudenten/ui/background-main";
+"use client";
+
 import MenuCard, {
   MenuCardProps,
 } from "@/components/ForStudenten/ui/menu-card";
@@ -34,25 +35,26 @@ const BookingPage = () => {
     {
       title: "Annet",
       logo: <FileQuestion />,
-      description: "Hei hei heo",
+      description:
+        "Dersom du har noen andre henvendelser når det gjelder booking på Emil, kan du ta kontakt med Kontorkom eller styret.",
       href: "https://youtube.com",
     },
   ];
 
   return (
-    <div className="flex items-center justify-center">
-      <BackgroundMain>
-        <div className="flex flex-col space-y-4">
-          <h1 className=" text-white font-semibold text-4xl w-3/4">Booking</h1>
-          <p className="text-white text-md">
-            På Emil kan du som student booke en rekke ting til diverse
-            anledninger. Vi har blant annet 2 Soundboxer til disposisjon,
-            Emil-kontoret og nå en hytte som deles med Smørekoppen! Komiteer kan
-            også booke ting til arrangementer eller liknende.{" "}
-          </p>
-        </div>
-        <MenuCardView cards={cards}></MenuCardView>
-      </BackgroundMain>
+    <div className="flex flex-col items-center justify-center p-12 gap-y-6">
+      <div className="flex flex-col space-y-4">
+        <h1 className=" text-white text-center font-semibold text-4xl w-full">
+          Booking
+        </h1>
+        <p className="text-white text-md text-center">
+          På Emil kan du som student booke en rekke ting til diverse
+          anledninger. Vi har blant annet 2 Soundboxer til disposisjon,
+          Emil-kontoret og nå en hytte som deles med Smørekoppen! Komiteer kan
+          også booke ting til arrangementer eller liknende.{" "}
+        </p>
+      </div>
+      <MenuCardView cards={cards}></MenuCardView>
     </div>
   );
 };

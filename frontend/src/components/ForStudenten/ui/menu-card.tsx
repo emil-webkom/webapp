@@ -33,20 +33,22 @@ const MenuCard = ({
 }: MenuCardProps) => {
   const router = useRouter();
   return (
-    <Card className="min-w-[340px] h-[248px] text-[#001D21] flex flex-col justify-between">
-      <CardHeader className="flex flex-row space-x-2 items-center">
+    <Card className="min-w-[280px] min-h-[248px] border-none bg-[#25504F] text-[#fff] flex flex-col justify-between">
+      <CardHeader className="text-[#9DDBAD] flex flex-row space-x-2 items-center">
         {logo}
-        <CardTitle className="flex items-center pb-1 align-middle">
+        <CardTitle className="flex items-center pb-1 align-middle text-white">
           {title}
         </CardTitle>
       </CardHeader>
       <CardContent className="">
-        <CardDescription>{description}</CardDescription>
+        <CardDescription className="text-white text-ellipsis">
+          {description}
+        </CardDescription>
       </CardContent>
       <CardFooter className="mt-auto">
         {buttonLabel && (
           <Button
-            className="bg-[#001D21] text-white hover:bg-[#1E4C52] hover:text-white"
+            className="bg-[#25504F] text-white hover:bg-[#80b0b7] hover:text-white"
             variant="outline"
             onClick={() => router.push(href)}
           >

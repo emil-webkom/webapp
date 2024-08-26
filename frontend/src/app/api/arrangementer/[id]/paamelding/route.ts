@@ -1,3 +1,4 @@
+import { getUserById } from "@/data/user";
 import { db } from "@/lib/db";
 import {
   ArrangementPaamelding,
@@ -27,37 +28,49 @@ export async function POST(
   { params }: { params: { id: string } },
 ) {
   try {
-    const arrangement = await db.arrangement.findFirst({
+    const arrangement = await db.arrangement.findUnique({
       where: { id: params.id },
     });
 
     if (!arrangement) {
       return NextResponse.json({ error: "Arrangement not found" });
     }
+    const user = await getUserById(params.id);
 
-    const parsedData = ArrangementPaameldingSchema.parse(await req.json());
-    console.log(parsedData);
-    const arrangementPaamelding = await db.arrangementPaamelding.create({
-      data: parsedData,
-    });
-
-    await db.user.update({
-      where: { id: parsedData.userID },
+    const signup = await db.arrangementPaamelding.create({
       data: {
-        paameldinger: {
-          connect: { id: arrangementPaamelding.id },
+        user: {
+          connect: { id: user?.id },
+        },
+        arrangement: {
+          connect: { id: params.id },
         },
       },
     });
 
-    await db.arrangement.update({
-      where: { id: params.id },
-      data: {
-        paameldinger: {
-          connect: { id: arrangementPaamelding.id },
-        },
-      },
-    });
+    // const parsedData = ArrangementPaameldingSchema.parse(await req.json());
+    // console.log(parsedData);
+    // const arrangementPaamelding = await db.arrangementPaamelding.create({
+    //   data: parsedData,
+    // });
+
+    // await db.user.update({
+    //   where: { id: parsedData.userID },
+    //   data: {
+    //     paameldinger: {
+    //       connect: { id: arrangementPaamelding.id },
+    //     },
+    //   },
+    // });
+
+    // await db.arrangement.update({
+    //   where: { id: params.id },
+    //   data: {
+    //     paameldinger: {
+    //       connect: { id: arrangementPaamelding.id },
+    //     },
+    //   },
+    // });
 
     return NextResponse.json(
       { message: "Paamelding successfull", arrangementPaamelding },

@@ -1,6 +1,6 @@
 "use client";
 
-import ListView from "@/components/calendar/listView";
+import ListView from "@/components/event/listView";
 import Hero from "@/components/hero/hero1";
 import { Button } from "@/components/ui/button";
 import { Arrangement } from "@/schemas/arrangement";
