@@ -4,6 +4,10 @@ import NyStudentCard, { nyStudentCardProps } from "@/components/cards/nyStudentC
 import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
 import ThumbnailButton, { thumbnailButtonProps } from "@/components/ForStudenten/nyStudent/thumbnailButton";
+import SmallTransissionDarkHighligh from "@/components/hero/transissions/smallTransissionDarkHighlight";
+import SmallTransissionHighlightSPC from "@/components/hero/transissions/smallTransissionHighlightSPC";
+import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
+import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { Button } from "@/components/ui/button";
 import { Popover } from "@/components/ui/popover";
@@ -279,8 +283,11 @@ const ForStudentPage = () => {
         </div>
       </div>
 
+      <SmallTransissionDarkHighligh />
       <StickyNavbar tags={[...pageSections.map(s => s.tag)]}></StickyNavbar>
+      <SmallTransissionHighlightSPC />
       {pageSections.map((s, i) =>
+        <>
         <NyStudentSection
           key={i}
           title={s.title}
@@ -288,7 +295,10 @@ const ForStudentPage = () => {
           tag={s.tag}
           content={s.content}
           bg={i % 2 !== 0 ? '' : 'bg-[#225654]'}
-        />)}
+          />
+          {i !== pageSections.length-1 &&(i%2===1? <SmallTransissionPCSPC/> : <SmallTransissionSPCPC/>)} 
+          </>
+          )}
     </div>
   </>
 };
