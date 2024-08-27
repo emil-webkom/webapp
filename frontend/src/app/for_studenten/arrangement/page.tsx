@@ -15,21 +15,20 @@ import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissi
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
-  const [lavterskelArrangement, setLavterskelArrangement] = useState<lavTerskelArrangement[]>([]);
+  const [lavterskelArrangement, setLavterskelArrangement] = useState<
+    lavTerskelArrangement[]
+  >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState("Regler");
-  const [selectedArrangements, setSelectedArrangements] = useState<Arrangement[]>([]);
+  const [combinedArrangements, setCombinedArrangements] = useState<
+    (Arrangement | lavTerskelArrangement)[]
+  >([]);
+  const [allCombinedArrangements, setAllCombinedArrangements] = useState<
+    (Arrangement | lavTerskelArrangement)[]
+  >([]);
   const [openForm, setOpenform] = useState<Boolean>(false);
-
-  // Create a set of new dates that is to be displayed in the calendar
-  const arrangementDates = new Set(
-    arrangementer.map((a) => new Date(a.dato).toDateString()),
-  );
-  const lavterskelarrangementDates = new Set(
-    lavterskelArrangement.map((a) => new Date(a.dato).toDateString()),
-  );
 
   // Sections for keeping track of what section is in view
   const sectionRefs = {
@@ -39,18 +38,24 @@ const ForStudentenPage = () => {
     "Årlige arrangementer": useRef(null),
   };
 
-  // Select date in calendar and find correct arrangements for the selected date
+  // Select date in calendar and find all arrangements (both regular and lavterskel) for the selected date
   const handleDateClick = (date: Date) => {
     const dateString = date.toDateString();
     setSelectedDate(dateString);
+
+    // Filter both types of arrangements for the selected date
     const selectedDateArrangements = arrangementer.filter(
-      (a) => new Date(a.dato).toDateString() === dateString
+      (a) => new Date(a.dato).toDateString() === dateString,
     );
-    setSelectedArrangements(selectedDateArrangements);
     const selectedDateLavterskelArrangements = lavterskelArrangement.filter(
-      (a) => new Date(a.dato).toDateString() === dateString
+      (a) => new Date(a.dato).toDateString() === dateString,
     );
-    setLavterskelArrangement(selectedDateLavterskelArrangements);
+
+    const combined = [
+      ...selectedDateArrangements,
+      ...selectedDateLavterskelArrangements,
+    ];
+    setCombinedArrangements(combined);
   };
 
   // Close opened date
@@ -60,8 +65,8 @@ const ForStudentenPage = () => {
   };
 
   const toggleForm = () => {
-    setOpenform(prevState => !prevState);
-  }
+    setOpenform((prevState) => !prevState);
+  };
 
   // API call to fetch arrangements from DB
   useEffect(() => {
@@ -72,8 +77,14 @@ const ForStudentenPage = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+
+        // Set the individual arrangements first
         setArrangementer(data.arrangementer);
-        setLavterskelArrangement(data.lavterskelArrangement)
+        setLavterskelArrangement(data.lavterskelArrangement);
+
+        // Combine the arrangements after both states are updated
+        const combined = [...data.arrangementer, ...data.lavterskelArrangement];
+        setAllCombinedArrangements(combined);
       } catch (err) {
         if (err instanceof Error) {
           setError(`Failed to fetch arrangementer: ${err.message}`);
@@ -84,7 +95,6 @@ const ForStudentenPage = () => {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -350,35 +360,59 @@ const ForStudentenPage = () => {
             <div className="flex justify-start ">
               <div className="flex gap-x-2 items-center px-4">
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <span>Offentlige arrangementer</span>
+                <span className="text-sm lg:text-base">
+                  Offentlige arrangementer
+                </span>
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <span>Intert arrangement</span>
+                <span className="text-sm lg:text-base">Intert arrangement</span>
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                  <span>Eksterne arrangementer</span>
-                </div>
+                <span className="text-sm lg:text-base">
+                  Eksterne arrangementer
+                </span>
+              </div>
             </div>
             <Calendar
               className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
-              tileClassName={({ date, view }) =>
-                view === "month" &&
-                date.toDateString() === new Date().toDateString()
+              tileClassName={({ date, view }) => {
+                const dateString = date.toDateString();
+                const isToday = dateString === new Date().toDateString();
+
+                return view === "month" && isToday
                   ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
-                  : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative"
-              }
-              tileContent={({ date, view }) =>
-                arrangementDates.has(date.toDateString()) ? (
-                  <div className="w-full flex justify-end">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    {lavterskelarrangementDates.has(date.toDateString()) ?
+                  : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
+              }}
+              tileContent={({ date, view }) => {
+                const dateString = date.toDateString();
+                // Filter combined arrangements for the current date
+                const relevantArrangements = allCombinedArrangements.filter(
+                  (a) => new Date(a.dato).toDateString() === dateString,
+                );
 
-                    // RENDER CORRECT COLOUR BASED ON TYPE PLEASE...............
-                    (<div className="w-2 h-2 bg-blue-500 rounded-full"></div>)
-                  : (<div className="w-2 h-2 bg-red-500 rounded-full"></div>)}
+                const arrangementColors = relevantArrangements.map(
+                  (arrangement) => {
+                    if ("type" in arrangement) {
+                      if (arrangement.type === "Internt arrangement") {
+                        return "bg-blue-500";
+                      } else if (arrangement.type === "Eksternt arrangement") {
+                        return "bg-red-500";
+                      }
+                    }
+                    return "bg-yellow-500";
+                  },
+                );
+                // Check if there are relevant arrangements for this date
+                return relevantArrangements.length > 0 ? (
+                  <div className="w-full flex flex-col justify-end items-center space-y-1">
+                    {arrangementColors.map((color, index) => (
+                      <div
+                        key={index}
+                        className={`w-2 h-2 ${color} rounded-full`}
+                      ></div>
+                    ))}
                   </div>
-                ) : null
-              }
-
+                ) : null;
+              }}
               navigationLabel={({ date, label, locale, view }) => (
                 <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
                   {label}
@@ -398,62 +432,84 @@ const ForStudentenPage = () => {
               <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
                   <h2 className="text-xl font-bold mb-4">{selectedDate}</h2>
-                  {/* Extract information about arrangements on given date*/}
-                  {selectedArrangements.length > 0 ? (
-                    selectedArrangements.map((arrangement) => (
-                      <div
-                        key={arrangement.id}
-                        className="py-2 flex justify-start items-center gap-x-2"
-                      >
-                        <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                        <div>
-                          <a
-                            href={`arrangement/${arrangement.id}`}
-                            className="text-underscore"
-                          >
-                            <h2 className="font-bold text-base lg:text-lg">
-                              {arrangement.navn}:
-                              <p className="font-normal text-base">
-                                {" "}
-                                {arrangement.sted}
-                                <span>
-                                  {" "}
-                                  -{" "}
-                                  {new Date(
-                                    arrangement.dato,
-                                  ).toLocaleTimeString([], {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  })}
-                                </span>
-                              </p>
-                            </h2>
-                          </a>
+                  {combinedArrangements.length > 0 ? (
+                    combinedArrangements.map((arrangement) => {
+                      // Determine the color based on the arrangement type
+                      let arrangementColor = "bg-yellow-500"; // Default color for regular arrangements
+
+                      if ("type" in arrangement) {
+                        if (arrangement.type === "Internt arrangement") {
+                          arrangementColor = "bg-blue-500"; // Internal arrangement
+                        } else if (
+                          arrangement.type === "Eksternt arrangement"
+                        ) {
+                          arrangementColor = "bg-red-500"; // External arrangement
+                        }
+                      }
+
+                      return (
+                        <div
+                          key={arrangement.id}
+                          className="py-2 flex justify-start items-center gap-x-2"
+                        >
+                          {/* Arrangement color indicator */}
+                          <div
+                            className={`w-2 h-2 ${arrangementColor} rounded-full`}
+                          ></div>
+
+                          <div>
+                            <a
+                              href={`arrangement/${arrangement.id}`}
+                              className="text-underscore"
+                            >
+                              <h2 className="font-bold text-base lg:text-lg">
+                                {arrangement.navn}:
+                                <p className="font-normal text-base">
+                                  {arrangement.sted}
+                                  <span>
+                                    {" "}
+                                    -{" "}
+                                    {new Date(
+                                      arrangement.dato,
+                                    ).toLocaleTimeString([], {
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}
+                                  </span>
+                                </p>
+                              </h2>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    ))
+                      );
+                    })
                   ) : (
                     <div className="font-normal text-base">
                       Ingen planlagte arrangementer
                     </div>
                   )}
+
+                  {/* Form to add new arrangements */}
                   {openForm ? (
                     <div>
-                      Her skal vi rendere en form som lar vanlige brukere legge inne arrangementer i lavterskelkalenderen.
+                      Her skal vi rendere en form som lar vanlige brukere legge
+                      inne arrangementer i lavterskelkalenderen.
                     </div>
-                  ) : (<button
-                    className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
-                    onClick={toggleForm}
-                  >
-                    Legg til arrangement?
-                  </button>)}
+                  ) : (
+                    <button
+                      className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
+                      onClick={toggleForm}
+                    >
+                      Legg til arrangement?
+                    </button>
+                  )}
                   <div className="flex lg:justify-between w-full flex-col lg:flex-row">
-                  <button
-                    className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
-                    onClick={closeModal}
-                  >
-                    Lukk
-                  </button>
+                    <button
+                      className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
+                      onClick={closeModal}
+                    >
+                      Lukk
+                    </button>
                   </div>
                 </div>
               </div>

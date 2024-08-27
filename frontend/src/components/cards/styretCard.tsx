@@ -64,7 +64,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             <path d="m12 8-4 4 4 4" />
           </svg>
         </button>
-        <div className="relative w-[100%] overflow-hidden">
+        <div className="relative w-[80%] overflow-hidden">
           <div
             className={`flex transition-transform duration-300 ease-in-out transform ${
               isSliding ? "delay-300" : ""
@@ -74,9 +74,9 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-[#003A42] rounded-md py-5 space-y-5 lg:flex-row lg:space-x-5 lg:p-6"
+                className="flex-shrink-0 w-full flex flex-col items-center gap-x-4 p-4 lg:p-6 justify-center bg-[#003A42] rounded-md lg:space-y-0 lg:flex-row "
               >
-                <div className="flex flex-col space-y-3 px-5 lg:w-[60%] lg:space-y-5 lg:h-4/5 lg:justify-between">
+                <div className="flex flex-col space-y-3 lg:justify-between w-full lg:w-[50vh] lg:h-[50vh]">
                   <div className="">
                     <p className="text-base lg:text-2xl font-semibold">
                       {item.rolle}
@@ -97,7 +97,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
                     </p>
                   </div>
                 </div>
-                <div className=" items-center px-6 hidden lg:flex">
+                <div className=" items-center hidden lg:flex">
                   <img
                     src={item.bilde}
                     alt={item.rolle}

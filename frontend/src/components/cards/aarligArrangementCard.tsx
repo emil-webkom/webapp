@@ -42,7 +42,7 @@ const AarligArrangementCard: FC<AarligArrangementCardProps> = ({ data }) => {
 
   return (
     <div>
-      <div className="flex items-center justify-center space-x-5">
+      <div className="flex items-center justify-between lg:justify-center lg:space-x-5">
         <button onClick={handlePrev} className="icon-hover">
           <svg
             xmlns="http://www.w3.org/2000/svg"
