@@ -3,6 +3,7 @@ import DropdownCard, { dropdownCardProps } from "@/components/cards/dropdownCard
 import NyStudentCard, { nyStudentCardProps } from "@/components/cards/nyStudentCard";
 import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
+import ThumbnailButton, { thumbnailButtonProps } from "@/components/ForStudenten/nyStudent/thumbnailButton";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { Popover } from "@/components/ui/popover";
 import { fetchStyretRolle } from "@/utils/styret/fetchers";
@@ -78,8 +79,8 @@ const ForStudentPage = () => {
       content:
         <div className="space-y-8">
           <div className="space-y-2">
-          <p>Fadderperioden består av to uker med arrangementer hver eneste dag. Målet er at alle som starter på energi og miljø skal få den ultimate starten på studiet og en herlig velkomst til studentbyen Trondheim. Disse ukene er hele byen preget av festivalstemning og terskelen for å hilse på nye folk er ikke-eksisterende.</p>
-          <p>Husk å melde deg på ved å fylle ut påmeldingskjema <Link href={"https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform"} target='_blank' rel='noopener norefferer' className="text-green-300 underline">her</Link>!</p>
+            <p>Fadderperioden består av to uker med arrangementer hver eneste dag. Målet er at alle som starter på energi og miljø skal få den ultimate starten på studiet og en herlig velkomst til studentbyen Trondheim. Disse ukene er hele byen preget av festivalstemning og terskelen for å hilse på nye folk er ikke-eksisterende.</p>
+            <p>Husk å melde deg på ved å fylle ut påmeldingskjema <Link href={"https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform"} target='_blank' rel='noopener norefferer' className="text-green-300 underline">her</Link>!</p>
           </div>
           <div className="">
             <img className='rounded-md' src="/image/EMIL/fadderukaPlan.png" alt="" />
@@ -105,8 +106,67 @@ const ForStudentPage = () => {
       content: "Teknostart er et obligatorisk oppstartsprogram for førsteårs sivilingeniørstudenter ved NTNU, og vil i 2024 pågå i den første uken av semesteret. Det arrangeres av NTNU, ikke linjeforeningenen. Den faglige starten er den andre uken av semesteret og er en introduksjon til fagene studentene skal ha.",
       time: "Første uke"
     },
-    
+
   ]
+
+  const fagligeTips = [
+    ["Bruk alternative læringsformer", " Det finnes mange gode ressurser på nettet som komplimenterer undervisningen. Et eksempel er kateter.no som er laget av NTNU studenter."],
+    ["Pensum", "Du kan spare både miljøet og lommeboka ved å se etter pensumbøker på Finn.no. Du kan også finne billige digitale kopier på ibok.no. Ellers finner du alt du trenger på Akademika"],
+    // ["Eksperimenter med læringsmetoder:", "Det er mange måter å lære på og som student har vi full frihet til å velge hvilken metode vi vil selv. Ikke vær redd for å prøve ut et nytt format."],
+    ["Bruk medstudenter og student-assistenter", <>Bruk medstudenter og student-assistenter. Ikke vær redd for å spørre om hjelp eller veiledning fra dine eldre studenter. Ofte finnes det Piazza-forum per fag hvor du kan få hjelp. På EMNR.no kan man også finne gode tips.</>],
+    ["Emils lille hjelper", "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?"],
+    // ["Fokuser på en innlevering av gangen:", "På de tekniske studiene er det behov for å sikre læringsutbyttet til studentene og derfor er det en del innleveringer. Føles det mye, prøv å fokusere på en innlevering av gangen og husk at karakter er viktigere enn karakterer. "],
+    // ["Kok med omhu:", "Det finnes mange måter å koke på, enten det er gjennom fult fyr på stekepannen eller om det er under lave temperaturer. Det er fort gjort å brenne seg om varmen blir for høy så kok klokt!"],
+  ]
+
+  const fagligeButtons: thumbnailButtonProps[] = [
+    {
+      title: "Kateter",
+      oneliner: "Læringsplatform for og av studenter"
+    },
+    {
+      title: "iBok",
+      oneliner: "Nettsted for av digitale bøker"
+    },
+    {
+      title: "EMNR",
+      oneliner: "Nettsted for vurdering av emner ved NTNU"
+    },
+    {
+      title: "EMILS lille hjelper",
+      oneliner: "Linjeforeningens interne disk"
+    },
+  ]
+
+  const sosialeTips = [
+    ["Engasjer deg i frivilligheten", " Frivillighet er en enkel måte å møte nye folk på, enten det er i linjeforeningen eller i andre organisasjoner som samfundet. Det er også god CV-mat!"],
+    ["Mazemap", " Lost på campus? Last ned mazemap-appen for å finne frem til alle rom"],
+    // ["Eksperimenter med læringsmetoder:", "Det er mange måter å lære på og som student har vi full frihet til å velge hvilken metode vi vil selv. Ikke vær redd for å prøve ut et nytt format."],
+    ["SIT", "Studentsamskipnaden har mye tilbud til studentene, alt fra bolig til helse. Bruk tilbudet til det du har behov for på SIT.no"],
+    ["Organiser deg", "Tekna og Nito er begge fagforeninger som gir gode tilbud til medlemmene sine som f.eks. reiseforsikring, innbo og mer. Sjekk det ut!"],
+    // ["Fokuser på en innlevering av gangen:", "På de tekniske studiene er det behov for å sikre læringsutbyttet til studentene og derfor er det en del innleveringer. Føles det mye, prøv å fokusere på en innlevering av gangen og husk at karakter er viktigere enn karakterer. "],
+    // ["Kok med omhu:", "Det finnes mange måter å koke på, enten det er gjennom fult fyr på stekepannen eller om det er under lave temperaturer. Det er fort gjort å brenne seg om varmen blir for høy så kok klokt!"],
+  ]
+
+  const sosialeButtons: thumbnailButtonProps[] = [
+    {
+      title: "Samfundet",
+      oneliner: "Europas nest største utested. Utrolig sosial arena"
+    },
+    {
+      title: "Mazemap",
+      oneliner: "Interaktivt kart over alle NTNU-campuser på mobil"
+    },
+    {
+      title: "SIT",
+      oneliner: "Interaktivt kart over alle NTNU-campuser på mobil"
+    },
+    {
+      title: "Tekna",
+      oneliner: "Interaktivt kart over alle NTNU-campuser på mobil"
+    },
+  ]
+
   const pageSections: nyStudentSectionProps[] = [
     {
       title: "Sjekkliste for nye EMIL-studenter",
@@ -117,10 +177,11 @@ const ForStudentPage = () => {
           <NyStudentCard key={i} title={c.title} description={c.description} frist={c.frist} icon={c.icon} buttonText={c.buttonText} href={c.href}></NyStudentCard>
         )}
       </div>,
-    }, {
+    },
+    {
       title: "De første ukene på studiet",
       tag: "De første ukene",
-      intro : <p>Her kan du lese mer om opplegg som skjer de første ukene.</p>,
+      intro: <>Her kan du lese mer om opplegg som skjer de første ukene</>,
       content: <div className="flex flex-col self-center w-full max-w-[512px] gap-4">
         {forsteUkeneCards.map((c, i) =>
           <DropdownCard key={i} title={c.title} content={c.content} time={c.time} place={c.place} oneLiner={c.oneLiner} />
@@ -130,9 +191,34 @@ const ForStudentPage = () => {
     {
       title: "Tips og verktøy",
       tag: "Tips og verktøy",
-      content: 
-      <div className="grid gap-4 lg:grid-cols-1">
-      </div>
+      intro: <>Her har vi samlet ulike tips og verktøy</>,
+      content:
+        <div className="flex flex-col items-center w-full">
+          <div>
+
+            <h2 className="text-xl mb-1">Faglig</h2>
+            <div className="flex flex-col gap-8">
+              {fagligeTips.map((t, i) =>
+                <div className="flex flex-col lg:flex-row gap-2 lg:gap-16 lg:items-center">
+                  <p className="text-sm max-w-[512px]"><span className="font-semibold text-base">{t[0]}<br /></span>{t[1]}</p>
+                  <ThumbnailButton imageURL={fagligeButtons[i].imageURL} title={fagligeButtons[i].title} oneliner={fagligeButtons[i].oneliner}></ThumbnailButton>
+                </div>
+              )}
+            </div>
+          </div>
+          <div>
+
+            <h2 className="text-xl mt-16 mb-2">Sosialt</h2>
+            <div className="flex flex-col gap-8">
+              {sosialeTips.map((t, i) =>
+                <div className="flex flex-col lg:flex-row gap-2 lg:gap-16 lg:items-center">
+                  <p className="text-sm max-w-[512px]"><span className="font-semibold text-base">{t[0]}<br /></span>{t[1]}</p>
+                  <ThumbnailButton imageURL={sosialeButtons[i].imageURL} title={sosialeButtons[i].title} oneliner={sosialeButtons[i].oneliner}></ThumbnailButton>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
     },]
 
 
@@ -155,7 +241,7 @@ const ForStudentPage = () => {
         </div>
       </div>
 
-      <StickyNavbar tags={[... pageSections.map(s => s.tag)]} activeTag={""}></StickyNavbar>
+      <StickyNavbar tags={[...pageSections.map(s => s.tag)]} activeTag={""}></StickyNavbar>
       {pageSections.map((s, i) =>
         <NyStudentSection
           key={i}
