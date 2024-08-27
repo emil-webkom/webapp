@@ -5,9 +5,10 @@ import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import NyStudentSection, { nyStudentSectionProps } from "@/components/ForStudenten/nyStudent/nyStudentSection";
 import ThumbnailButton, { thumbnailButtonProps } from "@/components/ForStudenten/nyStudent/thumbnailButton";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
+import { Button } from "@/components/ui/button";
 import { Popover } from "@/components/ui/popover";
 import { fetchStyretRolle } from "@/utils/styret/fetchers";
-import { Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight, Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { FaFacebookF } from "react-icons/fa";
@@ -242,9 +243,17 @@ const ForStudentPage = () => {
         </div>
     },
     {
-      title: "",
+      title: "Har du spørsmål?",
       tag: "Kontakt",
-      content: <div>
+      content: 
+      <div className="flex flex-col gap-2">
+        <p className="max-w-[512px]">Hovedstyret i linjeforeningen er ansvarlig for mottakelsen og integreringen av nye studenter til linjeforeningen. De vil være mye med dere og gjøre sitt for at dere skal ha det bra. De er alltids tilgjengelige og kan kontaktes hvis du lurer på noe rundt oppstart eller rundt fadderperioden.</p>
+        <div className="flex font-light flex-row items-end gap-12">
+          <p><span className="font-semibold">Fadderansvarlig:</span><br/>
+              Vegard Jensen<br/>
+              +47 123 45 678</p>
+              <Button className="gap-2">Kontakt styret <ArrowUpRight size={20}/></Button>
+        </div>
       </div>
     }
 

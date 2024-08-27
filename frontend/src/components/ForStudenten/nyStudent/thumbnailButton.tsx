@@ -11,13 +11,12 @@ export interface thumbnailButtonProps {
 
 const ThumbnailButton = ({imageURL,title,oneliner,link} : thumbnailButtonProps) => {
   return (
-    <Button variant={'transparent'} className='flex h-fit text-left px-1 w-full justify-start lg:w-fit items-start gap-2'>
+    <Button variant={'transparent'} className='flex flex-col h-fit text-left px-1 w-full justify-start lg:w-fit items-start gap-2'>
         <Link
                 href={link}
                 target="_blank"
                 rel="noopener norefferer"
-                className="flex-row justify-center items-center gap-1"
-              >
+                className="flex-row justify-center items-start gap-1">
 
         <div className='flex size-10 lg:size-14 rounded-lg overflow-hidden self-center p-1 items-center justify-center bg-white'>
             <img className='max-w-full max-h-full object-contain' src={imageURL? imageURL : `/image/logoer/${title.toLowerCase().replace(/\s/g, "")}.png`} alt={title + " logo"} />
