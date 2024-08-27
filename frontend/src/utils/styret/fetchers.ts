@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { Hovedstyret } from "@/types/interfaces";
 
-export async function fetchStyret() {
+export async function FetchStyret() {
   try {
     const hovedstyret = await db.hovedstyret.findMany({
       include: {
