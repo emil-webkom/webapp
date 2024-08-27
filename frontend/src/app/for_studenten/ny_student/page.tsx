@@ -9,6 +9,7 @@ import { Popover } from "@/components/ui/popover";
 import { fetchStyretRolle } from "@/utils/styret/fetchers";
 import { Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
+import { ReactNode } from "react";
 import { FaFacebookF } from "react-icons/fa";
 
 const ForStudentPage = () => {
@@ -109,62 +110,93 @@ const ForStudentPage = () => {
 
   ]
 
-  const fagligeTips = [
-    ["Bruk alternative læringsformer", " Det finnes mange gode ressurser på nettet som komplimenterer undervisningen. Et eksempel er kateter.no som er laget av NTNU studenter."],
-    ["Pensum", "Du kan spare både miljøet og lommeboka ved å se etter pensumbøker på Finn.no. Du kan også finne billige digitale kopier på ibok.no. Ellers finner du alt du trenger på Akademika"],
+  interface tips {
+    mainpoint: string,
+    description: ReactNode,
+    thumbnailButton?: thumbnailButtonProps[]
+  }
+  const fagligeTips: tips[] = [
+    {
+
+      mainpoint: "Bruk alternative læringsformer",
+      description: " Det finnes mange gode ressurser på nettet som komplimenterer undervisningen. Et eksempel er kateter.no som er laget av NTNU studenter.",
+      thumbnailButton: [{
+        title: "Kateter",
+        oneliner: "Læringsplatform for og av studenter",
+        link: "https://kateter.no"
+      }]
+    },
+    {
+      mainpoint: "Pensum",
+      description: "Du kan spare både miljøet og lommeboka ved å se etter pensumbøker på Finn.no. Du kan også finne billige digitale kopier på ibok.no. Ellers finner du alt du trenger på Akademika",
+      thumbnailButton: [{
+        title: "iBok",
+        oneliner: "Nettsted for av digitale bøker",
+        link: "https://ibok.no"
+      }]
+    },
+    {
+      mainpoint: "Bruk medstudenter og student-assistenter",
+      description: "Bruk medstudenter og student-assistenter. Ikke vær redd for å spørre om hjelp eller veiledning fra dine eldre studenter. Ofte finnes det Piazza-forum per fag hvor du kan få hjelp. På EMNR.no kan man også finne gode tips.",
+      thumbnailButton: [{
+        title: "EMNR",
+        oneliner: "Nettsted for vurdering av emner ved NTNU",
+        link: "https://emnr.no"
+      }]
+    },
+    {
+      mainpoint: "EMILs lille hjelper",
+      description: "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?",
+      thumbnailButton: [{
+        title: "EMILS lille hjelper",
+        oneliner: "Linjeforeningens interne disk",
+        link: "https://drive.google.com/drive/folders/0B1yZD12vp6TdRjJQZWhLNU51NnM?resourcekey=0--piITTQpCvehrwAFuTXJnQ"
+      }],
+    },
+    {
+      mainpoint: "Engasjer deg i frivilligheten",
+      description: "Frivillighet er en enkel måte å møte nye folk på, enten det er i linjeforeningen eller i andre organisasjoner som samfundet. Det er også god CV-mat!",
+      thumbnailButton: [{
+        title: "Samfundet",
+        oneliner: "Verdens åttends støreste utested",
+        link: "https://samfundet.no"
+      }],
+    },
+    {
+      mainpoint: "Mazemap",
+      description: "Lost på campus? Last ned mazemap-appen for å finne frem til alle rom.",
+      thumbnailButton: [{
+        title: "Mazemap",
+        oneliner: "Interaktivt kart over alle NTNU-campuser",
+        link: "https://use.mazemap.com/"
+      }],
+    },
+    {
+      mainpoint: "SIT",
+      description: "Studentsamskipnaden har mye tilbud til studentene, alt fra bolig til helse. Bruk tilbudet til det du har behov for på SIT.no.",
+      thumbnailButton: [{
+        title: "SIT",
+        oneliner: "Interaktivt kart over alle NTNU-campuser",
+        link: "https://www.sit.no/"
+      }],
+    },
+    {
+      mainpoint: "Organiser deg",
+      description: "Tekna og Nito er begge fagforeninger som gir gode tilbud til medlemmene sine som f.eks. reiseforsikring, innbo og mer. Sjekk det ut!",
+      thumbnailButton: [{
+        title: "Tekna",
+        oneliner: "Fagforening for siving-studenter",
+        link: "https://www.tekna.no/"
+      }, {
+        title: "NITO",
+        oneliner: "Fagforening for siving-studenter",
+        link: "https://www.nito.no/"
+      }],
+    },
+
     // ["Eksperimenter med læringsmetoder:", "Det er mange måter å lære på og som student har vi full frihet til å velge hvilken metode vi vil selv. Ikke vær redd for å prøve ut et nytt format."],
-    ["Bruk medstudenter og student-assistenter", <>Bruk medstudenter og student-assistenter. Ikke vær redd for å spørre om hjelp eller veiledning fra dine eldre studenter. Ofte finnes det Piazza-forum per fag hvor du kan få hjelp. På EMNR.no kan man også finne gode tips.</>],
-    ["Emils lille hjelper", "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?"],
     // ["Fokuser på en innlevering av gangen:", "På de tekniske studiene er det behov for å sikre læringsutbyttet til studentene og derfor er det en del innleveringer. Føles det mye, prøv å fokusere på en innlevering av gangen og husk at karakter er viktigere enn karakterer. "],
     // ["Kok med omhu:", "Det finnes mange måter å koke på, enten det er gjennom fult fyr på stekepannen eller om det er under lave temperaturer. Det er fort gjort å brenne seg om varmen blir for høy så kok klokt!"],
-  ]
-
-  const fagligeButtons: thumbnailButtonProps[] = [
-    {
-      title: "Kateter",
-      oneliner: "Læringsplatform for og av studenter"
-    },
-    {
-      title: "iBok",
-      oneliner: "Nettsted for av digitale bøker"
-    },
-    {
-      title: "EMNR",
-      oneliner: "Nettsted for vurdering av emner ved NTNU"
-    },
-    {
-      title: "EMILS lille hjelper",
-      oneliner: "Linjeforeningens interne disk"
-    },
-  ]
-
-  const sosialeTips = [
-    ["Engasjer deg i frivilligheten", " Frivillighet er en enkel måte å møte nye folk på, enten det er i linjeforeningen eller i andre organisasjoner som samfundet. Det er også god CV-mat!"],
-    ["Mazemap", " Lost på campus? Last ned mazemap-appen for å finne frem til alle rom"],
-    // ["Eksperimenter med læringsmetoder:", "Det er mange måter å lære på og som student har vi full frihet til å velge hvilken metode vi vil selv. Ikke vær redd for å prøve ut et nytt format."],
-    ["SIT", "Studentsamskipnaden har mye tilbud til studentene, alt fra bolig til helse. Bruk tilbudet til det du har behov for på SIT.no"],
-    ["Organiser deg", "Tekna og Nito er begge fagforeninger som gir gode tilbud til medlemmene sine som f.eks. reiseforsikring, innbo og mer. Sjekk det ut!"],
-    // ["Fokuser på en innlevering av gangen:", "På de tekniske studiene er det behov for å sikre læringsutbyttet til studentene og derfor er det en del innleveringer. Føles det mye, prøv å fokusere på en innlevering av gangen og husk at karakter er viktigere enn karakterer. "],
-    // ["Kok med omhu:", "Det finnes mange måter å koke på, enten det er gjennom fult fyr på stekepannen eller om det er under lave temperaturer. Det er fort gjort å brenne seg om varmen blir for høy så kok klokt!"],
-  ]
-
-  const sosialeButtons: thumbnailButtonProps[] = [
-    {
-      title: "Samfundet",
-      oneliner: "Europas nest største utested. Utrolig sosial arena"
-    },
-    {
-      title: "Mazemap",
-      oneliner: "Interaktivt kart over alle NTNU-campuser på mobil"
-    },
-    {
-      title: "SIT",
-      oneliner: "Interaktivt kart over alle NTNU-campuser på mobil"
-    },
-    {
-      title: "Tekna",
-      oneliner: "Interaktivt kart over alle NTNU-campuser på mobil"
-    },
   ]
 
   const pageSections: nyStudentSectionProps[] = [
@@ -193,33 +225,30 @@ const ForStudentPage = () => {
       tag: "Tips og verktøy",
       intro: <>Her har vi samlet ulike tips og verktøy</>,
       content:
-        <div className="flex flex-col items-center w-full">
-          <div>
-
-            <h2 className="text-xl mb-1">Faglig</h2>
-            <div className="flex flex-col gap-8">
-              {fagligeTips.map((t, i) =>
-                <div className="flex flex-col lg:flex-row gap-2 lg:gap-16 lg:items-center">
-                  <p className="text-sm max-w-[512px]"><span className="font-semibold text-base">{t[0]}<br /></span>{t[1]}</p>
-                  <ThumbnailButton imageURL={fagligeButtons[i].imageURL} title={fagligeButtons[i].title} oneliner={fagligeButtons[i].oneliner}></ThumbnailButton>
+        <div className="flex flex-col items-center w-full mt-4">
+          <div className="flex flex-col gap-8">
+            {fagligeTips.map((t, i) =>
+              <div className={`flex flex-col lg:flex-row lg:gap-16 gap-2 `}>
+                <div className="text-sm max-w-[512px]">
+                  <p className="font-semibold text-base">{t.mainpoint}</p>
+                  <p>{t.description}</p>
                 </div>
-              )}
-            </div>
-          </div>
-          <div>
-
-            <h2 className="text-xl mt-16 mb-2">Sosialt</h2>
-            <div className="flex flex-col gap-8">
-              {sosialeTips.map((t, i) =>
-                <div className="flex flex-col lg:flex-row gap-2 lg:gap-16 lg:items-center">
-                  <p className="text-sm max-w-[512px]"><span className="font-semibold text-base">{t[0]}<br /></span>{t[1]}</p>
-                  <ThumbnailButton imageURL={sosialeButtons[i].imageURL} title={sosialeButtons[i].title} oneliner={sosialeButtons[i].oneliner}></ThumbnailButton>
+                <div className="flex flex-row lg:flex-row flex-wrap w-full lg:w-fit gap-2">
+                  {t.thumbnailButton && t.thumbnailButton.map(b => (<ThumbnailButton {...b} />))}
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
-    },]
+    },
+    {
+      title: "",
+      tag: "Kontakt",
+      content: <div>
+      </div>
+    }
+
+  ]
 
 
   return <>
