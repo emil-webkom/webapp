@@ -6,60 +6,47 @@ export interface StickyNavbarProps {
   tags: string[];
 }
 
-function useInViewPort<T extends HTMLElement>(ref: React.RefObject<T>, options?: IntersectionObserverInit) {
-  const [ inViewport, setInViewport ] = useState(false);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([ entry ]) => {
-      setInViewport(entry.isIntersecting);
-    }, options);
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [ options, ref ]);
-  return inViewport;
-}
-
 
 const StickyNavbar = ({ tags }: StickyNavbarProps) => {
   const [activeTag, setActiveTag] = useState("");
-  const observerRef = useRef<IntersectionObserver | null>(null);
-  
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveTag(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    tags.forEach((tag) => {
-      const element = document.getElementById(tag);
-      if (element) observerRef.current?.observe(element);
-    });
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-    };
-  }, [tags]);
-
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: "smooth" });
     setActiveTag(sectionId);
   };
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-20% 0px -80% 0px", // Adjust these values as needed
+    threshold: 0,
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        setActiveTag(entry.target.id);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  useEffect(() => {
+
+    tags.forEach((tag) => {
+      const element = document.getElementById(tag);
+      if (element) {
+        sectionRefs.current[tag] = element;
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      Object.values(sectionRefs.current).forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, [tags]);
 
   return (
     <>
