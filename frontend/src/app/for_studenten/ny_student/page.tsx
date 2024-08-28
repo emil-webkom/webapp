@@ -10,8 +10,6 @@ import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissi
 import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { Button } from "@/components/ui/button";
-import { Popover } from "@/components/ui/popover";
-import { fetchStyretRolle } from "@/utils/styret/fetchers";
 import { ArrowUpLeft, ArrowUpRight, Building, Coins, Facebook, Home, Key, Mail, Shirt, User, Wifi } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
