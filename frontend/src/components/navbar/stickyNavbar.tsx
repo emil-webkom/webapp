@@ -1,16 +1,64 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import HeaderText from "../ForStudenten/nyStudent/headerText";
 import { Button } from "../ui/button";
 
 export interface StickyNavbarProps {
   tags: string[];
-  activeTag: string;
 }
 
-const StickyNavbar = ({ tags, activeTag }: StickyNavbarProps) => {
+function useInViewPort<T extends HTMLElement>(ref: React.RefObject<T>, options?: IntersectionObserverInit) {
+  const [ inViewport, setInViewport ] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(([ entry ]) => {
+      setInViewport(entry.isIntersecting);
+    }, options);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, [ options, ref ]);
+  return inViewport;
+}
+
+
+const StickyNavbar = ({ tags }: StickyNavbarProps) => {
+  const [activeTag, setActiveTag] = useState("");
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveTag(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    tags.forEach((tag) => {
+      const element = document.getElementById(tag);
+      if (element) observerRef.current?.observe(element);
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [tags]);
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: "smooth" });
+    setActiveTag(sectionId);
   };
 
   return (

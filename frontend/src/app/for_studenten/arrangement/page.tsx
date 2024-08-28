@@ -255,7 +255,6 @@ const ForStudentenPage = () => {
             "Lavterskelkalender",
             "Årlige arrangementer",
           ]}
-          activeTag={activeSection}
         />
         <SmallTransissionHighlightSPC />
         <div
