@@ -22,17 +22,17 @@ const StickyNavbar = ({ tags }: StickyNavbarProps) => {
     threshold: 0,
   };
 
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        setActiveTag(entry.target.id);
-      }
-    });
-  };
-
-  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  
   useEffect(() => {
-
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveTag(entry.target.id);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    
     tags.forEach((tag) => {
       const element = document.getElementById(tag);
       if (element) {
