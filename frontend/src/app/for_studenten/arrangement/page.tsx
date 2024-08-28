@@ -4,6 +4,8 @@ import ListView from "@/components/calendar/listView";
 import { Arrangement } from "@/schemas/arrangement";
 import { lavTerskelArrangement } from "@/schemas/lavterskelArrangement";
 import { useEffect, useState, useRef } from "react";
+import { format } from 'date-fns';
+import { nb } from 'date-fns/locale';
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
 import SmallTransissionDarkHighligt from "@/components/hero/transissions/smallTransissionDarkHighlight";
@@ -331,6 +333,7 @@ const ForStudentenPage = () => {
               </div>
             </div>
             <Calendar
+              locale="nb"
               className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
               tileClassName={({ date, view }) => {
@@ -372,7 +375,7 @@ const ForStudentenPage = () => {
               }}
               navigationLabel={({ date, label, locale, view }) => (
                 <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
-                  {label}
+                  {label.charAt(0).toUpperCase() + label.slice(1)}
                 </div>
               )}
               next2Label={null}
@@ -388,7 +391,11 @@ const ForStudentenPage = () => {
             {selectedDate && (
               <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
-                  <h2 className="text-xl font-bold mb-4">{selectedDate}</h2>
+                  <h2 className="text-xl font-bold mb-4">{
+                    // Format date in norwegian with capital letter
+                  (format(selectedDate, "EEEE, d MMMM yyyy", { locale: nb }))
+                  .split(',').map(word => word.charAt(0).toUpperCase() + word.slice(1))}
+                  </h2>
                   {combinedArrangements.length > 0 && openForm !== true ? (
                     combinedArrangements.map((arrangement) => {
                       let arrangementColor = "bg-yellow-500";
