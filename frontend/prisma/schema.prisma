@@ -22,6 +22,7 @@ model User {
   paameldinger  ArrangementPaamelding[]
   bookings      Booking[]
   Hovedstyret   Hovedstyret?
+  lavterskelArrangements LavterskelArrangement[]
 }
 
 model Account {
@@ -105,6 +106,20 @@ model Arrangement {
   paameldinger ArrangementPaamelding[]
 }
 
+model LavterskelArrangement {
+  id           String                  @id @default(cuid())
+  navn         String
+  sted         String?
+  dato         DateTime
+  type         String
+  beskrivelse  String?
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+  userId       String
+  user         User                    @relation(fields: [userId], references: [id])
+  @@index([userId])
+}
+
 model Booking {
   id        String     @id @default(cuid())
   userID    String
@@ -139,4 +154,5 @@ enum BookedItem {
 enum UserRole {
   ADMIN
   USER
+  SUPER_USER
 }

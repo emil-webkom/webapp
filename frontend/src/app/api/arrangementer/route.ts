@@ -3,6 +3,7 @@ import {
   ArrangementSchema,
   createArrangementSchema,
 } from "@/schemas/arrangement";
+import { User } from "lucide-react";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -13,10 +14,16 @@ export async function GET(req: NextRequest) {
         paameldinger: true,
       },
     });
+    const lavterskelArrangement = await db.lavterskelArrangement.findMany({
+      include: {
+        user: true,
+      }
+    });
     return NextResponse.json(
       {
         message: "Retrieved all arrangementer",
         arrangementer,
+        lavterskelArrangement,
       },
       { status: 200 },
     );
