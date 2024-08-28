@@ -89,11 +89,6 @@ const ForStudentPage = () => {
           <div className="">
             <img className='rounded-md' src="/image/EMIL/fadderukaPlan.png" alt="" />
           </div>
-
-          <div>
-            <h2 className="font-semibold">Fadderansvarlig</h2>
-          </div>
-
         </div>,
       time: "14. august - 25. august"
     },
