@@ -108,12 +108,13 @@ const ForStudentPage = () => {
 
   ]
 
-  interface tips {
+  interface tipsprops {
     mainpoint: string,
     description: ReactNode,
     thumbnailButton?: thumbnailButtonProps[]
   }
-  const fagligeTips: tips[] = [
+  //Data for tips-section
+  const fagligeTips: tipsprops[] = [
     {
 
       mainpoint: "Bruk alternative læringsformer",
@@ -197,6 +198,7 @@ const ForStudentPage = () => {
     // ["Kok med omhu:", "Det finnes mange måter å koke på, enten det er gjennom fult fyr på stekepannen eller om det er under lave temperaturer. Det er fort gjort å brenne seg om varmen blir for høy så kok klokt!"],
   ]
 
+  //Where all sections of the page are coded
   const pageSections: nyStudentSectionProps[] = [
     {
       title: "Sjekkliste for nye EMIL-studenter",
@@ -221,7 +223,7 @@ const ForStudentPage = () => {
     {
       title: "Tips og verktøy",
       tag: "Tips og verktøy",
-      intro: <>Her har vi samlet ulike tips og verktøy</>,
+      intro: <>Her har vi samlet ulike tips og verktøy som kan komme godt med i studietiden</>,
       content:
         <div className="flex flex-col items-center w-full mt-4">
           <div className="flex flex-col gap-8">
@@ -232,6 +234,7 @@ const ForStudentPage = () => {
                   <p>{t.description}</p>
                 </div>
                 <div className="flex flex-row lg:flex-col flex-wrap w-full lg:w-fit gap-2">
+                  {/* Renders button for the tip if there is one */}
                   {t.thumbnailButton && t.thumbnailButton.map(b => (<ThumbnailButton {...b} />))}
                 </div>
               </div>
@@ -279,7 +282,7 @@ const ForStudentPage = () => {
       <SmallTransissionDarkHighligh />
       <StickyNavbar tags={[...pageSections.map(s => s.tag)]}></StickyNavbar>
       <SmallTransissionHighlightSPC />
-      {pageSections.map((s, i) =>
+      {pageSections.map((s, i) => //Renders all sections and alternates background
         <>
         <NyStudentSection
           key={i}
@@ -289,6 +292,7 @@ const ForStudentPage = () => {
           content={s.content}
           bg={i % 2 !== 0 ? '' : 'bg-[#225654]'}
           />
+          {/*Transitions  */}
           {i !== pageSections.length-1 &&(i%2===1? <SmallTransissionPCSPC/> : <SmallTransissionSPCPC/>)} 
           </>
           )}
