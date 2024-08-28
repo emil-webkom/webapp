@@ -6,7 +6,7 @@ const EmilLink = () => {
   return (
     <div className="bg-[#001D21] flex flex-col items-center justify-center text-left py-18">
       <p className="font-extrabold text-2xl text-white py-6 ">EMIL-Link</p>
-      <p className="text-white font-extralight text-sm lg:text-l leading-relaxed max-w-4xl">
+      <p className="text-white font-extralight text-sm lg:text-base leading-relaxed max-w-4xl">
         Ønsker din bedrift å promotere stillingsannonser, internships eller gi
         et generelt innblikk i hva din bedrift driver med? Emil-Link tilbyr
         flere ulike tjenester hvor bedrifter har mulighet til å komme i kontakt
