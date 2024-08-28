@@ -31,14 +31,6 @@ const ForStudentenPage = () => {
   >([]);
   const [openForm, setOpenform] = useState<Boolean>(false);
 
-  // Sections for keeping track of what section is in view
-  const sectionRefs = {
-    Regler: useRef(null),
-    "Aktive arrangementer": useRef(null),
-    Lavterskelkalender: useRef(null),
-    "Årlige arrangementer": useRef(null),
-  };
-
   // Select date in calendar and find all arrangements (both regular and lavterskel) for the selected date
   const handleDateClick = (date: Date) => {
     const dateString = date.toDateString();
@@ -105,41 +97,6 @@ const ForStudentenPage = () => {
     };
     fetchData();
   }, []);
-
-  // Logic for determining what section is in view
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.6,
-    };
-
-    // Setting highlighting section that is in view in scroll bar.
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    //Tracking class for tracking what is in view on the screen
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions,
-    );
-
-    // Making sure the tracking class changes according to what is in view
-    Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
-
-    return () => {
-      Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
-    };
-  }, [sectionRefs]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -259,7 +216,6 @@ const ForStudentenPage = () => {
         <SmallTransissionHighlightSPC />
         <div
           id="Regler"
-          ref={sectionRefs["Regler"]}
           className="bg-[#225654] flex flex-col items-center justify-center pt-8 px-12"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4">
@@ -319,7 +275,6 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Aktive arrangementer"
-          ref={sectionRefs["Aktive arrangementer"]}
           className="flex flex-col items-center justify-center py-6 px-12"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-6">
@@ -346,7 +301,6 @@ const ForStudentenPage = () => {
         <SmallTransissionPCSPC />
         <div
           id="Lavterskelkalender"
-          ref={sectionRefs["Lavterskelkalender"]}
           className="bg-[#225654] flex flex-col items-center justify-center py-6"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
@@ -579,7 +533,6 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Årlige arrangementer"
-          ref={sectionRefs["Årlige arrangementer"]}
           className="flex flex-col items-center justify-center py-6 gap-y-4"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 px-12">
