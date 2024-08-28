@@ -16,7 +16,7 @@ const ThumbnailButton = ({imageURL,title,oneliner,link} : thumbnailButtonProps) 
                 href={link}
                 target="_blank"
                 rel="noopener norefferer"
-                className="flex-row justify-center items-start gap-1">
+                className="flex-row flex justify-center items-start gap-1">
 
         <div className='flex size-10 lg:size-14 rounded-lg overflow-hidden self-center p-1 items-center justify-center bg-white'>
             <img className='max-w-full max-h-full object-contain' src={imageURL? imageURL : `/image/logoer/${title.toLowerCase().replace(/\s/g, "")}.png`} alt={title + " logo"} />

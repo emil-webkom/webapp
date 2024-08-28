@@ -231,12 +231,12 @@ const ForStudentPage = () => {
         <div className="flex flex-col items-center w-full mt-4">
           <div className="flex flex-col gap-8">
             {fagligeTips.map((t, i) =>
-              <div className={`flex flex-col lg:flex-row lg:gap-16 gap-2 `}>
+              <div className={`flex max-w-3xl  flex-col lg:flex-row lg:gap-16 gap-2 `}>
                 <div className="text-sm max-w-[512px]">
                   <p className="font-semibold text-base">{t.mainpoint}</p>
                   <p>{t.description}</p>
                 </div>
-                <div className="flex flex-row lg:flex-row flex-wrap w-full lg:w-fit gap-2">
+                <div className="flex flex-row lg:flex-col flex-wrap w-full lg:w-fit gap-2">
                   {t.thumbnailButton && t.thumbnailButton.map(b => (<ThumbnailButton {...b} />))}
                 </div>
               </div>
