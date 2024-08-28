@@ -12,6 +12,7 @@ import Calendar from "react-calendar";
 import AarligArrangementCard from "@/components/cards/aarligArrangementCard";
 import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
+import LavterskelArrangementForm from "@/components/forms/lavterskelarrangementform";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
@@ -58,6 +59,10 @@ const ForStudentenPage = () => {
     setCombinedArrangements(combined);
   };
 
+  const handlesubmit = () => {
+    console.log("Submitted");
+  };
+
   // Close opened date
   const closeModal = () => {
     setSelectedDate(null);
@@ -66,6 +71,9 @@ const ForStudentenPage = () => {
 
   const toggleForm = () => {
     setOpenform((prevState) => !prevState);
+  };
+  const handleCloseForm = () => {
+    setOpenform(false);
   };
 
   // API call to fetch arrangements from DB
@@ -238,7 +246,6 @@ const ForStudentenPage = () => {
           </p>
         </div>
       </div>
-      {/* Add small transition in*/}
       <SmallTransissionDarkHighligt />
       <div className="w-full ">
         <StickyNavbar
@@ -309,7 +316,6 @@ const ForStudentenPage = () => {
               />
             </div>
           </div>
-          {/* Nystudent-card brukes her: trenger titel,description og icon. Icon= 1,2,3,4 -> wrap i <p/> */}
         </div>
         <SmallTransissionSPCPC />
         <div
@@ -384,7 +390,6 @@ const ForStudentenPage = () => {
               }}
               tileContent={({ date, view }) => {
                 const dateString = date.toDateString();
-                // Filter combined arrangements for the current date
                 const relevantArrangements = allCombinedArrangements.filter(
                   (a) => new Date(a.dato).toDateString() === dateString,
                 );
@@ -401,7 +406,6 @@ const ForStudentenPage = () => {
                     return "bg-yellow-500";
                   },
                 );
-                // Check if there are relevant arrangements for this date
                 return relevantArrangements.length > 0 ? (
                   <div className="w-full flex flex-col justify-end items-center space-y-1">
                     {arrangementColors.map((color, index) => (
@@ -432,18 +436,68 @@ const ForStudentenPage = () => {
               <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
                   <h2 className="text-xl font-bold mb-4">{selectedDate}</h2>
-                  {combinedArrangements.length > 0 ? (
+                  {combinedArrangements.length > 0 && openForm !== true ? (
                     combinedArrangements.map((arrangement) => {
-                      // Determine the color based on the arrangement type
-                      let arrangementColor = "bg-yellow-500"; // Default color for regular arrangements
-
+                      let arrangementColor = "bg-yellow-500";
                       if ("type" in arrangement) {
                         if (arrangement.type === "Internt arrangement") {
-                          arrangementColor = "bg-blue-500"; // Internal arrangement
+                          arrangementColor = "bg-blue-500";
+                          return (
+                            <div
+                              key={arrangement.id}
+                              className="py-2 flex justify-start items-center gap-x-2"
+                            >
+                              <div
+                                className={`w-2 h-2 ${arrangementColor} rounded-full`}
+                              ></div>
+                              <div>
+                                <h2 className="font-bold text-base lg:text-base">
+                                  {arrangement.navn}
+                                  <span className="font-normal">
+                                    {" "}
+                                    -{" "}
+                                    {new Date(
+                                      arrangement.dato,
+                                    ).toLocaleTimeString([], {
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}
+                                    ;
+                                  </span>
+                                </h2>
+                              </div>
+                            </div>
+                          );
                         } else if (
                           arrangement.type === "Eksternt arrangement"
                         ) {
-                          arrangementColor = "bg-red-500"; // External arrangement
+                          arrangementColor = "bg-red-500";
+                          return (
+                            <div
+                              key={arrangement.id}
+                              className="py-2 flex justify-start items-center gap-x-2"
+                            >
+                              <div
+                                className={`w-2 h-2 ${arrangementColor} rounded-full`}
+                              ></div>
+                              <div>
+                                <h2 className="font-bold text-base lg:text-base">
+                                  {arrangement.navn}
+                                  <span className="font-normal">
+                                    {" "}
+                                    -{" "}
+                                    {new Date(
+                                      arrangement.dato,
+                                    ).toLocaleTimeString([], {
+                                      hour: "2-digit",
+                                      minute: "2-digit",
+                                    })}
+                                    ;
+                                  </span>
+                                </h2>
+                              </div>
+                            </div>
+                          );
                         }
                       }
 
@@ -452,7 +506,6 @@ const ForStudentenPage = () => {
                           key={arrangement.id}
                           className="py-2 flex justify-start items-center gap-x-2"
                         >
-                          {/* Arrangement color indicator */}
                           <div
                             className={`w-2 h-2 ${arrangementColor} rounded-full`}
                           ></div>
@@ -483,25 +536,33 @@ const ForStudentenPage = () => {
                         </div>
                       );
                     })
+                  ) : combinedArrangements.length > 0 && openForm ? (
+                    <p className="text-gray-600 text-base">
+                      Skjuler arrangementer
+                    </p>
                   ) : (
-                    <div className="font-normal text-base">
-                      Ingen planlagte arrangementer
-                    </div>
-                  )}
+                    <p className="text-gray-600 text-base">
+                      Ingen arrangementer
+                    </p>
+                  )
+                  }
 
-                  {/* Form to add new arrangements */}
                   {openForm ? (
                     <div>
-                      Her skal vi rendere en form som lar vanlige brukere legge
-                      inne arrangementer i lavterskelkalenderen.
+                      <LavterskelArrangementForm
+                        onSubmit={handlesubmit}
+                        onClose={handleCloseForm}
+                      />
                     </div>
                   ) : (
-                    <button
-                      className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
-                      onClick={toggleForm}
-                    >
-                      Legg til arrangement?
-                    </button>
+                    <div className=" w-full flex justify-center lg:justify-start items-center">
+                      <button
+                        className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
+                        onClick={toggleForm}
+                      >
+                        Legg til arrangement?
+                      </button>
+                    </div>
                   )}
                   <div className="flex lg:justify-between w-full flex-col lg:flex-row">
                     <button
