@@ -4,7 +4,7 @@ import MenuCard, {
   MenuCardProps,
 } from "@/components/ForStudenten/ui/menu-card";
 import MenuCardView from "@/components/ForStudenten/ui/menu-card-view";
-import { Speaker, Coffee, Home, FileQuestion } from "lucide-react";
+import { Speaker, Coffee, Home, FileQuestion, ListChecks } from "lucide-react";
 
 const BookingPage = () => {
   const cards: MenuCardProps[] = [
@@ -14,7 +14,7 @@ const BookingPage = () => {
       description:
         "Emil har hele 2 soundboxer som studenter kan låne! Book en soundbox til en valgt dato eller tid. Ventetiden kan være lang så vær obs på å booke i god tid!",
       buttonLabel: "Book Soundbox",
-      href: "https://youtube.com",
+      href: "/for_studenten/booking/soundbox",
     },
     {
       title: "Kontoret",
@@ -33,11 +33,12 @@ const BookingPage = () => {
       href: "http://eshyttekom.no/",
     },
     {
-      title: "Annet",
-      logo: <FileQuestion />,
+      title: "Mine bookinger",
+      logo: <ListChecks />,
       description:
-        "Dersom du har noen andre henvendelser når det gjelder booking på Emil, kan du ta kontakt med Kontorkom eller styret.",
-      href: "https://youtube.com",
+        "Her finner du en oversikt over dine aktive og tidligere bookinger.",
+      buttonLabel: "Se min oversikt",
+      href: "/for_studenten/booking/bookings",
     },
   ];
 

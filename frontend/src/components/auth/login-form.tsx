@@ -22,11 +22,13 @@ import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { login } from "@/utils/login";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 export const LoginForm = () => {
+  const router = useRouter();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
-
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
@@ -46,6 +48,7 @@ export const LoginForm = () => {
         // This checks if 'data' is truthy after the 'login' call
         setError(data?.error);
         setSuccess(data?.success);
+        router.push(DEFAULT_LOGIN_REDIRECT);
       });
     });
   };

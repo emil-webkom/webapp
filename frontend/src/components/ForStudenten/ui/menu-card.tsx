@@ -32,6 +32,7 @@ const MenuCard = ({
   href,
 }: MenuCardProps) => {
   const router = useRouter();
+  const isInternalLink = href.startsWith("/");
   return (
     <Card className="min-w-[280px] min-h-[248px] border-none bg-[#25504F] text-[#fff] flex flex-col justify-between">
       <CardHeader className="text-[#9DDBAD] flex flex-row space-x-2 items-center">
@@ -46,15 +47,25 @@ const MenuCard = ({
         </CardDescription>
       </CardContent>
       <CardFooter className="mt-auto">
-        {buttonLabel && (
-          <Button
-            className="bg-[#25504F] text-white hover:bg-[#80b0b7] hover:text-white"
-            variant="outline"
-            onClick={() => router.push(href)}
-          >
-            {buttonLabel}
-          </Button>
-        )}
+        {buttonLabel &&
+          (isInternalLink ? (
+            <Link href={href} passHref>
+              <Button
+                className="bg-[#25504F] text-white hover:bg-[#80b0b7] hover:text-white"
+                variant="outline"
+              >
+                {buttonLabel}
+              </Button>
+            </Link>
+          ) : (
+            <Button
+              className="bg-[#25504F] text-white hover:bg-[#80b0b7] hover:text-white"
+              variant="outline"
+              onClick={() => router.push(href)}
+            >
+              {buttonLabel}
+            </Button>
+          ))}
       </CardFooter>
     </Card>
   );

@@ -8,20 +8,21 @@ datasource db {
 }
 
 model User {
-  id            String                  @id @default(cuid())
-  name          String?
-  email         String                  @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          UserRole                @default(USER)
-  nummer        Int?
-  isActive      Boolean                 @default(true)
-  username      String?                 @unique
-  accounts      Account[]
-  paameldinger  ArrangementPaamelding[]
-  bookings      Booking[]
-  Hovedstyret   Hovedstyret?
+  id                    String                  @id @default(cuid())
+  name                  String?
+  email                 String                  @unique
+  emailVerified         DateTime?
+  image                 String?
+  password              String?
+  role                  UserRole                @default(USER)
+  nummer                Int?
+  isActive              Boolean                 @default(true)
+  username              String?                 @unique
+  accounts              Account[]
+  paameldinger          ArrangementPaamelding[]
+  bookings              Booking[]
+  Hovedstyret           Hovedstyret?
+  LavterskelArrangement LavterskelArrangement[]
 }
 
 model Account {
@@ -111,7 +112,7 @@ model Booking {
   komiteID  String?
   item      BookedItem
   bookedAt  DateTime
-  duration  Int
+  duration  Int?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   komite    komite?    @relation(fields: [komiteID], references: [id])
@@ -128,6 +129,21 @@ model ArrangementPaamelding {
   user          User        @relation(fields: [userID], references: [id], onDelete: Cascade)
 
   @@unique([userID, arrangementID])
+}
+
+model LavterskelArrangement {
+  id          String   @id
+  navn        String
+  sted        String?
+  dato        DateTime
+  type        String
+  beskrivelse String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  userId      String
+  User        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
 }
 
 enum BookedItem {
