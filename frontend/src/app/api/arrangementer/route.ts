@@ -1,8 +1,8 @@
 import { db } from "@/lib/db";
 import {
-  ArrangementSchema,
-  createArrangementSchema,
-} from "@/schemas/arrangement";
+  lavTerskelArrangementSchema,
+  createlavterskelArrangementSchema,
+} from "@/schemas/lavterskelArrangement";
 import { User } from "lucide-react";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -35,28 +35,21 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
-    const parsedData = createArrangementSchema.parse(await req.json());
-    // const transformedData = {
-    //   ...parsedData,
-    //   paameldinger: {
-    //     create: parsedData.paameldinger.map((paamelding) => ({
-    //       userID: paamelding.userID,
-    //       arrangementID: paamelding.arrangementID,
-    //     })),
-    //   },
-    // };
-    // const arrangement = await db.arrangement.create({
-    //   data: transformedData,
-    // });
-    const { paameldinger, ...rest } = parsedData;
+    const requestData = await req.json();
 
-    const arrangement = await db.arrangement.create({
-      data: rest,
-    });
-    return NextResponse.json(
-      { message: "Arrangement created", arrangement },
-      { status: 201 },
-    );
+    if (requestData.dato) {
+      requestData.dato = new Date(requestData.dato);
+    }
+
+    const parsedData = createlavterskelArrangementSchema.parse(requestData);
+    const newLavterskelArrangement = await db.lavterskelArrangement.create({
+      data: parsedData,
+    })
+
+    return NextResponse.json({
+      success: true,
+      message: "Arrangement created",
+       data: newLavterskelArrangement});
   } catch (error) {
     console.log("Error in the POST request");
     return NextResponse.json({ error: error }, { status: 400 });
