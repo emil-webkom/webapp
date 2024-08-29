@@ -33,11 +33,12 @@ const NavBar: FC = () => {
       <div className="flex mx-[7%] py-4 justify-between items-center">
         <div className="flex gap-x-6">
           <div className="flex space-x-10">
+            {/* MAKE THE A TAG INTO A LINK ELEMENT AND MAKE IT WORK  */}
             <a href="/">
               <Leaf size={24} strokeWidth={1.8} className="stroke-[#003A42]" />
             </a>
           </div>
-          {!menuOpen && ( // Render the normal navbar only when the menu is not open
+          {!menuOpen && (
             <div className="hidden md:flex space-x-10">
               <Link
                 href="/om_emil"
