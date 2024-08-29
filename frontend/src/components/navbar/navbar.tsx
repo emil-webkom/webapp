@@ -34,6 +34,7 @@ const NavBar: FC = () => {
         <div className="flex gap-x-6">
           <div className="flex space-x-10">
             <a href="/">
+            {/* MAKE THE A TAG INTO A LINK ELEMENT AND GET HAPPY */}
               <Leaf size={24} strokeWidth={1.8} className="stroke-[#003A42]" />
             </a>
           </div>
