@@ -4,6 +4,8 @@ import ListView from "@/components/calendar/listView";
 import { Arrangement } from "@/schemas/arrangement";
 import { lavTerskelArrangement } from "@/schemas/lavterskelArrangement";
 import { useEffect, useState, useRef } from "react";
+import { format } from 'date-fns';
+import { nb } from 'date-fns/locale';
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
 import SmallTransissionDarkHighligt from "@/components/hero/transissions/smallTransissionDarkHighlight";
@@ -13,6 +15,8 @@ import AarligArrangementCard from "@/components/cards/aarligArrangementCard";
 import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
 import LavterskelArrangementForm from "@/components/forms/lavterskelarrangementform";
+import EventCalendarView from "@/components/calendar/eventCalendarview";
+import { LavterskelArrangement } from "@prisma/client";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
@@ -44,6 +48,7 @@ const ForStudentenPage = () => {
       (a) => new Date(a.dato).toDateString() === dateString,
     );
 
+    // Function for joining both lavterskel and regular arrangement.
     const combined = [
       ...selectedDateArrangements,
       ...selectedDateLavterskelArrangements,
@@ -51,9 +56,31 @@ const ForStudentenPage = () => {
     setCombinedArrangements(combined);
   };
 
-  const handlesubmit = () => {
-    console.log("Submitted");
+  const handleSubmit = async (data: lavTerskelArrangement) => {
+    const response = await fetch("/api/arrangementer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      fetchData();
+      closeModal();
+    } else {
+      console.error("Failed to send data");
+    }
   };
+
+  // Handle delete request from user
+  const handleDeletion = (success: boolean) => {
+    if (success){
+      fetchData();
+      closeModal();
+    } else{
+      console.error("Failed to delete instance")
+    }
+  }
 
   // Close opened date
   const closeModal = () => {
@@ -68,33 +95,33 @@ const ForStudentenPage = () => {
     setOpenform(false);
   };
 
-  // API call to fetch arrangements from DB
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/arrangementer");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-
-        // Set the individual arrangements first
-        setArrangementer(data.arrangementer);
-        setLavterskelArrangement(data.lavterskelArrangement);
-
-        // Combine the arrangements after both states are updated
-        const combined = [...data.arrangementer, ...data.lavterskelArrangement];
-        setAllCombinedArrangements(combined);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(`Failed to fetch arrangementer: ${err.message}`);
-        } else {
-          setError("Failed to fetch arrangementer: Unknown error");
-        }
-      } finally {
-        setLoading(false);
+  // Function for fetchin and setting data from DB
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/api/arrangementer");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
+      const data = await response.json();
+
+      setArrangementer(data.arrangementer);
+      setLavterskelArrangement(data.lavterskelArrangement);
+
+      // Combine the arrangements after both states are updated
+      const combined = [...data.arrangementer, ...data.lavterskelArrangement];
+      setAllCombinedArrangements(combined);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(`Failed to fetch arrangementer: ${err.message}`);
+      } else {
+        setError("Failed to fetch arrangementer: Unknown error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  // API call to fetch arrangements from DB
+useEffect(() => {
     fetchData();
   }, []);
 
@@ -331,6 +358,7 @@ const ForStudentenPage = () => {
               </div>
             </div>
             <Calendar
+              locale="nb"
               className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
               tileClassName={({ date, view }) => {
@@ -372,7 +400,7 @@ const ForStudentenPage = () => {
               }}
               navigationLabel={({ date, label, locale, view }) => (
                 <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
-                  {label}
+                  {label.charAt(0).toUpperCase() + label.slice(1)}
                 </div>
               )}
               next2Label={null}
@@ -388,123 +416,18 @@ const ForStudentenPage = () => {
             {selectedDate && (
               <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
-                  <h2 className="text-xl font-bold mb-4">{selectedDate}</h2>
-                  {combinedArrangements.length > 0 && openForm !== true ? (
-                    combinedArrangements.map((arrangement) => {
-                      let arrangementColor = "bg-yellow-500";
-                      if ("type" in arrangement) {
-                        if (arrangement.type === "Internt arrangement") {
-                          arrangementColor = "bg-blue-500";
-                          return (
-                            <div
-                              key={arrangement.id}
-                              className="py-2 flex justify-start items-center gap-x-2"
-                            >
-                              <div
-                                className={`w-2 h-2 ${arrangementColor} rounded-full`}
-                              ></div>
-                              <div>
-                                <h2 className="font-bold text-base lg:text-base">
-                                  {arrangement.navn}
-                                  <span className="font-normal">
-                                    {" "}
-                                    -{" "}
-                                    {new Date(
-                                      arrangement.dato,
-                                    ).toLocaleTimeString([], {
-                                      hour: "2-digit",
-                                      minute: "2-digit",
-                                    })}
-                                    ;
-                                  </span>
-                                </h2>
-                              </div>
-                            </div>
-                          );
-                        } else if (
-                          arrangement.type === "Eksternt arrangement"
-                        ) {
-                          arrangementColor = "bg-red-500";
-                          return (
-                            <div
-                              key={arrangement.id}
-                              className="py-2 flex justify-start items-center gap-x-2"
-                            >
-                              <div
-                                className={`w-2 h-2 ${arrangementColor} rounded-full`}
-                              ></div>
-                              <div>
-                                <h2 className="font-bold text-base lg:text-base">
-                                  {arrangement.navn}
-                                  <span className="font-normal">
-                                    {" "}
-                                    -{" "}
-                                    {new Date(
-                                      arrangement.dato,
-                                    ).toLocaleTimeString([], {
-                                      hour: "2-digit",
-                                      minute: "2-digit",
-                                    })}
-                                    ;
-                                  </span>
-                                </h2>
-                              </div>
-                            </div>
-                          );
-                        }
-                      }
-
-                      return (
-                        <div
-                          key={arrangement.id}
-                          className="py-2 flex justify-start items-center gap-x-2"
-                        >
-                          <div
-                            className={`w-2 h-2 ${arrangementColor} rounded-full`}
-                          ></div>
-
-                          <div>
-                            <a
-                              href={`arrangement/${arrangement.id}`}
-                              className="text-underscore"
-                            >
-                              <h2 className="font-bold text-base lg:text-lg">
-                                {arrangement.navn}:
-                                <p className="font-normal text-base">
-                                  {arrangement.sted}
-                                  <span>
-                                    {" "}
-                                    -{" "}
-                                    {new Date(
-                                      arrangement.dato,
-                                    ).toLocaleTimeString([], {
-                                      hour: "2-digit",
-                                      minute: "2-digit",
-                                    })}
-                                  </span>
-                                </p>
-                              </h2>
-                            </a>
-                          </div>
-                        </div>
-                      );
-                    })
-                  ) : combinedArrangements.length > 0 && openForm ? (
-                    <p className="text-gray-600 text-base">
-                      Skjuler arrangementer
-                    </p>
-                  ) : (
-                    <p className="text-gray-600 text-base">
-                      Ingen arrangementer
-                    </p>
-                  )
-                  }
-
+                  <h2 className="text-xl font-bold mb-4">{
+                    // Format date in norwegian with capital letter
+                  (format(selectedDate, "EEEE, d MMMM yyyy", { locale: nb }))
+                  .split(',').map(word => word.charAt(0).toUpperCase() + word.slice(1))}
+                  </h2>
+                  <EventCalendarView combinedArrangements={combinedArrangements} openForm={openForm} onDeletionSuccess={handleDeletion}/>
                   {openForm ? (
                     <div>
                       <LavterskelArrangementForm
-                        onSubmit={handlesubmit}
+                        onSubmit={handleSubmit}
                         onClose={handleCloseForm}
+                        selectedDate = {new Date(selectedDate)}
                       />
                     </div>
                   ) : (

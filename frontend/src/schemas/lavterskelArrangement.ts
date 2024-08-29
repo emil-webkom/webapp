@@ -1,15 +1,20 @@
 import { z } from "zod";
 
 export const lavTerskelArrangementSchema = z.object({
-    id: z.string(),
-    navn: z.string(),
-    sted: z.string(),
-    dato: z.date(),
-    type: z.string(),
-    beskrivelse: z.string().optional(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-    userId: z.string(),
-  });
-  
-  export type lavTerskelArrangement = z.infer<typeof lavTerskelArrangementSchema>;
+  navn: z.string().min(1, "Navn is required"),
+  sted: z.string().optional(),
+  dato: z.date(),
+  type: z.string().min(1, "Type is required"),
+  beskrivelse: z.string().optional(),
+  userId: z.string().min(1, "User ID is required"),
+});
+
+export type lavTerskelArrangement = z.infer<typeof lavTerskelArrangementSchema>;
+
+export const createlavterskelArrangementSchema = lavTerskelArrangementSchema;
+
+export const updatelavterskelArrangementSchema = lavTerskelArrangementSchema.partial();
+
+export const deletelavterskelArrangementSchema = z.object({
+  id: z.string(),
+});
