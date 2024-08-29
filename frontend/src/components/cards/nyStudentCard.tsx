@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 export interface nyStudentCardProps {
   title: string;
   icon?: ReactNode;
-  description?: string;
+  description?: string | JSX.Element;
   frist?: string;
   href?: string;
   buttonText?: string;
