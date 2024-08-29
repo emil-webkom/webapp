@@ -7,14 +7,11 @@ import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissi
 import { ArrowRight, ArrowUpRight, Coins, Link } from "lucide-react";
 import { Info } from "lucide-react";
 import { FileQuestion } from "lucide-react";
-import { Flower} from "lucide-react";
-import { Notebook } from "lucide-react"
+import { Flower } from "lucide-react";
+import { Notebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-
-
-
-const forStudentenPage = () => {
+const soeknaderPage = () => {
   const unnagjortCards: nyStudentCardProps[] = [
     {
       title: "Leo´s minnefond",
@@ -46,14 +43,15 @@ const forStudentenPage = () => {
     {
       title: "Info",
       description: (
-        <>
-          Du kan også sende en mail til styret på @styret@emilweb.no hvor du må
-          ha med:
-          <li> Navn</li>
-          <li>Komité</li>
-          <li>Beløp det er snakk om</li>
-          <li> Begrunnelse for søknad</li>
-        </>
+        <div>
+          Du kan også sende en mail til styret på @styret@emilweb.no hvor du må ha med:
+          <ul className="list-disc px-4">
+            <li>Navn</li>
+            <li>Komité</li>
+            <li>Beløp det er snakk om</li>
+            <li>Begrunnelse for søknad</li>
+          </ul>
+        </div>
       ),
       frist: "",
       buttonText: "",
@@ -63,7 +61,12 @@ const forStudentenPage = () => {
 
     {
       title: "Se tidligere søknader",
-      description: <>Gjennom tiden har det blitt levert mange søknader til Emil. Klikk på knappen nedenfor for å se eldre søknader</>,
+      description: (
+        <>
+          Gjennom tiden har det blitt levert mange søknader til Emil. Klikk på
+          knappen nedenfor for å se eldre søknader
+        </>
+      ),
       frist: "",
       buttonText: "Se eldre søknader",
       href: "https://www.youtube.com",
@@ -83,109 +86,99 @@ const forStudentenPage = () => {
           linjeforeningen EMIL.
         </p>
       </div>
-        <SmallTransissionPCSPC />
+      <SmallTransissionPCSPC />
 
-      <div>
-
-      </div>
-        <div className="bg-[#225654] w-full text-white flex justify-center items-center py-4 lg:px-16">
-          <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 ">
-            <div className="w-[90%] lg:w-[60%] flex flex-col justify-center items-center">
-              <NyStudentCard
-                key={unnagjortCards[0].title}
-                {...unnagjortCards[0]}
-              />
-            </div>
-            <div className="w-[90%] lg:w-[60%] flex flex-col justify-between gap-y-4 items-center ">
-              <NyStudentCard
-                key={unnagjortCards[1].title}
-                {...unnagjortCards[1]}
-              />
-              <NyStudentCard
-                key={unnagjortCards[2].title}
-                {...unnagjortCards[2]}
-              />
-            </div>
+      <div></div>
+      <div className="bg-[#225654] w-full text-white flex justify-center items-center py-4 lg:px-16">
+        <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 ">
+          <div className="w-[90%] lg:w-[60%] flex flex-col justify-center items-center">
+            <NyStudentCard
+              key={unnagjortCards[0].title}
+              {...unnagjortCards[0]}
+            />
+          </div>
+          <div className="w-[90%] lg:w-[60%] flex flex-col justify-between gap-y-4 items-center ">
+            <NyStudentCard
+              key={unnagjortCards[1].title}
+              {...unnagjortCards[1]}
+            />
+            <NyStudentCard
+              key={unnagjortCards[2].title}
+              {...unnagjortCards[2]}
+            />
           </div>
         </div>
+      </div>
 
-        <SmallTransissionSPCPC />
+      <SmallTransissionSPCPC />
 
-        <div className="bg-[#003A42] text-white flex items-center justify-center pb-7 lg:pb-2">
-          <Flower className="w-12 h-12 pt-4"></Flower>
-          <h1 className="text-white font-semibold text-3xl pt-4 text-center">
-            Blomsterpotten
-          </h1>
-        </div>
+      <div className="bg-[#003A42] text-white flex items-center justify-center pb-7 lg:pb-2">
+        <Flower className="w-12 h-12 pt-4"></Flower>
+        <h1 className="text-white font-semibold text-3xl pt-4 text-center">
+          Blomsterpotten
+        </h1>
+      </div>
 
-        <div className="bg-[#003A42] text-white w-full flex justify-center items-center py-4 pt-1 lg:px-16">
-          <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 lg:py-8">
-          <div className= "w-[90%] bg-[#00333A] px-12 py-5">
-            <p className="font-bold">
-            Søknadskriterier
-            </p>
+      <div className="bg-[#003A42] text-white w-full flex justify-center items-center py-4 pt-1 lg:px-16">
+        <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 lg:py-8">
+          <div className="w-[90%] bg-[#00333A] px-12 py-5">
+            <p className="font-bold">Søknadskriterier</p>
             <br></br>
             <p className="font-light">
-            Linjeforeningsmedlemmer og komiteer som ønsker å søke om bruk av midler fra EMILs Blomsterpott skal skrive en søknad som inneholder følgende momenter. Dersom ett eller flere av momentene mangler, blir søknaden sendt tilbake til søker med forbedringsforslag og oppfordring til å søke på nytt.
+              Linjeforeningsmedlemmer og komiteer som ønsker å søke om bruk av
+              midler fra EMILs Blomsterpott skal skrive en søknad som inneholder
+              følgende momenter. Dersom ett eller flere av momentene mangler,
+              blir søknaden sendt tilbake til søker med forbedringsforslag og
+              oppfordring til å søke på nytt.
             </p>
             <br></br>
             <p className="font-normal ">
-            Søknaden skal være sendt inn minst 4 uker før midlene skal være utbetalt! 
+              Søknaden skal være sendt inn minst 4 uker før midlene skal være
+              utbetalt! 
             </p>
-
-          
-
-        
           </div>
 
           <div className="w-[90%] bg-[#00333A] lg:w-fit flex flex-col justify-between gap-y-4 px-12 py-5">
-            
-            <p className="font-thin">
-              <p className="font-bold">
-                Søknaden skal bygges opp slik
-              </p>
+            <div className="font-thin">
+              <p className="font-bold">Søknaden skal bygges opp slik</p>
               <ul className="pl-5 mt-2 space-y-1 list-disc ">
-              <li >
-              Søknaden skal skrives digitalt og sendes per epost til Blomsterpottstyret, eventuelt til annenparten dersom Blomsterpottstyret er søker. Håndskrevne søknader tillates ikke. 
-              </li>
-              <br></br>
-              <li>
-              Søknaden skal føres punktvis, som vist under. Alle punktene skal ha samme tittel som de har i søknadskriterene.
-              </li>
-              <br></br>
-              <li>
-              Punkt 6 skal kopieres direkte inn i søknaden og skal stå ordrett slik den står i søknadskriteriene.
-              </li>
-              <br></br>
-              <li>
-              På slutten av søknaden skal det være en underskriftslinje. Under denne linjen skal det stå dato og sted for søkers underskrift. Dette er eksemplifisert i slutten av søknadskriterene. 
-              </li>
+                <li>
+                  Søknaden skal skrives digitalt og sendes per epost til
+                  Blomsterpottstyret, eventuelt til annenparten dersom
+                  Blomsterpottstyret er søker. Håndskrevne søknader tillates
+                  ikke. 
+                </li>
+                <br></br>
+                <li>
+                  Søknaden skal føres punktvis, som vist under. Alle punktene
+                  skal ha samme tittel som de har i søknadskriterene.
+                </li>
+                <br></br>
+                <li>
+                  Punkt 6 skal kopieres direkte inn i søknaden og skal stå
+                  ordrett slik den står i søknadskriteriene.
+                </li>
+                <br></br>
+                <li>
+                  På slutten av søknaden skal det være en underskriftslinje.
+                  Under denne linjen skal det stå dato og sted for søkers
+                  underskrift. Dette er eksemplifisert i slutten av
+                  søknadskriterene.
+                </li>
               </ul>
-
-              
-
-            </p>
-
-            
+            </div>
           </div>
-          </div>
-
         </div>
+      </div>
 
-
-
-        <div className= "pb-20 flex justify-center items-center ">
+      <div className="pb-20 flex justify-center items-center ">
         <div className=" bg-white p-4 w-[90%] lg:w-[86%] rounded-md text-[#001D21]  ">
-
           <div className="flex items-center">
             <Notebook></Notebook>
             <h1 className="font-semibold text-xl">Eksempelsøknad</h1>
           </div>
-      
 
-        
           <br></br>
-          
 
           <p className="font-bold text-xs">1. Søkeren/komiteéns navn</p>
 
@@ -193,40 +186,23 @@ const forStudentenPage = () => {
           <br></br>
 
           <p className="font-bold text-xs">2. Konkret hva det søkes om</p>
-          
 
-          <p className="font-light text-xs">
-            <li> Konkret og utfyllende om hva det søkes midler til. For eksempel: Er
-            det innkjøp, som for eksempel lydutsyr, hytte, etc.? </li>
-          </p>
-
-          <p className="font-light text-xs">
-            <li>Akkurat hva skal kjøpes inn? Hva er bruksområdet? </li>
-          </p>
-
-          <p className="font-light text-xs">
+          <ul className="font-light text-xs list-disc pl-4">
+            <li>
+              Konkret og utfyllende om hva det søkes midler til. For eksempel:
+              Er det innkjøp, som for eksempel lydutsyr, hytte, etc.?
+            </li>
+            <li>Akkurat hva skal kjøpes inn? Hva er bruksområdet?</li>
             <li>Er det et enkeltarrangement?</li>
-            </p>
-
-          <p className="font-light text-xs">
-            <li>Hvem er det for? Komité, klassetrinn, jenter/gutter? </li>
-          </p>
-
-          <p className="font-light text-xs">
+            <li>Hvem er det for? Komité, klassetrinn, jenter/gutter?</li>
             <li>Hvor mange deltakere vil det være?</li>
-          </p>
-
-          <p className="font-light text-xs">
             <li>Er det for et faglig opplegg?</li>
-            </p>
-
-          <p className="font-light text-xs">
             <li>Hvem er det for?</li>
-            </p>
+          </ul>
 
-          <p className="font-light text-xs">
+          <ul className="font-light text-xs">
             <li>Hvordan vil opplegget være?</li>
-            </p>
+          </ul>
 
           <br></br>
 
@@ -243,21 +219,27 @@ const forStudentenPage = () => {
             Skriv utfyllende og svar på følgende spørsmål i søknadsteksten:
           </p>
 
-          <p className="font-light text-xs">
-            <li>Er dette noe som er til nytte i fremtiden, eller er det et prosjekt
-            som gagner medlemmene det året pengene blir brukt? </li>
-          </p>
+          <ul className="font-light text-xs">
+            <li>
+              Er dette noe som er til nytte i fremtiden, eller er det et
+              prosjekt som gagner medlemmene det året pengene blir brukt?{" "}
+            </li>
+          </ul>
 
-          <p className="font-light text-xs">
-            <li>Er det prioritert slik at alle linjeforeningsmedlemmer får nytte av
-            det, eller kommer det hovedsaklig enkelte klassetrinn eller komiteer
-            til gode? </li>
-          </p>
+          <ul className="font-light text-xs list-disc pl-4">
+            <li>
+              Er det prioritert slik at alle linjeforeningsmedlemmer får nytte
+              av det, eller kommer det hovedsaklig enkelte klassetrinn eller
+              komiteer til gode?
+            </li>
+          </ul>
 
-          <p className="font-light text-xs">
-            <li>Hvorfor mener du dette er noe som vil bidra positivt til
-            linjeforeningen?</li>
-          </p>
+          <ul className="font-light text-xs">
+            <li>
+              Hvorfor mener du dette er noe som vil bidra positivt til
+              linjeforeningen?
+            </li>
+          </ul>
 
           <br></br>
 
@@ -302,7 +284,6 @@ const forStudentenPage = () => {
 
           <br></br>
           <br></br>
-          
 
           <p className="font-light text-xs">Emil Emilsen</p>
 
@@ -313,8 +294,8 @@ const forStudentenPage = () => {
           <p className="font-light text-xs">17/03/2022, Trondheim</p>
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 
-export default forStudentenPage;
+export default soeknaderPage;
