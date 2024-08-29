@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 export interface nyStudentCardProps {
   title: string;
   icon?: ReactNode;
-  description?: string;
+  description?: string | JSX.Element;
   frist?: string;
   href?: string;
   buttonText?: string;
@@ -50,7 +50,7 @@ const NyStudentCard = ({
                 href={href}
                 target="_blank"
                 rel="noopener norefferer"
-                className="flex-row justify-center items-center gap-1"
+                className="flex flex-row justify-center items-center gap-1"
               >
                 <p>{buttonText}</p>
                 <ArrowUpRight className="w-4"></ArrowUpRight>

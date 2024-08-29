@@ -17,7 +17,7 @@ export default function Layout({
       </div>
       <Banner />
       <div className="grid place-items-center">
-        <div className="lg:w-[65%] bg-[#003A42] flex flex-col items-center rounded-xl">
+        <div className="lg:w-[65%] bg-[#003A42] flex flex-col items-center rounded-xl ">
           {children}
         </div>
       </div>
