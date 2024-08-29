@@ -50,7 +50,7 @@ const NyStudentCard = ({
                 href={href}
                 target="_blank"
                 rel="noopener norefferer"
-                className="flex flex-row justify-center items-center gap-1"
+                className="flex-row flex justify-center items-center gap-1"
               >
                 <p>{buttonText}</p>
                 <ArrowUpRight className="w-4"></ArrowUpRight>
