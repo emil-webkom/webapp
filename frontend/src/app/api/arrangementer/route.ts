@@ -3,7 +3,9 @@ import {
   lavTerskelArrangementSchema,
   createlavterskelArrangementSchema,
 } from "@/schemas/lavterskelArrangement";
+import { id } from "date-fns/locale";
 import { User } from "lucide-react";
+import next from "next";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -53,5 +55,23 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.log("Error in the POST request");
     return NextResponse.json({ error: error }, { status: 400 });
+  }
+}
+
+export async function DELETE(req: NextRequest){
+  try{
+    const requestData = await req.json();
+    await db.lavterskelArrangement.delete({
+      where: {id: requestData.id},
+    });
+    return NextResponse.json(
+      {message: "Successfully deleted lavterskelarrangement"},
+      {status: 200},
+    );
+  } catch (error){
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 },
+    );
   }
 }

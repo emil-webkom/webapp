@@ -72,6 +72,16 @@ const ForStudentenPage = () => {
     }
   };
 
+  // Handle delete request from user
+  const handleDeletion = (success: boolean) => {
+    if (success){
+      fetchData();
+      closeModal();
+    } else{
+      console.error("Failed to delete instance")
+    }
+  }
+
   // Close opened date
   const closeModal = () => {
     setSelectedDate(null);
@@ -411,7 +421,7 @@ useEffect(() => {
                   (format(selectedDate, "EEEE, d MMMM yyyy", { locale: nb }))
                   .split(',').map(word => word.charAt(0).toUpperCase() + word.slice(1))}
                   </h2>
-                  <EventCalendarView combinedArrangements={combinedArrangements} openForm={openForm}/>
+                  <EventCalendarView combinedArrangements={combinedArrangements} openForm={openForm} onDeletionSuccess={handleDeletion}/>
                   {openForm ? (
                     <div>
                       <LavterskelArrangementForm

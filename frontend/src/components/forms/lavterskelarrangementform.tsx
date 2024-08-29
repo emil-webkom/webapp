@@ -15,16 +15,15 @@ const LavterskelArrangementForm = ({
   onClose: () => void;
   selectedDate: Date;
 }) => {
-
-    // Adjust the date to the local timezone
-    const adjustToLocalTime = (date: Date) => {
-      const offset = date.getTimezoneOffset();
-      return new Date(date.getTime() - offset * 60 * 1000);
-    };
+  // Adjust the date to the local timezone
+  const adjustToLocalTime = (date: Date) => {
+    const offset = date.getTimezoneOffset();
+    return new Date(date.getTime() - offset * 60 * 1000);
+  };
   const [formData, setFormData] = useState<Partial<lavTerskelArrangement>>({
     navn: "",
     sted: "",
-    dato:  adjustToLocalTime(selectedDate),
+    dato: adjustToLocalTime(selectedDate),
     type: "",
     beskrivelse: "",
     userId: "",
@@ -37,7 +36,7 @@ const LavterskelArrangementForm = ({
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     setFormData({
       ...formData,
@@ -62,7 +61,7 @@ const LavterskelArrangementForm = ({
     } catch (err) {
       if (err instanceof z.ZodError) {
         setError(err.errors.map((e) => e.message).join(", "));
-        setSuccess(null); // Clear success message if there is an error
+        setSuccess(null);
       }
     }
   };
