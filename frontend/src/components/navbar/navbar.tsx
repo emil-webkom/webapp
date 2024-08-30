@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import UserButton from "@/components/auth/user-button";
+import LogoutButton from "@/components/auth/logout-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { Sun, Leaf } from "lucide-react";
+import { Sun, Leaf, LogOut } from "lucide-react";
 import { User } from "../auth/auth-provider";
 
 const NavBar: FC = () => {
@@ -16,7 +17,7 @@ const NavBar: FC = () => {
 
   const handleSetSelectedLink = (linkName: string) => {
     setActiveLink(linkName);
-    setMenuOpen(false); // Close the menu when a link is clicked
+    setMenuOpen(false);
   };
 
   const toggleMenu = () => {
@@ -33,10 +34,11 @@ const NavBar: FC = () => {
       <div className="flex mx-[7%] py-4 justify-between items-center">
         <div className="flex gap-x-6">
           <div className="flex space-x-10">
-            <a href="/">
-            {/* MAKE THE A TAG INTO A LINK ELEMENT AND GET HAPPY */}
+            <Link
+              href="/"
+              onClick={() => handleSetSelectedLink("")}>
               <Leaf size={24} strokeWidth={1.8} className="stroke-[#003A42]" />
-            </a>
+            </Link>
           </div>
           {!menuOpen && ( // Render the normal navbar only when the menu is not open
             <div className="hidden md:flex space-x-10">
@@ -112,11 +114,28 @@ const NavBar: FC = () => {
               Næringsliv
             </Link>
             {user ? ( // If user is logged in, show the Settings link
-              <div className="flex justify-end">
-                <UserButton/>
+              <div className="flex flex-col">
+                <div className="justify-end hidden lg:block">
+                  <UserButton />
+                </div>
+                <Link
+                  href="/settings"
+                  className={`text-zinc-400 lg:hidden link-hover-effect ${activeLink === "profil" ? "selected-state" : ""}`}
+                  onClick={() => handleSetSelectedLink("profil")}
+                >
+                  Profil
+                </Link>
+                <div className="text-zinc-400">
+                <LogoutButton>Logg ut</LogoutButton>
+                </div>
               </div>
-            ) : ( // If user is not logged in, show the Login link
-              <Link href="/auth/login" className="text-zinc-400 link-hover-effect">
+            ) : (
+              // If user is not logged in, show the Login link
+              <Link
+                href="/auth/login"
+                className={`text-zinc-400 link-hover-effect ${activeLink === "Logg inn" ? "selected-state" : ""}`}
+              onClick={() => handleSetSelectedLink("Logg inn")}
+              >
                 Login
               </Link>
             )}
