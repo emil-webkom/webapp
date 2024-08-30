@@ -4,8 +4,10 @@ import ListView from "@/components/event/listView";
 import Hero from "@/components/hero/hero1";
 import { Button } from "@/components/ui/button";
 import { Arrangement } from "@/schemas/arrangement";
-import { fetchArrangementer } from "@/utils/arrangement/arrangement";
+import { lavTerskelArrangement } from "@/schemas/lavterskelArrangement";
 import { useEffect, useState, useRef } from "react";
+import { format } from 'date-fns';
+import { nb } from 'date-fns/locale';
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
 import SmallTransissionDarkHighligt from "@/components/hero/transissions/smallTransissionDarkHighlight";
@@ -14,83 +16,116 @@ import Calendar from "react-calendar";
 import AarligArrangementCard from "@/components/cards/aarligArrangementCard";
 import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
+import LavterskelArrangementForm from "@/components/forms/lavterskelarrangementform";
+import EventCalendarView from "@/components/calendar/eventCalendarview";
+import { LavterskelArrangement } from "@prisma/client";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
+  const [lavterskelArrangement, setLavterskelArrangement] = useState<
+    lavTerskelArrangement[]
+  >([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState("Regler");
+  const [combinedArrangements, setCombinedArrangements] = useState<
+    (Arrangement | lavTerskelArrangement)[]
+  >([]);
+  const [allCombinedArrangements, setAllCombinedArrangements] = useState<
+    (Arrangement | lavTerskelArrangement)[]
+  >([]);
+  const [openForm, setOpenform] = useState<Boolean>(false);
 
-  const sectionRefs = {
-    Regler: useRef(null),
-    "Aktive arrangementer": useRef(null),
-    Lavterskelkalender: useRef(null),
-    "Årlige arrangementer": useRef(null),
-  };
-
+  // Select date in calendar and find all arrangements (both regular and lavterskel) for the selected date
   const handleDateClick = (date: Date) => {
-    setSelectedDate(date.toDateString());
-  };
+    const dateString = date.toDateString();
+    setSelectedDate(dateString);
 
-  const closeModal = () => {
-    setSelectedDate(null);
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/arrangementer");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log(data);
-        setArrangementer(data.arrangementer);
-      } catch (err) {
-        if (err instanceof Error) {
-          setError(`Failed to fetch arrangementer: ${err.message}`);
-        } else {
-          setError("Failed to fetch arrangementer: Unknown error");
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.6,
-    };
-
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions,
+    // Filter both types of arrangements for the selected date
+    const selectedDateArrangements = arrangementer.filter(
+      (a) => new Date(a.dato).toDateString() === dateString,
+    );
+    const selectedDateLavterskelArrangements = lavterskelArrangement.filter(
+      (a) => new Date(a.dato).toDateString() === dateString,
     );
 
-    Object.values(sectionRefs).forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
+    // Function for joining both lavterskel and regular arrangement.
+    const combined = [
+      ...selectedDateArrangements,
+      ...selectedDateLavterskelArrangements,
+    ];
+    setCombinedArrangements(combined);
+  };
 
-    return () => {
-      Object.values(sectionRefs).forEach((ref) => {
-        if (ref.current) observer.unobserve(ref.current);
-      });
-    };
-  }, [sectionRefs]);
+  const handleSubmit = async (data: lavTerskelArrangement) => {
+    const response = await fetch("/api/arrangementer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      fetchData();
+      closeModal();
+    } else {
+      console.error("Failed to send data");
+    }
+  };
+
+  // Handle delete request from user
+  const handleDeletion = (success: boolean) => {
+    if (success){
+      fetchData();
+      closeModal();
+    } else{
+      console.error("Failed to delete instance")
+    }
+  }
+
+  // Close opened date
+  const closeModal = () => {
+    setSelectedDate(null);
+    openForm ? toggleForm() : "";
+  };
+
+  const toggleForm = () => {
+    setOpenform((prevState) => !prevState);
+  };
+  const handleCloseForm = () => {
+    setOpenform(false);
+  };
+
+  // Function for fetchin and setting data from DB
+  const fetchData = async () => {
+    try {
+      const response = await fetch("/api/arrangementer");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+
+      setArrangementer(data.arrangementer);
+      setLavterskelArrangement(data.lavterskelArrangement);
+
+      // Combine the arrangements after both states are updated
+      const combined = [...data.arrangementer, ...data.lavterskelArrangement];
+      setAllCombinedArrangements(combined);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(`Failed to fetch arrangementer: ${err.message}`);
+      } else {
+        setError("Failed to fetch arrangementer: Unknown error");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+  // API call to fetch arrangements from DB
+useEffect(() => {
+    fetchData();
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -99,6 +134,23 @@ const ForStudentenPage = () => {
   if (error) {
     return <div>{error}</div>;
   }
+
+  const AarligarrangementData = [
+    {
+      Name: "Vin og Klin",
+      Komite: "FestKom",
+      Tekst:
+        "brygger vinen, linjeforeningen drikker den. Det serveres gratis i tåteflasker og det en bjelle som dikterer når vinen skal drikkes. For å slippe å drikke, er det bare å finne seg noen å kline med i stedet. Mange syns dette er Emils artigste arrangement.",
+      bilde: "/image/arrangement/V&K.png",
+    },
+    {
+      Name: "Åretur",
+      Komite: "Årekom",
+      Tekst:
+        "Her kan Emils Årekom garantere at uansett om du kommer for å stå på ski, brett eller bare for å drikke så skal alle med på afterski og byen. Det gjelder å finne den beste hangover-kuren og finne fram jaegerflasken fordi her skal tiden utnyttes best mulig.",
+      bilde: "/image/arrangement/aaretur.png",
+    },
+  ];
 
   return (
     <div className=" flex flex-col justify-center w-full text-white">
@@ -180,7 +232,6 @@ const ForStudentenPage = () => {
           </p>
         </div>
       </div>
-      {/* Add small transition in*/}
       <SmallTransissionDarkHighligt />
       <div className="w-full ">
         <StickyNavbar
@@ -190,12 +241,10 @@ const ForStudentenPage = () => {
             "Lavterskelkalender",
             "Årlige arrangementer",
           ]}
-          activeTag={activeSection}
         />
         <SmallTransissionHighlightSPC />
         <div
           id="Regler"
-          ref={sectionRefs["Regler"]}
           className="bg-[#225654] flex flex-col items-center justify-center pt-8 px-12"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4">
@@ -251,12 +300,10 @@ const ForStudentenPage = () => {
               />
             </div>
           </div>
-          {/* Nystudent-card brukes her: trenger titel,description og icon. Icon= 1,2,3,4 -> wrap i <p/> */}
         </div>
         <SmallTransissionSPCPC />
         <div
           id="Aktive arrangementer"
-          ref={sectionRefs["Aktive arrangementer"]}
           className="flex flex-col items-center justify-center py-6 px-12"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-6">
@@ -283,14 +330,13 @@ const ForStudentenPage = () => {
         <SmallTransissionPCSPC />
         <div
           id="Lavterskelkalender"
-          ref={sectionRefs["Lavterskelkalender"]}
           className="bg-[#225654] flex flex-col items-center justify-center py-6"
         >
           <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
             <p>Lavterskelkalender</p>
           </div>
-          <div className="max-w-[512px] w-full px-12">
-            <p className="pb-4">
+          <div className="max-w-[512px] w-full pb-6">
+            <p className="pb-4 px-12">
               Emil har en lavterskelkalender som kan brukes for å planlegge
               arrangementer og happenings framover i tid. Den skal være
               tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
@@ -299,24 +345,64 @@ const ForStudentenPage = () => {
             </p>
           </div>
           <div className="w-full flex flex-col items-center">
+            <div className="flex justify-start ">
+              <div className="flex gap-x-2 items-center px-4">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                <span className="text-sm lg:text-base">
+                  Offentlige arrangementer
+                </span>
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span className="text-sm lg:text-base">Intert arrangement</span>
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                <span className="text-sm lg:text-base">
+                  Eksterne arrangementer
+                </span>
+              </div>
+            </div>
             <Calendar
+              locale="nb"
               className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
-              tileClassName={({ date, view }) =>
-                view === "month" &&
-                date.toDateString() === new Date().toDateString()
-                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-top items-center"
-                  : "hover:bg-[#377e5d] p-2 border border-white h-[5rem] p-2 flex flex-col justify-top items-center"
-              }
-              tileContent={({ date, view }) =>
-                view === "month" &&
-                date.toDateString() === new Date().toDateString()
-                  ? null
-                  : null
-              }
+              tileClassName={({ date, view }) => {
+                const dateString = date.toDateString();
+                const isToday = dateString === new Date().toDateString();
+
+                return view === "month" && isToday
+                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                  : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
+              }}
+              tileContent={({ date, view }) => {
+                const dateString = date.toDateString();
+                const relevantArrangements = allCombinedArrangements.filter(
+                  (a) => new Date(a.dato).toDateString() === dateString,
+                );
+
+                const arrangementColors = relevantArrangements.map(
+                  (arrangement) => {
+                    if ("type" in arrangement) {
+                      if (arrangement.type === "Internt arrangement") {
+                        return "bg-blue-500";
+                      } else if (arrangement.type === "Eksternt arrangement") {
+                        return "bg-red-500";
+                      }
+                    }
+                    return "bg-yellow-500";
+                  },
+                );
+                return relevantArrangements.length > 0 ? (
+                  <div className="w-full flex flex-col justify-end items-center space-y-1">
+                    {arrangementColors.map((color, index) => (
+                      <div
+                        key={index}
+                        className={`w-2 h-2 ${color} rounded-full`}
+                      ></div>
+                    ))}
+                  </div>
+                ) : null;
+              }}
               navigationLabel={({ date, label, locale, view }) => (
-                <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white hover:icon-hover">
-                  {label}
+                <div className="text-lg w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
+                  {label.charAt(0).toUpperCase() + label.slice(1)}
                 </div>
               )}
               next2Label={null}
@@ -330,16 +416,40 @@ const ForStudentenPage = () => {
             />
 
             {selectedDate && (
-              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-white text-black rounded-lg shadow-lg p-6 w-1/3">
-                  <h2 className="text-xl font-bold mb-4">Selected Date</h2>
-                  <p>{selectedDate}</p>
-                  <button
-                    className="mt-6 bg-[#579783] text-white px-4 py-2 rounded hover:bg-[#377e5d]"
-                    onClick={closeModal}
-                  >
-                    Close
-                  </button>
+              <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
+                <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
+                  <h2 className="text-xl font-bold mb-4">{
+                    // Format date in norwegian with capital letter
+                  (format(selectedDate, "EEEE, d MMMM yyyy", { locale: nb }))
+                  .split(',').map(word => word.charAt(0).toUpperCase() + word.slice(1))}
+                  </h2>
+                  <EventCalendarView combinedArrangements={combinedArrangements} openForm={openForm} onDeletionSuccess={handleDeletion}/>
+                  {openForm ? (
+                    <div>
+                      <LavterskelArrangementForm
+                        onSubmit={handleSubmit}
+                        onClose={handleCloseForm}
+                        selectedDate = {new Date(selectedDate)}
+                      />
+                    </div>
+                  ) : (
+                    <div className=" w-full flex justify-center lg:justify-start items-center">
+                      <button
+                        className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
+                        onClick={toggleForm}
+                      >
+                        Legg til arrangement?
+                      </button>
+                    </div>
+                  )}
+                  <div className="flex lg:justify-between w-full flex-col lg:flex-row">
+                    <button
+                      className="mt-6 bg-primary text-sm lg:text-base text-white px-4 py-2 rounded hover:bg-slate-400"
+                      onClick={closeModal}
+                    >
+                      Lukk
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
@@ -348,13 +458,12 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Årlige arrangementer"
-          ref={sectionRefs["Årlige arrangementer"]}
-          className="flex flex-col items-center justify-center py-6 px-12"
+          className="flex flex-col items-center justify-center py-6 gap-y-4"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
+          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 px-12">
             <p>Årlige arrangementer</p>
           </div>
-          <div className="max-w-[512px] w-full ">
+          <div className="max-w-[512px] w-full px-12">
             <p className="pb-4">
               Emil har også mange faste arrangementer som går gjennom året. Det
               varierer fra fest og morro til mer seriøse samlinger hvor vi
@@ -362,8 +471,9 @@ const ForStudentenPage = () => {
               Under finner du en oversikt.
             </p>
           </div>
-          {/* CREATE AarligArrangementCard Later 24.08.24*/}
-          {/* <AarligArrangementCard data={[]} /> */}
+          <div className="px-4 lg:px-12">
+            <AarligArrangementCard data={AarligarrangementData} />
+          </div>
         </div>
       </div>
     </div>

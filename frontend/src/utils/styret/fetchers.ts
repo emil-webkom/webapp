@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { Hovedstyret } from "@/types/interfaces";
 
-async function fetchStyret() {
+export async function FetchStyret() {
   try {
     const hovedstyret = await db.hovedstyret.findMany({
       include: {
@@ -23,4 +23,18 @@ async function fetchStyret() {
   }
 }
 
-export default fetchStyret;
+export async function fetchStyretRolle(rolleToFind : string){
+  try {
+    const hovedstyretRollerData = await db.hovedstyret.findUnique({
+      where : {
+        rolle : `${rolleToFind}`
+      }
+    });
+
+    return hovedstyretRollerData;
+  } catch (error) {
+    console.error("Error fetching data from Hovedstyret table:", error);
+    throw error;
+  }
+
+}

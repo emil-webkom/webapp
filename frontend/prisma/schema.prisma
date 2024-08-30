@@ -8,21 +8,21 @@ datasource db {
 }
 
 model User {
-  id                    String                  @id @default(cuid())
-  name                  String?
-  email                 String                  @unique
-  emailVerified         DateTime?
-  image                 String?
-  password              String?
-  role                  UserRole                @default(USER)
-  nummer                Int?
-  isActive              Boolean                 @default(true)
-  username              String?                 @unique
-  accounts              Account[]
-  paameldinger          ArrangementPaamelding[]
-  bookings              Booking[]
-  Hovedstyret           Hovedstyret?
-  LavterskelArrangement LavterskelArrangement[]
+  id            String                  @id @default(cuid())
+  name          String?
+  email         String                  @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole                @default(USER)
+  nummer        Int?
+  isActive      Boolean                 @default(true)
+  username      String?                 @unique
+  accounts      Account[]
+  paameldinger  ArrangementPaamelding[]
+  bookings      Booking[]
+  Hovedstyret   Hovedstyret?
+  lavterskelArrangements LavterskelArrangement[]
 }
 
 model Account {
@@ -104,6 +104,20 @@ model Arrangement {
   trinn        Int[]                   @default([])
   arrangor     komite                  @relation(fields: [arrangorID], references: [id])
   paameldinger ArrangementPaamelding[]
+}
+
+model LavterskelArrangement {
+  id           String                  @id @default(cuid())
+  navn         String
+  sted         String?
+  dato         DateTime
+  type         String
+  beskrivelse  String?
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+  userId       String
+  user         User                    @relation(fields: [userId], references: [id])
+  @@index([userId])
 }
 
 model Booking {

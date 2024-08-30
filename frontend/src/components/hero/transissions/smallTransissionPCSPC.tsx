@@ -10,7 +10,7 @@ const SmallTransissionPCSPC: FC = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_1660_5605)">
+        <g clipPath="url(#clip0_1660_5605)">
           <rect
             width="1086"
             height="53"
