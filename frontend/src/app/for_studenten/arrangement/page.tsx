@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Arrangement } from "@/schemas/arrangement";
 import { lavTerskelArrangement } from "@/schemas/lavterskelArrangement";
 import { useEffect, useState, useRef } from "react";
-import { format } from 'date-fns';
-import { nb } from 'date-fns/locale';
+import { format } from "date-fns";
+import { nb } from "date-fns/locale";
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import NyStudentCard from "@/components/cards/nyStudentCard";
 import SmallTransissionDarkHighligt from "@/components/hero/transissions/smallTransissionDarkHighlight";
@@ -17,7 +17,7 @@ import AarligArrangementCard from "@/components/cards/aarligArrangementCard";
 import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissionSPCPC";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
 import LavterskelArrangementForm from "@/components/forms/lavterskelarrangementform";
-import EventCalendarView from "@/components/calendar/eventCalendarview";
+import EventCalendarView from "@/components/event/eventCalendarview";
 import { LavterskelArrangement } from "@prisma/client";
 
 const ForStudentenPage = () => {
@@ -76,13 +76,13 @@ const ForStudentenPage = () => {
 
   // Handle delete request from user
   const handleDeletion = (success: boolean) => {
-    if (success){
+    if (success) {
       fetchData();
       closeModal();
-    } else{
-      console.error("Failed to delete instance")
+    } else {
+      console.error("Failed to delete instance");
     }
-  }
+  };
 
   // Close opened date
   const closeModal = () => {
@@ -123,7 +123,7 @@ const ForStudentenPage = () => {
     }
   };
   // API call to fetch arrangements from DB
-useEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
@@ -418,18 +418,28 @@ useEffect(() => {
             {selectedDate && (
               <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
-                  <h2 className="text-xl font-bold mb-4">{
-                    // Format date in norwegian with capital letter
-                  (format(selectedDate, "EEEE, d MMMM yyyy", { locale: nb }))
-                  .split(',').map(word => word.charAt(0).toUpperCase() + word.slice(1))}
+                  <h2 className="text-xl font-bold mb-4">
+                    {
+                      // Format date in norwegian with capital letter
+                      format(selectedDate, "EEEE, d MMMM yyyy", { locale: nb })
+                        .split(",")
+                        .map(
+                          (word) =>
+                            word.charAt(0).toUpperCase() + word.slice(1),
+                        )
+                    }
                   </h2>
-                  <EventCalendarView combinedArrangements={combinedArrangements} openForm={openForm} onDeletionSuccess={handleDeletion}/>
+                  <EventCalendarView
+                    combinedArrangements={combinedArrangements}
+                    openForm={openForm}
+                    onDeletionSuccess={handleDeletion}
+                  />
                   {openForm ? (
                     <div>
                       <LavterskelArrangementForm
                         onSubmit={handleSubmit}
                         onClose={handleCloseForm}
-                        selectedDate = {new Date(selectedDate)}
+                        selectedDate={new Date(selectedDate)}
                       />
                     </div>
                   ) : (
