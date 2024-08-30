@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
     const lavterskelArrangement = await db.lavterskelArrangement.findMany({
       include: {
         user: true,
-      }
+      },
     });
     return NextResponse.json(
       {
@@ -46,29 +46,30 @@ export async function POST(req: NextRequest) {
     const parsedData = createlavterskelArrangementSchema.parse(requestData);
     const newLavterskelArrangement = await db.lavterskelArrangement.create({
       data: parsedData,
-    })
+    });
 
     return NextResponse.json({
       success: true,
       message: "Arrangement created",
-       data: newLavterskelArrangement});
+      data: newLavterskelArrangement,
+    });
   } catch (error) {
     console.log("Error in the POST request");
     return NextResponse.json({ error: error }, { status: 400 });
   }
 }
 
-export async function DELETE(req: NextRequest){
-  try{
+export async function DELETE(req: NextRequest) {
+  try {
     const requestData = await req.json();
     await db.lavterskelArrangement.delete({
-      where: {id: requestData.id},
+      where: { id: requestData.id },
     });
     return NextResponse.json(
-      {message: "Successfully deleted lavterskelarrangement"},
-      {status: 200},
+      { message: "Successfully deleted lavterskelarrangement" },
+      { status: 200 },
     );
-  } catch (error){
+  } catch (error) {
     return NextResponse.json(
       { message: "Internal server error" },
       { status: 500 },

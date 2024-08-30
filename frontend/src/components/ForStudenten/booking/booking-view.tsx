@@ -3,7 +3,6 @@
 import { nb } from "date-fns/locale";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,

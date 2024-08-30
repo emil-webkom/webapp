@@ -2,19 +2,16 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
 import Hero from "@/components/hero/hero1";
 import TransissionIn from "@/components/hero/transissions/transissionIn";
 import TransissionOut from "@/components/hero/transissions/transissionOut";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Calendar } from "@/components/ui/calendar";
 import ListView from "@/components/event/listView";
 import BigCard from "@/components/landing/bigCard";
 import { cardData } from "@/static/landingInfo";
 import VideoPlayer from "@/components/landing/video-player";
-import Baerekraft from "@/components/landing/baerekraft";
 import useFetch from "@/hooks/use-fetch";
 import { Arrangement } from "@/schemas/arrangement";
 
@@ -59,34 +56,34 @@ const HomePage = () => {
       </div>
       <TransissionIn />
       <div className="w-full background-dark p-8 flex flex-col justify-center items-center">
-        <div className="flex flex-col w-[90%] lg:w-[65%] gap-y-6 " >
-            <div className="text-2xl font-semibold text-white pl-1">
-              Hva skjer på Emil?
+        <div className="flex flex-col w-[90%] lg:w-[65%] gap-y-6 max-w-[60rem]">
+          <div className="text-2xl font-semibold text-white pl-1">
+            Hva skjer på Emil?
+          </div>
+          <div className="gap-4 flex justify-center">
+            <div className="flex justify-center items-center w-full h-[338px]">
+              {loading ? (
+                <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+              ) : (
+                <ListView events={data?.arrangementer || []} />
+              )}
             </div>
-        <div className="gap-4 flex justify-center">
-          <div className="flex justify-center items-center w-full h-[338px]">
-            {loading ? (
-              <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
-            ) : (
-              <ListView events={data?.arrangementer || []} />
-            )}
+          </div>
+          <div className="flex justify-center">
+            <BigCard {...dataS} />
+          </div>
+          <div className="w-full flex flex-col gap-y-6 justify-center items-center">
+            <div className="w-full flex text-xl font-semibold text-white justify-center">
+              Søk Emil da vel!
+            </div>
+            <VideoPlayer />
           </div>
         </div>
-        <div className="flex justify-center">
-          <BigCard {...dataS} />
-        </div>
-        <div className="w-full flex flex-col gap-y-6 justify-center items-center">
-          <div className="w-full flex text-xl font-semibold text-white justify-center">
-            Søk Emil da vel!
-          </div>
-          <VideoPlayer />
-        </div>
-      </div>
-      {/* <TransissionOut />
+        {/* <TransissionOut />
       <Baerekraft />
       <TransissionIn /> */}
       </div>
-      <TransissionOut/>
+      <TransissionOut />
 
       <svg
         width="fit"

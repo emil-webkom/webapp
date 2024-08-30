@@ -23,12 +23,12 @@ export async function FetchStyret() {
   }
 }
 
-export async function fetchStyretRolle(rolleToFind : string){
+export async function fetchStyretRolle(rolleToFind: string) {
   try {
     const hovedstyretRollerData = await db.hovedstyret.findUnique({
-      where : {
-        rolle : `${rolleToFind}`
-      }
+      where: {
+        rolle: `${rolleToFind}`,
+      },
     });
 
     return hovedstyretRollerData;
@@ -36,5 +36,4 @@ export async function fetchStyretRolle(rolleToFind : string){
     console.error("Error fetching data from Hovedstyret table:", error);
     throw error;
   }
-
 }

@@ -9,20 +9,20 @@ const NaeringslivPage = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-[90%] lg:w-[65%] flex flex-col items-center justify-center gap-y-6">
-      <div>
-        <Hero2
-          title="Næringsliv"
-          undertitle="Her finner du alt du trenger å vite om Emil og næringslivet"
+        <div>
+          <Hero2
+            title="Næringsliv"
+            undertitle="Her finner du alt du trenger å vite om Emil og næringslivet"
           />
-      </div>
-      <p className="font-extralight text-sm lg:text-base">
-        Energi- og miljøstudiet har utviklet et godt kontaktnett med
-        energibransjen og næringslivet. Energikontakten fungerer som et
-        bindeledd mellom studentene på linjen, faglærere og næringslivet.
-      </p>
-      <p className="font-extralight text-sm lg:text-base">
-        Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
-      </p>
+        </div>
+        <p className="font-extralight text-sm lg:text-base">
+          Energi- og miljøstudiet har utviklet et godt kontaktnett med
+          energibransjen og næringslivet. Energikontakten fungerer som et
+          bindeledd mellom studentene på linjen, faglærere og næringslivet.
+        </p>
+        <p className="font-extralight text-sm lg:text-base">
+          Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
+        </p>
       </div>
       <TransissionIn />
 
@@ -37,7 +37,8 @@ const NaeringslivPage = () => {
               linkText=" Mer om Multiconsult."
               linkHref="https://www.multiconsult.no/"
               buttonText="Ledige stillinger"
-              buttonLinkHref="https://www.multiconsult.no/karriere/must-2/sommerjobb-2/"/>
+              buttonLinkHref="https://www.multiconsult.no/karriere/must-2/sommerjobb-2/"
+            />
             <NaeringslivCard
               titleImageSrc="image/sponsorer/statkraft_logo.jpg"
               imageLinkHref={"https://www.statkraft.no/"}
@@ -46,19 +47,20 @@ const NaeringslivPage = () => {
               linkText="Mer om Statkraft"
               linkHref="https://www.statkraft.no/"
               buttonText="Ledige stillinger"
-              buttonLinkHref="https://www.statkraft.no/karriere/ledige-stillinger/?gad_source=1&gclid=CjwKCAjw4ri0BhAvEiwA8oo6F1DD6IQT0s1fAdirdGZUIT-ZIe_bIkoxpPPFkN6SesMPVtEUHlIcBRoC57kQAvD_BwE"/>
+              buttonLinkHref="https://www.statkraft.no/karriere/ledige-stillinger/?gad_source=1&gclid=CjwKCAjw4ri0BhAvEiwA8oo6F1DD6IQT0s1fAdirdGZUIT-ZIe_bIkoxpPPFkN6SesMPVtEUHlIcBRoC57kQAvD_BwE"
+            />
           </div>
 
           <div className="">
             <EmilLink />
           </div>
         </div>
-        </div>
-      <TransissionOut/>
-        <div className="w-[90%]">
-          <LogoSection />
-        </div>
-      <TransissionIn/>
+      </div>
+      <TransissionOut />
+      <div className="w-[90%]">
+        <LogoSection />
+      </div>
+      <TransissionIn />
     </div>
   );
 };
