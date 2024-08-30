@@ -3,6 +3,7 @@
 import { FC } from "react";
 import { useState } from "react";
 import Link from "next/link";
+import { HandCoins, FileText } from "lucide-react";
 
 const Banner: FC = () => {
   const [activeLink, setActiveLink] = useState("");
@@ -152,62 +153,13 @@ const Banner: FC = () => {
             </div>
           </Link>
           <Link
-            href="/for_studenten/rapporter"
-            className={`text-zinc-400 link-hover-effect ${activeLink === "rapporter" ? "selected-state" : ""}`}
-            onClick={() => handleSetSelectedLink("rapporter")}
+            href="/for_studenten/arkiv"
+            className={`text-zinc-400 link-hover-effect ${activeLink === "arkiv" ? "selected-state" : ""}`}
+            onClick={() => handleSetSelectedLink("arkiv")}
           >
             <div className="flex flex-col items-center justify-center py-1 ">
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="icon/backpack">
-                  <path
-                    id="Vector"
-                    d="M4.5 20.5V10.5C4.5 9.43913 4.92143 8.42172 5.67157 7.67157C6.42172 6.92143 7.43913 6.5 8.5 6.5H16.5C17.5609 6.5 18.5783 6.92143 19.3284 7.67157C20.0786 8.42172 20.5 9.43913 20.5 10.5V20.5C20.5 21.0304 20.2893 21.5391 19.9142 21.9142C19.5391 22.2893 19.0304 22.5 18.5 22.5H6.5C5.96957 22.5 5.46086 22.2893 5.08579 21.9142C4.71071 21.5391 4.5 21.0304 4.5 20.5Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    id="Vector_2"
-                    d="M9.5 6.5V4.5C9.5 3.96957 9.71071 3.46086 10.0858 3.08579C10.4609 2.71071 10.9696 2.5 11.5 2.5H13.5C14.0304 2.5 14.5391 2.71071 14.9142 3.08579C15.2893 3.46086 15.5 3.96957 15.5 4.5V6.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    id="Vector_3"
-                    d="M8.5 21.5V16.5C8.5 15.9696 8.71071 15.4609 9.08579 15.0858C9.46086 14.7107 9.96957 14.5 10.5 14.5H14.5C15.0304 14.5 15.5391 14.7107 15.9142 15.0858C16.2893 15.4609 16.5 15.9696 16.5 16.5V21.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    id="Vector_4"
-                    d="M8.5 10.5H16.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    id="Vector_5"
-                    d="M8.5 18.5H16.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-              </svg>
-              <p className="text-xs ">Rapporter</p>
+              <FileText size={25} />
+              <p className="text-xs ">Arkiv</p>
             </div>
           </Link>
 
@@ -263,46 +215,13 @@ const Banner: FC = () => {
             </div>
           </Link>
           <Link
-            href="/for_studenten/viser"
-            className={`text-zinc-400 link-hover-effect ${activeLink === "viser" ? "selected-state" : ""}`}
-            onClick={() => handleSetSelectedLink("viser")}
+            href="/for_studenten/soeknader"
+            className={`text-zinc-400 link-hover-effect ${activeLink === "soeknader" ? "selected-state" : ""}`}
+            onClick={() => handleSetSelectedLink("soeknader")}
           >
             <div className="flex flex-col items-center justify-center py-1 ">
-              <svg
-                width="25"
-                height="25"
-                viewBox="0 0 25 25"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="Frame">
-                  <path
-                    id="Vector"
-                    d="M9.5 18.5V5.5L21.5 3.5V16.5"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    id="Vector_2"
-                    d="M6.5 21.5C8.15685 21.5 9.5 20.1569 9.5 18.5C9.5 16.8431 8.15685 15.5 6.5 15.5C4.84315 15.5 3.5 16.8431 3.5 18.5C3.5 20.1569 4.84315 21.5 6.5 21.5Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    id="Vector_3"
-                    d="M18.5 19.5C20.1569 19.5 21.5 18.1569 21.5 16.5C21.5 14.8431 20.1569 13.5 18.5 13.5C16.8431 13.5 15.5 14.8431 15.5 16.5C15.5 18.1569 16.8431 19.5 18.5 19.5Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-              </svg>
-              <p className="text-xs ">Viser</p>
+              <HandCoins size={25} />
+              <p className="text-xs ">Søknader</p>
             </div>
           </Link>
           <Link
