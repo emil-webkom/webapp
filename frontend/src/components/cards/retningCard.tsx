@@ -23,7 +23,7 @@ const RetningCard: FC<CardProps> = ({ name, subname, text, link }) => {
       <div className="flex justify-center lg:pt-5">
         <Button
           onClick={() => window.open(link, "_blank")}
-          className="text-sm lg:text-base font-medium"
+          className="text-sm lg:text-base font-medium hover:bg-slate-400"
         >
           Les mer om {subname}
         </Button>

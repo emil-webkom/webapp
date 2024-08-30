@@ -81,37 +81,37 @@ const OmEmilPage = () => {
               </div>
               <div className="grid grid-cols-3 gap-2">
                 <Button
-                  className="p-2 lg:p-5"
+                  className="p-2 lg:p-5 hover:bg-slate-400"
                   onClick={() => scrollToSection("om_studiet")}
                 >
                   Om studiet
                 </Button>
                 <Button
-                  className="p-2 lg:p-5"
+                  className="p-2 lg:p-5 hover:bg-slate-400"
                   onClick={() => scrollToSection("historie")}
                 >
                   Historie
                 </Button>
                 <Button
-                  className="p-2 lg:p-5"
+                  className="p-2 lg:p-5 hover:bg-slate-400"
                   onClick={() => scrollToSection("hovedstyret")}
                 >
                   Hovedstyret
                 </Button>
                 <Button
-                  className="p-2 lg:p-5"
+                  className="p-2 lg:p-5 hover:bg-slate-400"
                   onClick={() => scrollToSection("studiemiljøet")}
                 >
                   Studiemiljøet
                 </Button>
                 <Button
-                  className="text-wrap p-2 lg:p-5"
+                  className="text-wrap p-2 lg:p-5 hover:bg-slate-400"
                   onClick={() => scrollToSection("Fagkontakt")}
                 >
                   Faglige spørsmål
                 </Button>
                 <Button
-                  className="p-2 lg:p-5"
+                  className="p-2 lg:p-5 hover:bg-slate-400"
                   onClick={() => scrollToSection("varsling")}
                 >
                   Varsle?
@@ -210,7 +210,7 @@ const OmEmilPage = () => {
                   sosial organisasjon.
                 </p>
                 <Link href={"for_studenten/rapporter"}>
-                  <Button>Les mer om vedtektene her</Button>
+                  <Button className="hover:bg-slate-400">Les mer om vedtektene her</Button>
                 </Link>
               </div>
             </div>
@@ -292,7 +292,7 @@ const OmEmilPage = () => {
                 href={"for_studenten/komiteer"}
                 className="flex justify-center"
               >
-                <Button>Les mer om komiteene her</Button>
+                <Button className="hover:bg-slate-400">Les mer om komiteene her</Button>
               </Link>
             </div>
             <div className="flex items-center overflow-hidden">
