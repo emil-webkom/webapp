@@ -51,6 +51,7 @@ const NavBar: FC = () => {
             </Link>
           </div>
           {!menuOpen && (
+          {!menuOpen && (
             <div className="hidden md:flex space-x-10">
               <Link
                 href="/om_emil"
