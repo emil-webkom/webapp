@@ -104,10 +104,10 @@ const NavBar: FC = () => {
         </button>
       </div>
       <div
-        className={`md:hidden flex flex-col gap-4 px-4 py-2 border-b border-slate-200 transition-all duration-300 ease-in-out ${
+        className={`md:hidden flex flex-col gap-4 px-4 py-2 border-b border-slate-200 transition-all duration-150 ease-in-out ${
           menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
-        style={{ overflow: "hidden", transition: "max-height 0.3s ease, opacity 0.3s ease" }}
+        style={{ overflow: "hidden", transition: "max-height 0.15s ease, opacity 0.15s ease" }}
       >
         <div className="flex flex-col text-right ml-auto">
           <Link
