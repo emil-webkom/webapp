@@ -82,7 +82,7 @@ export const BookingCard = () => {
     <CardWrapper
       headerTitle="Book soundbox"
       headerLabel="Enkelt å booke"
-      backButtonLabel="Booke kontoret?"
+      backButtonLabel="Tilbake til booking"
       backButtonHref="/for_studenten/booking"
     >
       <Form {...form}>
