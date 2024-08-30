@@ -8,7 +8,7 @@ import { BookingCard } from "./booking-card";
 
 const BookingWindow = () => {
   return (
-    <div className="sm:p-0 text-white min-h-[560px] w-full rounded-md flex flex-col gap-y-2 items-center justify-center">
+    <div className="sm:p-0 text-white min-h-[320px] w-full rounded-md flex flex-col gap-y-2 items-center justify-center">
       {/* <BookingForm /> */}
       <BookingCard />
     </div>
