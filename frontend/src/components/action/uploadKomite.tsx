@@ -46,12 +46,12 @@ const UploadKomiteForm = () => {
     <div className="flex flex-col w-[65%] justify-center items-center bg-gray-100 p-6 rounded-lg shadow-lg">
       <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
         <input
-            type="text"
-            name="navn"
-            placeholder="Navn*"
-            value={formData.navn}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          type="text"
+          name="navn"
+          placeholder="Navn*"
+          value={formData.navn}
+          onChange={handleInputChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
         <input
           type="text"
@@ -94,12 +94,12 @@ const UploadKomiteForm = () => {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
         <input
-            type="text"
-            name="mappe"
-            placeholder="Mappe*"
-            value={formData.mappe}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          type="text"
+          name="mappe"
+          placeholder="Mappe*"
+          value={formData.mappe}
+          onChange={handleInputChange}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
         <input
           type="file"

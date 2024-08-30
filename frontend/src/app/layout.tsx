@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-
 export const metadata: Metadata = {
   title: "Emilweb",
   description: "Energi og miljøstudentenes linjeforening",

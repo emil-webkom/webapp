@@ -210,7 +210,9 @@ const OmEmilPage = () => {
                   sosial organisasjon.
                 </p>
                 <Link href={"for_studenten/rapporter"}>
-                  <Button className="hover:bg-slate-400">Les mer om vedtektene her</Button>
+                  <Button className="hover:bg-slate-400">
+                    Les mer om vedtektene her
+                  </Button>
                 </Link>
               </div>
             </div>
@@ -292,7 +294,9 @@ const OmEmilPage = () => {
                 href={"for_studenten/komiteer"}
                 className="flex justify-center"
               >
-                <Button className="hover:bg-slate-400">Les mer om komiteene her</Button>
+                <Button className="hover:bg-slate-400">
+                  Les mer om komiteene her
+                </Button>
               </Link>
             </div>
             <div className="flex items-center overflow-hidden">

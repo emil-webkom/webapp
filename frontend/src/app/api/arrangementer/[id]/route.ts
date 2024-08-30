@@ -29,25 +29,6 @@ export async function GET(
   }
 }
 
-// export async function PUT(
-//   req: NextRequest,
-//   { params }: { params: { id: string } },
-// ) {
-//   try {
-//     const parsedData = updateArrangementSchema.parse(await req.json());
-//     const arrangement = await db.arrangement.update({
-//       where: { id: params.id },
-//       data: parsedData,
-//     });
-//     return NextResponse.json(
-//       { message: "Arrangement updated", arrangement },
-//       { status: 200 },
-//     );
-//   } catch (error) {
-//     return NextResponse.json({ error: error }, { status: 400 });
-//   }
-// }
-
 export async function DELETE(
   req: NextRequest,
   { params }: { params: { id: string } },

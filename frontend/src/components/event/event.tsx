@@ -57,7 +57,7 @@ const Event = ({
             </div>
           </div>
         </div>
-    </Link>
+      </Link>
     </>
   );
 };

@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import { bookingFormSchema } from "@/schemas/booking";
-import { getBookingsByDate } from "@/data/booking";
+import { getBookingsByDate } from "@/utils/booking/booking";
 import { db } from "@/lib/db";
 import { BookedItem } from "@prisma/client";
 

@@ -13,7 +13,8 @@ export type lavTerskelArrangement = z.infer<typeof lavTerskelArrangementSchema>;
 
 export const createlavterskelArrangementSchema = lavTerskelArrangementSchema;
 
-export const updatelavterskelArrangementSchema = lavTerskelArrangementSchema.partial();
+export const updatelavterskelArrangementSchema =
+  lavTerskelArrangementSchema.partial();
 
 export const deletelavterskelArrangementSchema = z.object({
   id: z.string(),

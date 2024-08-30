@@ -1,10 +1,5 @@
-
 import HSCard from "@/components/cards/styretCard";
 import InfoAndScrollbarStyret from "@/components/ForStudenten/InfoAndScrollbarStyret";
-
-
-
-
 
 const styret = [
   {
@@ -68,7 +63,6 @@ const styret = [
 const forStudentenPage = () => {
   return (
     <div className="  ">
-
       <InfoAndScrollbarStyret
         title={"EMIL-styret"}
         imageUrl={"/image/Komiteer/HS/HSfelles.jpg"}
@@ -83,12 +77,7 @@ const forStudentenPage = () => {
           <HSCard data={styret}></HSCard>
         </div>
       </InfoAndScrollbarStyret>
-
-        
-      
-   </div>
-
-
+    </div>
   );
 };
 

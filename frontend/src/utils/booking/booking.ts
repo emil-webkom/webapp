@@ -1,6 +1,4 @@
 import { db } from "@/lib/db";
-import { format } from "date-fns";
-import { nb } from "date-fns/locale";
 
 /**
  * Retrieves bookings by a specific date.

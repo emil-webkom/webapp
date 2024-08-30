@@ -39,22 +39,22 @@ const UploadImageForm = () => {
     <div className="flex flex-col w-[65%] justify-center items-center bg-gray-100 p-6 rounded-lg shadow-lg">
       <form onSubmit={handleSubmit} className="w-full max-w-md space-y-4">
         <input
-            type="text"
-            placeholder="Rolle*"
-            onChange={handleSetRolle}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          type="text"
+          placeholder="Rolle*"
+          onChange={handleSetRolle}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
         <input
-            type="text"
-            placeholder="Tekst*"
-            onChange={handleSetText}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          type="text"
+          placeholder="Tekst*"
+          onChange={handleSetText}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
         <input
-            type="text"
-            placeholder="Brukeremail*"
-            onChange={handleSetUser}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+          type="text"
+          placeholder="Brukeremail*"
+          onChange={handleSetUser}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
         />
         <input
           type="file"
