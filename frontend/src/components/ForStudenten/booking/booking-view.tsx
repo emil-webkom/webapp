@@ -82,7 +82,9 @@ export default function BookingView() {
         } else {
           console.log("Failed to delete booking");
         }
-      } catch (error) {}
+      } catch (error) {
+        console.log("Noe feilet.");
+      }
     }
     setIsModalOpen(false);
     setBookingToCancel(null);
@@ -106,6 +108,7 @@ export default function BookingView() {
             <TableRow>
               <TableHead>Type</TableHead>
               <TableHead>Dato</TableHead>
+              <TableHead>Status</TableHead>
               <TableHead className="text-right">Antall</TableHead>
               <TableHead className="text-right">Action</TableHead>
             </TableRow>
@@ -116,10 +119,17 @@ export default function BookingView() {
               return (
                 <TableRow
                   key={booking.id}
-                  className={isActive ? "bg-green-50" : ""}
+                  className={
+                    isActive && booking.status === "CONFIRMED"
+                      ? "bg-green-50"
+                      : booking.status === "REJECTED"
+                        ? "bg-red-50"
+                        : "bg-yellow-50"
+                  }
                 >
                   <TableCell>Soundbox</TableCell>
                   <TableCell>{getDate(booking.bookedAt)}</TableCell>
+                  <TableCell>{booking.status}</TableCell>
                   <TableCell className="text-right">
                     {booking.item === "ONE_SOUNDBOX" ? 1 : 2}
                   </TableCell>
