@@ -1,16 +1,22 @@
 "use client";
 
 import BookingView from "@/components/ForStudenten/booking/booking-view";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const MineBookingerPage = () => {
   return (
-    <div className="w-4/5 flex flex-col items-center justify-center p-12 gap-y-6">
+    <div className="flex flex-col items-center justify-center bg-[#225654] rounded-b-md gap-y-4 p-4">
+      <div className="flex justify-between w-full ">
+        <Link href="/for_studenten/booking" className="flex px-4 font-light text-md items-center text-underscore"><ArrowLeft/>Tilbake</Link>
+        <Link href="/for_studenten/booking/soundbox" className="flex px-4 font-light text-md items-center text-underscore">Soundbox<ArrowRight/></Link>
+      </div>
       <div className="flex flex-col space-y-4">
         <h1 className=" text-white text-center font-semibold text-4xl w-full">
-          Soundbox
+          Bookinger
         </h1>
-        <p className="text-white text-md text-center">
-          Her er din bookingoversikt{" "}
+        <p className="text-white text-sm text-center">
+          Under finner du en oversikt over bookingene dine{" "}
         </p>
       </div>
       <BookingView />
