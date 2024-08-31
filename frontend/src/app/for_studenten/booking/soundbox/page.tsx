@@ -13,11 +13,15 @@ import router from "next/router";
 
 const SoundboxPage = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
-
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [openForm, setOpenform] = useState<boolean>(false)
   useEffect(() => {
     fetchBookings();
-    console.log(bookings);
   }, []);
+
+  const toggleForm = () => {
+    setOpenform((prevState) => !prevState);
+  };
 
   const fetchBookings = async () => {
     try {
@@ -32,86 +36,152 @@ const SoundboxPage = () => {
       console.error("Could not fetch bookings:", err);
     }
   };
-  const handleStatusChange = (status: string) => {
+
+  const handleStatusChange = ({status, lukk}: {status:string, lukk: boolean}) => {
+    if (lukk){
+      toggleForm();
+    }
     if (status === "Booking successful!") {
       fetchBookings();
     }
   };
 
+  // Handle date selection
+  const handleDateChange = (date: Date) => {
+    toggleForm();
+    setSelectedDate(date);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center bg-[#225654] rounded-b-md gap-y-4 px-4">
+    <div className="flex flex-col items-center justify-center bg-[#225654] rounded-b-md gap-y-4 px-2 sm:px-4">
       <div className="flex justify-start w-full">
-        <Link href="/for_studenten/booking" className="flex px-4 font-light text-md items-center text-underscore"><ArrowLeft/>Tilbake</Link>
+        <Link
+          href="/for_studenten/booking"
+          className="flex px-2 sm:px-4 font-light text-md items-center text-underscore"
+        >
+          <ArrowLeft />
+          Tilbake
+        </Link>
       </div>
-      <div className="max-w-[512px]">
-        <h1 className=" text-white text-center font-semibold text-2xl w-full">
+      <div className="max-w-[512px] w-full">
+        <h1 className="text-white text-center font-semibold text-xl sm:text-2xl w-full">
           Soundbox
         </h1>
-        <p className="text-white text-sm text-center">
-          Emil har 2 soundboxer som kan bookes. Se oversikt over tilgjengelige datoer nedenfor og legg inn en booking.
-          Når du har lagt inn en booking vil styret godkjenne bookingen din og den kommer opp i oversikten
-           under<span className="text-[#9DDBAD] text-underscore"><Link href="/for_studenten/booking/bookings"> dine bookinger</Link></span>
+        <p className="text-white text-sm text-left">
+          Emil har 2 soundboxer som kan bookes. Se oversikt over tilgjengelige
+          datoer nedenfor og legg inn en booking. Når du har lagt inn en booking
+          vil styret godkjenne bookingen din og den kommer opp i oversikten
+          under{" "}
+          <span className="text-[#9DDBAD] text-underscore">
+            <Link href="/for_studenten/booking/bookings">dine bookinger</Link>
+          </span>
+          .
         </p>
+        <br></br>
+        <div className="bg-[#25504F] rounded-md p-2 sm:p-4 text-sm">
+          <p>Følgende regler gjelder for bruk av soundbox:</p>
+          <ul className="list-disc pl-4 sm:pl-6 text-sm">
+            <li className="pl-2 leading-relaxed">
+              Soundboks må returneres til kontoret dagen etter bruk innen 14:00
+              og den må være ladet.
+            </li>
+            <li className="pl-2 leading-relaxed">
+              Soundboks skal <span className="underline">aldri</span> ligge med
+              malt grill ned mot bakken.
+            </li>
+            <li className="pl-2 leading-relaxed">
+              Soundboxen skal kun brukes i arrangementer hvor de går til nytte
+              for emilstudenter.
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-y-4 pb-4">
-        <div className="w-full max-w-[800px]">
-          <div className="text-2xl font-bold flex h-[550px] flex-col items-center ">
+      <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-y-4 pb-4 w-full">
+        <div className="w-full px-2 pb-8">
+          <div className="text-xl sm:text-2xl font-bold flex h-auto lg:h-[650px] flex-col items-center gap-y-4">
             <p className="w-full flex justify-center">Bookinger</p>
-            <div className="flex justify-start font-normal">
-              <div className="flex gap-x-2 items-center px-4">
+            <p className="text-xs sm:text-sm font-light px-4 sm:px-16 text-center">
+              Hvis en dato ikke er markert i kalenderen er begge soundboxene
+              ledige.
+            </p>
+            <div className="flex flex-wrap justify-start font-normal px-4 sm:px-8">
+              <div className="flex gap-x-2 items-center">
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm lg:text-base">En ledig soundbox</span>
+                <span className="text-xs sm:text-sm">En booket soundbox</span>
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <span className="text-sm lg:text-base">
-                  Ingen ledige soundboxer
+                <span className="text-xs sm:text-sm">
+                  To bookede soundboxer
+                </span>
+                <div className="w-2 h-2 text-orange-500 flex justify-center items-center text-xs sm:text-sm">
+                  ?
+                </div>
+                <span className="text-xs sm:text-sm">
+                  Booking avventer bekreftelse
                 </span>
               </div>
             </div>
             <Calendar
               locale="nb"
-              className="text-white p-4 font-normal text-sm rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
+              className="text-white p-2 sm:p-4 font-normal text-xs sm:text-sm rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               tileClassName={({ date, view }) => {
                 const dateString = date.toDateString();
                 const isToday = dateString === new Date().toDateString();
 
                 return view === "month" && isToday
-                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[4rem] p-2 flex flex-col justify-center items-center relative cursor-default"
-                  : "p-2 border border-white h-[4rem] flex flex-col justify-center items-center relative cursor-default";
-              }}
+                ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
+                }}
               tileContent={({ date, view }) => {
                 if (view === "month") {
                   const matchingBookings = bookings.filter((booking) => {
                     const bookingDate = new Date(
-                      booking.bookedAt,
+                      booking.bookedAt
                     ).toDateString();
                     return bookingDate === date.toDateString();
                   });
 
-                  // Count the number of "ONE_SOUNDBOX" bookings
+                  if (
+                    matchingBookings.some(
+                      (booking) => booking.status === "PENDING"
+                    )
+                  ) {
+                    return (
+                      <div className="flex items-center justify-center text-md text-orange-500">
+                        ?
+                      </div>
+                    );
+                  }
+
                   const oneSoundboxCount = matchingBookings.filter(
-                    (booking) => booking.item === "ONE_SOUNDBOX",
+                    (booking) =>
+                      booking.item === "ONE_SOUNDBOX" &&
+                      booking.status === "CONFIRMED"
                   ).length;
 
-                  // Check if there is a "TWO_SOUNDBOXES" booking
                   const hasTwoSoundboxes = matchingBookings.some(
-                    (booking) => booking.item === "TWO_SOUNDBOXES",
+                    (booking) =>
+                      booking.item === "TWO_SOUNDBOXES" &&
+                      booking.status === "CONFIRMED"
                   );
 
-                  // Determine the dot color: red if there is a "TWO_SOUNDBOXES" booking or more than one "ONE_SOUNDBOX" booking
                   const dotColor =
                     hasTwoSoundboxes || oneSoundboxCount > 1
                       ? "bg-red-500"
                       : "bg-yellow-500";
 
-                  return matchingBookings.length > 0 ? (
+                  return matchingBookings.some(
+                    (booking) => booking.status === "CONFIRMED"
+                  ) ? (
                     <div className="flex items-center justify-center">
-                      <div className={`w-2 h-2 ${dotColor} rounded-full`}></div>
+                      <div
+                        className={`w-2 h-2 ${dotColor} rounded-full`}
+                      ></div>
                     </div>
                   ) : null;
                 }
               }}
-              navigationLabel={({ date, label, locale, view }) => (
-                <div className="text-md w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
+              navigationLabel={({ label }) => (
+                <div className="text-md w-[120px] sm:w-[150px] flex justify-center flex-shrink-0 font-semibold text-white icon-hover">
                   {label.charAt(0).toUpperCase() + label.slice(1)}
                 </div>
               )}
@@ -123,12 +193,17 @@ const SoundboxPage = () => {
               prevLabel={
                 <span className="text-white font-bold text-xl">‹</span>
               }
+              onClickDay={handleDateChange} // Handle calendar day clicks
             />
           </div>
         </div>
-        <div className="flex justify-start items-start">
-          <BookingWindow onStatusChange={handleStatusChange} />
-        </div>
+        {openForm && ( // Conditionally render BookingWindow based on selected date
+          <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
+              <div className="flex justify-start items-start py-4">
+                <BookingWindow onStatusChange={handleStatusChange} selectedDate={selectedDate}/>
+              </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,13 +1,11 @@
 "use client";
 
 import * as z from "zod";
-
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { nb } from "date-fns/locale";
-
 import {
   Form,
   FormControl,
@@ -17,7 +15,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
@@ -42,20 +39,33 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { checkBooking } from "@/utils/actions/checkBooking";
 import { bookingFormSchema } from "@/schemas/booking";
 
-export const BookingCard = ({ onStatusChange }: { onStatusChange: (status: string) => void }) => {
+interface BookingCardProps {
+  onStatusChange: ({ status, lukk }: { status: string, lukk: boolean }) => void;
+  selectedDate: Date | null;  // Add selectedDate prop
+}
+
+export const BookingCard = ({ onStatusChange, selectedDate }: BookingCardProps) => {
   const user = useCurrentUser();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+  const [lukk, setLukk] = useState<boolean>(false);
 
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof bookingFormSchema>>({
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
-      bookingDate: undefined,
+      bookingDate: selectedDate || undefined,  // Use selectedDate from props
     },
   });
 
+  // Function to handle the close button
+  const handleClose = () => {
+    setLukk(true);
+    onStatusChange({ status: "Closed", lukk: true });  // Send the close action to the parent component
+  };
+
+  // Function to handle form submission
   const onSubmit = (values: z.infer<typeof bookingFormSchema>) => {
     setError("");
     setSuccess("");
@@ -66,14 +76,14 @@ export const BookingCard = ({ onStatusChange }: { onStatusChange: (status: strin
 
         if (error) {
           setError(error);
-          onStatusChange(error); // Send the error to the parent component
+          onStatusChange({ status: error, lukk });  // Send the error status to the parent component
         } else if (success) {
           setSuccess(success);
-          onStatusChange(success); // Send the success message to the parent component
+          onStatusChange({ status: success, lukk });  // Send the success status to the parent component
         }
 
         toast({
-          title: "Booking gjennomført!:",
+          title: "Booking gjennomført!",
           description: (
             <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
               <code className="text-white">
@@ -94,7 +104,7 @@ export const BookingCard = ({ onStatusChange }: { onStatusChange: (status: strin
       backButtonHref="/for_studenten/booking/bookings"
     >
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 py-4">
           <div className="space-y-4">
             <FormField
               control={form.control}
@@ -173,6 +183,9 @@ export const BookingCard = ({ onStatusChange }: { onStatusChange: (status: strin
           </Button>
         </form>
       </Form>
+      <Button className="w-full" onClick={handleClose}>
+        Lukk
+      </Button>
     </CardWrapper>
   );
 };

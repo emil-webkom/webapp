@@ -26,7 +26,7 @@ const BookingPage = () => {
       description:
         "Emil-kontoret kan bookes hver dag fra 12 - 20. Dersom det skal drikkes alkohol inne på kontoret må man sende melding til vaktmesteren på gløs for å få dette godkjent på forhånd",
       buttonLabel: "Book kontoret",
-      href: "https://youtube.com",
+      href: "https://docs.google.com/spreadsheets/d/1L4CxgaByY3gxWAfNoT2y6EcCrThJMDowLDtLoXx7y38/edit?gid=1481163696#gid=1481163696",
     },
     {
       title: "Hytte",
