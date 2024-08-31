@@ -1,3 +1,5 @@
+'use server'
+
 import { db } from "@/lib/db";
 
 /**
@@ -20,6 +22,16 @@ export const getBookingsByDate = async (bookingDate: Date) => {
     throw new Error("Could not fetch bookings");
   }
 };
+
+export const getBookingList = async () =>{
+  try {
+    const bookings = await db.booking.findMany();
+    return bookings
+  }catch (error){
+    console.error("Error fetching bookings by date:", error);
+    throw new Error("Could not fetch bookings");
+  }
+}
 
 export const getBookingsByUserID = async (userID: string) => {
   try {

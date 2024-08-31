@@ -107,7 +107,7 @@ model Arrangement {
 }
 
 model Booking {
-  id        String     @id @default(cuid())
+  id        String        @id @default(cuid())
   userID    String
   komiteID  String?
   item      BookedItem
@@ -145,7 +145,6 @@ model LavterskelArrangement {
 
   @@index([userId])
 }
-
 enum BookedItem {
   KONTOR
   ONE_SOUNDBOX

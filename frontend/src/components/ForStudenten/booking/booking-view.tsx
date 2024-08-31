@@ -12,14 +12,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -30,13 +22,6 @@ import {
 import { Trash2 } from "lucide-react";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Booking } from "@/schemas/booking";
-
-// Function to get a date string for a future date
-const getFutureDate = (daysFromNow: number) => {
-  const date = new Date();
-  date.setDate(date.getDate() + daysFromNow);
-  return date.toISOString().split("T")[0];
-};
 
 const getDate = (date: Date) => {
   const newDate = new Date(date);
@@ -97,43 +82,100 @@ export default function BookingView() {
   };
 
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle>Bookinger</CardTitle>
-        <CardDescription>Dine tidligere bookinger.</CardDescription>
+    <Card className="w-full p-2">
+      <CardHeader className="p-4">
+        <CardTitle className="text-lg">Bookinger</CardTitle>
+        <CardDescription className="text-sm">
+          Dine tidligere bookinger.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Type</TableHead>
-              <TableHead>Dato</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Antall</TableHead>
-              <TableHead className="text-right">Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+      <CardContent className="p-0">
+        <div className="overflow-x-auto">
+          <div className="hidden md:block">
+            <table className="min-w-[350px] w-full">
+              <thead>
+                <tr>
+                  <th className="py-2 text-left">Type</th>
+                  <th className="py-2 text-left">Dato</th>
+                  <th className="py-2 text-left">Status</th>
+                  <th className="py-2 text-right">Antall</th>
+                  <th className="py-2 text-right">Handling</th>
+                </tr>
+              </thead>
+              <tbody>
+                {bookings.map((booking) => {
+                  const isActive = isBookingActive(booking.bookedAt);
+                  return (
+                    <tr
+                      key={booking.id}
+                      className={`text-sm ${
+                        isActive && booking.status === "CONFIRMED"
+                          ? "bg-green-50"
+                          : booking.status === "REJECTED"
+                          ? "bg-red-50"
+                          : "bg-yellow-50"
+                      } rounded-md`}
+                    >
+                      <td className="py-2">Soundbox</td>
+                      <td className="py-2">{getDate(booking.bookedAt)}</td>
+                      <td className="py-2">{booking.status}</td>
+                      <td className="py-2 text-right">
+                        {booking.item === "ONE_SOUNDBOX" ? 1 : 2}
+                      </td>
+                      <td className="py-2 text-right">
+                        {isActive ? (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => handleCancelClick(booking)}
+                            aria-label={`Cancel ${booking.item} booking for ${booking.bookedAt}`}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        ) : (
+                          <span className="text-muted-foreground">N/A</span>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile View */}
+          <div className="block md:hidden">
             {bookings.map((booking) => {
               const isActive = isBookingActive(booking.bookedAt);
               return (
-                <TableRow
+                <div
                   key={booking.id}
-                  className={
+                  className={`mb-4 p-4 rounded-lg ${
                     isActive && booking.status === "CONFIRMED"
                       ? "bg-green-50"
                       : booking.status === "REJECTED"
-                        ? "bg-red-50"
-                        : "bg-yellow-50"
-                  }
+                      ? "bg-red-50"
+                      : "bg-yellow-50"
+                  }`}
                 >
-                  <TableCell>Soundbox</TableCell>
-                  <TableCell>{getDate(booking.bookedAt)}</TableCell>
-                  <TableCell>{booking.status}</TableCell>
-                  <TableCell className="text-right">
-                    {booking.item === "ONE_SOUNDBOX" ? 1 : 2}
-                  </TableCell>
-                  <TableCell className="text-right">
+                  <div className="flex justify-between">
+                    <span className="font-semibold">Type:</span>
+                    <span>Soundbox</span>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="font-semibold">Dato:</span>
+                    <span>{getDate(booking.bookedAt)}</span>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="font-semibold">Status:</span>
+                    <span>{booking.status}</span>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="font-semibold">Antall:</span>
+                    <span>{booking.item === "ONE_SOUNDBOX" ? 1 : 2}</span>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="font-semibold">Handling:</span>
                     {isActive ? (
                       <Button
                         variant="ghost"
@@ -144,14 +186,14 @@ export default function BookingView() {
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     ) : (
-                      <span className="text-sm text-muted-foreground">N/A</span>
+                      <span className="text-muted-foreground">N/A</span>
                     )}
-                  </TableCell>
-                </TableRow>
+                  </div>
+                </div>
               );
             })}
-          </TableBody>
-        </Table>
+          </div>
+        </div>
       </CardContent>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
@@ -163,7 +205,7 @@ export default function BookingView() {
             </DialogDescription>
           </DialogHeader>
           {bookingToCancel && (
-            <div className="py-4">
+            <div className="py-4 text-sm">
               <p>
                 <strong className="font-semibold">Type: </strong> Soundbox
               </p>
