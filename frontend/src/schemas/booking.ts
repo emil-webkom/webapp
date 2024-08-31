@@ -5,7 +5,7 @@ import { nb } from "date-fns/locale";
 export const BookingSchema = z.object({
   id: z.string(),
   userID: z.string(),
-  komiteID: z.string().optional(),
+  komiteID: z.string().nullable().optional(),
   item: z.enum(["KONTOR", "ONE_SOUNDBOX", "TWO_SOUNDBOXES"]),
   bookedAt: z.string().transform((str) => new Date(str)),
   duration: z.number().optional(),

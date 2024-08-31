@@ -42,7 +42,7 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { checkBooking } from "@/utils/actions/checkBooking";
 import { bookingFormSchema } from "@/schemas/booking";
 
-export const BookingCard = () => {
+export const BookingCard = ({ onStatusChange }: { onStatusChange: (status: string) => void }) => {
   const user = useCurrentUser();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -62,8 +62,16 @@ export const BookingCard = () => {
 
     startTransition(() => {
       checkBooking(values, user?.id || "").then((data) => {
-        setError(data?.error);
-        setSuccess(data?.success);
+        const { error, success } = data || {};
+
+        if (error) {
+          setError(error);
+          onStatusChange(error); // Send the error to the parent component
+        } else if (success) {
+          setSuccess(success);
+          onStatusChange(success); // Send the success message to the parent component
+        }
+
         toast({
           title: "Booking gjennomført!:",
           description: (
@@ -82,8 +90,8 @@ export const BookingCard = () => {
     <CardWrapper
       headerTitle="Book soundbox"
       headerLabel="Enkelt å booke"
-      backButtonLabel="Tilbake til booking"
-      backButtonHref="/for_studenten/booking"
+      backButtonLabel="Se mine bookinger"
+      backButtonHref="/for_studenten/booking/bookings"
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
