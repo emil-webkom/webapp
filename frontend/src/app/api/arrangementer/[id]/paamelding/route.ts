@@ -4,6 +4,7 @@ import {
   ArrangementPaamelding,
   ArrangementPaameldingSchema,
 } from "@/schemas/arrangement";
+import { id } from "date-fns/locale";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
@@ -23,60 +24,40 @@ export async function GET(
   }
 }
 
-// export async function POST(
-//   req: NextRequest,
-//   { params }: { params: { id: string } },
-// ) {
-//   try {
-//     const arrangement = await db.arrangement.findUnique({
-//       where: { id: params.id },
-//     });
+export async function DELETE(
+  req: NextRequest,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const arrangementPaamelding = await db.arrangementPaamelding.findUnique({
+      where: {
+        id: params.id,
+      },
+      include: {
+        arrangement: true,
+      },
+    });
 
-//     if (!arrangement) {
-//       return NextResponse.json({ error: "Arrangement not found" });
-//     }
-//     const user = await getUserById(params.id);
+    if (arrangementPaamelding) {
+      await db.arrangementPaamelding.delete({
+        where: {
+          id: params.id,
+        },
+      });
 
-//     const signup = await db.arrangementPaamelding.create({
-//       data: {
-//         user: {
-//           connect: { id: user?.id },
-//         },
-//         arrangement: {
-//           connect: { id: params.id },
-//         },
-//       },
-//     });
-
-//     // const parsedData = ArrangementPaameldingSchema.parse(await req.json());
-//     // console.log(parsedData);
-//     // const arrangementPaamelding = await db.arrangementPaamelding.create({
-//     //   data: parsedData,
-//     // });
-
-//     // await db.user.update({
-//     //   where: { id: parsedData.userID },
-//     //   data: {
-//     //     paameldinger: {
-//     //       connect: { id: arrangementPaamelding.id },
-//     //     },
-//     //   },
-//     // });
-
-//     // await db.arrangement.update({
-//     //   where: { id: params.id },
-//     //   data: {
-//     //     paameldinger: {
-//     //       connect: { id: arrangementPaamelding.id },
-//     //     },
-//     //   },
-//     // });
-
-//     return NextResponse.json(
-//       { message: "Paamelding successfull", arrangementPaamelding },
-//       { status: 201 },
-//     );
-//   } catch (error) {
-//     return NextResponse.json({ error: error }, { status: 500 });
-//   }
-// }
+      return NextResponse.json(
+        {
+          success: `Du har meldt deg av: ${arrangementPaamelding.arrangement.navn}`,
+        },
+        { status: 200 },
+      );
+    } else {
+      return NextResponse.json(
+        { error: "ArrangementPaamelding not found." },
+        { status: 404 },
+      );
+    }
+  } catch (error) {
+    return NextResponse.json({ error: error }, { status: 500 });
+  }
+}

@@ -19,7 +19,6 @@ async function storeData(komitedata: komiteInput) {
         mappe: komitedata.mappe,
 
         updatedAt: new Date(),
-
       },
     });
     return komite;

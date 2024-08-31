@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {FetchStyret} from "@/utils/styret/fetchers";
+import { FetchStyret } from "@/utils/styret/fetchers";
 import { db } from "@/lib/db";
 
 export async function GET(request: NextRequest) {

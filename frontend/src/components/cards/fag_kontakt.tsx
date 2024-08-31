@@ -38,7 +38,9 @@ const Fagkontakt: FC<CardProps> = ({
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="text-xs lg:text-base font-light underline">Kontakt:</div>
+        <div className="text-xs lg:text-base font-light underline">
+          Kontakt:
+        </div>
         <div className="text-xs lg:text-base font-light">{mail}</div>
         <div className="text-xs lg:text-base font-light">+47 {nummer}</div>
       </div>

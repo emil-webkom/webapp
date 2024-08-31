@@ -6,7 +6,6 @@ export interface StickyNavbarProps {
   tags: string[];
 }
 
-
 const StickyNavbar = ({ tags }: StickyNavbarProps) => {
   const [activeTag, setActiveTag] = useState("");
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
@@ -22,7 +21,6 @@ const StickyNavbar = ({ tags }: StickyNavbarProps) => {
     threshold: 0,
   };
 
-  
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
@@ -31,8 +29,11 @@ const StickyNavbar = ({ tags }: StickyNavbarProps) => {
         }
       });
     };
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
     tags.forEach((tag) => {
       const element = document.getElementById(tag);
       if (element) {
