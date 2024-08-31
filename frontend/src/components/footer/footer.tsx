@@ -17,7 +17,7 @@ const Footer: FC = () => {
           <div className="text-left font-light text-[10px] space-y-1">
             <p>
               Foreningen for Studentene ved Energi og Miljø, OS. Bragstads plass
-              2, 7034 Trondheim. Org.nr. 994 778 463
+              2, 7034 Trondheim. Org.nr. 991 212 736
             </p>
             <p className="mt-4">Foreningen for Studentene ved Emil © 2024</p>
           </div>
@@ -28,7 +28,9 @@ const Footer: FC = () => {
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-left font-light text-[10px] space-y-1 ">
-            <p>Leder: Henriette Strømsness, +47 467 60 243</p>
+            <p>
+              Leder: Henriette Strømsness, +47 467 60 243, styret@emilweb.no
+            </p>
             <p>
               Bedriftskontakt Emil-Link: Markus Eliassen, link-styret@emilweb.no
             </p>

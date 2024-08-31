@@ -112,7 +112,7 @@ model Booking {
   komiteID  String?
   item      BookedItem
   bookedAt  DateTime
-  duration  Int?
+  status    BookingStatus @default(PENDING)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   komite    komite?    @relation(fields: [komiteID], references: [id])
@@ -150,6 +150,12 @@ enum BookedItem {
   KONTOR
   ONE_SOUNDBOX
   TWO_SOUNDBOXES
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
 }
 
 enum UserRole {

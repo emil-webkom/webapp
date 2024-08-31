@@ -8,6 +8,7 @@ export const BookingSchema = z.object({
   komiteID: z.string().optional(),
   item: z.enum(["KONTOR", "ONE_SOUNDBOX", "TWO_SOUNDBOXES"]),
   bookedAt: z.string().transform((str) => new Date(str)),
+  status: z.enum(["PENDING", "CONFIRMED", "REJECTED"]),
   duration: z.number().optional(),
 });
 
