@@ -40,11 +40,14 @@ import { checkBooking } from "@/utils/actions/checkBooking";
 import { bookingFormSchema } from "@/schemas/booking";
 
 interface BookingCardProps {
-  onStatusChange: ({ status, lukk }: { status: string, lukk: boolean }) => void;
-  selectedDate: Date | null;  // Add selectedDate prop
+  onStatusChange: ({ status, lukk }: { status: string; lukk: boolean }) => void;
+  selectedDate: Date | null; // Add selectedDate prop
 }
 
-export const BookingCard = ({ onStatusChange, selectedDate }: BookingCardProps) => {
+export const BookingCard = ({
+  onStatusChange,
+  selectedDate,
+}: BookingCardProps) => {
   const user = useCurrentUser();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
@@ -55,14 +58,14 @@ export const BookingCard = ({ onStatusChange, selectedDate }: BookingCardProps) 
   const form = useForm<z.infer<typeof bookingFormSchema>>({
     resolver: zodResolver(bookingFormSchema),
     defaultValues: {
-      bookingDate: selectedDate || undefined,  // Use selectedDate from props
+      bookingDate: selectedDate || undefined, // Use selectedDate from props
     },
   });
 
   // Function to handle the close button
   const handleClose = () => {
     setLukk(true);
-    onStatusChange({ status: "Closed", lukk: true });  // Send the close action to the parent component
+    onStatusChange({ status: "Closed", lukk: true }); // Send the close action to the parent component
   };
 
   // Function to handle form submission
@@ -76,22 +79,15 @@ export const BookingCard = ({ onStatusChange, selectedDate }: BookingCardProps) 
 
         if (error) {
           setError(error);
-          onStatusChange({ status: error, lukk });  // Send the error status to the parent component
+          onStatusChange({ status: error, lukk }); // Send the error status to the parent component
         } else if (success) {
           setSuccess(success);
-          onStatusChange({ status: success, lukk });  // Send the success status to the parent component
+          toast({
+            title: "Booking gjennomført!",
+            description: `Du har booket: ${data.booking?.item === "ONE_SOUNDBOX" ? "1 Soundbox" : "2 Soundboxer"}, ${format(new Date(data.booking?.bookedAt!!), "PPP", { locale: nb })}`,
+          });
+          onStatusChange({ status: success, lukk }); // Send the success status to the parent component
         }
-
-        toast({
-          title: "Booking gjennomført!",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">
-                {JSON.stringify(values, null, 2)}
-              </code>
-            </pre>
-          ),
-        });
       });
     });
   };
