@@ -28,30 +28,33 @@ export async function DELETE(request: NextRequest) {
   }
 }
 
-export async function GET (request: NextRequest){
+export async function GET(request: NextRequest) {
   const url = new URL(request.url);
-  console.log(url)
-  const komite = url.searchParams.get("komite");
-
-  if (!komite) {
+  const komiteId = url.searchParams.get("id");
+  if (!komiteId) {
     return NextResponse.json(
-      { error: "Komite name is required" },
-      { status: 400 },
+      { error: "Komite ID is required" },
+      { status: 400 }
     );
   }
+
   try {
-    await db.komite.findUnique({
-      where: { navn: komite },
+    const komite = await db.komite.findUnique({
+      where: { id: komiteId },
     });
-    return NextResponse.json(
-      { message: "Komite successfully fetched" },
-      { status: 200 },
-    );
+    if (!komite) {
+      return NextResponse.json(
+        { error: "Komite not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(komite, { status: 200 });
   } catch (error) {
     console.error("Error fetching komite from database:", error);
     return NextResponse.json(
       { message: "Internal server error" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

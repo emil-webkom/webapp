@@ -37,27 +37,27 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
   const isScrolledToRight = scrollPosition >= scrollWidth - 1;
 
   return (
-    <div className="flex justify-center items-center mb-4">
-      <div className="w-full max-w-4xl px-4 relative">
-        <div className="w-full p-2">
-          <div className="relative">
+    <div className="w-full flex justify-center items-center mb-4">
+      <div className="w-full max-w-5xl relative">
+        <div className="w-full py-2 lg:p-2">
+          <div className="w-screen lg:w-full lg:relative px-3">
             {/* Left gradient: only visible if not scrolled all the way to the left */}
             {!isScrolledToLeft && (
-              <div className="absolute top-0 left-0 w-12 h-full bg-gradient-to-r from-[#003A42] to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 left-0 rounded-xl lg:w-12 h-full bg-gradient-to-r from-[#003A42] to-transparent pointer-events-none"></div>
             )}
             {/* Right gradient: only visible if not scrolled all the way to the right */}
             {!isScrolledToRight && (
-              <div className="absolute top-0 right-0 w-12 h-full bg-gradient-to-l from-[#003A42] to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-12 h-full rounded-xl bg-gradient-to-l from-[#003A42] to-transparent pointer-events-none"></div>
             )}
             <div
               ref={scrollContainerRef}
-              className="flex overflow-x-auto scrollbar-hide custom-scrollbar bg-[#003A42] border-b border-white gap-x-6"
+              className="flex overflow-x-auto scrollbar-hide custom-scrollbar border-b border-white gap-x-3 lg:gap-x-6"
             >
               {komiteer.map((komite) => (
                 <Link
                   key={komite.id}
                   href={`/for_studenten/komiteer/${komite.id}`}
-                  className="flex-none text-white font-normal py-2 icon-hover"
+                  className="flex-none text-white font-normal text-sm text-base py-2 icon-hover"
                 >
                   {komite.navn}
                 </Link>
