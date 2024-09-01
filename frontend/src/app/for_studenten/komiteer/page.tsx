@@ -5,7 +5,7 @@ import InfoAndScrollbarWithButton from "@/components/ForStudenten/InfoAndScrollb
 const forStudentenPage = () => {
   return (
     <div className="   ">
-      <InfoAndScrollbarWithButton
+      {/* <InfoAndScrollbarWithButton
         title={"EMIL sine komitéer"}
         imageUrl={"/image/skalikkebrukessenere/therizzz.JPG"}
         text={
@@ -18,7 +18,7 @@ const forStudentenPage = () => {
         <Button className="ml-48 mb-20 hover:text-gray-400 active:text-grey-500">
           Søk komité her!
         </Button>
-      </InfoAndScrollbarWithButton>
+      </InfoAndScrollbarWithButton> */}
     </div>
   );
 };

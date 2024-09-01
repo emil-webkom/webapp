@@ -99,12 +99,11 @@ const SoundboxPage = () => {
       <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-y-4 pb-4 w-full">
         <div className="w-full px-2 pb-8">
           <div className="text-xl sm:text-2xl font-bold flex h-auto lg:h-[650px] flex-col items-center gap-y-4">
-            <p className="w-full flex justify-center">Bookinger</p>
             <p className="text-xs sm:text-sm font-light px-4 sm:px-16 text-center">
               Hvis en dato ikke er markert i kalenderen er begge soundboxene
               ledige.
             </p>
-            <div className="flex flex-wrap justify-start font-normal px-4 sm:px-8">
+            <div className="flex max-w-[512px] flex-wrap justify-start font-normal px-4 sm:px-8">
               <div className="flex gap-x-2 items-center">
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                 <span className="text-xs sm:text-sm">En booket soundbox</span>

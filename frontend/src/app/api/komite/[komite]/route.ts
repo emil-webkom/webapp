@@ -27,3 +27,31 @@ export async function DELETE(request: NextRequest) {
     );
   }
 }
+
+export async function GET (request: NextRequest){
+  const url = new URL(request.url);
+  console.log(url)
+  const komite = url.searchParams.get("komite");
+
+  if (!komite) {
+    return NextResponse.json(
+      { error: "Komite name is required" },
+      { status: 400 },
+    );
+  }
+  try {
+    await db.komite.findUnique({
+      where: { navn: komite },
+    });
+    return NextResponse.json(
+      { message: "Komite successfully fetched" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("Error fetching komite from database:", error);
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 },
+    );
+  }
+}

@@ -79,9 +79,6 @@ const HomePage = () => {
             <VideoPlayer />
           </div>
         </div>
-        {/* <TransissionOut />
-      <Baerekraft />
-      <TransissionIn /> */}
       </div>
       <TransissionOut />
 
