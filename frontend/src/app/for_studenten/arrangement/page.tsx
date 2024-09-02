@@ -217,9 +217,14 @@ const ForStudentenPage = () => {
           <p>
             Påmelding til arrangementer skjer både gjennom nettsiden og gjennom
             emils
-            <span className="text-[#9DDBAD] text-underscore"><a href="https://www.facebook.com/groups/emilntnu/?locale=nb_NO"> Facebookgruppe</a></span>. Ved
-            spørsmål angående arrangementer kan man henvende seg til arrangør
-            eller hovedstyret.
+            <span className="text-[#9DDBAD] text-underscore">
+              <a href="https://www.facebook.com/groups/emilntnu/?locale=nb_NO">
+                {" "}
+                Facebookgruppe
+              </a>
+            </span>
+            . Ved spørsmål angående arrangementer kan man henvende seg til
+            arrangør eller hovedstyret.
           </p>
           <p>
             Typen arrangementer som holdes kan være alt fra sosiale

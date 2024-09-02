@@ -14,7 +14,7 @@ import router from "next/router";
 const SoundboxPage = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [openForm, setOpenform] = useState<boolean>(false)
+  const [openForm, setOpenform] = useState<boolean>(false);
   useEffect(() => {
     fetchBookings();
   }, []);
@@ -37,8 +37,14 @@ const SoundboxPage = () => {
     }
   };
 
-  const handleStatusChange = ({status, lukk}: {status:string, lukk: boolean}) => {
-    if (lukk){
+  const handleStatusChange = ({
+    status,
+    lukk,
+  }: {
+    status: string;
+    lukk: boolean;
+  }) => {
+    if (lukk) {
       toggleForm();
     }
     if (status === "Booking successful!") {
@@ -128,21 +134,21 @@ const SoundboxPage = () => {
                 const isToday = dateString === new Date().toDateString();
 
                 return view === "month" && isToday
-                ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
-                : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
-                }}
+                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                  : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
+              }}
               tileContent={({ date, view }) => {
                 if (view === "month") {
                   const matchingBookings = bookings.filter((booking) => {
                     const bookingDate = new Date(
-                      booking.bookedAt
+                      booking.bookedAt,
                     ).toDateString();
                     return bookingDate === date.toDateString();
                   });
 
                   if (
                     matchingBookings.some(
-                      (booking) => booking.status === "PENDING"
+                      (booking) => booking.status === "PENDING",
                     )
                   ) {
                     return (
@@ -155,13 +161,13 @@ const SoundboxPage = () => {
                   const oneSoundboxCount = matchingBookings.filter(
                     (booking) =>
                       booking.item === "ONE_SOUNDBOX" &&
-                      booking.status === "CONFIRMED"
+                      booking.status === "CONFIRMED",
                   ).length;
 
                   const hasTwoSoundboxes = matchingBookings.some(
                     (booking) =>
                       booking.item === "TWO_SOUNDBOXES" &&
-                      booking.status === "CONFIRMED"
+                      booking.status === "CONFIRMED",
                   );
 
                   const dotColor =
@@ -170,12 +176,10 @@ const SoundboxPage = () => {
                       : "bg-yellow-500";
 
                   return matchingBookings.some(
-                    (booking) => booking.status === "CONFIRMED"
+                    (booking) => booking.status === "CONFIRMED",
                   ) ? (
                     <div className="flex items-center justify-center">
-                      <div
-                        className={`w-2 h-2 ${dotColor} rounded-full`}
-                      ></div>
+                      <div className={`w-2 h-2 ${dotColor} rounded-full`}></div>
                     </div>
                   ) : null;
                 }
@@ -199,9 +203,12 @@ const SoundboxPage = () => {
         </div>
         {openForm && ( // Conditionally render BookingWindow based on selected date
           <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
-              <div className="flex justify-start items-start py-4">
-                <BookingWindow onStatusChange={handleStatusChange} selectedDate={selectedDate}/>
-              </div>
+            <div className="flex justify-start items-start py-4">
+              <BookingWindow
+                onStatusChange={handleStatusChange}
+                selectedDate={selectedDate}
+              />
+            </div>
           </div>
         )}
       </div>

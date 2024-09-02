@@ -112,8 +112,8 @@ export default function BookingView() {
                         isActive && booking.status === "CONFIRMED"
                           ? "bg-green-50"
                           : booking.status === "REJECTED"
-                          ? "bg-red-50"
-                          : "bg-yellow-50"
+                            ? "bg-red-50"
+                            : "bg-yellow-50"
                       } rounded-md`}
                     >
                       <td className="py-2">Soundbox</td>
@@ -154,8 +154,8 @@ export default function BookingView() {
                     isActive && booking.status === "CONFIRMED"
                       ? "bg-green-50"
                       : booking.status === "REJECTED"
-                      ? "bg-red-50"
-                      : "bg-yellow-50"
+                        ? "bg-red-50"
+                        : "bg-yellow-50"
                   }`}
                 >
                   <div className="flex justify-between">
