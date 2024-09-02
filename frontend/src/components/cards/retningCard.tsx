@@ -17,13 +17,13 @@ const RetningCard: FC<CardProps> = ({ name, subname, text, link }) => {
         {name}
       </div>
       <div className="text-m font-light px-10 ">{subname}</div>
-      <div className="text-sm lg:text-l font-light px-10 lg:py-5 py-6 lg:h-[6rem] overflow-hidden">
+      <div className="text-sm lg:text-base font-light px-10 lg:py-5 py-6 lg:h-[6rem] overflow-hidden">
         {text}
       </div>
       <div className="flex justify-center lg:pt-5">
         <Button
           onClick={() => window.open(link, "_blank")}
-          className="text-sm lg:text-l font-medium"
+          className="text-sm lg:text-base font-medium hover:bg-slate-400"
         >
           Les mer om {subname}
         </Button>

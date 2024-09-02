@@ -8,20 +8,21 @@ datasource db {
 }
 
 model User {
-  id            String                  @id @default(cuid())
-  name          String?
-  email         String                  @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
-  role          UserRole                @default(USER)
-  nummer        Int?
-  isActive      Boolean                 @default(true)
-  username      String?                 @unique
-  accounts      Account[]
-  paameldinger  ArrangementPaamelding[]
-  bookings      Booking[]
-  Hovedstyret   Hovedstyret?
+  id                     String                  @id @default(cuid())
+  name                   String?
+  email                  String                  @unique
+  emailVerified          DateTime?
+  image                  String?
+  password               String?
+  role                   UserRole                @default(USER)
+  nummer                 Int?
+  isActive               Boolean                 @default(true)
+  username               String?                 @unique
+  accounts               Account[]
+  paameldinger           ArrangementPaamelding[]
+  bookings               Booking[]
+  Hovedstyret            Hovedstyret?
+  lavterskelArrangements LavterskelArrangement[]
 }
 
 model Account {
@@ -106,12 +107,12 @@ model Arrangement {
 }
 
 model Booking {
-  id        String     @id @default(cuid())
+  id        String        @id @default(cuid())
   userID    String
   komiteID  String?
   item      BookedItem
   bookedAt  DateTime
-  duration  Int
+  status    BookingStatus @default(PENDING)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   komite    komite?    @relation(fields: [komiteID], references: [id])
@@ -130,13 +131,34 @@ model ArrangementPaamelding {
   @@unique([userID, arrangementID])
 }
 
+model LavterskelArrangement {
+  id          String   @id @default(cuid())
+  navn        String
+  sted        String?
+  dato        DateTime
+  type        String
+  beskrivelse String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
 enum BookedItem {
   KONTOR
   ONE_SOUNDBOX
   TWO_SOUNDBOXES
 }
 
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  REJECTED
+}
+
 enum UserRole {
   ADMIN
   USER
+  SUPER_USER
 }

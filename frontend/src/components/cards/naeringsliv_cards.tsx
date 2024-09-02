@@ -45,7 +45,7 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
           {subtitle}
         </h3>
 
-        <p className="text-gray-700 h-60 lg:h-64 font-extralight text-sm lg:text-l pb-0">
+        <p className="text-gray-700 h-60 lg:h-64 font-extralight text-sm lg:text-base pb-0">
           {description}
           <a
             href={linkHref}

@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import fetchStyret from "@/utils/styret/fetchers";
+import { FetchStyret } from "@/utils/styret/fetchers";
 import { db } from "@/lib/db";
 
 export async function GET(request: NextRequest) {
   try {
-    const data = await fetchStyret();
+    const data = await FetchStyret();
 
     if (!data) {
       return NextResponse.json({ message: "No data found" }, { status: 404 });

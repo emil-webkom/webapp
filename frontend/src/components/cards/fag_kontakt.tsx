@@ -31,16 +31,18 @@ const Fagkontakt: FC<CardProps> = ({
             className="w-[50%] object-cover rounded-md"
           />
         </div>
-        <div className="text-sm lg:text-l font-semibold px-10 ">{rolle}</div>
+        <div className="text-sm lg:text-base font-semibold px-10 ">{rolle}</div>
       </div>
-      <div className="text-xs lg:text-l font-light px-10 text-center h-[10vh] lg:h-[13vh]">
+      <div className="text-xs lg:text-base font-light px-10 text-center h-[10vh] lg:h-[13vh]">
         {text}
       </div>
 
       <div className="flex flex-col items-center">
-        <div className="text-xs lg:text-l font-light underline">Kontakt:</div>
-        <div className="text-xs lg:text-l font-light">{mail}</div>
-        <div className="text-xs lg:text-l font-light">+47 {nummer}</div>
+        <div className="text-xs lg:text-base font-light underline">
+          Kontakt:
+        </div>
+        <div className="text-xs lg:text-base font-light">{mail}</div>
+        <div className="text-xs lg:text-base font-light">+47 {nummer}</div>
       </div>
     </div>
   );
