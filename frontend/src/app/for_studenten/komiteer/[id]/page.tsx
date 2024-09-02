@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 const KomitePage = ({ params }: { params: { id: string } }) => {
   const id = params.id;
-  const { data, loading, error } = useFetch<Komite>(`/api/komite/id?id=${id}`);
+  const { data, loading, error } = useFetch<Komite>(`/api/komite/${id}`);
   const [leder, setLeder] = useState<boolean>(true);
   const [hasMail, sethasMail] = useState<boolean>(true);
   const [isStyret, setIsStyret] = useState<boolean>(false);
