@@ -78,7 +78,7 @@ const Logos: FC<{ data: KomiteLogo[] }> = ({ data }) => {
                         <img
                           src={item.bilde}
                           alt={`Logo ${slideIndex * itemsPerSlide + index + 1}`}
-                          className="w-[15rem] h-[10rem] object-cover rounded-md"
+                          className="object-cover rounded-md"
                         />
                       </Link>
                     </div>

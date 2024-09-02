@@ -57,7 +57,7 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
                 <Link
                   key={komite.id}
                   href={`/for_studenten/komiteer/${komite.id}`}
-                  className="flex-none text-white font-normal text-sm text-base py-2 icon-hover"
+                  className="flex-none text-white font-normal text-sm lg:text-base py-2 icon-hover"
                 >
                   {komite.navn}
                 </Link>
