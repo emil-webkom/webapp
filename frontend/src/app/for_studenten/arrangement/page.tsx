@@ -154,11 +154,11 @@ const ForStudentenPage = () => {
 
   return (
     <div className=" flex flex-col justify-center w-full text-white">
-      <div className="w-full pt-12 px-12">
+      <div className="w-full pt-12 px-4 lg:px-8">
         <img
-          src="/image/Komiteer/HS/HSfelles.jpg"
-          alt="Hovedstyret fellesbilde"
-          className="rounded-md object-cover w-full h-[19rem]"
+          src="/image/arrangement/Arrangement.jpg"
+          alt="Arrangement forsidebilde"
+          className="rounded-md object-cover object-[0_15%] w-full h-[19rem]"
         />
       </div>
       <div className="flex flex-col justify-center items-center gap-y-3 py-3">
@@ -207,7 +207,7 @@ const ForStudentenPage = () => {
             </g>
           </svg>
         </div>
-        <div className="flex flex-col max-w-[512px] space-y-3 text-sm lg:text-l px-12">
+        <div className="flex flex-col max-w-[512px] space-y-3 text-sm lg:text-l px-4">
           <p>
             Linjeforeningen arrangerer en rekke ulike arrangementer og disse kan
             være for kun komiteene eller hele linjeforeningen. Ofte arrangerer

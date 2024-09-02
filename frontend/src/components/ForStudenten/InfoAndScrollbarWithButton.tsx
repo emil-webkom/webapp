@@ -37,7 +37,7 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
   const isScrolledToRight = scrollPosition >= scrollWidth - 1;
 
   return (
-    <div className="w-full flex justify-center items-center mb-4">
+    <div className="w-full flex justify-center items-center py-4">
       <div className="w-full max-w-5xl relative">
         <div className="w-full py-2 lg:p-2">
           <div className="w-screen lg:w-full lg:relative px-3">

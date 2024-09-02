@@ -18,9 +18,12 @@ if (loading){
 }
 
   return (
-    <div className="w-full p-6 text-white flex flex-col gap-y-4">
+    <div className="w-full p-6 text-white flex flex-col items-center gap-y-4">
+      <img src={data?.bilde} alt="Komite bilde" className="px-4 lg:px-8 rounded-md w-full h-[50vh] object-contain" />
+      <div className='max-w-[512px]'>
       <h1 className="text-3xl font-bold">{data?.navn}</h1>
       <p>Make pretty komitePage</p>
+      </div>
     </div>
   );
 };

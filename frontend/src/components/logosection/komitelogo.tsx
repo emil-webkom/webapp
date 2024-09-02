@@ -65,7 +65,7 @@ const Logos: FC<{ data: KomiteLogo[] }> = ({ data }) => {
             {Array.from({ length: totalSlides }).map((_, slideIndex) => (
               <div
                 key={slideIndex}
-                className="flex-shrink-0 w-full grid grid-cols-2 gap-x-5 grid-rows-2"
+                className="flex-shrink-0 w-full grid grid-cols-2 gap-4 grid-rows-2"
               >
                 {data
                   .slice(
@@ -74,11 +74,11 @@ const Logos: FC<{ data: KomiteLogo[] }> = ({ data }) => {
                   )
                   .map((item, index) => (
                     <div key={index} className="flex items-center">
-                      <Link href={item.mappe}>
+                      <Link href={`../for_studenten/komiteer/${item.id}`}>
                         <img
                           src={item.bilde}
                           alt={`Logo ${slideIndex * itemsPerSlide + index + 1}`}
-                          className="w-[15rem] object-contain"
+                          className="w-[15rem] h-[10rem] object-cover rounded-md"
                         />
                       </Link>
                     </div>
