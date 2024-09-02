@@ -9,6 +9,9 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { startTransition, useEffect, useState, useTransition } from "react";
 import { signUpForEvent } from "@/utils/actions/signUpForEvent";
 import { toast } from "@/components/ui/use-toast";
+import { formatTrinn } from "@/utils/trinnFormatter";
+import { cancelEvent } from "@/utils/actions/cancelEvent";
+import { checkSignUpStatus } from "@/utils/actions/checkSignUpStatus";
 
 const ArrangementPage = ({ params }: { params: { id: string } }) => {
   const id = params.id;
@@ -16,10 +19,25 @@ const ArrangementPage = ({ params }: { params: { id: string } }) => {
   const userID = user?.id;
   const { data } = useFetch<Arrangement>(`/api/arrangementer/${id}`);
   const [isPending, startTransition] = useTransition();
+  const [loading, setLoading] = useState(true);
+  const [isSignedUp, setIsSignedUp] = useState(false);
 
-  const onClick = async () => {
+  useEffect(() => {
+    const fetchSignUpStatus = async () => {
+      setLoading(true);
+      const status = await checkSignUpStatus(id, userID!!);
+      setIsSignedUp(status.isSignedUp);
+      setLoading(false);
+    };
+
+    fetchSignUpStatus();
+  }, [id, userID]);
+
+  const handleSignUp = async () => {
+    setLoading(true);
     startTransition(() => {
       signUpForEvent(id, userID).then((data) => {
+        // signUpForEvent is an action
         if (data?.error) {
           toast({
             variant: "destructive",
@@ -28,11 +46,36 @@ const ArrangementPage = ({ params }: { params: { id: string } }) => {
           });
         } else if (data?.success) {
           toast({
-            variant: "success",
+            variant: "default",
             title: "Suksess!",
             description: `${data.success}`,
           });
+          setIsSignedUp(true);
         }
+        setLoading(false);
+      });
+    });
+  };
+
+  const handleCancel = async () => {
+    setLoading(true);
+    startTransition(() => {
+      cancelEvent(id, userID).then((data) => {
+        if (data?.error) {
+          toast({
+            variant: "destructive",
+            title: "Noe gikk galt.",
+            description: `${data.error}`,
+          });
+        } else if (data?.success) {
+          toast({
+            variant: "default",
+            title: "Suksess!",
+            description: `${data.success}`,
+          });
+          setIsSignedUp(false);
+        }
+        setLoading(false);
       });
     });
   };
@@ -70,7 +113,11 @@ const ArrangementPage = ({ params }: { params: { id: string } }) => {
             </div>
             <div>
               <h3 className="font-bold text-lg">Hvem</h3>
-              <p className="text-sm lg:text-base">{data?.trinn}. trinn</p>
+              <p className="text-sm lg:text-base">
+                {data?.trinn
+                  ? formatTrinn({ trinn: data.trinn })
+                  : "Alle trinn"}
+              </p>
             </div>
             <div>
               <h3 className="font-bold text-lg">Spesielle bemerkelser</h3>
@@ -78,9 +125,19 @@ const ArrangementPage = ({ params }: { params: { id: string } }) => {
                 Tilgjengelige plasser: {data?.kapasitet}
               </p>
             </div>
-            <Button onClick={onClick} disabled={isPending}>
-              Meld deg på
-            </Button>
+            {isSignedUp ? (
+              <Button
+                variant="destructive"
+                onClick={handleCancel}
+                disabled={loading}
+              >
+                Meld deg av
+              </Button>
+            ) : (
+              <Button onClick={handleSignUp} disabled={loading}>
+                Meld deg på
+              </Button>
+            )}
           </div>
         </div>
       </div>

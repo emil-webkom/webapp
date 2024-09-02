@@ -24,40 +24,51 @@ export async function GET(
   }
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } },
-) {
-  try {
-    const arrangementPaamelding = await db.arrangementPaamelding.findUnique({
-      where: {
-        id: params.id,
-      },
-      include: {
-        arrangement: true,
-      },
-    });
+// export async function DELETE(
+//   req: NextRequest,
+//   { params }: { params: { id: string } },
+// ) {
+//   try {
+//     const { searchParams } = new URL(req.url);
+//     const userID = searchParams.get("userID");
 
-    if (arrangementPaamelding) {
-      await db.arrangementPaamelding.delete({
-        where: {
-          id: params.id,
-        },
-      });
+//     if (!userID) {
+//       return NextResponse.json(
+//         { error: "UserID is required" },
+//         { status: 400 },
+//       );
+//     }
 
-      return NextResponse.json(
-        {
-          success: `Du har meldt deg av: ${arrangementPaamelding.arrangement.navn}`,
-        },
-        { status: 200 },
-      );
-    } else {
-      return NextResponse.json(
-        { error: "ArrangementPaamelding not found." },
-        { status: 404 },
-      );
-    }
-  } catch (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
-  }
-}
+//     const arrangementPaamelding = await db.arrangementPaamelding.findFirst({
+//       where: {
+//         arrangementID: params.id,
+//         userID: userID,
+//       },
+//       include: {
+//         arrangement: true,
+//       },
+//     });
+
+//     if (arrangementPaamelding) {
+//       await db.arrangementPaamelding.delete({
+//         where: {
+//           id: arrangementPaamelding.id,
+//         },
+//       });
+
+//       return NextResponse.json(
+//         {
+//           success: `Du har meldt deg av: ${arrangementPaamelding.arrangement.navn}`,
+//         },
+//         { status: 200 },
+//       );
+//     } else {
+//       return NextResponse.json(
+//         { error: "ArrangementPaamelding not found." },
+//         { status: 404 },
+//       );
+//     }
+//   } catch (error) {
+//     return NextResponse.json({ error: error }, { status: 500 });
+//   }
+// }
