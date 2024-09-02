@@ -29,8 +29,9 @@ export async function DELETE(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const url = new URL(request.url);
+  const url = new URL(request.nextUrl);
   const komiteId = url.searchParams.get("id");
+  console.log({url,komiteId});
   if (!komiteId) {
     return NextResponse.json(
       { error: "Komite ID is required" },
