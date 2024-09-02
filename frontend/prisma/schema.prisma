@@ -112,11 +112,11 @@ model Booking {
   komiteID  String?
   item      BookedItem
   bookedAt  DateTime
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   status    BookingStatus @default(PENDING)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  komite    komite?    @relation(fields: [komiteID], references: [id])
-  user      User       @relation(fields: [userID], references: [id])
+  komite    komite?       @relation(fields: [komiteID], references: [id])
+  user      User          @relation(fields: [userID], references: [id])
 }
 
 model ArrangementPaamelding {
@@ -145,6 +145,14 @@ model LavterskelArrangement {
 
   @@index([userId])
 }
+
+model aeresEmiler {
+  id   String          @id
+  type aeresEmilerType
+  navn String
+  aar  Int
+}
+
 enum BookedItem {
   KONTOR
   ONE_SOUNDBOX
@@ -161,4 +169,9 @@ enum UserRole {
   ADMIN
   USER
   SUPER_USER
+}
+
+enum aeresEmilerType {
+  AERESEMILER
+  FORTJENESTEMEDALJE
 }
