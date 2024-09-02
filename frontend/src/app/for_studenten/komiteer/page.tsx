@@ -30,7 +30,9 @@ const forStudentenPage = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <img src="/image/Komiteer/komiteer.jpg" alt="Komitearrangement" className="px-4 lg:px-8 rounded-lg w-full h-[50vh] object-cover" />
+      <div className="w-full px-4 lg:px-8">
+        <img src="/image/Komiteer/komiteer.jpg" alt="Komitearrangement" className="w-full rounded-md h-[50vh] object-cover" />
+      </div>
       <div className="max-w-[512px] w-full px-4 lg:px-8">
         <h1 className="text-white text-center font-semibold py-2 text-xl sm:text-2xl w-full">Komiteene</h1>
         <p className="text-white text-sm text-left">

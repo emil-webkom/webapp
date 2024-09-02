@@ -52,14 +52,16 @@ const KomitePage = ({ params }: { params: { id: string } }) => {
   if (error) {
     return (
       <div className='w-full flex items-center justify-center'>
-        <p className="text-red-500">Failed to load data.</p>
+        <p className="text-red-500">Failed to load data: {error}</p>
       </div>
     );
   }
 
   return (
     <div className="w-full text-white flex flex-col items-center ">
-      <img src={data?.bilde} alt="Komite bilde" className="px-4 lg:px-8 rounded-md w-full lg:h-[50vh] object-contain" />
+      <div className='w-full px-4 lg:px-8 flex items-center justify-center'>
+        <img src={data?.bilde} alt="Komite bilde" className="lg:h-[50vh] rounded-md object-contain" />
+      </div>
       <div className='max-w-[512px] px-4 space-y-4'>
         <h1 className="text-3xl font-bold text-center py-4">{data?.navn}</h1>
         <div className='w-full rounded-md p-4 bg-[#001D21]'>
