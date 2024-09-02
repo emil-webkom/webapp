@@ -145,6 +145,19 @@ model LavterskelArrangement {
 
   @@index([userId])
 }
+
+model aeresEmiler {
+  id          String   @id @default(cuid())
+  type aeresEmilerType
+  navn String
+  aar Int
+}
+
+enum aeresEmilerType {
+  AERESEMILER
+  FORTJENESTEMEDALJE
+}
+
 enum BookedItem {
   KONTOR
   ONE_SOUNDBOX

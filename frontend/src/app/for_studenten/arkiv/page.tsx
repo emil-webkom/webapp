@@ -4,9 +4,15 @@ import MenuCard, {
   MenuCardProps,
 } from "@/components/ForStudenten/ui/menu-card";
 import MenuCardView from "@/components/ForStudenten/ui/menu-card-view";
+import useFetch from "@/hooks/use-fetch";
+import { AeresEmiler } from "@/schemas/aeresEmiler";
 import { HandCoins, ScrollText, Archive, NotebookPen } from "lucide-react";
+import { useState } from "react";
 
 const ArkivPage = () => {
+  const [aeresEmiler, setAeresEmiler] = useState<AeresEmiler[]>([]);
+  const {data, loading, error} = useFetch<AeresEmiler[]>("/api/aeresemiler");
+
   const cards: MenuCardProps[] = [
     {
       title: "Vedtekter",
@@ -54,6 +60,7 @@ const ArkivPage = () => {
         </p>
       </div>
       <MenuCardView cards={cards}></MenuCardView>
+      <div>HereGoesAeresEmilere</div>
     </div>
   );
 };
