@@ -51,14 +51,15 @@ const NaeringslivPage = () => {
             />
           </div>
 
-          <div className="">
-            <EmilLink />
+          <div className="lg:pt-12">
+            
           </div>
         </div>
       </div>
       <TransissionOut />
-      <div className="w-[90%]">
-        <LogoSection />
+      <div className="w-[90%] pt-12">
+      <EmilLink />
+        <LogoSection/>
       </div>
       <TransissionIn />
     </div>
