@@ -45,7 +45,7 @@ const ArkivPage = () => {
 
   // const handleTest = () => {
   //   testPostAeresemiler({aar: 2005, type:"AERESEMILER", navn:"Sigrun Kavli" });
-    // testDeleteAeresemiler("cm0mjnivx00021vc4ie8zii2w");
+  // testDeleteAeresemiler("cm0mjnivx00021vc4ie8zii2w");
   // };
 
   const cards: MenuCardProps[] = [

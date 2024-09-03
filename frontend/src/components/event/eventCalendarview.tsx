@@ -19,12 +19,11 @@ const EventCalendarView: React.FC<EventCalendarViewProps> = ({
 
   const handleDelete = async (id: string): Promise<number | void> => {
     try {
-      const response = await fetch("/api/arrangementer", {
+      const response = await fetch(`/api/lavterskelarrangement/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id }),
       });
 
       if (response.ok) {

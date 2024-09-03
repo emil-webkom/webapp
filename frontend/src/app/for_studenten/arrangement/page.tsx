@@ -59,7 +59,7 @@ const ForStudentenPage = () => {
   };
 
   const handleSubmit = async (data: lavTerskelArrangement) => {
-    const response = await fetch("/api/arrangementer", {
+    const response = await fetch("/api/lavterskelarrangement", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,17 +100,24 @@ const ForStudentenPage = () => {
   // Function for fetchin and setting data from DB
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/arrangementer");
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const responseLTA = await fetch("/api/lavterskelarrangement");
+      const responseA = await fetch("/api/arrangementer");
+      if (!responseLTA.ok) {
+        if (!responseA.ok) {
+          throw new Error(`HTTP error! status: ${responseA.status}`);
+        }
+        throw new Error(`HTTP error! status: ${responseLTA.status}`);
       }
-      const data = await response.json();
-
-      setArrangementer(data.arrangementer);
-      setLavterskelArrangement(data.lavterskelArrangement);
+      const dataLTA = await responseLTA.json();
+      const dataA = await responseA.json();
+      setArrangementer(dataA.arrangementer);
+      setLavterskelArrangement(dataLTA.lavterskelArrangementer);
 
       // Combine the arrangements after both states are updated
-      const combined = [...data.arrangementer, ...data.lavterskelArrangement];
+      const combined = [
+        ...dataA.arrangementer,
+        ...dataLTA.lavterskelArrangementer,
+      ];
       setAllCombinedArrangements(combined);
     } catch (err) {
       if (err instanceof Error) {
