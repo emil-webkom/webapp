@@ -57,7 +57,7 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
 
         <div className="flex justify-center mt-4">
           <a href={buttonLinkHref} target="_blank" rel="noopener noreferrer">
-            <Button className="bg-[#001D21] text-white py-2 px-4 rounded hover hover:text-gray-400 active:text-grey-500 ">
+            <Button className="p-2 lg:p-5 hover:bg-slate-400 ">
               {buttonText}{" "}
             </Button>
           </a>
