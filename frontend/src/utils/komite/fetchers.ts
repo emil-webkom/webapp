@@ -5,12 +5,7 @@ async function fetchKomite() {
   try {
     const komiteinfo = await db.komite.findMany();
 
-    const logoinformation: KomiteLogo[] = komiteinfo.map((item) => ({
-      komite: item.navn,
-      bilde: item.bilde,
-      mappe: item.mappe,
-    }));
-    return logoinformation;
+    return komiteinfo;
   } catch (error) {
     console.error("Error fetching logos about komitee");
     throw error;
