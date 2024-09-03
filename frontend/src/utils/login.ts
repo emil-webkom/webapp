@@ -8,7 +8,6 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { generateVerificationToken } from "@/lib/tokens";
 import { getUserByEmail } from "@/data/user";
 import { sendVerificationEmail } from "@/lib/mail";
-import router from "next/router";
 
 export const login = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
@@ -18,6 +17,7 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
   }
 
   const { email, password } = validatedFields.data;
+
   const existingUser = await getUserByEmail(email);
 
   if (!existingUser || !existingUser.email || !existingUser.password) {
@@ -28,35 +28,33 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     const verificationToken = await generateVerificationToken(
       existingUser.email,
     );
-    if (verificationToken) {
+
+    if (verificationToken == null) {
+      console.error("Token not valid");
+    } else {
       await sendVerificationEmail(
         verificationToken.email,
         verificationToken.token,
       );
     }
+
     return { success: "Confirmation email sent!" };
   }
-
   try {
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
-      redirect: false, // Disable default redirect to handle manually
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
-
-    if (result?.error) {
-      return { error: "Invalid credentials" };
-    }
-
-    // Reload the session to ensure credentials are updated
-    const { reloadSession } = require("next-auth/react");
-    reloadSession();
-
-    router.push(DEFAULT_LOGIN_REDIRECT);
   } catch (error) {
     if (error instanceof AuthError) {
-      return { error: "Something went wrong" };
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid credentials" };
+        default:
+          return { error: "Something went wrong" };
+      }
     }
-    throw error;
+    throw error; // important to remember
   }
 };

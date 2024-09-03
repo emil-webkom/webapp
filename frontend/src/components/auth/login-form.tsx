@@ -49,10 +49,7 @@ export const LoginForm = () => {
         setError(data?.error);
         setSuccess(data?.success);
         router.push(DEFAULT_LOGIN_REDIRECT);
-
-        if (data?.success) {
-          window.location.reload();
-        }
+        router.refresh();
       });
     });
   };
