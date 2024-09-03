@@ -48,12 +48,12 @@ export const LoginForm = () => {
         // Set error and success messages
         setError(data?.error);
         setSuccess(data?.success);
-        // Redirect the user to the desired page
         router.push(DEFAULT_LOGIN_REDIRECT);
+
+        if (data?.success) {
+          window.location.reload();
+        }
       });
-      if (success) {
-        window.location.reload();
-      }
     });
   };
 
