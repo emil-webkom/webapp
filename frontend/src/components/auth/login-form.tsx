@@ -45,11 +45,15 @@ export const LoginForm = () => {
 
     startTransition(() => {
       login(values).then((data) => {
-        // This checks if 'data' is truthy after the 'login' call
+        // Set error and success messages
         setError(data?.error);
         setSuccess(data?.success);
+        // Redirect the user to the desired page
         router.push(DEFAULT_LOGIN_REDIRECT);
       });
+      if (success) {
+        window.location.reload();
+      }
     });
   };
 
