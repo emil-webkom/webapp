@@ -112,11 +112,11 @@ model Booking {
   komiteID  String?
   item      BookedItem
   bookedAt  DateTime
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
   status    BookingStatus @default(PENDING)
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  komite    komite?    @relation(fields: [komiteID], references: [id])
-  user      User       @relation(fields: [userID], references: [id])
+  komite    komite?       @relation(fields: [komiteID], references: [id])
+  user      User          @relation(fields: [userID], references: [id])
 }
 
 model ArrangementPaamelding {
@@ -146,11 +146,29 @@ model LavterskelArrangement {
   @@index([userId])
 }
 
+model Hovedsamarbeidspartner {
+  id          String  @id @default(cuid())
+  navn        String  @unique
+  beskrivelse String
+  active      Boolean
+  logo        String
+  hjemmeside  String
+  annonseside String
+}
+
+model Samarbeidspartner {
+  id       String  @id @default(cuid())
+  navn     String  @unique
+  active   Boolean
+  logo     String
+  homepage String
+}
+
 model aeresEmiler {
-  id          String   @id @default(cuid())
+  id   String          @id @default(cuid())
   type aeresEmilerType
   navn String
-  aar Int
+  aar  Int
 }
 
 enum aeresEmilerType {

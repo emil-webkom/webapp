@@ -7,6 +7,8 @@ import MenuCardView from "@/components/ForStudenten/ui/menu-card-view";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
 import useFetch from "@/hooks/use-fetch";
 import { AeresEmiler } from "@/schemas/aeresEmiler";
+import { testDeleteAeresemiler } from "@/tests/api/delete/deleteAeresemiler";
+import { testPostAeresemiler } from "@/tests/api/post/postAeresemiler";
 import { HandCoins, ScrollText, Archive, NotebookPen } from "lucide-react";
 import { useState } from "react";
 
@@ -40,6 +42,11 @@ const ArkivPage = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  // const handleTest = () => {
+  //   testPostAeresemiler({aar: 2005, type:"AERESEMILER", navn:"Sigrun Kavli" });
+  // testDeleteAeresemiler("cm0mjnivx00021vc4ie8zii2w");
+  // };
 
   const cards: MenuCardProps[] = [
     {
@@ -210,6 +217,7 @@ const ArkivPage = () => {
           )}
         </div>
       </div>
+      {/* <button onClick={handleTest}> CLICK HERE TO TEST</button> */}
     </div>
   );
 };

@@ -1,11 +1,24 @@
 "use client";
+
+import useFetch from "@/hooks/use-fetch";
+import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
+import { TwitterLogoIcon } from "@radix-ui/react-icons";
+import { Facebook } from "lucide-react";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
-// The information displayed in the footer such as name of "Leder" and "kontaktinfo" should,
-// be made object oriented to allow automatic updates to be made.
-
 const Footer: FC = () => {
+  const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
+  const { data, loading, error } = useFetch<{
+    samarbeidspartnere: Samarbeidspartner[];
+  }>("/api/samarbeidspartner");
+
+  useEffect(() => {
+    if (data) {
+      setLogos(data.samarbeidspartnere);
+    }
+  }, [data]);
+
   return (
     <footer>
       <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-[#001D21] text-white px-10 font-bold py-5">
@@ -27,7 +40,7 @@ const Footer: FC = () => {
             <span>Kontakt</span>
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
-          <div className="text-left font-light text-[10px] space-y-1 ">
+          <div className="text-left font-light text-[10px] space-y-1">
             <p>
               Leder: Henriette Strømsness, +47 467 60 243, styret@emilweb.no
             </p>
@@ -74,13 +87,73 @@ const Footer: FC = () => {
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-[10px] space-y-1 font-light">
-            <p>Multiconsult</p>
-            <p>Statkraft</p>
-            <p>Equinor</p>
-            <p>GK</p>
-            <p>Lockhead Martin</p>
-            <p>Kongsberg ammunisjon</p>
+            {loading && <p>Loading...</p>}
+            {error && <p>Error loading partners</p>}
+            {!loading && !error && logos.length > 0 ? (
+              logos.map((partner) => (
+                <p key={partner.id} className="text-underscore">
+                  <a
+                    href={partner.homepage}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {partner.navn}
+                  </a>
+                </p>
+              ))
+            ) : (
+              <p>No partners available</p>
+            )}
           </div>
+        </div>
+      </div>
+
+      <div className="bg-[#001D21] color-white py-4">
+        <div className="flex justify-center space-x-4">
+          <a
+            href="https://www.instagram.com/emilelgen/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/svg/instagram.svg"
+              alt="Instagram"
+              className="h-6 invert w-6"
+            />
+          </a>
+          <a
+            href="https://x.com/ntnuemil"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/svg/twitter.svg"
+              alt="Instagram"
+              className="h-6 invert w-6"
+            />
+          </a>
+          <a
+            href="https://www.facebook.com/emilface/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/svg/facebook.svg"
+              alt="Instagram"
+              className="h-6 invert w-6"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/groups/4090658/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/svg/linkedin.svg"
+              alt="LinkedIn"
+              className="h-6 invert w-6"
+            />
+          </a>
         </div>
       </div>
 

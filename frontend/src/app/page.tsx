@@ -22,7 +22,7 @@ const HomePage = () => {
   const { data, loading, error } = useFetch<{ arrangementer: Arrangement[] }>(
     "/api/arrangementer",
   );
-
+  console.log(data?.arrangementer);
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-6 lg:m-14 items-left justify-center">
@@ -61,11 +61,15 @@ const HomePage = () => {
             Hva skjer på Emil?
           </div>
           <div className="gap-4 flex justify-center">
-            <div className="flex justify-center items-center w-full h-[338px]">
+            <div className="flex justify-center items-center w-full h-fit">
               {loading ? (
                 <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+              ) : data?.arrangementer && data.arrangementer.length > 0 ? (
+                <ListView events={data.arrangementer} />
               ) : (
-                <ListView events={data?.arrangementer || []} />
+                <div className="text-center text-lg font-semibold text-white">
+                  Ingen kommende arrangementer
+                </div>
               )}
             </div>
           </div>
