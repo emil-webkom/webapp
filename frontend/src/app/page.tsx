@@ -22,7 +22,7 @@ const HomePage = () => {
   const { data, loading, error } = useFetch<{ arrangementer: Arrangement[] }>(
     "/api/arrangementer",
   );
-
+  console.log(data?.arrangementer);
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-6 lg:m-14 items-left justify-center">

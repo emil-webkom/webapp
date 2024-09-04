@@ -33,9 +33,11 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// const bookings = await db.booking.findMany();
-// return NextResponse.json(bookings, { status: 200 });
-
+ /**
+ * Creates a new instance in the booking table
+ * @param data: {FILL IN}
+ * @returns Response indicating if the creation was successfull.
+ */
 export async function POST(req: NextRequest) {
   try {
     const parsedData = BookingSchema.parse(await req.json());
