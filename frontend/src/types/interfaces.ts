@@ -18,6 +18,7 @@ export interface komiteInput {
 }
 
 export interface KomiteLogo {
+  id: string;
   komite: string;
   bilde: string;
   mappe: string;

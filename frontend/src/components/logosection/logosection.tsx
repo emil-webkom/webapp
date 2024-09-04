@@ -1,57 +1,58 @@
-import React from "react";
-
-const logos = [
-  {
-    src: "/image/sponsorer/asplanviak.svg",
-    alt: "GK",
-    url: "https://www.asplanviak.no/",
-  },
-  {
-    src: "/image/sponsorer/cowi.jpg",
-    alt: "cowi",
-    url: "https://www.cowi.com/",
-  },
-  { src: "/image/sponsorer/DNV.svg", alt: "DNV", url: " https://www.dnv.no/" },
-  {
-    src: "/image/sponsorer/equinor.svg",
-    alt: "equinor",
-    url: "https://www.equinor.com/no ",
-  },
-  { src: "/image/sponsorer/GK.svg", alt: "GK", url: "https://www.gk.no/ " },
-  {
-    src: "/image/sponsorer/lyse.png",
-    alt: "lyse",
-    url: "https://www.lyse.no/ ",
-  },
-  {
-    src: "/image/sponsorer/nexans.svg",
-    alt: "nexans",
-    url: "https://www.nexans.no/no/",
-  },
-  { src: "/image/sponsorer/sit.webp", alt: "sit", url: "https://www.sit.no/" },
-];
+import useFetch from "@/hooks/use-fetch";
+import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
+import React, { useEffect, useState } from "react";
 
 const LogoSection: React.FC = () => {
-  return (
-    <div>
-      <div className="text-center pt-2 bg-white ">
-        <h2 className="text-2xl font-bold ">
-          En stor takk til alle våre samarbeidspartnere!
-        </h2>
-        <div className="grid grid-cols-2 gap-20 lg:grid-cols-4 lg:gap-36 p-6 ">
-          {logos.map((logo, index) => (
-            <div key={index} className="flex justify-center items-center py-4">
-              <a
-                href={logo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:opacity-50 transition duration-300 ease-in-out"
-              >
-                <img src={logo.src} alt={logo.alt} className="h-16 w-auto" />
-              </a>
-            </div>
-          ))}
+  const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
+  const { data, loading, error } = useFetch<{
+    samarbeidspartnere: Samarbeidspartner[];
+  }>("/api/samarbeidspartner");
+
+  useEffect(() => {
+    if (data) {
+      setLogos(data.samarbeidspartnere);
+    }
+  }, [data]);
+
+  if (loading) {
+    return (
+      <div className="text-center pt-24 bg-white">
+        <h2 className="text-2xl font-bold pb-10">Loading...</h2>
+        <div className="flex justify-center items-center py-4">
+          <div className="loader"></div>{" "}
+          {/* You might want to style this loader */}
         </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center pt-24 bg-white">
+        <h2 className="text-2xl font-bold pb-10">Error loading logos</h2>
+        <p className="text-lg">Please try again later.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="text-center pt-24 bg-white">
+      <h2 className="text-2xl font-bold pb-10">
+        En stor takk til alle våre samarbeidspartnere!
+      </h2>
+      <div className="grid grid-cols-2 gap-20 lg:grid-cols-4 lg:gap-36 p-6">
+        {logos.map((logo, index) => (
+          <div key={index} className="flex justify-center items-center py-4">
+            <a
+              href={logo.homepage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-50 transition duration-300 ease-in-out"
+            >
+              <img src={logo.logo} alt={logo.navn} className="h-16 w-auto" />
+            </a>
+          </div>
+        ))}
       </div>
     </div>
   );
