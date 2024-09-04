@@ -18,7 +18,6 @@ const ForStudentenPage = () => {
   useEffect(() => {
     const initData = async () => {
       try {
-        console.log("WeTryTofetchdata");
         const logosData = await fetchAndSetData();
         setLogos(logosData);
       } catch (error) {

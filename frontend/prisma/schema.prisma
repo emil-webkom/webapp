@@ -115,8 +115,8 @@ model Booking {
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
   status    BookingStatus @default(PENDING)
-  komite?       @relation(fields: [komiteID], references: [id])
-  User          @relation(fields: [userID], references: [id])
+  komite    komite?       @relation(fields: [komiteID], references: [id])
+  user      User          @relation(fields: [userID], references: [id])
 }
 
 model ArrangementPaamelding {
@@ -192,9 +192,4 @@ enum UserRole {
   ADMIN
   USER
   SUPER_USER
-}
-
-enum aeresEmilerType {
-  AERESEMILER
-  FORTJENESTEMEDALJE
 }
