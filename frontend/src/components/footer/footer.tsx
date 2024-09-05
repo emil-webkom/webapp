@@ -2,6 +2,7 @@
 
 import useFetch from "@/hooks/use-fetch";
 import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
+import { Hovedstyret } from "@prisma/client";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
@@ -10,16 +11,39 @@ const Footer: FC = () => {
   const { data, loading, error } = useFetch<{
     samarbeidspartnere: Samarbeidspartner[];
   }>("/api/samarbeidspartner");
+  const [styret, setStyret] = useState<Hovedstyret[]>([]); // Ensure correct typing
+
+  // Fetch and set data
+  const fetchAndSetData = async () => {
+    const styretData = await fetch("/api/styret").then((response) =>
+      response.json(),
+    );
+    return { styretData };
+  };
 
   useEffect(() => {
+    const initData = async () => {
+      try {
+        const { styretData } = await fetchAndSetData();
+        setStyret(styretData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    initData();
+
     if (data) {
       setLogos(data.samarbeidspartnere);
     }
   }, [data]);
 
+  // Find the member with role "Kongsknekt leder"
+  const leder = styret.find((item) => item.rolle === "Kongsknekt leder");
+
   return (
     <footer>
       <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-[#001D21] text-white px-10 font-bold py-5">
+        {/* Emil section */}
         <div className="flex flex-col lg:w-[20%] md:w-[20%] pt-6">
           <div className="flex justify-left">
             <div>Emil</div>
@@ -33,14 +57,18 @@ const Footer: FC = () => {
             <p className="mt-4">Foreningen for Studentene ved Emil © 2024</p>
           </div>
         </div>
+
+        {/* Kontakt section */}
         <div className="flex flex-col pt-6 md:w-[20%] lg:w-[20%]">
           <div className="flex">
             <span>Kontakt</span>
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-left font-light text-[10px] space-y-1">
+            {/* Render the name and phone number if available */}
             <p>
-              Leder: Henriette Strømsness, +47 467 60 243, styret@emilweb.no
+              Leder: {leder?.text || "Utilgjengelig"}, +47{" "}
+              {leder?.userID || "Utilgjengelig"}, styret@emilweb.no
             </p>
             <p>
               Bedriftskontakt Emil-Link: Markus Eliassen, link-styret@emilweb.no
@@ -48,6 +76,8 @@ const Footer: FC = () => {
             <p>NTNU GLØSHAUGEN, Elektrobygget, 7491, Trondheim</p>
           </div>
         </div>
+
+        {/* Lenker section */}
         <div className="flex flex-col pt-6 lg:w-[20%] md:w-[20%]">
           <div className="flex">
             <span>Lenker</span>
@@ -71,7 +101,7 @@ const Footer: FC = () => {
             </li>
             <li>
               <Link
-                href="/for_studenten/varsle oss"
+                href="/for_studenten/varsle_oss"
                 className="text-underscore"
               >
                 Varsle oss?
@@ -79,6 +109,8 @@ const Footer: FC = () => {
             </li>
           </ul>
         </div>
+
+        {/* Samarbeidspartnere section */}
         <div className="flex flex-col pt-6 lg:w-[20%] md:w-[20%]">
           <div className="flex overflow-hidden">
             Våre samarbeidspartnere
@@ -106,6 +138,7 @@ const Footer: FC = () => {
         </div>
       </div>
 
+      {/* Social media links */}
       <div className="bg-[#001D21] color-white py-4">
         <div className="flex justify-center space-x-4">
           <a
