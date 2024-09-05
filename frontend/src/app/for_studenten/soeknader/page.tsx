@@ -10,7 +10,6 @@ import { FileQuestion } from "lucide-react";
 import { Flower } from "lucide-react";
 import { Notebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
 
 const soeknaderPage = () => {
   const unnagjortCards: nyStudentCardProps[] = [
@@ -71,7 +70,7 @@ const soeknaderPage = () => {
       ),
       frist: "",
       buttonText: "Se eldre søknader",
-      href: "https://drive.google.com/drive/folders/1nM-PpRLzSYRzXTxGqjNdU8iynfK6UO3p",
+      href: "https://www.youtube.com",
       icon: <FileQuestion className="h-5" />,
     },
   ];
@@ -138,21 +137,6 @@ const soeknaderPage = () => {
               Søknaden skal være sendt inn minst 4 uker før midlene skal være
               utbetalt! 
             </p>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-           
-            <p className= "font-thin text-sm">
-              Søknader sendes til styret:
-            </p>
-            <div className="flex justify-items gap-2 pt-2">
-              <Mail className="h-4 w-4 text-[#9DDBAD]"></Mail>
-            <p className ="font-thin text-xs">
-            styret@emilweb.no
-            </p>
-            </div>
-            
           </div>
 
           <div className="w-[90%] bg-[#00333A] lg:w-fit flex flex-col justify-between gap-y-4 px-12 py-5">

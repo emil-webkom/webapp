@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { Button } from "../ui/button";
 import { link } from "fs";
 
-export interface nyStudentCardProps {
+export interface MariaCardProps {
   title: string;
   icon?: ReactNode;
   description?: string | JSX.Element;
@@ -13,7 +13,7 @@ export interface nyStudentCardProps {
   buttonText?: string;
 }
 
-const NyStudentCard = ({
+const MariaCard = ({
   title,
   icon,
   description,
@@ -21,7 +21,7 @@ const NyStudentCard = ({
   href,
   buttonText,
 
-}: nyStudentCardProps) => {
+}: MariaCardProps) => {
   // bg-[#3333]
   return (
     <div className="flex gap-2 min-w-60 max-w-[512px] p-4 rounded-md bg-[#3333]">
@@ -50,8 +50,6 @@ const NyStudentCard = ({
             <Button variant={"transparent"}>
               <Link
                 href={href}
-                target="_blank"
-                rel="noopener norefferer"
                 className="flex-row flex justify-center items-center gap-1"
               >
                 <p>{buttonText}</p>
@@ -67,4 +65,4 @@ const NyStudentCard = ({
   );
 };
 
-export default NyStudentCard;
+export default MariaCard;
