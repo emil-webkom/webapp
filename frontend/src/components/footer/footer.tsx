@@ -11,7 +11,8 @@ const Footer: FC = () => {
   const { data, loading, error } = useFetch<{
     samarbeidspartnere: Samarbeidspartner[];
   }>("/api/samarbeidspartner");
-  const [styret, setStyret] = useState<Hovedstyret[]>([]); // Ensure correct typing
+  const [styret, setStyret] = useState<Hovedstyret[]>([]);
+  const [leder, setLeder] = useState<Hovedstyret>();
 
   // Fetch and set data
   const fetchAndSetData = async () => {
@@ -35,10 +36,15 @@ const Footer: FC = () => {
     if (data) {
       setLogos(data.samarbeidspartnere);
     }
+    styret.map((item) => {
+      if (item.rolle === "Kongsknekt leder") {
+        setLeder(item);
+      }
+    });
   }, [data]);
 
   // Find the member with role "Kongsknekt leder"
-  const leder = styret.find((item) => item.rolle === "Kongsknekt leder");
+  // const leder = styret.find((item) =>item.rolle === "Kongsknekt leder");
 
   return (
     <footer>
@@ -67,8 +73,8 @@ const Footer: FC = () => {
           <div className="text-left font-light text-[10px] space-y-1">
             {/* Render the name and phone number if available */}
             <p>
-              Leder: {leder?.text || "Utilgjengelig"}, +47{" "}
-              {leder?.userID || "Utilgjengelig"}, styret@emilweb.no
+              Leder: {leder?.name || "Utilgjengelig"}, +47{" "}
+              {leder?.nummer || "Utilgjengelig"}, styret@emilweb.no
             </p>
             <p>
               Bedriftskontakt Emil-Link: Markus Eliassen, link-styret@emilweb.no
