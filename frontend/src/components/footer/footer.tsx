@@ -2,8 +2,6 @@
 
 import useFetch from "@/hooks/use-fetch";
 import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
-import { TwitterLogoIcon } from "@radix-ui/react-icons";
-import { Facebook } from "lucide-react";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
@@ -87,8 +85,6 @@ const Footer: FC = () => {
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-[10px] space-y-1 font-light">
-            {loading && <p>Loading...</p>}
-            {error && <p>Error loading partners</p>}
             {!loading && !error && logos.length > 0 ? (
               logos.map((partner) => (
                 <p key={partner.id} className="text-underscore">
@@ -101,8 +97,10 @@ const Footer: FC = () => {
                   </a>
                 </p>
               ))
+            ) : loading ? (
+              <div>Loading data...</div>
             ) : (
-              <p>No partners available</p>
+              <div>No available data</div>
             )}
           </div>
         </div>

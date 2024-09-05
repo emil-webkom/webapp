@@ -11,6 +11,7 @@ export const publicRoutes = [
   "/api/styret",
   "/api/komite/logo",
   "/api/arrangementer",
+  "/api/samarbeidspartner",
 ];
 
 /**
@@ -37,4 +38,4 @@ export const apiAuthPrefix = "/api/auth";
  * The default login redirect path.
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = "/for_studenten";
+export const DEFAULT_LOGIN_REDIRECT = "/";
