@@ -134,14 +134,6 @@ const ForStudentenPage = () => {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
   const AarligarrangementData = [
     {
       Name: "Vin og Klin",
@@ -335,8 +327,17 @@ const ForStudentenPage = () => {
               </span>
               . Klikk på et arrangement for å lese mer!
             </p>
-
-            <ListView events={arrangementer} />
+            {loading ? (
+              <div className="flex flex-col items-center justify-center">
+                <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+              </div>
+            ) : arrangementer && arrangementer.length > 0 ? (
+              <ListView events={arrangementer} />
+            ) : (
+              <div className="text-center text-lg font-semibold text-white">
+                Ingen kommende arrangementer
+              </div>
+            )}
           </div>
         </div>
         <SmallTransissionPCSPC />
@@ -353,7 +354,19 @@ const ForStudentenPage = () => {
               arrangementer og happenings framover i tid. Den skal være
               tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
               tilbud og aktiviteter som skjer på Emil skal kunne legges inn her
-              og sees av hele linjen slik at man kan koordinere rundt det.
+              og sees av hele linjen slik at man kan koordinere rundt det. Den
+              finnes også i excelformat{" "}
+              <span className="text-[#9DDBAD] text-underscore">
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1NPX4qDA5BDv0QHx1QYmXG62Jl1SCMuAiCBoRrJQH3QQ/edit?gid=1062059690#gid=1062059690"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  her
+                </a>
+              </span>
+              .
             </p>
           </div>
           <div className="w-full flex flex-col items-center">

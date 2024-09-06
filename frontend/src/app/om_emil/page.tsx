@@ -11,31 +11,49 @@ import RetningCard from "@/components/cards/retningCard";
 import HSCard from "@/components/cards/styretCard";
 import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
+import { Hovedstyret } from "@/schemas/hovedstyret";
 
 const OmEmilPage = () => {
-  const [styret, setStyret] = useState([]);
+  const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [logos, setLogos] = useState([]);
 
-  const fetchAndSetData = async () => {
-    const [styretData, logosData] = await Promise.all([
-      fetch("api/styret").then((response) => response.json()),
-      fetch("api/komite/logo").then((response) => response.json()),
+  // Function to fetch data
+  const fetchAndSetData = async (): Promise<{
+    styretData: Hovedstyret[];
+    logosData: any;
+  }> => {
+    const [styretResponse, logosResponse] = await Promise.all([
+      fetch("/api/styret").then((response) => response.json()),
+      fetch("/api/komite/logo").then((response) => response.json()),
     ]);
+
+    const styretData = styretResponse.data; // Accessing `data` from the response
+    const logosData = logosResponse;
+
     return { styretData, logosData };
   };
 
+  // useEffect to fetch and initialize data
   useEffect(() => {
     const initData = async () => {
       try {
         const { styretData, logosData } = await fetchAndSetData();
+
+        // Log fetched data before setting state
+        console.log("Fetched styretData:", styretData);
+
         setStyret(styretData);
         setLogos(logosData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
+
     initData();
   }, []);
+
+  // Log the updated styret value when it changes
+  useEffect(() => {}, [styret]);
 
   const fagkontakt = [
     {
@@ -299,8 +317,12 @@ const OmEmilPage = () => {
                 </Button>
               </Link>
             </div>
-            <div className="flex items-center overflow-hidden">
-              <Logos data={logos} />
+            <div className="flex items-center lg:w-[200%] overflow-hidden">
+              {!logos ? (
+                <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+              ) : (
+                <Logos data={logos} />
+              )}
             </div>
           </div>
         </div>
