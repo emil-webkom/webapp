@@ -13,6 +13,7 @@ export const publicRoutes = [
   "/api/komite/logo",
   "/api/arrangementer",
   "/api/samarbeidspartner",
+  "/api/hovedsamarbeidspartner",
 ];
 
 /**
