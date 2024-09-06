@@ -63,41 +63,45 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
             }`}
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {data.map((item, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-full flex flex-col items-center gap-x-4 p-4 lg:p-6 justify-center bg-[#003A42] rounded-md lg:space-y-0 lg:flex-row "
-              >
-                <div className="flex flex-col space-y-3 lg:justify-between w-full lg:w-[50vh] lg:h-[50vh]">
-                  <div className="">
-                    <p className="text-base lg:text-2xl font-semibold">
-                      {item.rolle}
+            {!data ? (
+              <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+            ) : (
+              data.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-full flex flex-col items-center gap-x-4 p-4 lg:p-6 justify-center bg-[#003A42] rounded-md lg:space-y-0 lg:flex-row "
+                >
+                  <div className="flex flex-col space-y-3 lg:justify-between w-full lg:w-[50vh] lg:h-[50vh]">
+                    <div className="">
+                      <p className="text-base lg:text-2xl font-semibold">
+                        {item.rolle}
+                      </p>
+                      <p className="text-sm lg:text-xl font-normal">
+                        {item.User.name}
+                      </p>
+                    </div>
+                    <p className="text-xs lg:text-sm font-extralight">
+                      {item.text}
                     </p>
-                    <p className="text-sm lg:text-xl font-normal">
-                      {item.User.name}
-                    </p>
+                    <div className="flex flex-col">
+                      <p className="text-xs lg:text-sm font-light">
+                        Kontakt: {item.User.email}
+                      </p>
+                      <p className="text-xs lg:text-sm font-light">
+                        Tlf: +78{item.User.nummer}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-xs lg:text-sm font-extralight">
-                    {item.text}
-                  </p>
-                  <div className="flex flex-col">
-                    <p className="text-xs lg:text-sm font-light">
-                      Kontakt: {item.User.email}
-                    </p>
-                    <p className="text-xs lg:text-sm font-light">
-                      Tlf: +78{item.User.nummer}
-                    </p>
+                  <div className=" items-center hidden lg:flex">
+                    <img
+                      src={item.image}
+                      alt={item.rolle}
+                      className="w-[20vh] h-[20vh] lg:w-[50vh] lg:h-[50vh] object-cover rounded-md"
+                    />
                   </div>
                 </div>
-                <div className=" items-center hidden lg:flex">
-                  <img
-                    src={item.image}
-                    alt={item.rolle}
-                    className="w-[20vh] h-[20vh] lg:w-[50vh] lg:h-[50vh] object-cover rounded-md"
-                  />
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
         <button onClick={handleNext} className="icon-hover">

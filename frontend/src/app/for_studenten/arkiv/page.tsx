@@ -83,22 +83,6 @@ const ArkivPage = () => {
     },
   ];
 
-  if (loading) {
-    return (
-      <div className="w-full flex items-center justify-center">
-        <div className="animate-ping h-4 w-4 bg-blue-400 rounded-full"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="w-full flex items-center justify-center">
-        <p className="text-red-500">Failed to load data: {error}</p>
-      </div>
-    );
-  }
-
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex max-w-[512px] flex-col justify-center items-center space-y-4 pb-0 p-12">
@@ -126,94 +110,103 @@ const ArkivPage = () => {
           </p>
         </div>
         <div className="p-2 lg:px-4 rounded-md items-center justify-center w-full lg:w-2/3 bg-[#25504E]">
-          {paginatedData.length > 0 ? (
-            <div className="p-4">
-              <div className="overflow-x-auto w-full">
-                {/* Table for larger screens */}
-                <div className="hidden lg:block">
-                  <table className="bg-[#25504E] text-white rounded-md w-full table-fixed">
-                    <thead>
-                      <tr className="bg-[#1F3A38]">
-                        <th className="px-2 lg:px-6 py-3 text-left text-sm font-medium uppercase tracking-wider border-b border-primary rounded-l-md w-[15%]">
-                          År
-                        </th>
-                        <th className="px-2 lg:px-6 py-3 text-left text-sm font-medium uppercase tracking-wider border-b border-primary w-[35%]">
-                          Type
-                        </th>
-                        <th className="px-2 lg:px-6 py-3 text-left text-sm font-medium uppercase tracking-wider border-b border-primary rounded-r-md w-[50%]">
-                          Navn
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {paginatedData.map((aeresemiler) => (
-                        <tr key={aeresemiler.id}>
-                          <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
-                            {aeresemiler.aar}
-                          </td>
-                          <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
-                            {aeresemiler.type.charAt(0).toUpperCase() +
-                              aeresemiler.type.slice(1).toLowerCase()}
-                          </td>
-                          <td className="px-2 lg:px-6 py-4 border-b border-[#003A42] whitespace-normal break-words">
-                            {aeresemiler.navn}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                {/* Card layout for smaller screens */}
-                <div className="lg:hidden">
-                  {paginatedData.map((aeresemiler) => (
-                    <div
-                      key={aeresemiler.id}
-                      className="bg-[#25504E] text-white mb-4 p-4 rounded-md shadow-md"
-                    >
-                      <div className="text-lg font-semibold">
-                        År: {aeresemiler.aar}
-                      </div>
-                      <div className="text-md font-medium mt-2">
-                        Type:{" "}
-                        {aeresemiler.type.charAt(0).toUpperCase() +
-                          aeresemiler.type.slice(1).toLowerCase()}
-                      </div>
-                      <div className="text-md mt-2">
-                        Navn: {aeresemiler.navn}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex justify-between mt-4 w-full">
-                <button
-                  onClick={handlePrevPage}
-                  disabled={currentPage === 0}
-                  className={`px-4 py-2 bg-[#1F3A38] text-white rounded-md ${
-                    currentPage === 0 ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
-                >
-                  Forrige
-                </button>
-                <span className="text-white flex items-center">
-                  Side {currentPage + 1} av {totalPages}
-                </span>
-                <button
-                  onClick={handleNextPage}
-                  disabled={currentPage >= totalPages - 1}
-                  className={`px-4 py-2 bg-[#1F3A38] text-white rounded-md ${
-                    currentPage >= totalPages - 1
-                      ? "opacity-50 cursor-not-allowed"
-                      : ""
-                  }`}
-                >
-                  Neste
-                </button>
-              </div>
+          {loading ? (
+            <div className="flex flex-col items-center justify-center">
+              <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
             </div>
+          ) : data && data.length > 0 ? (
+            paginatedData.length > 0 ? (
+              <div className="p-4">
+                <div className="overflow-x-auto w-full">
+                  {/* Table for larger screens */}
+                  <div className="hidden lg:block">
+                    <table className="bg-[#25504E] text-white rounded-md w-full table-fixed">
+                      <thead>
+                        <tr className="bg-[#1F3A38]">
+                          <th className="px-2 lg:px-6 py-3 text-left text-sm font-medium uppercase tracking-wider border-b border-primary rounded-l-md w-[15%]">
+                            År
+                          </th>
+                          <th className="px-2 lg:px-6 py-3 text-left text-sm font-medium uppercase tracking-wider border-b border-primary w-[35%]">
+                            Type
+                          </th>
+                          <th className="px-2 lg:px-6 py-3 text-left text-sm font-medium uppercase tracking-wider border-b border-primary rounded-r-md w-[50%]">
+                            Navn
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {paginatedData.map((aeresemiler) => (
+                          <tr key={aeresemiler.id}>
+                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
+                              {aeresemiler.aar}
+                            </td>
+                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
+                              {aeresemiler.type.charAt(0).toUpperCase() +
+                                aeresemiler.type.slice(1).toLowerCase()}
+                            </td>
+                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42] whitespace-normal break-words">
+                              {aeresemiler.navn}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {/* Card layout for smaller screens */}
+                  <div className="lg:hidden">
+                    {paginatedData.map((aeresemiler) => (
+                      <div
+                        key={aeresemiler.id}
+                        className="bg-[#25504E] text-white mb-4 p-4 rounded-md shadow-md"
+                      >
+                        <div className="text-lg font-semibold">
+                          År: {aeresemiler.aar}
+                        </div>
+                        <div className="text-md font-medium mt-2">
+                          Type:{" "}
+                          {aeresemiler.type.charAt(0).toUpperCase() +
+                            aeresemiler.type.slice(1).toLowerCase()}
+                        </div>
+                        <div className="text-md mt-2">
+                          Navn: {aeresemiler.navn}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex justify-between mt-4 w-full">
+                  <button
+                    onClick={handlePrevPage}
+                    disabled={currentPage === 0}
+                    className={`px-4 py-2 bg-[#1F3A38] text-white rounded-md ${
+                      currentPage === 0 ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                  >
+                    Forrige
+                  </button>
+                  <span className="text-white flex items-center">
+                    Side {currentPage + 1} av {totalPages}
+                  </span>
+                  <button
+                    onClick={handleNextPage}
+                    disabled={currentPage >= totalPages - 1}
+                    className={`px-4 py-2 bg-[#1F3A38] text-white rounded-md ${
+                      currentPage >= totalPages - 1
+                        ? "opacity-50 cursor-not-allowed"
+                        : ""
+                    }`}
+                  >
+                    Neste
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <p className="text-white">No data available</p>
+            )
           ) : (
-            <p className="text-white">No data available</p>
+            <div className="text-center text-lg font-semibold text-white">
+              Ingen data tilgjengelig
+            </div>
           )}
         </div>
       </div>

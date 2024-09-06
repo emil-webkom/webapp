@@ -317,8 +317,12 @@ const OmEmilPage = () => {
                 </Button>
               </Link>
             </div>
-            <div className="flex items-center overflow-hidden">
-              <Logos data={logos} />
+            <div className="flex items-center lg:w-[200%] overflow-hidden">
+              {!logos ? (
+                <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
+              ) : (
+                <Logos data={logos} />
+              )}
             </div>
           </div>
         </div>
