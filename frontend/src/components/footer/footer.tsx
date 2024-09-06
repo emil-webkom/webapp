@@ -2,7 +2,7 @@
 
 import useFetch from "@/hooks/use-fetch";
 import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
-import { Hovedstyret } from "@prisma/client";
+import { Hovedstyret } from "@/schemas/hovedstyret";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
@@ -11,40 +11,38 @@ const Footer: FC = () => {
   const { data, loading, error } = useFetch<{
     samarbeidspartnere: Samarbeidspartner[];
   }>("/api/samarbeidspartner");
-  const [styret, setStyret] = useState<Hovedstyret[]>([]);
-  const [leder, setLeder] = useState<Hovedstyret>();
 
-  // Fetch and set data
-  const fetchAndSetData = async () => {
-    const styretData = await fetch("/api/styret").then((response) =>
-      response.json(),
-    );
-    return { styretData };
+  const [styret, setStyret] = useState<Hovedstyret[]>([]);
+  const [leder, setLeder] = useState<Hovedstyret | undefined>();
+
+  // Fetch and set Hovedstyret data
+  const fetchStyretData = async () => {
+    try {
+      const response = await fetch("/api/styret");
+      const result = await response.json();
+      if (response.ok) {
+        setStyret(result.data); // Assuming the API returns { data: hovedstyret[] }
+      } else {
+        console.error("Error fetching styret data:", result.message);
+      }
+    } catch (error) {
+      console.error("Error fetching styret data:", error);
+    }
   };
 
   useEffect(() => {
-    const initData = async () => {
-      try {
-        const { styretData } = await fetchAndSetData();
-        setStyret(styretData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    initData();
+    fetchStyretData();
 
     if (data) {
       setLogos(data.samarbeidspartnere);
     }
-    styret.map((item) => {
-      if (item.rolle === "Kongsknekt leder") {
-        setLeder(item);
-      }
-    });
   }, [data]);
 
-  // Find the member with role "Kongsknekt leder"
-  // const leder = styret.find((item) =>item.rolle === "Kongsknekt leder");
+  useEffect(() => {
+    // Find and set the leader (Kongsknekt leder)
+    const foundLeder = styret.find((item) => item.rolle === "Kongsknekt leder");
+    setLeder(foundLeder);
+  }, [styret]);
 
   return (
     <footer>
@@ -71,10 +69,9 @@ const Footer: FC = () => {
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-left font-light text-[10px] space-y-1">
-            {/* Render the name and phone number if available */}
             <p>
-              Leder: {leder?.name || "Utilgjengelig"}, +47{" "}
-              {leder?.nummer || "Utilgjengelig"}, styret@emilweb.no
+              Leder: {leder?.User.name || "Utilgjengelig"}, +47{" "}
+              {leder?.User.nummer || "Utilgjengelig"}, styret@emilweb.no
             </p>
             <p>
               Bedriftskontakt Emil-Link: Markus Eliassen, link-styret@emilweb.no

@@ -11,9 +11,10 @@ import RetningCard from "@/components/cards/retningCard";
 import HSCard from "@/components/cards/styretCard";
 import Logos from "@/components/logosection/komitelogo";
 import Fagkontakt from "@/components/cards/fag_kontakt";
+import { Hovedstyret } from "@/schemas/hovedstyret";
 
 const OmEmilPage = () => {
-  const [styret, setStyret] = useState([]);
+  const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [logos, setLogos] = useState([]);
 
   const fetchAndSetData = async () => {

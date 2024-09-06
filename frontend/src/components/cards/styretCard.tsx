@@ -2,16 +2,10 @@
 
 import { FC } from "react";
 import { useState } from "react";
+import { Hovedstyret } from "@/schemas/hovedstyret";
 
 interface HSCardProps {
-  data: Array<{
-    rolle: string;
-    name: string;
-    text: string;
-    mail: string;
-    nummer: number;
-    bilde: string;
-  }>;
+  data: Hovedstyret[];
 }
 
 const HSCard: FC<HSCardProps> = ({ data }) => {
@@ -81,7 +75,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
                       {item.rolle}
                     </p>
                     <p className="text-sm lg:text-xl font-normal">
-                      {item.name}
+                      {item.User.name}
                     </p>
                   </div>
                   <p className="text-xs lg:text-sm font-extralight">
@@ -89,16 +83,16 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
                   </p>
                   <div className="flex flex-col">
                     <p className="text-xs lg:text-sm font-light">
-                      Kontakt: {item.mail}
+                      Kontakt: {item.User.email}
                     </p>
                     <p className="text-xs lg:text-sm font-light">
-                      Tlf: +78{item.nummer}
+                      Tlf: +78{item.User.nummer}
                     </p>
                   </div>
                 </div>
                 <div className=" items-center hidden lg:flex">
                   <img
-                    src={item.bilde}
+                    src={item.image}
                     alt={item.rolle}
                     className="w-[20vh] h-[20vh] lg:w-[50vh] lg:h-[50vh] object-cover rounded-md"
                   />
