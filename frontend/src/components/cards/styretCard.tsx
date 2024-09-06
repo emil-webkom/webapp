@@ -1,13 +1,12 @@
-"use client";
-
-import { FC } from "react";
-import { useState } from "react";
+import { useState, FC } from "react";
 import { Hovedstyret } from "@/schemas/hovedstyret";
 
+// Define the props type
 interface HSCardProps {
-  data: Hovedstyret[];
+  data: Hovedstyret[]; // Data is an array of Hovedstyret objects
 }
 
+// Define the HSCard functional component
 const HSCard: FC<HSCardProps> = ({ data }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isSliding, setIsSliding] = useState(false);
@@ -22,7 +21,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
       const newIndex = isLastSlide ? 0 : currentIndex + 1;
       setCurrentIndex(newIndex);
       setIsSliding(false);
-    }, 0);
+    }, 300);
   };
 
   const handlePrev = () => {
@@ -33,7 +32,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
       const newIndex = isFirstSlide ? data.length - 1 : currentIndex - 1;
       setCurrentIndex(newIndex);
       setIsSliding(false);
-    }, 0);
+    }, 300);
   };
 
   return (
@@ -124,7 +123,9 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
         {Array.from({ length: totalCards }).map((_, index) => (
           <span
             key={index}
-            className={`mx-1 h-2 w-2 rounded-full ${currentIndex === index ? "bg-white" : "bg-gray-400"}`}
+            className={`mx-1 h-2 w-2 rounded-full ${
+              currentIndex === index ? "bg-white" : "bg-gray-400"
+            }`}
           ></span>
         ))}
       </div>

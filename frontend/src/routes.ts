@@ -5,6 +5,7 @@
 export const publicRoutes = [
   "/",
   "/for_studenten",
+  "/for_studenten/varsle_oss",
   "/om_emil",
   "/naeringsliv",
   "/auth/new-verification",
