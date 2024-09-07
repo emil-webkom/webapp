@@ -27,6 +27,14 @@ import AeresEmiler from "./aeresemiler";
 import AeresEmilerComponent from "./aeresemiler";
 import BrukerComponent from "./brukere";
 
+import HovedsamarbeidspartnereComponent from "./hovedsamarbeidspartnere";
+import HovedsamarbeidspartnerComponent from "./hovedsamarbeidspartnere";
+import SamarbeidspartnereComponent from "./samarbeidspartnere";
+import BookingComponent from "./booking";
+import KomiteComponent from "./komiteComponent";
+import HovedstyreComponent from "./hovedstyret";
+import LavterskelarrangementComponent from "./lavterskelarrangement";
+
 
 export function Dashboard() {
   return (
@@ -57,27 +65,34 @@ export function Dashboard() {
               <TabsContent value="Bruker">
                 <BrukerComponent/>
                 </TabsContent>
+
                 <TabsContent value="Hovedstyret">
-                <div>Hovedstyret</div>
+                <HovedstyreComponent></HovedstyreComponent>
                 </TabsContent>
+
                 <TabsContent value="Komité">
-                <div>Komité</div>
+                <KomiteComponent></KomiteComponent>
                 </TabsContent>
                 <TabsContent value="Arrangementer">
                 <div>Arrangementer</div>
                 </TabsContent>
+
                 <TabsContent value="Lavterskelarrangement">
-                <div>Lavterskelarrangementer</div>
+                <LavterskelarrangementComponent></LavterskelarrangementComponent>
                 </TabsContent>
+
                 <TabsContent value="Booking">
-                <div>Booking</div>
+                <BookingComponent></BookingComponent>
                 </TabsContent>
+
                 <TabsContent value="Samarbeidspartnere">
-                <div>Samarbeidspartnere</div>
+               <SamarbeidspartnereComponent></SamarbeidspartnereComponent>
                 </TabsContent>
+
                 <TabsContent value="Hovedsamarbeidspartnere">
-                <div>Hovedsamarbeidspartnere</div>
+                  <HovedsamarbeidspartnerComponent/>
                 </TabsContent>
+
                 <TabsContent value="Æresemiler">
                 <div className="w-full">
                   <AeresEmilerComponent/>

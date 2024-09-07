@@ -13,16 +13,20 @@ import BigCard from "@/components/landing/bigCard";
 import { cardData } from "@/static/landingInfo";
 import VideoPlayer from "@/components/landing/video-player";
 import useFetch from "@/hooks/use-fetch";
-import { Arrangement } from "@/schemas/arrangement";
+import { Arrangement, ArrangementPaamelding } from "@/schemas/arrangement";
 
+interface arrangementProps {
+  status: string,
+  data: Arrangement[],
+}
 const HomePage = () => {
   const dataS = JSON.parse(cardData);
 
   const [date, setDate] = React.useState<Date | undefined>(new Date());
-  const { data, loading, error } = useFetch<{ arrangementer: Arrangement[] }>(
+  const { data, loading, error } = useFetch<arrangementProps>(
     "/api/arrangementer",
   );
-  console.log(data?.arrangementer);
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col m-6 lg:m-14 items-left justify-center">
@@ -64,8 +68,8 @@ const HomePage = () => {
             <div className="flex justify-center items-center w-full h-fit">
               {loading ? (
                 <div className="animate-ping h-8 w-8 bg-blue-400 rounded-full"></div>
-              ) : data?.arrangementer && data.arrangementer.length > 0 ? (
-                <ListView events={data.arrangementer} />
+              ) : data && data.data.length > 0 ? (
+                <ListView events={data.data} />
               ) : (
                 <div className="text-center text-lg font-semibold text-white">
                   Ingen kommende arrangementer

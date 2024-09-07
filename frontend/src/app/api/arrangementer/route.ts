@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       {
         message: "Retrieved all arrangementer",
-        arrangementer,
+        data: arrangementer,
       },
       { status: 200 },
     );
