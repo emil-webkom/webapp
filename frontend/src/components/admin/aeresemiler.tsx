@@ -5,6 +5,8 @@ import { AeresEmiler } from "@/schemas/aeresEmiler";
 import { useState, useEffect } from "react";
 import LeggtilAeresemilerForm from "../forms/leggtilAeresemilerForm";
 import Modal from "../ui/modal";
+import { Trash2 } from "lucide-react";
+
 
 const AeresEmilerComponent = () => {
   const [openForm, setOpenForm] = useState<boolean>(false);
@@ -69,20 +71,20 @@ const AeresEmilerComponent = () => {
   }
 
   return (
-    <div className="flex flex-col items-center bg-[#003A42] rounded-md py-6 text-white">
+    <div className="flex flex-col items-center bg-white rounded-md py-6 text-black">
       <div className="w-full px-4 lg:px-8">
-        <h1 className="text-white text-center font-semibold py-2 text-xl sm:text-2xl w-full">
+        <h1 className="text-black text-center font-semibold py-2 text-xl sm:text-2xl w-full">
           Oversikt over Æresemilere og utdelte fortjenestemedaljer
         </h1>
       </div>
-      <button onClick={handleLeggTilClick} className="flex w-full px-6 text-underscore">
+      <button onClick={handleLeggTilClick} className="flex w-full px-6 text-underscore ">
         Legg til?
       </button>
       <div className="flex flex-col w-full p-4 ">
-        <div className="flex bg-[#225654] rounded-md p-2">
-          <div className="w-[30%]">Navn:</div>
-          <div className="w-[30%]">Type pris</div>
-          <div className="w-[30%]">År:</div>
+        <div className="flex bg-[#AEE0D0] rounded-md p-2">
+          <div className="w-[30%] font-semibold">Navn:</div>
+          <div className="w-[30%] font-semibold">Type pris</div>
+          <div className="w-[30%] font-semibold">År:</div>
         </div>
         {openForm && (
           <Modal
@@ -95,8 +97,8 @@ const AeresEmilerComponent = () => {
             <div className="w-[30%]">{item.navn}</div>
             <div className="w-[30%]">{item.type}</div>
             <div className="w-[30%]">{item.aar}</div>
-            <button onClick={() => handleSlett(item.id)} className="text-underscore">
-              Slett?
+            <button onClick={() => handleSlett(item.id)} className="icon-hover">
+              <Trash2 className="text-red-600 h-4 w-4 "></Trash2>
             </button>
           </div>
         ))}
