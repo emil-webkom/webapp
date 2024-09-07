@@ -28,6 +28,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { FaUser } from "react-icons/fa";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { useState } from "react";
+import Modal from "../ui/modal";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 const profileFormSchema = z.object({
   username: z
@@ -64,6 +77,9 @@ const defaultValues: Partial<ProfileFormValues> = {
 
 export function ProfileForm() {
   const user = useCurrentUser();
+  const [profilePic, setProfilePic] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
@@ -80,6 +96,39 @@ export function ProfileForm() {
     console.log(data);
   }
 
+  const changeProfilePic = () => {
+    document.getElementById("profile-pic-input")?.click();
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setProfilePic(file);
+
+      // Generate a preview URL for the image
+      const imageUrl = URL.createObjectURL(file);
+      setPreviewUrl(imageUrl);
+      toggleModal();
+    }
+  };
+  const handleUpload = async () => {
+    if (!profilePic) return;
+
+    // Simulate an image upload
+    const formData = new FormData();
+    formData.append("profilePic", profilePic);
+
+    try {
+      // Add actual function for uploading profile pic
+    } catch (error) {
+      console.error("Error uploading profile picture:", error);
+    }
+  };
+
+  const toggleModal = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -90,16 +139,81 @@ export function ProfileForm() {
             <FormItem>
               <FormLabel>Profilbilde</FormLabel>
               <FormControl>
-                <Avatar className="w-12 h-12 cursor-pointer ml-1">
+                <Avatar className="w-12 h-12 ml-1">
                   <AvatarImage src={user?.image || ""} />
                   <AvatarFallback className="background-dark">
                     <FaUser size={20} className="text-white" />
                   </AvatarFallback>
                 </Avatar>
               </FormControl>
-              <FormDescription>
-                Her kan du laste opp et profilbilde.
+              <FormDescription
+                onClick={changeProfilePic}
+                className="cursor-pointer text-underscore"
+              >
               </FormDescription>
+                <AlertDialog>
+                <AlertDialogTrigger asChild>
+                <div>
+                  {/* Hidden file input */}
+                  <input
+                    id="profile-pic-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    style={{ display: "none" }}
+                  />
+                  {/* Text that triggers file input when clicked */}
+                  <span onClick={changeProfilePic} className="cursor-pointer text-underscore">
+                    Her kan du laste opp et profilbilde
+                  </span>
+                </div>
+                </AlertDialogTrigger>
+
+                {/* If profilePic is set, show the AlertDialogContent */}
+                {profilePic && (
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        This action cannot be undone. This will permanently delete your account
+                        and remove your data from our servers.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction>Continue</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                )}
+              </AlertDialog>
+              {/* {previewUrl && (
+                <Modal isOpen={isOpen}>
+                  <>
+                    <div className="">
+                      <p>Forhåndsvisning av profilbilde:</p>
+                      <img
+                        src={previewUrl}
+                        alt="Profile Preview"
+                        className="w-32 h-32 rounded-full object-fit"
+                      />
+                      <div className="flex w-full justify-between">
+                      <button
+                        onClick={handleUpload}
+                        className="mt-2 bg-primary text-white py-1 px-4 rounded-md"
+                      >
+                        Last opp bilde
+                      </button>
+                      <button
+                        onClick={()=>toggleModal()}
+                        className="mt-2 bg-primary text-white py-1 px-4 rounded-md"
+                      >
+                        Lukk?
+                      </button>
+                      </div>
+                    </div>
+                  </>
+                </Modal>
+              )} */}
               <FormMessage />
             </FormItem>
           )}

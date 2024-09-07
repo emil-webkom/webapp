@@ -13,12 +13,6 @@ const SettingsPage = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h3 className="text-lg font-medium">Profil</h3>
-        <p className="text-sm text-muted-foreground">
-          Dette er hvordan andre vil se deg på nettstedet.
-        </p>
-      </div>
       <Separator />
       <ProfileForm />
     </div>
