@@ -12,7 +12,7 @@ type BigCardProps = {
 const BigCard = ({ title, description, ...rest }: BigCardProps) => {
   return (
     <>
-      <div className="p-8 flex flex-row rounded-md bg-[#003A42] w-[100%] lg:w-[60rem] text-left">
+      <div className="p-4 lg:p-8 flex flex-row rounded-md bg-[#003A42] w-[100%] lg:w-[60rem] text-left">
         <div className="flex flex-col gap-y-4 p-4 flex-1">
           <div className="font-medium text-white text-2xl">{title}</div>
           <div className=" text-white">{description}</div>
