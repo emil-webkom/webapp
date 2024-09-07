@@ -45,7 +45,7 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
   }
 
   return (
-    <div className="w-screen flex flex-col items-center justify-center p-8">
+    <div className="hidden w-screen flex-col items-center justify-center p-8">
       <div className="space-y-6 flex flex-col items-center justify-center p-6 md:block w-[90%] lg:max-w-[60%] bg-[#003A42] rounded-lg text-white">
       <div>
         <h3 className="text-lg font-medium">Profil</h3>

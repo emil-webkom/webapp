@@ -2,15 +2,18 @@ import useFetch from "@/hooks/use-fetch";
 import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
 import React, { useEffect, useState } from "react";
 
+interface SPprops{
+  message: string,
+  data: Samarbeidspartner[],
+}
+
 const LogoSection: React.FC = () => {
   const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
-  const { data, loading, error } = useFetch<{
-    samarbeidspartnere: Samarbeidspartner[];
-  }>("/api/samarbeidspartner");
+  const { data, loading, error } = useFetch<SPprops>("/api/samarbeidspartner");
 
   useEffect(() => {
     if (data) {
-      setLogos(data.samarbeidspartnere);
+      setLogos(data.data);
     }
   }, [data]);
 
@@ -20,7 +23,6 @@ const LogoSection: React.FC = () => {
         <h2 className="text-2xl font-bold pb-10">Loading...</h2>
         <div className="flex justify-center items-center py-4">
           <div className="loader"></div>{" "}
-          {/* You might want to style this loader */}
         </div>
       </div>
     );

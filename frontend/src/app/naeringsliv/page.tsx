@@ -10,17 +10,20 @@ import useFetch from "@/hooks/use-fetch";
 import { Hovedsamarbeidspartner } from "@/schemas/hovedsamarbeidspartner";
 import { useEffect, useState } from "react";
 
+interface HSPprops{
+  message: string,
+  data: Hovedsamarbeidspartner[],
+}
+
 const NaeringslivPage = () => {
   const [hovedsamarbeidspartnere, setHovedsamarbeidspartnere] = useState<
     Hovedsamarbeidspartner[]
   >([]);
-  const { data, loading, error } = useFetch<{
-    hovedsamarbeidspartnere: Hovedsamarbeidspartner[];
-  }>("/api/hovedsamarbeidspartner");
+  const { data, loading, error } = useFetch<HSPprops>("/api/hovedsamarbeidspartner");
 
   useEffect(() => {
     if (data) {
-      setHovedsamarbeidspartnere(data.hovedsamarbeidspartnere);
+      setHovedsamarbeidspartnere(data.data);
     }
   }, [data]);
 

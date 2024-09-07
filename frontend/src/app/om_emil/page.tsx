@@ -197,21 +197,21 @@ const OmEmilPage = () => {
           <div className="flex justify-center text-2xl font-bold">Historie</div>
           <div className="lg:flex justify-between lg:space-x-10">
             <div id="Text" className="flex flex-col py-10 space-y-4 ">
-              <p className="font-semibold text-xl">Elektrisk start...</p>
-              <p className="text-sm lg:text-base font-extralight">
+              <p className="font-semibold text-xl px-3">Elektrisk start...</p>
+              <p className="text-sm lg:text-base font-extralight px-3">
                 Ved linjeforeningens stiftelse ble de første vedtektene skrevet,
                 emils grunnlag ble fastsatt. Med årene har ikke engasjementet
                 blant studentene på linjen blitt noe mindre og i dag består EMIL
                 av over tjue offisielle komiteer og er en av Gløshaugens mest
                 aktive linjeforeninger.
               </p>
-              <p className="text-sm lg:text-base font-extralight">
+              <p className="text-sm lg:text-base font-extralight px-3">
                 Særegent for EMIL er at alle de ulike komitéene er svært
                 lavterskel. Her kan man bli med i alt fra EMIL sin turkomité,
                 festkomité, idrettskomité til linjeavisen og det er noe for
                 enhver å delta i her.
               </p>
-              <p className="text-sm lg:text-base font-extralight">
+              <p className="text-sm lg:text-base font-extralight px-3">
                 Etter hvert har også linjeforeningen utviklet et sterkt nettverk
                 til energibransjen og dette håndteres av Emil-Link. Mer
                 informasjon om dem her.
@@ -256,20 +256,20 @@ const OmEmilPage = () => {
                 />
               </div>
               <div className="flex flex-col space-y-2 lg:space-y-4">
-                <p className="font-semibold text-base lg:text-base">
+                <p className="font-semibold text-base lg:text-base px-3">
                   er linjeforeningens øverste organ og har ansvaret for driften
                   og ledelsen av organisasjonen i det daglige. Styret består av
                   syv faste medlemmer med ansvarsområder innenfor alt fra
                   arrangement og fadderuker, til økonomi og næringsliv.
                 </p>
-                <p className="font-extralight text-sm lg:text-base">
+                <p className="font-extralight text-sm lg:text-base px-3">
                   Alle styremedlemmene fungerer på lik linje, med alle de
                   rettigheter og plikter som dette innebærer. Som medlem i
                   styret tilegner du deg fort nye kunnskaper og ferdigheter,
                   ikke bare innen ditt eget ansvarsområde, men også om EMIL som
                   helhet, NTNU og hele studentfrivilligheten i Trondheim.
                 </p>
-                <p className="font-extralight text-sm lg:text-base">
+                <p className="font-extralight text-sm lg:text-base px-3">
                   Etter generalforsamling konstituerer styret seg selv, noe som
                   betyr at det nyvalgte styret selv avgjør hvem som skal ha
                   hvilken stilling i styret. Unntaket til regelen er
@@ -289,20 +289,20 @@ const OmEmilPage = () => {
           </div>
           <div className="flex flex-col justify-between lg:flex-row lg:space-x-10">
             <div className="flex flex-col justify-between space-y-5 ">
-              <p className="font-medium text-medium lg:text-xl">
+              <p className="font-medium text-medium lg:text-xl px-3">
                 Emil hadde ikke vært Emil uten studentfrivilligheten
               </p>
-              <p className="font-extralight text-sm lg:text-base">
+              <p className="font-extralight text-sm lg:text-base px-3">
                 I dag har Emil noe å by på for alle og enhver. Linjeforeningen
                 har over 20 offisielle komitteer som alle holder på hver sine
                 aktiviteter.{" "}
               </p>
-              <p className="font-extralight text-sm lg:text-base">
+              <p className="font-extralight text-sm lg:text-base px-3">
                 På Emil er deltakelse oppfordret og man kan bli med i så mange
                 komiteer man ønsker. Særegent for komiteene på Emil er at alle
                 er lavterskel og holder sterkt fokus på et sosialt tilbud.
               </p>
-              <p className="font-extralight text-sm lg:text-base">
+              <p className="font-extralight text-sm lg:text-base px-3">
                 Skulle du savne en komite som holder på med akkurat din
                 favorittaktivitet er også terskelen for å starte en ny komite
                 lav. Man kan dermed ta kontakt med hovedstyret for en prat og
@@ -334,7 +334,7 @@ const OmEmilPage = () => {
       >
         <div className="flex flex-col items-center w-[90%] lg:w-[65%] py-6 lg:py-10 space-y-6 lg:space-y-10">
           <div className="text-2xl font-bold">Faglig kontakt</div>
-          <div className="font-extralight text-sm lg:text-base">
+          <div className="font-extralight text-sm lg:text-base px-3">
             Emil har mange kontaktpersoner designert til å hjelpe deg med
             studenttilværelsen. Avhengig av hvilke formål man har er det
             forskjellige kontaktpersoner. Her finner du kontaktinformasjon for
@@ -364,14 +364,14 @@ const OmEmilPage = () => {
       <div id="varsling" className="max-w-screen flex justify-center">
         <div className="flex flex-col items-center w-[90%] lg:w-[65%] space-y-5">
           <p className="text-2xl font-bold">Varsle</p>
-          <p className="font-extralight text-sm lg:text-base">
+          <p className="font-extralight text-sm lg:text-base px-3">
             Noe av det viktigste vi kan gjøre for å sikre at alle i
             linjeforeningen kommer seg trygt gjennom studietiden, er å si ifra
             når ting ikke er som de skal. Uansett om det er en stor eller liten
             utfordring/hendelse, er det bedre å si ifra en gang for mye enn en
             gang for lite.{" "}
           </p>
-          <p className="font-extralight text-sm lg:text-base">
+          <p className="font-extralight text-sm lg:text-base px-3">
             Enhver hendelse som meldes inn her vil bli tatt på alvor. Du kan
             velge å holde det anonymt, eller å skrive ditt navn for at
             linjeforeningsstyret kan følge opp hendelsen/situasjonen videre med

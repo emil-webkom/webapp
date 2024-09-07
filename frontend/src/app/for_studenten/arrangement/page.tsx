@@ -110,13 +110,13 @@ const ForStudentenPage = () => {
       }
       const dataLTA = await responseLTA.json();
       const dataA = await responseA.json();
-      setArrangementer(dataA.arrangementer);
+      setArrangementer(dataA.data);
       setLavterskelArrangement(dataLTA.data);
 
       // Combine the arrangements after both states are updated
       console.log(dataLTA.data)
       const combined = [
-        ...dataA.arrangementer,
+        ...dataA.data,
         ...dataLTA.data,
       ];
       setAllCombinedArrangements(combined);
