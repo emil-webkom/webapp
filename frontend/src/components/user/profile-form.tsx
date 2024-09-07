@@ -28,7 +28,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { FaUser } from "react-icons/fa";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../ui/modal";
 import {
   AlertDialog,
@@ -40,7 +40,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
+} from "@/components/ui/alert-dialog";
 
 const profileFormSchema = z.object({
   username: z
@@ -78,15 +78,15 @@ const defaultValues: Partial<ProfileFormValues> = {
 export function ProfileForm() {
   const user = useCurrentUser();
   const [profilePic, setProfilePic] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [previewUrl, setPreviewUrl] = useState<string>("");
+
+  useEffect(() => {}, [profilePic]);
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues,
     mode: "onChange",
   });
-
   const { fields, append } = useFieldArray({
     name: "urls",
     control: form.control,
@@ -97,9 +97,13 @@ export function ProfileForm() {
   }
 
   const changeProfilePic = () => {
-    document.getElementById("profile-pic-input")?.click();
+    const inputElement = document.getElementById(
+      "profile-pic-input",
+    ) as HTMLInputElement;
+    if (inputElement) {
+      inputElement.click(); // Trigger file input dialog
+    }
   };
-
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -108,9 +112,13 @@ export function ProfileForm() {
       // Generate a preview URL for the image
       const imageUrl = URL.createObjectURL(file);
       setPreviewUrl(imageUrl);
-      toggleModal();
     }
   };
+
+  const togglePreview = () => {
+    setProfilePic(null);
+  }
+
   const handleUpload = async () => {
     if (!profilePic) return;
 
@@ -123,10 +131,6 @@ export function ProfileForm() {
     } catch (error) {
       console.error("Error uploading profile picture:", error);
     }
-  };
-
-  const toggleModal = () => {
-    setIsOpen((prevState) => !prevState);
   };
 
   return (
@@ -146,46 +150,45 @@ export function ProfileForm() {
                   </AvatarFallback>
                 </Avatar>
               </FormControl>
-              <FormDescription
-                onClick={changeProfilePic}
-                className="cursor-pointer text-underscore"
+              <div>
+                <input
+                  id="profile-pic-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  style={{ display: "none" }}
+                />
+                <p
+                  onClick={changeProfilePic}
+                  className="w-fit cursor-pointer text-underscore"
+                >
+                  Her kan du laste opp et profilbilde
+                </p>
+              </div>
+              {profilePic! && (
+              <div className="w-[40%] rounded-md flex flex-col items-center justify-center p-4">
+              <p>Forhåndsvisning av profilbilde:</p>
+              <img
+                src={previewUrl}
+                alt="Profile Preview"
+                className="w-32 h-32 rounded-full object-fit bg-white p-2"
+              />
+              <div className="flex w-full justify-between">
+              <button
+                onClick={handleUpload}
+                className="mt-2 bg-primary text-white py-1 px-4 rounded-md"
               >
-              </FormDescription>
-                <AlertDialog>
-                <AlertDialogTrigger asChild>
-                <div>
-                  {/* Hidden file input */}
-                  <input
-                    id="profile-pic-input"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    style={{ display: "none" }}
-                  />
-                  {/* Text that triggers file input when clicked */}
-                  <span onClick={changeProfilePic} className="cursor-pointer text-underscore">
-                    Her kan du laste opp et profilbilde
-                  </span>
-                </div>
-                </AlertDialogTrigger>
-
-                {/* If profilePic is set, show the AlertDialogContent */}
-                {profilePic && (
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete your account
-                        and remove your data from our servers.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction>Continue</AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
+                Last opp bilde
+              </button>
+              <button
+                onClick={()=>togglePreview()}
+                className="mt-2 bg-primary text-white py-1 px-4 rounded-md"
+              >
+                Lukk?
+              </button>
+              </div>
+            </div>
                 )}
-              </AlertDialog>
               {/* {previewUrl && (
                 <Modal isOpen={isOpen}>
                   <>

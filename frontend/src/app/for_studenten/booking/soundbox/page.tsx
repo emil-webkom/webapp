@@ -69,7 +69,7 @@ const SoundboxPage = () => {
           Tilbake
         </Link>
       </div>
-      <div className="max-w-[512px] w-full">
+      <div className="max-w-[512px] w-full p-6">
         <h1 className="text-white text-center font-semibold text-xl sm:text-2xl w-full">
           Soundbox
         </h1>
@@ -84,7 +84,7 @@ const SoundboxPage = () => {
           .
         </p>
         <br></br>
-        <div className="bg-[#25504F] rounded-md p-2 sm:p-4 text-sm">
+        <div className="bg-[#25504F] rounded-md sm:p-4 text-sm p-4">
           <p>Følgende regler gjelder for bruk av soundbox:</p>
           <ul className="list-disc pl-4 sm:pl-6 text-sm">
             <li className="pl-2 leading-relaxed">
