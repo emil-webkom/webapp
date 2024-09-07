@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
      return NextResponse.json(
        {
          message: "Retrieved all lavterskelarrangementer",
-         samarbeidspartnere,
+         data: samarbeidspartnere,
        },
        { status: 200 },
      );
