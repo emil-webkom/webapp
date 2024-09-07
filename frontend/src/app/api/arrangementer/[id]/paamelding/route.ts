@@ -18,7 +18,7 @@ export async function GET(
       },
     });
 
-    return NextResponse.json({ arrangementPaameldinger }, { status: 200 });
+    return NextResponse.json({data: arrangementPaameldinger }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });
   }
