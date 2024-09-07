@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(
       {
         message: "Retrieved all lavterskelarrangementer",
-        lavterskelArrangementer,
+        data: lavterskelArrangementer,
       },
       { status: 200 },
     );

@@ -6,11 +6,15 @@ import { Hovedstyret } from "@/schemas/hovedstyret";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
+interface dataProps{
+  message: string;
+  data: Samarbeidspartner[]
+}
+
+
 const Footer: FC = () => {
   const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
-  const { data, loading, error } = useFetch<{
-    samarbeidspartnere: Samarbeidspartner[];
-  }>("/api/samarbeidspartner");
+  const { data, loading, error } = useFetch<dataProps | null>("/api/samarbeidspartner");
 
   const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [leder, setLeder] = useState<Hovedstyret | undefined>();
@@ -34,7 +38,7 @@ const Footer: FC = () => {
     fetchStyretData();
 
     if (data) {
-      setLogos(data.samarbeidspartnere);
+      setLogos(data?.data);
     }
   }, [data]);
 

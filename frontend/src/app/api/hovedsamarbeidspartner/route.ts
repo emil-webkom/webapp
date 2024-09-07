@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
      return NextResponse.json(
        {
          message: "Retrieved all hovedsamarbeidspartnere",
-         hovedsamarbeidspartnere,
+         data: hovedsamarbeidspartnere,
        },
        { status: 200 },
      );
