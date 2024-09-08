@@ -1,56 +1,20 @@
-// "use server";
-
-// import { db } from "@/lib/db";
-// import { getUserByEmail } from "@/data/user";
-// import { getVerificationTokenByToken } from "@/data/verification-token";
-
-// export const newVerification = async (token: string) => {
-//   const existingToken = await getVerificationTokenByToken(token);
-
-//   const user = existingToken ? await getUserByEmail(existingToken.email) : null;
-
-//   if (user?.emailVerified) {
-//     return { error: "Email already verified!" };
-//   }
-
-//   if (!existingToken) {
-//     return { error: "Token does not exist!" };
-//   }
-
-//   const hasExpired = new Date(existingToken.expires) < new Date();
-
-//   if (hasExpired) {
-//     return { error: "Token has expired!" };
-//   }
-
-//   const existingUser = await getUserByEmail(existingToken.email);
-
-//   if (!existingUser) {
-//     return { error: "Email does not exist!" };
-//   }
-
-//   await db.user.update({
-//     where: { id: existingUser.id },
-//     data: {
-//       emailVerified: new Date(),
-//       email: existingToken.email,
-//     },
-//   });
-
-//   await db.verificationToken.delete({
-//     where: { id: existingToken.id },
-//   });
-
-//   return { success: "Email verified!" };
-// };
-
 "use server";
 
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
 import { getVerificationTokenByToken } from "@/data/verification-token";
 
+// Utility function to create a delay
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+let verificationInProgress = false;
+
 export const newVerification = async (token: string) => {
+  if (verificationInProgress) {
+    console.log("Verification is already in progress.");
+    return;
+  }
+
+  verificationInProgress = true;
   console.log("Starting verification process for token:", token);
 
   const existingToken = await getVerificationTokenByToken(token);
@@ -81,6 +45,7 @@ export const newVerification = async (token: string) => {
   }
 
   try {
+    // Update the user to mark the email as verified
     await db.user.update({
       where: { id: existingUser.id },
       data: {
@@ -89,12 +54,9 @@ export const newVerification = async (token: string) => {
       },
     });
 
-    await db.verificationToken.delete({
-      where: { id: existingToken.id },
-    });
+    await delay(3000); // 30,000 milliseconds = 30 seconds
 
-    console.log("Email verified successfully");
-    return { success: "Email verified!" };
+    return { success: "Email verified and token deleted!" };
   } catch (error) {
     console.error("Error updating user or deleting token:", error);
     return { error: "Failed to verify email" };

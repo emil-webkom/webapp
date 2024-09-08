@@ -241,7 +241,7 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-40">
+        <Button type="submit" className="">
           Oppdater profil
         </Button>
       </form>
