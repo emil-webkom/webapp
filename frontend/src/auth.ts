@@ -33,11 +33,6 @@ export const {
       return true;
     },
     async jwt({ token, user, session, trigger }) {
-<<<<<<< HEAD
-      // console.log("JWT callback", { token, user, session });
-
-=======
->>>>>>> ebc4608cc9b0f399efeb793185c97cdbf7fe49f8
       if (!token.sub) return token;
 
       const existingUser = await getUserById(token.sub);
@@ -46,11 +41,6 @@ export const {
 
       token.role = existingUser.role;
 
-<<<<<<< HEAD
-      // console.log({ user });
-
-=======
->>>>>>> ebc4608cc9b0f399efeb793185c97cdbf7fe49f8
       return token;
     },
     async session({ token, session, user }) {
