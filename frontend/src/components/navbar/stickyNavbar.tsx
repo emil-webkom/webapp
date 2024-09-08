@@ -62,7 +62,7 @@ const StickyNavbar = ({ tags }: StickyNavbarProps) => {
             variant={"transparent"}
             size={"pill"}
             className={
-              activeTag === s ? "bg-slate-400 text-white" : "text-white"
+              activeTag === s ? "bg-slate-600" : ""
             }
           >
             {s}
