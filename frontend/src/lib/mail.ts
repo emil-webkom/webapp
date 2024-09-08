@@ -11,7 +11,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
     from: "mail@emilweb.no",
     to: email,
     subject: "Confirm your email",
-    html: `<p>Click <a href="${confirmLink}">here</a> to reset your password </p>`,
+    html: `<p>Click <a href="${confirmLink}">here</a> to verify your account </p>`,
   });
 };
 
@@ -22,6 +22,6 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     from: "mail@emilweb.no",
     to: email,
     subject: "Reset password",
-    html: `<p>Click <a href="${resetLink}">here</a> to verify your account </p>`,
+    html: `<p>Click <a href="${resetLink}">here</a> to reset your password </p>`,
   });
 };

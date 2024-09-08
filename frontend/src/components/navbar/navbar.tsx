@@ -6,11 +6,9 @@ import UserButton from "@/components/auth/user-button";
 import LogoutButton from "@/components/auth/logout-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Leaf, X } from "lucide-react";
-import { User } from "../auth/auth-provider";
 
 const NavBar: FC = () => {
   const currentUser = useCurrentUser();
-  const [user, setUser] = useState<User | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +35,6 @@ const NavBar: FC = () => {
   };
 
   useEffect(() => {
-    setUser(currentUser || null);
     setIsAdmin(currentUser?.role === "ADMIN");
   }, [currentUser]);
 
@@ -137,7 +134,7 @@ const NavBar: FC = () => {
           >
             Næringsliv
           </Link>
-          {user ? (
+          {currentUser ? (
             <div className="flex flex-col text-right ml-auto">
               <div className="justify-end hidden lg:block">
                 <UserButton />

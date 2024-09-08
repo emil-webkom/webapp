@@ -22,14 +22,17 @@ import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
 import { login } from "@/utils/login";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
+import { revalidatePath } from "next/cache";
+import { useSession } from "next-auth/react";
 
 export const LoginForm = () => {
-  const router = useRouter();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
+  const { data: session, status, update } = useSession();
 
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
@@ -44,15 +47,34 @@ export const LoginForm = () => {
     setSuccess("");
 
     startTransition(() => {
-      login(values).then((data) => {
-        // Set error and success messages
-        setError(data?.error);
-        setSuccess(data?.success);
-        router.push(DEFAULT_LOGIN_REDIRECT);
-        router.refresh();
-      });
+      login(values)
+        .then(async (data) => {
+          if (data?.error) {
+            form.reset();
+            setError(data.error);
+          }
+
+          if (data?.success) {
+            form.reset();
+            setSuccess(data.success);
+            // Force session refresh
+            await update();
+
+            // Wait a bit to ensure the session is updated
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+
+            router.push(DEFAULT_LOGIN_REDIRECT);
+          }
+        })
+        .catch(() => setError("Something went wrong"));
     });
   };
+
+  // If the user is already logged in, redirect them
+  if (status === "authenticated") {
+    router.push(DEFAULT_LOGIN_REDIRECT);
+    return null;
+  }
 
   return (
     <CardWrapper

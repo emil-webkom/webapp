@@ -3,8 +3,8 @@ import "./globals.css";
 import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
 import { Toaster } from "@/components/ui/toaster";
-import { SessionProvider } from "next-auth/react";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Emilweb",

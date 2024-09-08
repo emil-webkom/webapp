@@ -3,13 +3,16 @@
 import * as z from "zod";
 import { AuthError } from "next-auth";
 import { LoginSchema } from "@/schemas";
-import { signIn } from "@/lib/auth";
+import { signIn } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { generateVerificationToken } from "@/lib/tokens";
 import { getUserByEmail } from "@/data/user";
 import { sendVerificationEmail } from "@/lib/mail";
 
-export const login = async (values: z.infer<typeof LoginSchema>) => {
+export const login = async (
+  values: z.infer<typeof LoginSchema>,
+  callbackUrl?: string,
+) => {
   const validatedFields = LoginSchema.safeParse(values);
 
   if (!validatedFields.success) {
@@ -41,11 +44,17 @@ export const login = async (values: z.infer<typeof LoginSchema>) => {
     return { success: "Confirmation email sent!" };
   }
   try {
-    await signIn("credentials", {
+    const result = await signIn("credentials", {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirect: false,
     });
+
+    if (result?.error) {
+      return { error: result.error };
+    }
+
+    return { success: "Logged in successfully" };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

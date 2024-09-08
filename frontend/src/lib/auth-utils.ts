@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+import { auth } from "@/auth";
 
 // USE THESE WHEN DEALING WITH SERVER COMPONENTS OR SERVERSIDE.
 // IF YOU NEED THESE FOR CLIENT, CHECK THE "hooks" FOLDER
