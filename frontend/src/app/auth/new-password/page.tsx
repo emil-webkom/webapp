@@ -3,9 +3,11 @@ import { Suspense } from "react";
 
 const NewPasswordPage = () => {
   return (
-    <Suspense>
-      <NewPasswordForm />
-    </Suspense>
+    <div className="h-full">
+      <Suspense>
+        <NewPasswordForm />
+      </Suspense>
+    </div>
   );
 };
 

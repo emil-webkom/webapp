@@ -3,7 +3,11 @@
 import { LoginForm } from "@/components/auth/login-form";
 
 const LoginPage = () => {
-  return <LoginForm />;
+  return (
+    <div className="h-full">
+      <LoginForm />
+    </div>
+  );
 };
 
 export default LoginPage;

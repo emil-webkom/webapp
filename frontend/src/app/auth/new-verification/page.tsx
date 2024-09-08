@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 const NewVerificationPage = () => {
   return (
-    <div className="">
+    <div className="h-full">
       <Suspense>
         <NewVerificationForm />
       </Suspense>
