@@ -1,5 +1,5 @@
 import NextAuth, { DefaultSession } from "next-auth";
-import authConfig from "@/utils/auth.config";
+import authConfig from "@/auth.config";
 import { getUserById } from "@/data/user";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db";
@@ -35,8 +35,23 @@ export const {
 
       return true;
     },
-    async session({ token, session }) {
-      // console.log({ sessionToken: token });
+    async jwt({ token, user, session, trigger }) {
+      console.log("JWT callback", { token, user, session });
+
+      if (!token.sub) return token;
+
+      const existingUser = await getUserById(token.sub);
+
+      if (!existingUser) return token;
+
+      token.role = existingUser.role;
+
+      console.log({ user });
+
+      return token;
+    },
+    async session({ token, session, user }) {
+      // console.log("Session callback", { token, session, user });
       if (token.sub && session.user) {
         session.user.id = token.sub;
       }
@@ -46,16 +61,6 @@ export const {
       }
 
       return session;
-    },
-    async jwt({ token }) {
-      if (!token.sub) return token;
-
-      const existingUser = await getUserById(token.sub);
-
-      if (!existingUser) return token;
-
-      token.role = existingUser.role;
-      return token;
     },
   },
   adapter: PrismaAdapter(db),
