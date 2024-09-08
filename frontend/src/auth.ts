@@ -36,7 +36,7 @@ export const {
       return true;
     },
     async jwt({ token, user, session, trigger }) {
-      console.log("JWT callback", { token, user, session });
+      // console.log("JWT callback", { token, user, session });
 
       if (!token.sub) return token;
 
@@ -46,7 +46,7 @@ export const {
 
       token.role = existingUser.role;
 
-      console.log({ user });
+      // console.log({ user });
 
       return token;
     },
