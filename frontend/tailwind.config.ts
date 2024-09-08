@@ -53,6 +53,15 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        
+
+        green: {
+          darkest:'#001D21',
+          dark: '#003A42',
+          mid: '#225654',
+          light: '#579783',
+          lightest: '#9DDBAD',
+        },
       },
 
       spacing: {
