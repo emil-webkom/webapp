@@ -28,16 +28,11 @@ export const {
       if (account?.provider !== "credentials") return true;
 
       const existingUser = await getUserById(user.id!);
-
       if (!existingUser?.emailVerified) return false;
-
-      // TODO: 2FA Check? Maybe not
 
       return true;
     },
     async jwt({ token, user, session, trigger }) {
-      console.log("JWT callback", { token, user, session });
-
       if (!token.sub) return token;
 
       const existingUser = await getUserById(token.sub);
@@ -45,8 +40,6 @@ export const {
       if (!existingUser) return token;
 
       token.role = existingUser.role;
-
-      console.log({ user });
 
       return token;
     },

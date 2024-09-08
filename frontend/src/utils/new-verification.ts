@@ -58,26 +58,26 @@ export const newVerification = async (token: string) => {
 
   if (!existingToken) {
     console.log("Token not found in the database");
-    return { error: "Token does not exist!" };
+    return { error: "Token eksisterer ikke!" };
   }
 
   const hasExpired = new Date(existingToken.expires) < new Date();
-  console.log("Token expired:", hasExpired);
+  console.log("Token utgått:", hasExpired);
 
   if (hasExpired) {
-    return { error: "Token has expired!" };
+    return { error: "Token har gått ut!" };
   }
 
   const existingUser = await getUserByEmail(existingToken.email);
   console.log("Existing user:", existingUser);
 
   if (!existingUser) {
-    return { error: "Email does not exist!" };
+    return { error: "Email eksisterer ikke!" };
   }
 
   if (existingUser.emailVerified) {
     console.log("Email already verified");
-    return { error: "Email already verified!" };
+    return { error: "Email allerede registrert!" };
   }
 
   try {
