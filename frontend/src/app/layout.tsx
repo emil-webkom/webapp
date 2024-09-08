@@ -17,15 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionProvider>
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body>
+        <SessionProvider>
           <NavBar />
           <TooltipProvider>{children}</TooltipProvider>
           <Toaster />
           <Footer />
-        </body>
-      </html>
-    </SessionProvider>
+        </SessionProvider>
+      </body>
+    </html>
   );
 }

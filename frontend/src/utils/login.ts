@@ -44,15 +44,12 @@ export const login = async (
     return { success: "Confirmation email sent!" };
   }
   try {
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
-      redirect: false,
+      redirect: true,
+      redirectTo: "/",
     });
-
-    if (result?.error) {
-      return { error: result.error };
-    }
 
     return { success: "Logged in successfully" };
   } catch (error) {
