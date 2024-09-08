@@ -65,13 +65,13 @@ export const NewPasswordForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>Passord</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
                       disabled={isPending}
                       placeholder="******"
-                      type="password"
+                      type="passord"
                     />
                   </FormControl>
                   <FormMessage />

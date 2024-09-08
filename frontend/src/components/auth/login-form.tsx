@@ -46,27 +46,25 @@ export const LoginForm = () => {
     setError("");
     setSuccess("");
 
-    startTransition(() => {
-      login(values)
-        .then(async (data) => {
-          if (data?.error) {
-            form.reset();
-            setError(data.error);
-          }
+    startTransition(async () => {
+      try {
+        const data = await login(values);
 
-          if (data?.success) {
-            form.reset();
-            setSuccess(data.success);
-            // Force session refresh
-            await update();
+        if (data?.error) {
+          form.reset();
+          setError(data.error);
+          return;
+        }
 
-            // Wait a bit to ensure the session is updated
-            await new Promise((resolve) => setTimeout(resolve, 2000));
+        if (data?.success) {
+          form.reset();
+          setSuccess(data.success);
 
-            router.push(DEFAULT_LOGIN_REDIRECT);
-          }
-        })
-        .catch(() => setError("Something went wrong"));
+          window.location.reload();
+        }
+      } catch (error) {
+        console.error("Login failed:", error); // Handle any unexpected errors
+      }
     });
   };
 
@@ -125,7 +123,7 @@ export const LoginForm = () => {
                     asChild
                     className="px-0 font-normal"
                   >
-                    <Link href="/auth/reset">Forgot password?</Link>
+                    <Link href="/auth/reset">Glemt passord?</Link>
                   </Button>
                   <FormMessage />
                 </FormItem>
