@@ -14,7 +14,6 @@ export const login = async (
   callbackUrl?: string,
 ) => {
   const validatedFields = LoginSchema.safeParse(values);
-
   if (!validatedFields.success) {
     return { error: "Invalid credentials!" };
   }
@@ -33,7 +32,7 @@ export const login = async (
     );
 
     if (verificationToken == null) {
-      console.error("Token not valid");
+      console.error("Token ikke gyldig");
     } else {
       await sendVerificationEmail(
         verificationToken.email,
@@ -41,22 +40,21 @@ export const login = async (
       );
     }
 
-    return { success: "Confirmation email sent!" };
+    return { success: "Bekreftelses email sendt!" };
   }
   try {
-    await signIn("credentials", {
+    const signInResponse = await signIn("credentials", {
       email,
       password,
-      redirect: true,
-      redirectTo: "/",
+      redirect: false,
     });
 
-    return { success: "Logged in successfully" };
+    return { success: "Innlogging vellykket" };
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
-          return { error: "Invalid credentials" };
+          return { error: "Ugyldige initialer" };
         default:
           return { error: "Something went wrong" };
       }
