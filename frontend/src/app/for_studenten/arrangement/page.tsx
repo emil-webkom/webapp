@@ -19,6 +19,7 @@ import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissi
 import LavterskelArrangementForm from "@/components/forms/lavterskelarrangementform";
 import EventCalendarView from "@/components/event/eventCalendarview";
 import { LavterskelArrangement } from "@prisma/client";
+import TextLink from "@/components/ui/textLink";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
@@ -216,13 +217,10 @@ const ForStudentenPage = () => {
           </p>
           <p>
             Påmelding til arrangementer skjer både gjennom nettsiden og gjennom
-            emils
-            <span className="text-[#9DDBAD] text-underscore">
-              <a href="https://www.facebook.com/groups/emilntnu/?locale=nb_NO">
-                {" "}
-                Facebookgruppe
-              </a>
-            </span>
+            emils{" "}
+            <TextLink href={"https://www.facebook.com/groups/emilntnu/?locale=nb_NO"}>
+            facebookgruppe
+            </TextLink>
             . Ved spørsmål angående arrangementer kan man henvende seg til
             arrangør eller hovedstyret.
           </p>
