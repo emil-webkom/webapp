@@ -6,15 +6,16 @@ import { Hovedstyret } from "@/schemas/hovedstyret";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 
-interface dataProps{
+interface dataProps {
   message: string;
-  data: Samarbeidspartner[]
+  data: Samarbeidspartner[];
 }
-
 
 const Footer: FC = () => {
   const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
-  const { data, loading, error } = useFetch<dataProps | null>("/api/samarbeidspartner");
+  const { data, loading, error } = useFetch<dataProps | null>(
+    "/api/samarbeidspartner",
+  );
 
   const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [leder, setLeder] = useState<Hovedstyret | undefined>();
