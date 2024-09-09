@@ -10,6 +10,7 @@ import { Arrangement } from "@/schemas/arrangement";
 import { getArrangementerByUserId } from "@/utils/actions/getArrangementer";
 import ListView from "@/components/event/listView";
 import BookingView from "@/components/ForStudenten/booking/booking-view";
+import KontigentView from "@/components/user/kontigent";
 
 const SettingsPage = () => {
   const user = useCurrentUser();
@@ -34,10 +35,11 @@ const SettingsPage = () => {
     <div className="space-y-6">
       <Separator />
       <Tabs defaultValue="Profil">
-        <TabsList>
+        <TabsList className="flex flex-wrap justify-start gap-2 h-fit">
           <TabsTrigger value="Profil">Profil</TabsTrigger>
           <TabsTrigger value="Arrangementer">Arrangementer</TabsTrigger>
           <TabsTrigger value="Bookinger">Bookinger</TabsTrigger>
+          <TabsTrigger value="Kontigent">Kontigent</TabsTrigger>
         </TabsList>
         <TabsContent value="Profil">
           <ProfileForm />
@@ -49,6 +51,9 @@ const SettingsPage = () => {
         <TabsContent value="Bookinger">
           <h2>Dine bookinger:</h2>
           <BookingView />
+        </TabsContent>
+        <TabsContent value="Kontigent">
+          <KontigentView/>
         </TabsContent>
       </Tabs>
     </div>

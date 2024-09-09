@@ -17,6 +17,7 @@ model User {
   role                   UserRole                @default(USER)
   nummer                 Int?
   isActive               Boolean                 @default(true)
+  kontigent              Kontigent               @default(UBETALT)
   username               String?                 @unique
   accounts               Account[]
   paameldinger           ArrangementPaamelding[]
@@ -170,6 +171,11 @@ model aeresEmiler {
   navn String
   aar  Int
 }
+model Kontigentpris{
+  id String @id @default(cuid())
+  aar String
+  pris Int
+}
 
 enum aeresEmilerType {
   AERESEMILER
@@ -192,4 +198,10 @@ enum UserRole {
   ADMIN
   USER
   SUPER_USER
+}
+
+enum Kontigent{
+  BETALT
+  UBETALT
+  AVVENTER_BEKREFTELSE
 }
