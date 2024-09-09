@@ -9,18 +9,11 @@ const MineBookingerPage = () => {
     <div className="flex flex-col items-center justify-center bg-[#225654] rounded-b-md gap-y-4 p-4">
       <div className="flex justify-between w-full ">
         <Link
-          href="/for_studenten/booking"
+          href="/for_studenten/booking/soundbox"
           className="flex px-4 font-light text-md items-center text-underscore"
         >
           <ArrowLeft />
           Tilbake
-        </Link>
-        <Link
-          href="/for_studenten/booking/soundbox"
-          className="flex px-4 font-light text-md items-center text-underscore"
-        >
-          Soundbox
-          <ArrowRight />
         </Link>
       </div>
       <div className="flex flex-col space-y-4">
