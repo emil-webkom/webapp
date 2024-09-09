@@ -180,8 +180,8 @@ const ForStudentenPage = () => {
           <p>
             Typen arrangementer som holdes kan være alt fra sosiale
             arrangementer, faglige arrangementer, ekskursjoner og
-            bedriftspresentasjoner. Sistnevnte her er det
-            <span className="text-green-lightest"> Emil-Link </span>
+            bedriftspresentasjoner. Sistnevnte her er det{" "}
+            <TextLink href="https://www.emil-link.no/">Emil-Link</TextLink>{" "}
             som er ansvarlig for. Uansett hvilket arrangement man skal delta på
             har vi retningslinjer på Emil som må følges uavhengig av hva som
             gjennomføres.
@@ -205,7 +205,7 @@ const ForStudentenPage = () => {
           className="bg-green-mid flex flex-col items-center justify-center py-10 px-12"
         >
           <HeaderText className="mb-6">Arrangementsregler</HeaderText>
-          <div className="flex justify-center items-center max-w-[512px]">
+          <div className="flex justify-center items-center">
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-4 gap-4 justify-center py-4">
               <NyStudentCard
                 title={
