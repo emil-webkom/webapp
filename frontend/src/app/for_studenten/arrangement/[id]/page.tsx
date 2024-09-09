@@ -90,7 +90,7 @@ const ArrangementPage = ({ params }: { params: { id: string } }) => {
         />
       </div>
       <div className="">
-        <h1 className="font-bold text-2xl border-b-2 border-[#9DDBAD]">
+        <h1 className="font-bold text-2xl border-b-2 border-green-lightest">
           {data?.navn}
         </h1>
       </div>

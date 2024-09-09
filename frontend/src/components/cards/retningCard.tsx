@@ -12,7 +12,7 @@ interface CardProps {
 
 const RetningCard: FC<CardProps> = ({ name, subname, text, link }) => {
   return (
-    <div className="w-[90%] lg:w-[25vw] flex flex-col justify-between bg-[#003A42] rounded-md py-6">
+    <div className="w-[90%] lg:w-[25vw] flex flex-col justify-between bg-green-dark rounded-md py-6">
       <div className="text-l lg:text-xl font-semibold px-10 lg:h-[4rem]">
         {name}
       </div>

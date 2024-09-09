@@ -25,7 +25,7 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
   buttonLinkHref,
 }) => {
   return (
-    <div className="bg-white rounded-lg border-2 border-[#001D21] lg:w-96 p-6 flex flex-col items-center">
+    <div className="bg-white rounded-lg border-2 border-green-darkest lg:w-96 p-6 flex flex-col items-center">
       <div className="flex flex-col justify-between">
         <div className="flex justify-center">
           <a
@@ -41,7 +41,7 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
             />
           </a>
         </div>
-        <h3 className="text-xl font-medium text-[#003A42] flex justify-center text-center py-5 ">
+        <h3 className="text-xl font-medium text-green-dark flex justify-center text-center py-5 ">
           {subtitle}
         </h3>
 
@@ -49,7 +49,7 @@ const NaeringslivCard: React.FC<NaeringslivCardProps> = ({
           {description}
           <a
             href={linkHref}
-            className="text-[#225654] hover:text-gray-300 active:text-grey-500"
+            className="text-green-mid hover:text-gray-300 active:text-grey-500"
           >
             {linkText}
           </a>

@@ -147,8 +147,8 @@ const OmEmilPage = () => {
             <div id="Top" className="font-semibold text-l lg:text-2xl">
               Studiet er et fem-årig sivilingeniørstudie ved NTNU i Trondheim.
               Det kombinerer{" "}
-              <span className="text-[#579783]">energi- og prosessteknikk</span>{" "}
-              med <span className="text-[#579783]">elkraftteknikk</span> som
+              <span className="text-green-light">energi- og prosessteknikk</span>{" "}
+              med <span className="text-green-light">elkraftteknikk</span> som
               gjør at du får en unik forståelse av energisystemet som helhet.
             </div>
             <div id="Bottom" className="font-extralight text-sm lg:text-base">
@@ -218,7 +218,7 @@ const OmEmilPage = () => {
               </p>
             </div>
             <div id="Vedtekt" className="text-white flex items-center">
-              <div className="bg-[#003A42] flex flex-col items-center py-3 lg:py-10 rounded-md px-10 justify-top space-y-10 ">
+              <div className="bg-green-dark flex flex-col items-center py-3 lg:py-10 rounded-md px-10 justify-top space-y-10 ">
                 <p className="text-xl font-semibold">Fra vedtektene</p>
                 <p className="text-sm lg:text-base font-normal">
                   § 1-2 Hensikt EMIL søker å styrke de sosiale forbindelsene

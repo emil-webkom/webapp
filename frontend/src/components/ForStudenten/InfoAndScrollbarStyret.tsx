@@ -22,13 +22,13 @@ const InfoAndScrollbarStyret: React.FC<InfoAndScrollbarStyretProps> = ({
 }) => {
   return (
     <div className="flex justify-center mt-12 mb-48">
-      <div className="bg-[#003A42] w-3/4 rounded-lg text-white h-full flex flex-col relative">
+      <div className="bg-green-dark w-3/4 rounded-lg text-white h-full flex flex-col relative">
         <div className="w-full p-2">
           <div className="relative">
-            <div className="absolute top-0 left-0 w-12 h-full bg-gradient-to-r from-[#003A42] to-transparent pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-12 h-full bg-gradient-to-l from-[#003A42] to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 left-0 w-12 h-full bg-gradient-to-r from-green-dark to-transparent pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-12 h-full bg-gradient-to-l from-green-dark to-transparent pointer-events-none"></div>
 
-            <div className="flex overflow-x-auto scrollbar-hide custom-scrollbar bg-[#003A42] rounded-t-lg border-b border-gray-300 m-5">
+            <div className="flex overflow-x-auto scrollbar-hide custom-scrollbar bg-green-dark rounded-t-lg border-b border-gray-300 m-5">
               <Link
                 href="/for_studenten/komiteer/emil-styret"
                 className="flex-none text-white font-normal px-4 py-2 hover:text-gray-300 active:text-grey-500 hover-shadov"

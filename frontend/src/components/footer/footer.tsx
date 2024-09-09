@@ -50,7 +50,7 @@ const Footer: FC = () => {
 
   return (
     <footer>
-      <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-[#001D21] text-white px-10 font-bold py-5">
+      <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-green-darkest text-white px-10 font-bold py-5">
         {/* Emil section */}
         <div className="flex flex-col lg:w-[20%] md:w-[20%] pt-6">
           <div className="flex justify-left">
@@ -146,7 +146,7 @@ const Footer: FC = () => {
       </div>
 
       {/* Social media links */}
-      <div className="bg-[#001D21] color-white py-4">
+      <div className="bg-green-darkest color-white py-4">
         <div className="flex justify-center space-x-4">
           <a
             href="https://www.instagram.com/emilelgen/"
@@ -195,7 +195,7 @@ const Footer: FC = () => {
         </div>
       </div>
 
-      <div className="flex max-w-screen items-center justify-center bg-[#001D21] py-2">
+      <div className="flex max-w-screen items-center justify-center bg-green-darkest py-2">
         <img
           src="/svg/Three clover.svg"
           alt="Trekløver"

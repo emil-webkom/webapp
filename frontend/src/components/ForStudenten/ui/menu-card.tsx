@@ -35,7 +35,7 @@ const MenuCard = ({
   const isInternalLink = href.startsWith("/");
   return (
     <Card className="min-w-[280px] min-h-[248px] border-none bg-[#25504F] text-[#fff] flex flex-col justify-between">
-      <CardHeader className="text-[#9DDBAD] flex flex-row space-x-2 items-center">
+      <CardHeader className="text-green-lightest flex flex-row space-x-2 items-center">
         {logo}
         <CardTitle className="flex items-center pb-1 align-middle text-white">
           {title}

@@ -54,7 +54,7 @@ const ForStudentenPage = () => {
         </p>
       </div>
       <SmallTransissionPCSPC />
-      <div className="w-full bg-[#225654] rounded-b-xl flex items-center justify-center">
+      <div className="w-full bg-green-mid rounded-b-xl flex items-center justify-center">
         <div className="w-[95%] lg:w-[60%] pb-8">
           {logos.length > 0 ? (
             <Logos data={logos} />

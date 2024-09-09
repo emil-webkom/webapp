@@ -308,7 +308,7 @@ const ForStudentPage = () => {
     {
       title: "De første ukene på studiet",
       tag: "De første ukene",
-      intro: <>Her kan du lese mer om opplegg som skjer de første ukene</>,
+      intro: <>Her kan du lese om opplegg som skjer de første ukene</>,
       content: (
         <div className="flex flex-col self-center w-full max-w-[512px] gap-4">
           {forsteUkeneCards.map((c, i) => (

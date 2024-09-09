@@ -98,7 +98,7 @@ const ArkivPage = () => {
         <MenuCardView cards={cards} />
       </div>
       <SmallTransissionPCSPC />
-      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-2 lg:px-4 gap-y-4 pb-4 rounded-b-lg">
+      <div className="w-full flex flex-col items-center justify-center text-white bg-green-mid px-2 lg:px-4 gap-y-4 pb-4 rounded-b-lg">
         <div className="max-w-[512px] w-full px-4 lg:px-8">
           <h1 className="text-white text-center font-semibold py-2 text-xl sm:text-2xl w-full">
             Wall of fame
@@ -137,14 +137,14 @@ const ArkivPage = () => {
                       <tbody>
                         {paginatedData.map((aeresemiler) => (
                           <tr key={aeresemiler.id}>
-                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
+                            <td className="px-2 lg:px-6 py-4 border-b border-green-dark">
                               {aeresemiler.aar}
                             </td>
-                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
+                            <td className="px-2 lg:px-6 py-4 border-b border-green-dark">
                               {aeresemiler.type.charAt(0).toUpperCase() +
                                 aeresemiler.type.slice(1).toLowerCase()}
                             </td>
-                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42] whitespace-normal break-words">
+                            <td className="px-2 lg:px-6 py-4 border-b border-green-dark whitespace-normal break-words">
                               {aeresemiler.navn}
                             </td>
                           </tr>

@@ -21,17 +21,17 @@ const forStudentenPage = () => {
             Ved uønskede hendelser, ønsker vi i styret at du tar kontakt med oss.
           </h2>
 
-        <div className="bg-[#225654] rounded-md text-sm lg:text-base max-w-xl mx-auto text-left mt-6 px-6 pt-3 pb-5 ">
+        <div className="bg-green-mid rounded-md text-sm lg:text-base max-w-xl mx-auto text-left mt-6 px-6 pt-3 pb-5 ">
           
           <p className="text-white font-thin pb-5">
             Noe av det viktigste vi kan gjøre for å sikre at alle i linjeforeningen kommer seg trygt gjennom
-            studietiden, er å <span className="text-[#9DDBAD] font-normal lg:font-semibold"> si ifra når ting ikke er som de skal. </span> Uansett om det er en stor eller liten utfordring/hendelse,
+            studietiden, er å <span className="text-green-lightest font-normal lg:font-semibold"> si ifra når ting ikke er som de skal. </span> Uansett om det er en stor eller liten utfordring/hendelse,
             er det bedre å si ifra en gang for mye enn en gang for lite. Ved å få vite om utfordringer tidlig, er det mye lettere å gjøre noe med utfallet.
           </p>
 
           <p className="text-white font-thin pb-5">
             Ved uønskede hendelser, ønsker linjeforeningen å få vite om det slik at riktige tiltak kan settes inn for å unngå at det gjentar seg.
-            <span className="text-[#9DDBAD] font-normal lg:font-semibold "> Enhver hendelse som meldes inn til oss vil bli tatt på alvor. </span>Du kan velge å holde det anonymt, eller å skrive ditt navn for at linjeforeningsstyret
+            <span className="text-green-lightest font-normal lg:font-semibold "> Enhver hendelse som meldes inn til oss vil bli tatt på alvor. </span>Du kan velge å holde det anonymt, eller å skrive ditt navn for at linjeforeningsstyret
             kan følge opp hendelsen/situasjonen videre med deg. Uansett vil vi i denne prosessen ta hensyn til deg og andre berørte.
           </p>
 
@@ -53,7 +53,7 @@ const forStudentenPage = () => {
             rel="noopener noreferrer" 
             className="text-white font-thin text-base text-center"
           >
-          <Button className="bg-[#001D21] text-white hover:bg-[#80b0b7] hover:text-white ">
+          <Button className="bg-green-darkest text-white hover:bg-[#80b0b7] hover:text-white ">
             Varsle styret her
             </Button>
           </a>

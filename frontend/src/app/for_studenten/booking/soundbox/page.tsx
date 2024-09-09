@@ -59,7 +59,7 @@ const SoundboxPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-[#225654] rounded-b-md gap-y-4 px-2 sm:px-4">
+    <div className="flex flex-col items-center justify-center bg-green-mid rounded-b-md gap-y-4 px-2 sm:px-4">
       <div className="flex justify-start w-full">
         <Link
           href="/for_studenten/booking"
@@ -78,7 +78,7 @@ const SoundboxPage = () => {
           datoer nedenfor og legg inn en booking. Når du har lagt inn en booking
           vil styret godkjenne bookingen din og den kommer opp i oversikten
           under{" "}
-          <span className="text-[#9DDBAD] text-underscore">
+          <span className="text-green-lightest text-underscore">
             <Link href="/for_studenten/booking/bookings">dine bookinger</Link>
           </span>
           .
@@ -133,7 +133,7 @@ const SoundboxPage = () => {
                 const isToday = dateString === new Date().toDateString();
 
                 return view === "month" && isToday
-                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                  ? "bg-green-light text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
                   : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
               }}
               tileContent={({ date, view }) => {
@@ -201,7 +201,7 @@ const SoundboxPage = () => {
           </div>
         </div>
         {openForm && ( // Conditionally render BookingWindow based on selected date
-          <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
+          <div className="fixed inset-0 bg-green-light bg-opacity-30 flex items-center justify-center z-50">
             <div className="flex justify-start items-start py-4">
               <BookingWindow
                 onStatusChange={handleStatusChange}

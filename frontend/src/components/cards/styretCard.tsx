@@ -69,7 +69,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
               data.map((item, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-full flex flex-col items-center gap-x-4 p-4 lg:p-6 justify-center bg-[#003A42] rounded-md lg:space-y-0 lg:flex-row "
+                  className="flex-shrink-0 w-full flex flex-col items-center gap-x-4 p-4 lg:p-6 justify-center bg-green-dark rounded-md lg:space-y-0 lg:flex-row "
                 >
                   <div className="flex flex-col space-y-3 lg:justify-between w-full lg:w-[50vh] lg:h-[50vh]">
                     <div className="">

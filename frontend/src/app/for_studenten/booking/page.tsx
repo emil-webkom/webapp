@@ -48,7 +48,7 @@ const BookingPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center text-white">
-      <div className="p-12 bg-[#225654] rounded-b-md h-full">
+      <div className="p-12 bg-green-mid rounded-b-md h-full">
         <MenuCardView cards={cards}></MenuCardView>
       </div>
     </div>

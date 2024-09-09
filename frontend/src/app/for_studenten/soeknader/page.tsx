@@ -22,15 +22,15 @@ const soeknaderPage = () => {
           <br />
           <br />
           Du kan søke om midler{" "}
-          <strong className="text-[#9DDBAD]"> opp til 5000 kr</strong> til ulike
+          <strong className="text-green-lightest"> opp til 5000 kr</strong> til ulike
           formål, slik som arrangementer eller investeringer som ikke er
           budsjettert. Merk at om det skal søkes om større beløp enn 5000 kr må
-          du søke hos <strong className="text-[#9DDBAD]">Blomsterpotten</strong>
+          du søke hos <strong className="text-green-lightest">Blomsterpotten</strong>
           .
           <br />
           <br />
           Du kan søke fra Leos minnefond både før og etter pengene er brukt. Det
-          anbefales å søke <strong className="text-[#9DDBAD]">før</strong> du
+          anbefales å søke <strong className="text-green-lightest">før</strong> du
           bruker pengene for å ikke gå på en smell om du ikke får godkjent.
         </>
       ),
@@ -90,7 +90,7 @@ const soeknaderPage = () => {
       <SmallTransissionPCSPC />
 
       <div></div>
-      <div className="bg-[#225654] w-full text-white flex justify-center items-center py-4 lg:px-16">
+      <div className="bg-green-mid w-full text-white flex justify-center items-center py-4 lg:px-16">
         <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 ">
           <div className="w-[90%] lg:w-[60%] flex flex-col justify-center items-center">
             <NyStudentCard
@@ -113,14 +113,14 @@ const soeknaderPage = () => {
 
       <SmallTransissionSPCPC />
 
-      <div className="bg-[#003A42] text-white flex items-center justify-center pb-7 lg:pb-2">
+      <div className="bg-green-dark text-white flex items-center justify-center pb-7 lg:pb-2">
         <Flower className="w-12 h-12 pt-4"></Flower>
         <h1 className="text-white font-semibold text-3xl pt-4 text-center">
           Blomsterpotten
         </h1>
       </div>
 
-      <div className="bg-[#003A42] text-white w-full flex justify-center items-center py-4 pt-1 lg:px-16">
+      <div className="bg-green-dark text-white w-full flex justify-center items-center py-4 pt-1 lg:px-16">
         <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 lg:py-8">
           <div className="w-[90%] bg-[#00333A] px-12 py-5">
             <p className="font-bold">Søknadskriterier</p>
@@ -144,7 +144,7 @@ const soeknaderPage = () => {
 
             <p className="font-thin text-sm">Søknader sendes til styret:</p>
             <div className="flex justify-items gap-2 pt-2">
-              <Mail className="h-4 w-4 text-[#9DDBAD]"></Mail>
+              <Mail className="h-4 w-4 text-green-lightest"></Mail>
               <p className="font-thin text-xs">styret@emilweb.no</p>
             </div>
           </div>
@@ -183,7 +183,7 @@ const soeknaderPage = () => {
       </div>
 
       <div className="pb-20 flex justify-center items-center ">
-        <div className=" bg-white p-4 w-[90%] lg:w-[86%] rounded-md text-[#001D21]  ">
+        <div className=" bg-white p-4 w-[90%] lg:w-[86%] rounded-md text-green-darkest  ">
           <div className="flex items-center">
             <Notebook></Notebook>
             <h1 className="font-semibold text-xl">Eksempelsøknad</h1>

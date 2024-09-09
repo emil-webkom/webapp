@@ -181,7 +181,7 @@ const ForStudentenPage = () => {
             Typen arrangementer som holdes kan være alt fra sosiale
             arrangementer, faglige arrangementer, ekskursjoner og
             bedriftspresentasjoner. Sistnevnte her er det
-            <span className="text-[#9DDBAD]"> Emil-Link </span>
+            <span className="text-green-lightest"> Emil-Link </span>
             som er ansvarlig for. Uansett hvilket arrangement man skal delta på
             har vi retningslinjer på Emil som må følges uavhengig av hva som
             gjennomføres.
@@ -335,7 +335,7 @@ const ForStudentenPage = () => {
                 const isToday = dateString === new Date().toDateString();
 
                 return view === "month" && isToday
-                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                  ? "bg-green-light text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
                   : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
               }}
               tileContent={({ date, view }) => {
@@ -383,7 +383,7 @@ const ForStudentenPage = () => {
             />
 
             {selectedDate && (
-              <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
+              <div className="fixed inset-0 bg-green-light bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
                   <h2 className="text-xl font-bold mb-4">
                     {

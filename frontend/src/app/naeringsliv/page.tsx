@@ -47,7 +47,7 @@ const NaeringslivPage = () => {
       </div>
       <TransissionIn />
 
-      <div className="bg-[#001D21] w-full flex flex-col items-center justify-center lg:space-x-24 py-6 lg:py-16">
+      <div className="bg-green-darkest w-full flex flex-col items-center justify-center lg:space-x-24 py-6 lg:py-16">
         <div className="flex flex-col items-center w-[90%] lg:w-[65%] gap-y-3">
           <div className="flex flex-col gap-y-6 w-full lg:flex-row lg:justify-between">
             {loading ? (

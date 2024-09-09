@@ -71,7 +71,7 @@ const AarligArrangementCard: FC<AarligArrangementCardProps> = ({ data }) => {
             {data.map((item, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-[#001D21]  rounded-md py-5 space-y-5  lg:space-x-5 lg:p-6"
+                className="flex-shrink-0 w-full flex flex-col items-center justify-between bg-green-darkest  rounded-md py-5 space-y-5  lg:space-x-5 lg:p-6"
               >
                 <h2 className="font-bold text-xl">{item.Name}</h2>
                 <div>

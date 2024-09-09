@@ -30,7 +30,7 @@ const BrukerComponent = () => {
     return <div>Error</div>;
   }
   return (
-    <div className="flex flex-col items-center bg-[#003A42] rounded-md py-6 text-white">
+    <div className="flex flex-col items-center bg-green-dark rounded-md py-6 text-white">
       <div className="w-full px-4 lg:px-8">
         <h1 className="text-white text-center font-semibold py-2 text-xl sm:text-2xl w-full">
           Oversikt over Æresemilere og utdelte fortjenestemedaljer
@@ -40,7 +40,7 @@ const BrukerComponent = () => {
         Legg til?
       </button>
       <div className="flex flex-col w-full p-4 ">
-        <div className="flex bg-[#225654] rounded-md p-2">
+        <div className="flex bg-green-mid rounded-md p-2">
           <div className="w-[30%]">Navn:</div>
           <div className="w-[30%]">Type pris</div>
           <div className="w-[30%]">År:</div>
