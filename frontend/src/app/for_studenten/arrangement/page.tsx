@@ -199,13 +199,12 @@ const ForStudentenPage = () => {
           ]}
         />
         <SmallTransissionHighlightSPC />
+
         <div
           id="Regler"
-          className="bg-green-mid flex flex-col items-center justify-center pt-8 px-12"
+          className="bg-green-mid flex flex-col items-center justify-center py-10 px-12"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4">
-            <p>Arrangementsregler</p>
-          </div>
+          <HeaderText className="mb-6">Arrangementsregler</HeaderText>
           <div className="flex justify-center items-center max-w-[512px]">
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-4 gap-4 justify-center py-4">
               <NyStudentCard
@@ -260,13 +259,11 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Aktive arrangementer"
-          className="flex flex-col items-center justify-center py-6 px-12"
+          className="flex flex-col items-center justify-center py-10 px-12"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-6">
-            <p>Aktive arrangementer</p>
-          </div>
+          <HeaderText className="mb-2">Aktive arrangementer</HeaderText>
           <div className="max-w-[512px] w-full ">
-            <p className="pb-4">
+            <p className="pb-6 text-center">
               Aktive arrangementer publiseres her og i relevante{" "}
               <TextLink href="https://www.facebook.com/groups/emilntnu">
 
@@ -274,7 +271,7 @@ const ForStudentenPage = () => {
 
                   </TextLink>
 
-              . Klikk på et arrangement for å lese mer!
+              . <span>Klikk på et arrangement for å lese mer!</span>
             </p>
             {loading ? (
               <div className="flex flex-col items-center justify-center">
@@ -292,13 +289,11 @@ const ForStudentenPage = () => {
         <SmallTransissionPCSPC />
         <div
           id="Lavterskelkalender"
-          className="bg-green-mid flex flex-col items-center justify-center py-6"
+          className="bg-green-mid flex flex-col items-center justify-center py-10 px-12"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
-            <p>Lavterskelkalender</p>
-          </div>
-          <div className="max-w-[512px] w-full pb-6">
-            <p className="pb-4 px-12">
+          <HeaderText className="mb-4">Lavterskekalender</HeaderText>
+          <div className="max-w-lg w-full mb-6">
+            <p className="">
               Emil har en lavterskelkalender som kan brukes for å planlegge
               arrangementer og happenings framover i tid. Den skal være
               tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
@@ -435,13 +430,11 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Årlige arrangementer"
-          className="flex flex-col items-center justify-center py-6 gap-y-4"
+          className="flex flex-col items-center justify-center py-10"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 px-12">
-            <p>Årlige arrangementer</p>
-          </div>
-          <div className="max-w-[512px] w-full px-12">
-            <p className="pb-4">
+          <HeaderText className="mb-4">Årlige arrangementer</HeaderText>
+          <div className="max-w-lg w-full px-12">
+            <p className="mb-6">
               Emil har også mange faste arrangementer som går gjennom året. Det
               varierer fra fest og morro til mer seriøse samlinger hvor vi
               diskuterer linjeforeningens drift, mål og andre sentrale spørsmål.

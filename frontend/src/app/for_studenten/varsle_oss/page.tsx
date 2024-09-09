@@ -31,7 +31,7 @@ const forStudentenPage = () => {
 
           <p className="text-white font-thin pb-5">
             Ved uønskede hendelser, ønsker linjeforeningen å få vite om det slik at riktige tiltak kan settes inn for å unngå at det gjentar seg.
-            <span className="text-green-lightest font-normal lg:font-semibold "> Enhver hendelse som meldes inn til oss vil bli tatt på alvor. </span>Du kan velge å holde det anonymt, eller å skrive ditt navn for at linjeforeningsstyret
+            <span className="font-bold lg:font-semibold "> Enhver hendelse som meldes inn til oss vil bli tatt på alvor. </span>Du kan velge å holde det anonymt, eller å skrive ditt navn for at linjeforeningsstyret
             kan følge opp hendelsen/situasjonen videre med deg. Uansett vil vi i denne prosessen ta hensyn til deg og andre berørte.
           </p>
 

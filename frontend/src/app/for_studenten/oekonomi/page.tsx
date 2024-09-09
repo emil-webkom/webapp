@@ -8,6 +8,7 @@ import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissi
 import { Button } from "@/components/ui/button"; 
 import MariaCard from "@/components/cards/mariaCard";
 import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
+import TextLink from "@/components/ui/textLink";
 
 
 
@@ -55,7 +56,7 @@ const forStudentenPage = () => {
         Vi har også Leo’s minnefond. Her kan alle linjeforeningens medlemmer søke om støtte. Søknader hit er mer lavterskel, og det kan søkes om blant annet støtte til klasse arrangement.
         <br />
         <br />
-        På siden <span className= "text-green-lightest italic"> søknader</span>, finner du enda mer informasjon om Leo’ s minnefond og blomsterpotten.
+        På siden <TextLink href={"/for_studenten/soeknader"}>søknader</TextLink>, finner du enda mer informasjon om Leo’ s minnefond og blomsterpotten.
         
       </>
        
@@ -66,7 +67,7 @@ const forStudentenPage = () => {
   ];
 
   return <div className="w-full flex flex-col items-center justify-center text-white">
-    <div className= "w-full flex flex-col justify-center items-center p-12">
+    <div className= "w-full flex flex-col justify-center items-center px-12 py-10">
       
       <HeaderText className="text-3xl">Økonomi</HeaderText>
       <p className="text-white font-normal pt-4 text-center w-full max-w-lg">
@@ -98,14 +99,14 @@ const forStudentenPage = () => {
       <SmallTransissionSPCPC />
 
       <div className="px-12 py-12 flex justify-center items-center ">
-        <div className=" bg-white p-4 w-[90%] lg:w-[60%] rounded-md text-green-darkest ">
+        <div className=" bg-white p-4 max-w-lg rounded-md text-green-darkest ">
           <div className="flex items-center">
-            <FileQuestion className="text-[#3B6E62] fill-green-lightest"></FileQuestion>
+            <FileQuestion className="text-green-mid fill-green-lightest"></FileQuestion>
             <h1 className="font-semibold text-xl">Hvordan føre bilag</h1>
           </div>
           <br></br>
 
-          <p className="text-sm lg:text-base"> Her finner du en sjekkliste for hvordan man fører bilag. Bilag sendes alltid på mail til <strong className="text-green-light italic"> energi-og-miljoingeniorenes-linjeforening-emi@bilag.fiken.no. </strong></p>
+          <p className="text-sm lg:text-base"> Her finner du en sjekkliste for hvordan man fører bilag. Bilag sendes alltid på mail til <br/> <span className="text-green-light font-semibold"> energi-og-miljoingeniorenes-linjeforening-emi@bilag.fiken.no. </span></p>
           <br></br>
 
           <ul className=" text-sm lg:text-base list-disc pl-4">
