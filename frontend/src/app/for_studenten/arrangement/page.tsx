@@ -114,11 +114,8 @@ const ForStudentenPage = () => {
       setLavterskelArrangement(dataLTA.data);
 
       // Combine the arrangements after both states are updated
-      console.log(dataLTA.data)
-      const combined = [
-        ...dataA.data,
-        ...dataLTA.data,
-      ];
+      console.log(dataLTA.data);
+      const combined = [...dataA.data, ...dataLTA.data];
       setAllCombinedArrangements(combined);
     } catch (err) {
       if (err instanceof Error) {
@@ -230,7 +227,9 @@ const ForStudentenPage = () => {
             Typen arrangementer som holdes kan være alt fra sosiale
             arrangementer, faglige arrangementer, ekskursjoner og
             bedriftspresentasjoner. Sistnevnte her er det
-            <span className="text-[#9DDBAD]"> Emil-Link </span>
+            <span className="text-[#9DDBAD]">
+              <a href="https://www.emil-link.no/"> Emil Link</a>
+            </span>
             som er ansvarlig for. Uansett hvilket arrangement man skal delta på
             har vi retningslinjer på Emil som må følges uavhengig av hva som
             gjennomføres.

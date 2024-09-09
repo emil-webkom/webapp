@@ -182,7 +182,7 @@ export function ProfileForm() {
                 Det tar vanligvis litt tid før profilbildet ditt lastes opp.
               </FormDescription>
               <FormControl>
-                <div className="relative w-32 h-32 mx-auto">
+                <div className="relative w-32 h-32">
                   <Avatar
                     className="w-full h-full cursor-pointer"
                     onClick={handleAvatarClick}

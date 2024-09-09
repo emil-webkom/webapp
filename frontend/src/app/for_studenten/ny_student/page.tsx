@@ -43,7 +43,7 @@ const ForStudentPage = () => {
         "Når du har fått plass på studiet må semesteravgiften betales og fag må velges. Logg deg inn på StudentWeb og følg instruksjonene.",
       frist: "15. sep (høst) og 1. feb (vår)",
       buttonText: "StudentWeb",
-      href: "https://www.youtube.com",
+      href: "https://fsweb.no/studentweb/index.jsf?inst=FSNTNU",
       icon: <Coins className="h-5" />,
     },
     {
