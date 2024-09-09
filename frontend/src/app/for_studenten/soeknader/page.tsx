@@ -82,7 +82,7 @@ const soeknaderPage = () => {
       </div>
       <SmallTransissionPCSPC />
 
-      <div className="bg-green-mid w-full text-white flex justify-center items-center py-4 lg:px-16">
+      <div className="bg-green-mid w-full text-white flex justify-center items-center py-10 px-12">
         <div className="w-full flex flex-col items-center lg:items-stretch justify-center lg:flex-row gap-y-4 lg:gap-y-0 lg:gap-x-4 ">
           <div className="w-[90%] lg:w-[60%] flex flex-col justify-center items-center">
             <NyStudentCard
