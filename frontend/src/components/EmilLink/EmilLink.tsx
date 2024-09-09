@@ -32,9 +32,9 @@ const EmilLink = () => {
      
       
       <p className="font-extralight text-sm lg:text-base leading-relaxed max-w-4xl">
-        EMIL-Link fungerer som bindeleddet mellom emil-studentene og bedrifter.
+        EMIL-Link fungerer som bindeleddet mellom EMIL-studentene og bedrifter.
         Ønsker din bedrift å promotere stillingsannonser, internships eller gi
-        et generelt innblikk i hva din bedrift driver med? Emil-Link tilbyr
+        et generelt innblikk i hva din bedrift driver med? EMIL-Link tilbyr
         flere ulike tjenester hvor bedrifter har mulighet til å komme i kontakt
         med våre studenter og gjøre nettopp dette. EMIL-Link er Energi- og
         miljøingeniørenes bedriftskontakt, en komite underlagt linjeforeningen.

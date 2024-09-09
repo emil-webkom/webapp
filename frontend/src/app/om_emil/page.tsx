@@ -83,7 +83,7 @@ const OmEmilPage = () => {
     <div className="max-w-screen">
       <Hero2
         title="Energi og miljøstudentenes linjeforening"
-        undertitle="Her finner du informasjon om linjeforeningen Emil"
+        undertitle="Her finner du informasjon om linjeforeningen EMIL"
       />
       <div className="flex flex-col justify-center items-center">
         <div className="flex justify-center items-center w-[95%] lg:w-[65%]">
@@ -94,7 +94,7 @@ const OmEmilPage = () => {
                 technology) ved Norges teknisk-naturvitenskapelige universitet,
                 NTNU. Studiet ble først introdusert våren 1998 og med et
                 engasjert første kull ble linjeforeningen{" "}
-                <span className="font-bold">Emil</span> stiftet den 28.
+                <span className="font-bold">EMIL</span> stiftet den 28.
                 september 1998 kort tid etter første immatrikulering.
               </div>
               <div className="grid grid-cols-3 gap-2">
@@ -213,7 +213,7 @@ const OmEmilPage = () => {
               </p>
               <p className="text-sm lg:text-base font-extralight px-3">
                 Etter hvert har også linjeforeningen utviklet et sterkt nettverk
-                til energibransjen og dette håndteres av Emil-Link. Mer
+                til energibransjen og dette håndteres av EMIL-Link. Mer
                 informasjon om dem her.
               </p>
             </div>
@@ -290,16 +290,16 @@ const OmEmilPage = () => {
           <div className="flex flex-col justify-between lg:flex-row lg:space-x-10">
             <div className="flex flex-col justify-between space-y-5 ">
               <p className="font-medium text-medium lg:text-xl px-3">
-                Emil hadde ikke vært Emil uten studentfrivilligheten
+                EMIL hadde ikke vært EMIL uten studentfrivilligheten
               </p>
               <p className="font-extralight text-sm lg:text-base px-3">
-                I dag har Emil noe å by på for alle og enhver. Linjeforeningen
+                I dag har EMIL noe å by på for alle og enhver. Linjeforeningen
                 har over 20 offisielle komitteer som alle holder på hver sine
                 aktiviteter.{" "}
               </p>
               <p className="font-extralight text-sm lg:text-base px-3">
-                På Emil er deltakelse oppfordret og man kan bli med i så mange
-                komiteer man ønsker. Særegent for komiteene på Emil er at alle
+                På EMIL er deltakelse oppfordret og man kan bli med i så mange
+                komiteer man ønsker. Særegent for komiteene på EMIL er at alle
                 er lavterskel og holder sterkt fokus på et sosialt tilbud.
               </p>
               <p className="font-extralight text-sm lg:text-base px-3">
@@ -335,7 +335,7 @@ const OmEmilPage = () => {
         <div className="flex flex-col items-center w-[90%] lg:w-[65%] py-6 lg:py-10 space-y-6 lg:space-y-10">
           <div className="text-2xl font-bold">Faglig kontakt</div>
           <div className="font-extralight text-sm lg:text-base px-3">
-            Emil har mange kontaktpersoner designert til å hjelpe deg med
+            EMIL har mange kontaktpersoner designert til å hjelpe deg med
             studenttilværelsen. Avhengig av hvilke formål man har er det
             forskjellige kontaktpersoner. Her finner du kontaktinformasjon for
             de ulike formålene.

@@ -89,7 +89,7 @@ const ArkivPage = () => {
       <div className="w-full flex flex-col justify-center items-center px-12 py-10">
         <HeaderText className="text-3xl">Viktige dokumenter</HeaderText>
         <p className="text-white font-normal text-center max-w-lg pt-4">
-        Her ligger alle viktige dokumenter som Emil publiserer hvert år. For å
+        Her ligger alle viktige dokumenter som EMIL publiserer hvert år. For å
         se Diplomundersøkelsen må du trykke på “Se rapporter”.
         </p>
         <div className="mt-10">
@@ -105,7 +105,7 @@ const ArkivPage = () => {
           <p className="text-white text-sm text-left">
             Hvert år deler linjeforeningen ut ærespris og fortjenestemedajle til
             medlemmene som har bemerket seg i linjeforeningen. Under finner du
-            emil's wall of fame
+            EMIL's wall of fame
           </p>
         </div>
         <div className="p-2 lg:px-4 rounded-md items-center justify-center w-full lg:w-2/3 bg-[#25504E]">

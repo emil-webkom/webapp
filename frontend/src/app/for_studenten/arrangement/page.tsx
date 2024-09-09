@@ -181,9 +181,9 @@ const ForStudentenPage = () => {
             Typen arrangementer som holdes kan være alt fra sosiale
             arrangementer, faglige arrangementer, ekskursjoner og
             bedriftspresentasjoner. Sistnevnte her er det{" "}
-            <TextLink href="https://www.emil-link.no/">Emil-Link</TextLink>{" "}
+            <TextLink href="https://www.emil-link.no/">EMIL-Link</TextLink>{" "}
             som er ansvarlig for. Uansett hvilket arrangement man skal delta på
-            har vi retningslinjer på Emil som må følges uavhengig av hva som
+            har vi retningslinjer på EMIL som må følges uavhengig av hva som
             gjennomføres.
           </p>
         </div>
@@ -294,10 +294,10 @@ const ForStudentenPage = () => {
           <HeaderText className="mb-4">Lavterskekalender</HeaderText>
           <div className="max-w-lg w-full mb-6">
             <p className="">
-              Emil har en lavterskelkalender som kan brukes for å planlegge
+              EMIL har en lavterskelkalender som kan brukes for å planlegge
               arrangementer og happenings framover i tid. Den skal være
-              tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
-              tilbud og aktiviteter som skjer på Emil skal kunne legges inn her
+              tilgjengelig for hele EMIL og skal kunne brukes av alle. Alle
+              tilbud og aktiviteter som skjer på EMIL skal kunne legges inn her
               og sees av hele linjen slik at man kan koordinere rundt det. Den
               finnes også i{" "}
               <TextLink href="https://docs.google.com/spreadsheets/d/1NPX4qDA5BDv0QHx1QYmXG62Jl1SCMuAiCBoRrJQH3QQ/edit?gid=1062059690#gid=1062059690">
@@ -435,7 +435,7 @@ const ForStudentenPage = () => {
           <HeaderText className="mb-4">Årlige arrangementer</HeaderText>
           <div className="max-w-lg w-full px-12">
             <p className="mb-6">
-              Emil har også mange faste arrangementer som går gjennom året. Det
+              EMIL har også mange faste arrangementer som går gjennom året. Det
               varierer fra fest og morro til mer seriøse samlinger hvor vi
               diskuterer linjeforeningens drift, mål og andre sentrale spørsmål.
               Under finner du en oversikt.

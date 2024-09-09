@@ -74,7 +74,7 @@ const SoundboxPage = () => {
           Soundbox
         </h1>
         <p className="text-white text-sm text-left">
-          Emil har 2 soundboxer som kan bookes. Se oversikt over tilgjengelige
+          EMIL har 2 soundboxer som kan bookes. Se oversikt over tilgjengelige
           datoer nedenfor og legg inn en booking. Når du har lagt inn en booking
           vil styret godkjenne bookingen din og den kommer opp i oversikten
           under{" "}

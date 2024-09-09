@@ -38,13 +38,13 @@ const ForStudentenPage = () => {
           backgroundPos="0% 50%"/>
         <HeaderText className="text-3xl">Komiteene</HeaderText>
         <p className="text-white max-w-lg">
-        Emil har et rikt utvalg av komiteer som alle har lav terskel for å bli
+        EMIL har et rikt utvalg av komiteer som alle har lav terskel for å bli
           medlem av. Enkelte komiteer er mer forpliktende enn andre, men de
           drives av og for studenter så det er godt mulig å holde på med
           frivillig verv i linjeforeningen på siden.
           <br />
           <br />
-          Unikt for emil er engasjementet som eksisterer i linjeforeningen. Emil
+          Unikt for EMIL er engasjementet som eksisterer i linjeforeningen. EMIL
           har blant de høyeste andelen studenter som er med i linjeforeningen.
           Dette er til dels hvor enkelt det er å starte en egen komite for
           akkurat det du er interessert i!

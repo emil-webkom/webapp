@@ -14,9 +14,9 @@ export default function Layout({
       <div className="w-full flex flex-col justify-center items-center px-12 py-10">
         <HeaderText className="text-3xl">Booking</HeaderText>
         <p className="text-white font-normal max-w-lg pt-4">
-        På Emil kan du som student booke en rekke ting til diverse
+        På EMIL kan du som student booke en rekke ting til diverse
         anledninger. Vi har blant annet 2 Soundboxer til disposisjon,
-          Emil-kontoret og nå en hytte som deles med Smørekoppen! Komiteer kan
+          EMIL-kontoret og nå en hytte som deles med Smørekoppen! Komiteer kan
           også booke ting til arrangementer eller liknende.
         </p>
       </div>

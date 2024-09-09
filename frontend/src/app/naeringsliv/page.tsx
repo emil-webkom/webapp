@@ -33,7 +33,7 @@ const NaeringslivPage = () => {
         <div>
           <Hero2
             title="Næringsliv"
-            undertitle="Her finner du alt du trenger å vite om Emil og næringslivet"
+            undertitle="Her finner du alt du trenger å vite om EMIL og næringslivet"
           />
         </div>
         <p className="font-extralight text-sm lg:text-base">

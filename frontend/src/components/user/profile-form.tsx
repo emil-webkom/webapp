@@ -71,7 +71,7 @@ type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 // This can come from your database or API.
 const defaultValues: Partial<ProfileFormValues> = {
-  bio: "Jeg går Emil 4. klasse og liker sodd.",
+  bio: "Jeg går EMIL 4. klasse og liker sodd.",
   urls: [{ value: "+4712345678" }, { value: "+4790784534" }],
 };
 

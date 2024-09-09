@@ -16,7 +16,7 @@ const BookingPage = () => {
       title: "Soundbox",
       logo: <Speaker />,
       description:
-        "Emil har hele 2 soundboxer som studenter kan låne! Book en soundbox til en valgt dato eller tid. Ventetiden kan være lang så vær obs på å booke i god tid!",
+        "EMIL har hele 2 soundboxer som studenter kan låne! Book en soundbox til en valgt dato eller tid. Ventetiden kan være lang så vær obs på å booke i god tid!",
       buttonLabel: "Book Soundbox",
       href: "/for_studenten/booking/soundbox",
     },
@@ -24,7 +24,7 @@ const BookingPage = () => {
       title: "Kontoret",
       logo: <Coffee />,
       description:
-        "Emil-kontoret kan bookes hver dag fra 12 - 20. Dersom det skal drikkes alkohol inne på kontoret må man sende melding til vaktmesteren på gløs for å få dette godkjent på forhånd",
+        "EMIL-kontoret kan bookes hver dag fra 12 - 20. Dersom det skal drikkes alkohol inne på kontoret må man sende melding til vaktmesteren på gløs for å få dette godkjent på forhånd",
       buttonLabel: "Book kontoret",
       href: "https://docs.google.com/spreadsheets/d/1L4CxgaByY3gxWAfNoT2y6EcCrThJMDowLDtLoXx7y38/edit?gid=1481163696#gid=1481163696",
     },
@@ -32,7 +32,7 @@ const BookingPage = () => {
       title: "Hytte",
       logo: <Home />,
       description:
-        "Emil har hele 2 soundboxer som studenter kan låne! Book en soundbox til en valgt dato eller tid. Ventetiden kan være lang så vær obs på å booke i god tid!",
+        "EMIL har hele 2 soundboxer som studenter kan låne! Book en soundbox til en valgt dato eller tid. Ventetiden kan være lang så vær obs på å booke i god tid!",
       buttonLabel: "Book hytte",
       href: "http://eshyttekom.no/",
     },

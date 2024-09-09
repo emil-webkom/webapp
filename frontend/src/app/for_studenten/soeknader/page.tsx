@@ -61,7 +61,7 @@ const soeknaderPage = () => {
       title: "Se tidligere søknader",
       description: (
         <>
-          Gjennom tiden har det blitt levert mange søknader til Emil. Klikk på
+          Gjennom tiden har det blitt levert mange søknader til EMIL. Klikk på
           knappen nedenfor for å se eldre søknader
         </>
       ),
