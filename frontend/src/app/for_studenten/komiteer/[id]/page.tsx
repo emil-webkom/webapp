@@ -74,7 +74,7 @@ const KomitePage = ({ params }: { params: { id: string } }) => {
           <p className='text-sm'>{data?.text3}</p>
         </div>
         <div className='w-full flex flex-col items-center justify-center'>
-          <div className='max-w-[512px] p-4 bg-[#3333] rounded-md text-center'>
+          <div className='max-w-[512px] p-4 bg-green-mid-backdrop rounded-md text-center'>
               {leder ? (
                 <>
                   <p className='font-bold text-base'>Leder: {data?.leder}</p>

@@ -62,7 +62,7 @@ const config = {
           darkest:{DEFAULT:'#001D21'},
           dark: {DEFAULT:'#003A42', backdrop:"#00333A"},
 
-          mid: '#225654',
+          mid: {DEFAULT:'#225654', backdrop:"#25504F"},
           light: '#579783',
           lightest: '#9DDBAD',
         },

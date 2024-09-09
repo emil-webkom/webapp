@@ -84,7 +84,7 @@ const SoundboxPage = () => {
           .
         </p>
         <br></br>
-        <div className="bg-[#25504F] rounded-md sm:p-4 text-sm p-4">
+        <div className="bg-green-mid-backdrop rounded-md sm:p-4 text-sm p-4">
           <p>Følgende regler gjelder for bruk av soundbox:</p>
           <ul className="list-disc pl-4 sm:pl-6 text-sm">
             <li className="pl-2 leading-relaxed">

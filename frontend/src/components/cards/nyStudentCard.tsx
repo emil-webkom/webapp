@@ -20,9 +20,9 @@ const NyStudentCard = ({
   buttons
 
 }: nyStudentCardProps) => {
-  // bg-[#3333]
+  // bg-green-mid-backdrop
   return (
-    <div className="flex gap-2 min-w-60 max-w-[512px] p-4 rounded-md bg-[#3333]">
+    <div className="flex gap-2 min-w-60 max-w-[512px] p-4 rounded-md bg-green-mid-backdrop">
       <div className="pt-1">{icon}</div>
       <div
         className={`flex flex-col ${description ? "space-y-4" : ""} justify-between`}
