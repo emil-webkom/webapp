@@ -5,29 +5,31 @@ import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
 export async function updateUserProfile(
-  userId: string,
-  data: { phoneNumber?: string; imageUrl?: string },
+  userEmail: string,
+  data: { phoneNumber?: string; imageUrl?: string; username?: string },
 ) {
   try {
-    const updateData: { nummer?: number; image?: string } = {};
+    const updateData: { nummer?: number; image?: string; username?: string } =
+      {};
 
     if (data.phoneNumber) {
       updateData.nummer = Number(data.phoneNumber);
     }
-
     if (data.imageUrl) {
       updateData.image = data.imageUrl;
     }
 
+    if (data.username) {
+      updateData.username = data.username;
+    }
+
+    // Perform the user update in the database
     const updatedUser = await db.user.update({
-      where: { id: userId },
+      where: { email: userEmail },
       data: updateData,
     });
 
     console.log("User profile updated successfully:", updatedUser);
-
-    // revalidatePath("/settings");
-    // revalidatePath("/");
 
     return { success: true, user: updatedUser };
   } catch (error) {

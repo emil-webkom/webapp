@@ -216,18 +216,18 @@ const ForStudentPage = () => {
         },
       ],
     },
-    {
-      mainpoint: "EMILs lille hjelper",
-      description:
-        "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?",
-      thumbnailButton: [
-        {
-          title: "EMILS lille hjelper",
-          oneliner: "Linjeforeningens interne disk",
-          link: "https://drive.google.com/drive/folders/0B1yZD12vp6TdRjJQZWhLNU51NnM?resourcekey=0--piITTQpCvehrwAFuTXJnQ",
-        },
-      ],
-    },
+    // {
+    //   mainpoint: "EMILs lille hjelper",
+    //   description:
+    //     "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?",
+    //   thumbnailButton: [
+    //     {
+    //       title: "EMILS lille hjelper",
+    //       oneliner: "Linjeforeningens interne disk",
+    //       link: "https://drive.google.com/drive/folders/0B1yZD12vp6TdRjJQZWhLNU51NnM?resourcekey=0--piITTQpCvehrwAFuTXJnQ",
+    //     },
+    //   ],
+    // },
     {
       mainpoint: "Engasjer deg i frivilligheten",
       description:
@@ -393,7 +393,10 @@ const ForStudentPage = () => {
               <br />
               +47 123 45 678
             </p>
-            <Button className="gap-2">
+            <Button
+              onClick={() => window.open("mailto:styret@emilweb.no")}
+              className="gap-2"
+            >
               Kontakt styret <ArrowUpRight size={20} />
             </Button>
           </div>

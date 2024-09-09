@@ -1,13 +1,10 @@
 "use client";
 
-import { db } from "@/lib/db";
-import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 import { useSession } from "next-auth/react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,80 +16,81 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { FaCamera, FaUser } from "react-icons/fa";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { useEffect, useRef, useState } from "react";
-import Modal from "../ui/modal";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
 import { uploadProfilePic } from "@/utils/firebase/upload_profilepic";
 import { updateUserProfile } from "@/utils/actions/updateProfile";
 import { useRouter } from "next/navigation";
+import { getUserByEmail, getUserById } from "@/data/user";
+import { User } from "next-auth";
+import { UserPrisma } from "@/schemas/user";
 
-// Utility function to clean phone number
 const cleanPhoneNumber = (phone: string): string => {
   return phone.replace(/\s+/g, "").replace(/[^\d+]/g, "");
 };
 
-// Custom Zod schema for phone number validation
 const phoneNumberSchema = z
   .string()
   .transform(cleanPhoneNumber)
   .refine((value) => /^(\+|00)?[1-9]\d{7,14}$/.test(value), {
     message:
       "Ugyldig telefonnummer format. Vennligst skriv inn et gyldig nummer.",
-  });
+  })
+  .optional();
 
 const profileFormSchema = z.object({
-  phoneNumber: phoneNumberSchema,
+  phoneNumber: phoneNumberSchema.optional(),
   avatar: z.string().optional(),
+  username: z.string().optional(),
 });
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>;
 
 export function ProfileForm() {
   const user = useCurrentUser();
+
   const { data: session, update } = useSession();
+  const [userFull, setUser] = useState<UserPrisma>();
   const [profilePic, setProfilePic] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
-    console.log("Current user:", user);
-    console.log("User image URL:", user?.image);
-    console.log("Current session:", session);
+    const fetchAndSetUser = async () => {
+      if (user?.email) {
+        try {
+          const fetchedUser = await getUserByEmail(user.email);
+
+          if (fetchedUser) {
+            setUser(fetchedUser);
+          } else {
+            console.error("User not found");
+          }
+        } catch (error) {
+          console.error("Error fetching user:", error);
+        }
+      } else {
+        console.error("No valid session or email found");
+      }
+    };
+    fetchAndSetUser();
   }, [user, session]);
 
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
-      phoneNumber: "",
+      phoneNumber: undefined,
       avatar: user?.image ?? "",
+      username: "",
     },
   });
 
   const onSubmit = async (data: ProfileFormValues) => {
-    if (!user?.id) {
-      console.error("User ID is not available");
+    console.log(data);
+    if (!user?.email) {
+      console.error("User email is not available");
       return;
     }
 
@@ -107,11 +105,11 @@ export function ProfileForm() {
       }
     }
 
-    const result = await updateUserProfile(user.id, {
+    const result = await updateUserProfile(user.email, {
       phoneNumber: data.phoneNumber,
       imageUrl: profilePicUrl,
+      username: data.username,
     });
-
     if (result.success) {
       console.log("User profile updated successfully");
 
@@ -123,11 +121,6 @@ export function ProfileForm() {
             image: profilePicUrl || user?.image,
           },
         });
-      }
-
-      setProfilePic(null);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
       }
 
       // Refresh the page
@@ -163,8 +156,8 @@ export function ProfileForm() {
     if (previewUrl) {
       return previewUrl;
     }
-    if (user?.image) {
-      return user.image;
+    if (userFull?.image) {
+      return userFull.image;
     }
     return "";
   };
@@ -178,16 +171,18 @@ export function ProfileForm() {
           render={() => (
             <FormItem>
               <FormLabel>Profilbilde</FormLabel>
-              <FormDescription>
-                Det tar vanligvis litt tid før profilbildet ditt lastes opp.
-              </FormDescription>
+              <FormDescription>Under kan du endre profilbilde</FormDescription>
               <FormControl>
                 <div className="relative w-32 h-32">
                   <Avatar
                     className="w-full h-full cursor-pointer"
                     onClick={handleAvatarClick}
                   >
-                    <AvatarImage src={getAvatarUrl()} alt="Profile picture" />
+                    <AvatarImage
+                      src={getAvatarUrl()}
+                      className="object-cover"
+                      alt="Profile picture"
+                    />
                     <AvatarFallback className="bg-gray-200">
                       <FaUser size={40} className="text-gray-400" />
                     </AvatarFallback>
@@ -208,7 +203,7 @@ export function ProfileForm() {
                 </div>
               </FormControl>
               {profilePic && (
-                <div className="mt-2 text-center">
+                <div className="mt-2 flex justify-start text-center">
                   <Button
                     type="button"
                     onClick={handleCancelUpload}
@@ -226,6 +221,21 @@ export function ProfileForm() {
         />
         <FormField
           control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Brukernavn</FormLabel>
+              <FormControl>
+                <Input
+                  className="w-60 text-black"
+                  placeholder={`${userFull?.username ? userFull.username : "Skriv inn et brukernavn"}`}
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
           name="phoneNumber"
           render={({ field }) => (
             <FormItem>
@@ -233,11 +243,10 @@ export function ProfileForm() {
               <FormControl>
                 <Input
                   className="w-60 text-black"
-                  placeholder="Skriv inn nummeret ditt"
+                  placeholder={`${userFull?.nummer ? userFull.nummer : "Skriv inn et telefonnummer"}`}
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
