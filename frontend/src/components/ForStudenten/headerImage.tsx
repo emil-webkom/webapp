@@ -2,14 +2,19 @@
 import Image, { ImageProps } from 'next/image'
 import React, { useState } from 'react'
 
-const HeaderImage: React.FC<ImageProps> = (props) => {
+interface headerImageProps extends ImageProps {
+    backgroundPos?: string
+}
+
+
+const HeaderImage: React.FC<headerImageProps>= (props) => {
 
     return (
         <div className="relative flex h-52 w-full rounded-md overflow-hidden" 
         style={{
             background:`url(${props.src})`,
             backgroundSize:'100%',
-            backgroundPositionY:'20%'
+            backgroundPosition : props.backgroundPos
 
         }}>
             {/* <Image

@@ -34,7 +34,8 @@ const ForStudentenPage = () => {
       <div className="w-full flex flex-col justify-center items-center px-12 pb-10 space-y-6">
         <HeaderImage 
           src="/image/Komiteer/komiteer.jpg"
-          alt="Komitearrangement"></HeaderImage>
+          alt="Komitearrangement"
+          backgroundPos="0% 50%"/>
         <HeaderText className="text-3xl">Komiteene</HeaderText>
         <p className="text-white max-w-lg">
         Emil har et rikt utvalg av komiteer som alle har lav terskel for å bli

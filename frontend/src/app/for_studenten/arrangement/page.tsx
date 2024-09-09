@@ -159,7 +159,7 @@ const ForStudentenPage = () => {
   return (
     <div className=" flex flex-col justify-center w-full text-white">
       <div className="flex flex-col justify-center items-center p-12 space-y-6">
-        <HeaderImage src={"/image/arrangement/Arrangement.jpg"} alt={"Arrangement forsidebilde"}/>
+        <HeaderImage src={"/image/arrangement/Arrangement.jpg"} alt={"Arrangement forsidebilde"} backgroundPos="0% 20%"/>
         <HeaderText className="flex text-3xl flex-row justify-center items-center gap-2">Arrangementer <Ticket/></HeaderText>
         <div className="flex flex-col max-w-lg space-y-3 text-md">
           <p>

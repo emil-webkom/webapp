@@ -388,7 +388,7 @@ const ForStudentPage = () => {
     <>
       <div className="text-white w-full">
         <div className="p-12 justify-center flex flex-col items-center space-y-6">
-          <HeaderImage src={"/image/EMIL/nyStudentHeader.jpg"} alt={"EMIL linjeforeningen"}/>
+          <HeaderImage src={"/image/EMIL/nyStudentHeader.jpg"} alt={"EMIL linjeforeningen"} backgroundPos="0% 30%"/>
           <HeaderText className="text-3xl">
             Velkommen til{" "}
             <span className="text-green-lightest">Energi og Miljø!</span>
