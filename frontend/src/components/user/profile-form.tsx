@@ -37,10 +37,11 @@ const phoneNumberSchema = z
   .refine((value) => /^(\+|00)?[1-9]\d{7,14}$/.test(value), {
     message:
       "Ugyldig telefonnummer format. Vennligst skriv inn et gyldig nummer.",
-  });
+  })
+  .optional();
 
 const profileFormSchema = z.object({
-  phoneNumber: phoneNumberSchema,
+  phoneNumber: phoneNumberSchema.optional(),
   avatar: z.string().optional(),
   username: z.string().optional(),
 });
@@ -80,7 +81,7 @@ export function ProfileForm() {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(profileFormSchema),
     defaultValues: {
-      phoneNumber: "",
+      phoneNumber: undefined,
       avatar: user?.image ?? "",
       username: "",
     },
@@ -202,7 +203,7 @@ export function ProfileForm() {
                 </div>
               </FormControl>
               {profilePic && (
-                <div className="mt-2 text-center">
+                <div className="mt-2 flex justify-start text-center">
                   <Button
                     type="button"
                     onClick={handleCancelUpload}
@@ -235,7 +236,6 @@ export function ProfileForm() {
           )}
         />
         <FormField
-          control={form.control}
           name="phoneNumber"
           render={({ field }) => (
             <FormItem>
