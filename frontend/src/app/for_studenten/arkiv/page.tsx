@@ -55,7 +55,7 @@ const ArkivPage = () => {
       description:
         "Nedenfor finner du vedtektene til EMIL. Disse blir gjennomgått hvert år på budsjett- og vedtektsmøtet.",
       buttonLabel: "Se vedtekter",
-      href: "https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran",
+      href: "https://docs.google.com/document/d/e/2PACX-1vSWq9cOIjpmuImkfUpt0d1G-DVt1IIFrh1SyQazGKn87Bg8DGg49wpDRYeeMX41UjRbuhl-CQeXC9Fx/pub",
     },
     {
       title: "Søknader",
@@ -63,7 +63,7 @@ const ArkivPage = () => {
       description:
         "Her finner du alle tidligere søknader, både søknader til Leo's minnefond og Blomsterpotten.",
       buttonLabel: "Se søknader",
-      href: "https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran",
+      href: "https://drive.google.com/drive/folders/1nM-PpRLzSYRzXTxGqjNdU8iynfK6UO3p",
     },
     {
       title: "Rapporter",
@@ -71,14 +71,14 @@ const ArkivPage = () => {
       description:
         "Se arkivet for en oversikt over gamle rapporter f. eks. diplomundersøkelsen og trivselsrapporter.",
       buttonLabel: "Se rapporter",
-      href: "https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran",
+      href: "https://emilweb.no/wp-content/uploads/2023/04/Diplomundersokelsen-2023-1.pdf",
     },
     {
       title: "Hvordan føre bilag",
       logo: <NotebookPen />,
       description:
         "Lurer du på hvordan du skal føre et bilag? Trykk på knappen nedenfor og les guiden.",
-      href: "https://www.youtube.com/watch?v=xvFZjo5PgG0&ab_channel=Duran",
+      href: "https://docs.google.com/document/d/13EW10RfGKc0zpBc4LVUgyyl3ksGq0fsjWQ08zL5bnO4/edit",
       buttonLabel: "Hvordan føre bilag",
     },
   ];

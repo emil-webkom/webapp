@@ -5,6 +5,7 @@ import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
 import { Hovedstyret } from "@/schemas/hovedstyret";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
+import { Clover } from "lucide-react";
 
 interface dataProps {
   message: string;
@@ -197,11 +198,12 @@ const Footer: FC = () => {
       </div>
 
       <div className="flex max-w-screen items-center justify-center bg-[#001D21] py-2">
-        <img
+        <Clover className="text-white clover-hover" />
+        {/* <img
           src="/svg/Three clover.svg"
           alt="Trekløver"
           className="h-4 w-4 icon-hover"
-        />
+        /> */}
       </div>
     </footer>
   );
