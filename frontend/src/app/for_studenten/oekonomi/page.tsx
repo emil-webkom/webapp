@@ -29,10 +29,6 @@ const forStudentenPage = () => {
           
         </>
       ),
-      frist: "",
-      buttonText: "",
-      href: "",
-      icon: "",
     },
 
     {
@@ -40,10 +36,9 @@ const forStudentenPage = () => {
       description: (
         <>EMIL sitt budsjett er <span className="text-[#9DDBAD] italic">tilgjengelig for alle</span> i linjeforeningen, og du finner den på driven vår.</>
       ),
-      frist: "",
-      buttonText:"Se budsjettet",
-      href: "https://docs.google.com/spreadsheets/d/1bwn2-Mc4_7hgnmm0w-giy0vScZj3IS7pv2ObXSJoCtY/edit?fbclid=IwZXh0bgNhZW0CMTEAAR1VDQUPeQkaLtNV-REpOTRxiCccWb7BLClRoXNn-xcY6FQBC4Y1qu76unw_aem_qY71vneBu5ZNGsI64iqhCQ&gid=0#gid=0",
+      
       icon: <BadgeDollarSign className="h-5 text-[#EFDC35]" />,
+      buttons: [{text: "Se budsjett", href: "https://docs.google.com/spreadsheets/d/1bwn2-Mc4_7hgnmm0w-giy0vScZj3IS7pv2ObXSJoCtY/edit?fbclid=IwZXh0bgNhZW0CMTEAAR1VDQUPeQkaLtNV-REpOTRxiCccWb7BLClRoXNn-xcY6FQBC4Y1qu76unw_aem_qY71vneBu5ZNGsI64iqhCQ&gid=0#gid=0"}],
     },
 
     {
@@ -64,15 +59,14 @@ const forStudentenPage = () => {
       </>
        
       ),
-      frist: "",
-      buttonText: "Les mer om søknader her",
-      href: "/for_studenten/soeknader",
       icon: <HandCoins className="h-5 text-[#EFDC35]" />,
+      buttons: [{text: "Les mer om søknader her", href: "/for_studenten/soeknader"}]
     },
   ];
 
   return <div className="w-full flex flex-col items-center justify-center">
     <div className= "w-full flex flex-col justify-center items-center max-w-[512px] py-5">
+      
       <h1 className="text-white font-semibold text-4xl pt-4 text-center"> Økonomi</h1>
       <p className="text-white font-normal pt-4 text-center">
       Denne siden inneholder alt du trenger å vite om linjeforeningen EMIL sin økonomi,  og hvordan den fungerer. 

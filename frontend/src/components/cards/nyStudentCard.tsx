@@ -9,8 +9,7 @@ export interface nyStudentCardProps {
   icon?: ReactNode;
   description?: string | JSX.Element;
   frist?: string;
-  href?: string;
-  buttonText?: string;
+  buttons?: {text : string,href:string}[]
 }
 
 const NyStudentCard = ({
@@ -18,8 +17,7 @@ const NyStudentCard = ({
   icon,
   description,
   frist,
-  href,
-  buttonText,
+  buttons
 
 }: nyStudentCardProps) => {
   // bg-[#3333]
@@ -46,21 +44,21 @@ const NyStudentCard = ({
           ) : (
             <></>
           )}
-          {buttonText && href ? (
-            <Button variant={"transparent"}>
+          <div className="flex flex-row gap-2 flex-wrap">
+          {buttons?.map((b,i) => (
+            <Button key={i} variant={"transparent"}>
               <Link
-                href={href}
+                href={b.href}
                 target="_blank"
                 rel="noopener norefferer"
                 className="flex-row flex justify-center items-center gap-1"
-              >
-                <p>{buttonText}</p>
+                >
+                <p>{b.text}</p>
                 <ArrowUpRight className="w-4"></ArrowUpRight>
               </Link>
             </Button>
-          ) : (
-            <></>
-          )}
+          ))}
+            </div>
         </div>
       </div>
     </div>
