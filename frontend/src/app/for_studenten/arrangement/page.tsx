@@ -372,6 +372,8 @@ const ForStudentenPage = () => {
           <div className="w-full flex flex-col items-center">
             <div className="flex justify-start ">
               <div className="flex gap-x-2 items-center px-4">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-sm lg:text-base">Bedpress</span>
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                 <span className="text-sm lg:text-base">
                   Offentlige arrangementer
@@ -409,6 +411,8 @@ const ForStudentenPage = () => {
                         return "bg-blue-500";
                       } else if (arrangement.type === "Eksternt arrangement") {
                         return "bg-red-500";
+                      } else if (arrangement.type === "Bedpress") {
+                        return "bg-green-500";
                       }
                     }
                     return "bg-yellow-500";
