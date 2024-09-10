@@ -385,7 +385,7 @@ const ForStudentPage = () => {
             tilgjengelige og kan kontaktes hvis du lurer på noe rundt oppstart
             eller rundt fadderperioden.
           </p>
-          <div className="flex font-light flex-row items-end gap-12">
+          <div className="flex font-light flex-row items-end gap-6 lg:gap-12">
             <p>
               <span className="font-semibold">Fadderansvarlig:</span>
               <br />
