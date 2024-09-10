@@ -113,7 +113,7 @@ const ArkivPage = () => {
           <p>og kjærlighet til alle mennesker under solen.</p>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-2 lg:px-4 gap-y-4 pb-4 rounded-b-lg">
+      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-2 lg:px-4 gap-y-4 pb-4">
         <div className="flex flex-col items-center justify-center max-w-[512px] py-4 gap-y-4 bg-[#225654]">
           <p className="font-bold text-lg text-white">Emil Eventyret</p>
           <p className="text-white text-md text-center">
