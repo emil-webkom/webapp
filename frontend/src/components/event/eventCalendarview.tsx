@@ -58,6 +58,8 @@ const EventCalendarView: React.FC<EventCalendarViewProps> = ({
               arrangementColor = "bg-blue-500";
             } else if (arrangement.type === "Eksternt arrangement") {
               arrangementColor = "bg-red-500";
+            } else if (arrangement.type === "Bedpress") {
+              arrangementColor = "bg-green-500";
             }
           }
           if ("id" in arrangement) {
