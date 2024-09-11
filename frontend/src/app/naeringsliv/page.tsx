@@ -10,16 +10,18 @@ import useFetch from "@/hooks/use-fetch";
 import { Hovedsamarbeidspartner } from "@/schemas/hovedsamarbeidspartner";
 import { useEffect, useState } from "react";
 
-interface HSPprops{
-  message: string,
-  data: Hovedsamarbeidspartner[],
+interface HSPprops {
+  message: string;
+  data: Hovedsamarbeidspartner[];
 }
 
 const NaeringslivPage = () => {
   const [hovedsamarbeidspartnere, setHovedsamarbeidspartnere] = useState<
     Hovedsamarbeidspartner[]
   >([]);
-  const { data, loading, error } = useFetch<HSPprops>("/api/hovedsamarbeidspartner");
+  const { data, loading, error } = useFetch<HSPprops>(
+    "/api/hovedsamarbeidspartner",
+  );
 
   useEffect(() => {
     if (data) {
@@ -36,12 +38,12 @@ const NaeringslivPage = () => {
             undertitle="Her finner du alt du trenger å vite om EMIL og næringslivet"
           />
         </div>
-        <p className="font-extralight text-sm lg:text-base">
+        <p className="font-extralight text-sm lg:text-base px-6">
           Energi- og miljøstudiet har utviklet et godt kontaktnett med
           energibransjen og næringslivet. Energikontakten fungerer som et
           bindeledd mellom studentene på linjen, faglærere og næringslivet.
         </p>
-        <p className="font-extralight text-sm lg:text-base">
+        <p className="font-extralight text-sm lg:text-base px-6">
           Nedenfor finner du en oversikt over EMIL sine samarbeidspartnere.
         </p>
       </div>

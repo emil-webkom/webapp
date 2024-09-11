@@ -156,9 +156,15 @@ const ForStudentenPage = () => {
   return (
     <div className=" flex flex-col justify-center w-full text-white">
       <div className="flex flex-col justify-center items-center p-12 space-y-6">
-        <HeaderImage src={"/image/arrangement/Arrangement.jpg"} alt={"Arrangement forsidebilde"} backgroundPos="0% 20%"/>
-        <HeaderText className="flex text-3xl flex-row justify-center items-center gap-2">Arrangementer <Ticket/></HeaderText>
-        <div className="flex flex-col max-w-lg space-y-3 text-md">
+        <HeaderImage
+          src={"/image/arrangement/Arrangement.jpg"}
+          alt={"Arrangement forsidebilde"}
+          backgroundPos="0% 20%"
+        />
+        <HeaderText className="flex text-3xl flex-row justify-center items-center gap-2">
+          Arrangementer <Ticket className="text-green-lightest" />
+        </HeaderText>
+        <div className="text-white font-normal max-w-lg pt-4 space-y-4">
           <p>
             Linjeforeningen arrangerer en rekke ulike arrangementer og disse kan
             være for kun komiteene eller hele linjeforeningen. Ofte arrangerer
@@ -168,8 +174,10 @@ const ForStudentenPage = () => {
           <p>
             Påmelding til arrangementer skjer både gjennom nettsiden og gjennom
             emils{" "}
-            <TextLink href={"https://www.facebook.com/groups/emilntnu/?locale=nb_NO"}>
-            facebookgruppe
+            <TextLink
+              href={"https://www.facebook.com/groups/emilntnu/?locale=nb_NO"}
+            >
+              facebookgruppe
             </TextLink>
             . Ved spørsmål angående arrangementer kan man henvende seg til
             arrangør eller hovedstyret.
@@ -178,9 +186,9 @@ const ForStudentenPage = () => {
             Typen arrangementer som holdes kan være alt fra sosiale
             arrangementer, faglige arrangementer, ekskursjoner og
             bedriftspresentasjoner. Sistnevnte her er det{" "}
-            <TextLink href="https://www.emil-link.no/">EMIL-Link</TextLink>{" "}
-            som er ansvarlig for. Uansett hvilket arrangement man skal delta på
-            har vi retningslinjer på EMIL som må følges uavhengig av hva som
+            <TextLink href="https://www.emil-link.no/">EMIL-Link</TextLink> som
+            er ansvarlig for. Uansett hvilket arrangement man skal delta på har
+            vi retningslinjer på EMIL som må følges uavhengig av hva som
             gjennomføres.
           </p>
         </div>
@@ -263,11 +271,8 @@ const ForStudentenPage = () => {
             <p className="pb-6 text-center">
               Aktive arrangementer publiseres her og i relevante{" "}
               <TextLink href="https://www.facebook.com/groups/emilntnu">
-
-                  facebookgrupper
-
-                  </TextLink>
-
+                facebookgrupper
+              </TextLink>
               . <span>Klikk på et arrangement for å lese mer!</span>
             </p>
             {loading ? (
@@ -330,7 +335,7 @@ const ForStudentenPage = () => {
 
             <Calendar
               locale="nb"
-              className="bg-green-mid text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
+              className="bg-green-mid text-white rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
               tileClassName={({ date, view }) => {
                 const dateString = date.toDateString();

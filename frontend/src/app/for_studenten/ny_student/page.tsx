@@ -44,7 +44,7 @@ const ForStudentPage = () => {
       description:
         "Når du har fått plass på studiet må semesteravgiften betales og fag må velges. Logg deg inn på StudentWeb og følg instruksjonene.",
       frist: "15. sep (høst) og 1. feb (vår)",
-      icon: <Coins className="h-5" />,
+      icon: <Coins className="h-5 text-green-lightest" />,
       buttons: [
         {
           text: "Betaling av semesteravgift",
@@ -57,7 +57,7 @@ const ForStudentPage = () => {
       description:
         "Når du har registrert deg på studentweb kan du opprette din NTNU-brukerkonto. Dette gir deg tilgang til NTNUs IT-tjenester.",
       frist: "15. sep (høst) og 1. feb (vår)",
-      icon: <User className="h-5" />,
+      icon: <User className="h-5 text-green-lightest" />,
       buttons: [
         {
           text: "Bruker hos NTNU",
@@ -69,7 +69,7 @@ const ForStudentPage = () => {
       title: "Melde adresseendring",
       description:
         "Du bør endre postadressen din. Vær rask! Du får viktig post fra NTNU og Lånekassen, og du får ikke omgjøringsstipend uten.",
-      icon: <Mail className="h-5" />,
+      icon: <Mail className="h-5 text-green-lightest" />,
       buttons: [
         {
           text: "Skatteetaten",
@@ -81,7 +81,7 @@ const ForStudentPage = () => {
       title: "Skaff adgangskort",
       description:
         "Kortet fungerer som lånekort til biblioteket og adgangskort til rom og til utskrifter.",
-      icon: <Key className="h-5" />,
+      icon: <Key className="h-5 text-green-lightest" />,
       buttons: [
         {
           text: "Skaffe adgangskort",
@@ -93,14 +93,14 @@ const ForStudentPage = () => {
       title: "Søk om stipend og lån",
       description:
         "Søk stipend og lån hos Lånekassen. Du må betale semesteravgiften for å få stipend og studielån.",
-      icon: <Key className="h-5" />,
+      icon: <Key className="h-5 text-green-lightest" />,
       buttons: [{ text: "Lånekassen", href: "https://lanekassen.no/" }],
     },
     {
       title: "Wifi på campus",
       description:
         "Eduroam-nettet finnes på alle NTNU campuser. Last ned det automatiske oppsettet og koble deg på!",
-      icon: <Wifi className="h-6" />,
+      icon: <Wifi className="h-6 text-green-lightest" />,
       buttons: [
         {
           text: "Koble til Eduroam",
@@ -112,7 +112,7 @@ const ForStudentPage = () => {
       title: "Meld deg på fadderopplegget",
       description:
         "Dersom du ønsker å bli med på fadderukene må du fylle ut påmeldingsskjema. Det er veldig anbefalt å delta!",
-      icon: <Shirt className="h-6" />,
+      icon: <Shirt className="h-6 text-green-lightest" />,
       buttons: [
         {
           text: "Påmeldingsskjema",
@@ -124,7 +124,7 @@ const ForStudentPage = () => {
       title: "Bli med i facebook-gruppen",
       description:
         "Det er mye nyttig informasjon som bare legges ut på facebook. Så bli med i din klasses facebook-gruppe!",
-      icon: <FaFacebookF className="h-5" />,
+      icon: <FaFacebookF className="h-5 text-green-lightest" />,
       buttons: [
         {
           text: "EMIL ‘24",

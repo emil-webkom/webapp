@@ -91,16 +91,16 @@ const ArkivPage = () => {
     <div className="flex flex-col items-center justify-center text-white">
       <div className="w-full flex flex-col justify-center items-center px-12 py-10">
         <HeaderText className="text-3xl">Viktige dokumenter</HeaderText>
-        <p className="text-white font-normal text-center max-w-lg pt-4">
-        Her ligger alle viktige dokumenter som EMIL publiserer hvert år. For å
-        se Diplomundersøkelsen må du trykke på “Se rapporter”.
+        <p className="text-white font-normal max-w-lg pt-4">
+          Her ligger alle viktige dokumenter som EMIL publiserer hvert år. For å
+          se Diplomundersøkelsen må du trykke på “Se rapporter”.
         </p>
         <div className="mt-10">
           <MenuCardView cards={cards} />
         </div>
       </div>
       <SmallTransissionPCSPC />
-      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-2 lg:px-4 gap-y-4 pb-4">
+      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] py-4 px-12 lg:px-4 gap-y-4 pb-4">
         <div className="max-w-[512px] flex flex-col items-center justify-center text-white rounded-md bg-[#3333] w-full px-4 lg:px-8 p-4">
           <h1 className="font-bold text-lg pb-4">EMIL-Eden</h1>
           <p>Lær oss gleden over de enkle ting,</p>
@@ -112,10 +112,10 @@ const ArkivPage = () => {
           <p>og kjærlighet til alle mennesker under solen.</p>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-2 lg:px-4 gap-y-4 pb-4">
+      <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-12 lg:px-4 gap-y-4 pb-4">
         <div className="flex flex-col items-center justify-center max-w-[512px] py-4 gap-y-4 bg-[#225654]">
           <p className="font-bold text-lg text-white">Emil Eventyret</p>
-          <p className="text-white text-md text-center">
+          <p className="text-white text-sm text-left">
             Emil har også sitt eget eventyr. Dette er det essensielt at alle
             emilere kan utenatt, så du gjør deg kanskje lurt som førsteklassing
             å kjenne til eventyret.
@@ -227,8 +227,8 @@ const ArkivPage = () => {
         </div>
       </div>
       <SmallTransissionSPCPC />
-      <div className="w-full flex flex-col items-center justify-center text-white px-2 lg:px-4 gap-y-4 pb-4 rounded-b-lg">
-        <div className="max-w-[512px] w-full px-4 lg:px-8">
+      <div className="w-full flex flex-col p-12 items-center justify-center text-white lg:px-4 gap-y-4 pb-4 rounded-b-lg">
+        <div className="max-w-[512px] w-full ">
           <h1 className="text-white text-center font-semibold py-2 text-xl sm:text-2xl w-full">
             Wall of fame
           </h1>
@@ -245,7 +245,7 @@ const ArkivPage = () => {
             </div>
           ) : data && data.length > 0 ? (
             paginatedData.length > 0 ? (
-              <div className="p-4">
+              <div className="">
                 <div className="overflow-x-auto w-full">
                   {/* Table for larger screens */}
                   <div className="hidden lg:block">
