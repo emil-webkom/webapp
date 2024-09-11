@@ -44,11 +44,13 @@ const ForStudentPage = () => {
       description:
         "Når du har fått plass på studiet må semesteravgiften betales og fag må velges. Logg deg inn på StudentWeb og følg instruksjonene.",
       frist: "15. sep (høst) og 1. feb (vår)",
-
-      buttonText: "StudentWeb",
-      href: "https://fsweb.no/studentweb/index.jsf?inst=FSNTNU",
       icon: <Coins className="h-5" />,
-      buttons: [{text: "Betaling av semesteravgift", href: "https://i.ntnu.no/wiki/-/wiki/Norsk/Semesteravgift+og+registrering"}]
+      buttons: [
+        {
+          text: "Betaling av semesteravgift",
+          href: "https://i.ntnu.no/wiki/-/wiki/Norsk/Semesteravgift+og+registrering",
+        },
+      ],
     },
     {
       title: "Opprette bruker hos NTNU",
@@ -56,52 +58,80 @@ const ForStudentPage = () => {
         "Når du har registrert deg på studentweb kan du opprette din NTNU-brukerkonto. Dette gir deg tilgang til NTNUs IT-tjenester.",
       frist: "15. sep (høst) og 1. feb (vår)",
       icon: <User className="h-5" />,
-      buttons: [{text: "Bruker hos NTNU", href: "https://i.ntnu.no/wiki/-/wiki/Norsk/Aktiver+brukerkonto"}]
+      buttons: [
+        {
+          text: "Bruker hos NTNU",
+          href: "https://i.ntnu.no/wiki/-/wiki/Norsk/Aktiver+brukerkonto",
+        },
+      ],
     },
     {
       title: "Melde adresseendring",
       description:
         "Du bør endre postadressen din. Vær rask! Du får viktig post fra NTNU og Lånekassen, og du får ikke omgjøringsstipend uten.",
       icon: <Mail className="h-5" />,
-      buttons: [{text: "Skatteetaten", href: "https://www.skatteetaten.no/person/folkeregister/flytte/endre-postadresse/"}]
-
+      buttons: [
+        {
+          text: "Skatteetaten",
+          href: "https://www.skatteetaten.no/person/folkeregister/flytte/endre-postadresse/",
+        },
+      ],
     },
     {
       title: "Skaff adgangskort",
       description:
         "Kortet fungerer som lånekort til biblioteket og adgangskort til rom og til utskrifter.",
       icon: <Key className="h-5" />,
-      buttons: [{text: "Skaffe adgangskort", href: "https://innsida.ntnu.no/studentkort"}]
+      buttons: [
+        {
+          text: "Skaffe adgangskort",
+          href: "https://innsida.ntnu.no/studentkort",
+        },
+      ],
     },
     {
       title: "Søk om stipend og lån",
       description:
         "Søk stipend og lån hos Lånekassen. Du må betale semesteravgiften for å få stipend og studielån.",
       icon: <Key className="h-5" />,
-      buttons:  [{text: "Lånekassen", href: "https://lanekassen.no/"}]
-
+      buttons: [{ text: "Lånekassen", href: "https://lanekassen.no/" }],
     },
     {
       title: "Wifi på campus",
       description:
         "Eduroam-nettet finnes på alle NTNU campuser. Last ned det automatiske oppsettet og koble deg på!",
       icon: <Wifi className="h-6" />,
-      buttons:  [{text: "Koble til Eduroam", href: "https://innsida.ntnu.no/wiki/-/wiki/Norsk/Tr%C3%A5dl%C3%B8st+nett"}]
+      buttons: [
+        {
+          text: "Koble til Eduroam",
+          href: "https://innsida.ntnu.no/wiki/-/wiki/Norsk/Tr%C3%A5dl%C3%B8st+nett",
+        },
+      ],
     },
     {
       title: "Meld deg på fadderopplegget",
       description:
         "Dersom du ønsker å bli med på fadderukene må du fylle ut påmeldingsskjema. Det er veldig anbefalt å delta!",
       icon: <Shirt className="h-6" />,
-      buttons: [{text : "Påmeldingsskjema", href:"https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform"}]
-      
+      buttons: [
+        {
+          text: "Påmeldingsskjema",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform",
+        },
+      ],
     },
     {
       title: "Bli med i facebook-gruppen",
       description:
         "Det er mye nyttig informasjon som bare legges ut på facebook. Så bli med i din klasses facebook-gruppe!",
       icon: <FaFacebookF className="h-5" />,
-      buttons: [{text : "EMIL ‘24", href:"https://www.facebook.com/groups/1128521504910742"}, {text: "Hele EMIL", href: "https://www.facebook.com/groups/Ntnuemil"}]
+      buttons: [
+        {
+          text: "EMIL ‘24",
+          href: "https://www.facebook.com/groups/1128521504910742",
+        },
+        { text: "Hele EMIL", href: "https://www.facebook.com/groups/Ntnuemil" },
+      ],
     },
   ];
 
@@ -294,17 +324,18 @@ const ForStudentPage = () => {
       tag: "Sjekkliste",
       intro: (
         <>
-          De viktigste tingene å få unnagjort når du har fått plass på studiet<br/>
+          De viktigste tingene å få unnagjort når du har fått plass på studiet
+          <br />
         </>
       ),
       content: (
         <div className="grid gap-8 lg:grid-cols-2">
           {unnagjortCards.map((c, i) => (
-            <NyStudentCard
-              {...c}
-            ></NyStudentCard>
+            <NyStudentCard {...c}></NyStudentCard>
           ))}
-          <TextLink href="https://i.ntnu.no/ny-student">Les mer på NTNUs offisielle sjekkliste</TextLink>
+          <TextLink href="https://i.ntnu.no/ny-student">
+            Les mer på NTNUs offisielle sjekkliste
+          </TextLink>
         </div>
       ),
     },
@@ -394,7 +425,11 @@ const ForStudentPage = () => {
     <>
       <div className="text-white w-full">
         <div className="p-12 justify-center flex flex-col items-center space-y-6">
-          <HeaderImage src={"/image/EMIL/nyStudentHeader.jpg"} alt={"EMIL linjeforeningen"} backgroundPos="0% 30%"/>
+          <HeaderImage
+            src={"/image/EMIL/nyStudentHeader.jpg"}
+            alt={"EMIL linjeforeningen"}
+            backgroundPos="0% 30%"
+          />
           <HeaderText className="text-3xl">
             Velkommen til{" "}
             <span className="text-green-lightest">Energi og Miljø!</span>
