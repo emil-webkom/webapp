@@ -8,6 +8,8 @@ import { useSearchParams } from "next/navigation";
 import { newVerification } from "@/utils/new-verification";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
+import { db } from "@/lib/db";
+import { getVerificationTokenByToken } from "@/data/verification-token";
 
 export const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>();
@@ -26,9 +28,15 @@ export const NewVerificationForm = () => {
     }
 
     newVerification(token)
-      .then((data) => {
-        setSuccess(data.success);
-        setError(data.error);
+      .then(async (data) => {
+        setSuccess(data!.success);
+        if (success) {
+          const existingToken = await getVerificationTokenByToken(token);
+          await db.verificationToken.delete({
+            where: { id: existingToken!.id },
+          });
+        }
+        setError(data!.error);
       })
       .catch(() => {
         setError("Something went wrong");

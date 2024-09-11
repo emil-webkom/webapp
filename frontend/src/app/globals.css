@@ -146,3 +146,8 @@ body {
 .hover-shadow:hover {
   text-shadow: 0 0 10px #579783;
 }
+
+.clover-hover:hover {
+  transform: translateY(-3px);
+  transition: 100ms;
+}

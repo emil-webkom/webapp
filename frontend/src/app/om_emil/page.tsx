@@ -66,7 +66,7 @@ const OmEmilPage = () => {
     },
     {
       navn: "Kristoffer Halseth",
-      rolle: "Student og studieveileder",
+      rolle: "Student og studie-veileder",
       text: "Ansvarlig for psykososiale eller generelle spørsmål",
       bilde: "image/fagkontakt/Halseth.jpg",
       mail: "kristoffer.halseth@ntnu.no",
@@ -227,7 +227,7 @@ const OmEmilPage = () => {
                   forbedre forholdene for studentene. EMIL er først og fremst en
                   sosial organisasjon.
                 </p>
-                <Link href={"for_studenten/rapporter"}>
+                <Link href={"for_studenten/arkiv"}>
                   <Button className="hover:bg-slate-400">
                     Les mer om vedtektene her
                   </Button>
@@ -362,7 +362,7 @@ const OmEmilPage = () => {
       </div>
       <TransissionOut />
       <div id="varsling" className="max-w-screen flex justify-center">
-        <div className="flex flex-col items-center w-[90%] lg:w-[65%] space-y-5">
+        <div className="flex flex-col items-center w-[90%] lg:w-[65%] py-14 space-y-5">
           <p className="text-2xl font-bold">Varsle</p>
           <p className="font-extralight text-sm lg:text-base px-3">
             Noe av det viktigste vi kan gjøre for å sikre at alle i
@@ -379,7 +379,7 @@ const OmEmilPage = () => {
             berørte, og ansvarlige for å håndtere varslingen har taushetsplikt.
           </p>
           <div className="flex flex-col space-y-3 items-center lg:flex-row lg:space-x-5 lg:space-y-0">
-            <Link href="for_studenten/varsle_oss">
+            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdWNMJfhXHVgU8BsmglSnnMrU4h3ERB-8Fr5RLlAzcOy6484g/viewform">
               <Button>Meld inn varslingssak her</Button>
             </Link>
             <Link href="for_studenten/varsle_oss">

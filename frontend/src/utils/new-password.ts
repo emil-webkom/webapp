@@ -12,13 +12,13 @@ export const newPassword = async (
   token?: string | null,
 ) => {
   if (!token) {
-    return { error: "Missing token" };
+    return { error: "Manglende token" };
   }
 
   const validatedFields = NewPasswordSchema.safeParse(values);
 
   if (!validatedFields.success) {
-    return { error: "Invalid fields" };
+    return { error: "Ugyldige felt" };
   }
 
   const { password } = validatedFields.data;
@@ -26,13 +26,13 @@ export const newPassword = async (
   const existingToken = await getPasswordResetTokenByToken(token);
 
   if (!existingToken) {
-    return { error: "Invalid token" };
+    return { error: "Ugyldig token" };
   }
 
   const hasExpired = new Date(existingToken.expires) < new Date();
 
   if (hasExpired) {
-    return { error: "Token expired!" };
+    return { error: "Token utgått!" };
   }
 
   const existingUser = await getUserByEmail(existingToken.email);
@@ -56,5 +56,5 @@ export const newPassword = async (
     where: { id: existingToken.id },
   });
 
-  return { success: "Password updated!" };
+  return { success: "Passord oppdatert!" };
 };

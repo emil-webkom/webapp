@@ -6,7 +6,14 @@ import MenuCard, {
 import MenuCardView from "@/components/ForStudenten/ui/menu-card-view";
 import { Booking } from "@/schemas/booking";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
-import { Speaker, Coffee, Home, FileQuestion, ListChecks } from "lucide-react";
+import {
+  Speaker,
+  Coffee,
+  Home,
+  FileQuestion,
+  ListChecks,
+  GlassWater,
+} from "lucide-react";
 import { useState } from "react";
 import Calendar from "react-calendar";
 
@@ -32,17 +39,17 @@ const BookingPage = () => {
       title: "Hytte",
       logo: <Home />,
       description:
-        "EMIL har hele 2 soundboxer som studenter kan låne! Book en soundbox til en valgt dato eller tid. Ventetiden kan være lang så vær obs på å booke i god tid!",
+        "Emil har egen hytte som vi deler med Smørekoppen. Dette er en hytte som kan bookes til fritt bruk av medlemmene i linjeforeningen. Du finner all informasjon under.",
       buttonLabel: "Book hytte",
       href: "http://eshyttekom.no/",
     },
     {
-      title: "Mine bookinger",
-      logo: <ListChecks />,
+      title: "Emil og Smørekopp-kjelleren",
+      logo: <GlassWater />,
       description:
-        "Her finner du en oversikt over dine aktive og tidligere bookinger.",
-      buttonLabel: "Se min oversikt",
-      href: "/for_studenten/booking/bookings",
+        "Emil deler kjeller med Smørekoppen og som medlem av linjeforeningen kan denne bookes! Du finner lenken under.",
+      buttonLabel: "Book kjelleren",
+      href: "https://emilogsmorekoppenkjelleren.simplybook.it/v2/",
     },
   ];
 

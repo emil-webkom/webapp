@@ -13,17 +13,31 @@ import { LogIn, LogOut, Settings } from "lucide-react";
 import LogoutButton from "@/components/auth/logout-button";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { getUserByEmail } from "@/data/user";
+import { useEffect, useState } from "react";
+import { UserPrisma } from "@/schemas/user";
 
 const UserButton = () => {
   const user = useCurrentUser();
   const session = useSession();
   const isLoggedIn = session.status === "authenticated";
+  const [userFull, setuserFull] = useState<UserPrisma | null>();
+
+  const setFullUser = async () => {
+    if (user?.email) {
+      const userFull = await getUserByEmail(user.email);
+      setuserFull(userFull);
+    }
+  };
+  useEffect(() => {
+    setFullUser();
+  }, [user]);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar>
-          <AvatarImage src={user?.image || ""} />
+          <AvatarImage src={userFull?.image || ""} className="object-cover" />
           <AvatarFallback className="background-dark">
             <FaUser size={12} className="text-white" />
           </AvatarFallback>

@@ -1,3 +1,4 @@
+"use server";
 import { db } from "@/lib/db";
 
 /**
@@ -5,10 +6,9 @@ import { db } from "@/lib/db";
  * @param email - The email address of the user.
  * @returns A Promise that resolves to the user object if found, or null if not found or an error occurred.
  */
-export const getUserByEmail = async (email: string) => {
+export const getUserByEmail = async (emailstring: string) => {
   try {
-    const user = await db.user.findUnique({ where: { email } });
-
+    const user = await db.user.findUnique({ where: { email: emailstring } });
     return user;
   } catch (error) {
     return null;

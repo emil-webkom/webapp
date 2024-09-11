@@ -6,12 +6,14 @@ import UserButton from "@/components/auth/user-button";
 import LogoutButton from "@/components/auth/logout-button";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Leaf, X } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const NavBar: FC = () => {
   const currentUser = useCurrentUser();
   const [isAdmin, setIsAdmin] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const { data: session, status, update } = useSession();
 
   const handleSetSelectedLink = (linkName: string) => {
     setActiveLink(linkName);

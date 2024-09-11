@@ -44,6 +44,9 @@ const ForStudentPage = () => {
       description:
         "Når du har fått plass på studiet må semesteravgiften betales og fag må velges. Logg deg inn på StudentWeb og følg instruksjonene.",
       frist: "15. sep (høst) og 1. feb (vår)",
+
+      buttonText: "StudentWeb",
+      href: "https://fsweb.no/studentweb/index.jsf?inst=FSNTNU",
       icon: <Coins className="h-5" />,
       buttons: [{text: "Betaling av semesteravgift", href: "https://i.ntnu.no/wiki/-/wiki/Norsk/Semesteravgift+og+registrering"}]
     },
@@ -213,18 +216,18 @@ const ForStudentPage = () => {
         },
       ],
     },
-    {
-      mainpoint: "EMILs lille hjelper",
-      description:
-        "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?",
-      thumbnailButton: [
-        {
-          title: "EMILS lille hjelper",
-          oneliner: "Linjeforeningens interne disk",
-          link: "https://drive.google.com/drive/folders/0B1yZD12vp6TdRjJQZWhLNU51NnM?resourcekey=0--piITTQpCvehrwAFuTXJnQ",
-        },
-      ],
-    },
+    // {
+    //   mainpoint: "EMILs lille hjelper",
+    //   description:
+    //     "Linjeforeningen har en felles disk hvor man deler ressurser internt i linjeforeningen. Kanskje det finnes noe lurt her som du kan få bruk for?",
+    //   thumbnailButton: [
+    //     {
+    //       title: "EMILS lille hjelper",
+    //       oneliner: "Linjeforeningens interne disk",
+    //       link: "https://drive.google.com/drive/folders/0B1yZD12vp6TdRjJQZWhLNU51NnM?resourcekey=0--piITTQpCvehrwAFuTXJnQ",
+    //     },
+    //   ],
+    // },
     {
       mainpoint: "Engasjer deg i frivilligheten",
       description:
@@ -367,7 +370,7 @@ const ForStudentPage = () => {
             tilgjengelige og kan kontaktes hvis du lurer på noe rundt oppstart
             eller rundt fadderperioden.
           </p>
-          <div className="flex font-light flex-row items-end gap-12">
+          <div className="flex font-light flex-row items-end gap-6 lg:gap-12">
             <p>
               <span className="font-semibold">Fadderansvarlig:</span>
               <br />
@@ -375,7 +378,10 @@ const ForStudentPage = () => {
               <br />
               +47 123 45 678
             </p>
-            <Button className="gap-2">
+            <Button
+              onClick={() => window.open("mailto:styret@emilweb.no")}
+              className="gap-2"
+            >
               Kontakt styret <ArrowUpRight size={20} />
             </Button>
           </div>

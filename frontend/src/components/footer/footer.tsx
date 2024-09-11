@@ -5,16 +5,21 @@ import { Samarbeidspartner } from "@/schemas/samarbeidspartner";
 import { Hovedstyret } from "@/schemas/hovedstyret";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
+import { Clover } from "lucide-react";
+import Modal from "../ui/modal";
+import { Button } from "../ui/button";
 
-interface dataProps{
+interface dataProps {
   message: string;
-  data: Samarbeidspartner[]
+  data: Samarbeidspartner[];
 }
 
-
 const Footer: FC = () => {
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
-  const { data, loading, error } = useFetch<dataProps | null>("/api/samarbeidspartner");
+  const { data, loading, error } = useFetch<dataProps | null>(
+    "/api/samarbeidspartner",
+  );
 
   const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [leder, setLeder] = useState<Hovedstyret | undefined>();
@@ -48,6 +53,36 @@ const Footer: FC = () => {
     setLeder(foundLeder);
   }, [styret]);
 
+  const toggleModal = () => {
+    setOpenModal((prevState) => !prevState);
+  };
+
+  const firkloever = (
+    <>
+      <div className="w-full flex flex-col items-center justify-center gap-y-4 p-4 rounded-md border-2">
+        {/* Heading with centered text */}
+        <p className="w-[90%] text-center text-lg sm:text-base">
+          Til Emil med kjærlighet:
+        </p>
+        {/* Responsive list of names with flex-wrap for smaller screens */}
+        <p className="border-b-2 border-primary w-[90%] text-center"></p>
+        <p className="flex flex-wrap w-full justify-center gap-2 sm:gap-x-4 text-center">
+          <span>Nicolai Faye</span>
+          <span>|</span>
+          <span>Maria Wembstad</span>
+          <span>|</span>
+          <span>Emil Lunde Bakke</span>
+          <span>|</span>
+          <span>Mauritz Skogøy</span>
+        </p>
+        {/* Button with margin for spacing */}
+        <div className="mt-4">
+          <Button onClick={toggleModal}>Lukk</Button>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <footer>
       <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-green-darkest text-white px-10 font-bold py-5">
@@ -62,7 +97,10 @@ const Footer: FC = () => {
               Foreningen for Studentene ved Energi og Miljø, OS. Bragstads plass
               2, 7034 Trondheim. Org.nr. 991 212 736
             </p>
-            <p className="mt-4">Foreningen for Studentene ved EMIL © 2024</p>
+            <p className="mt-4">Foreningen for Studentene ved Emil © 2024</p>
+            <p className="text-[11px]">
+              Ved bugs ta kontakt med: trubadur@emilweb.no
+            </p>
           </div>
         </div>
 
@@ -195,12 +233,12 @@ const Footer: FC = () => {
         </div>
       </div>
 
-      <div className="flex max-w-screen items-center justify-center bg-green-darkest py-2">
-        <img
-          src="/svg/Three clover.svg"
-          alt="Trekløver"
-          className="h-4 w-4 icon-hover"
+      <div className="flex max-w-screen items-center justify-center bg-[#001D21] p-2">
+        <Clover
+          onClick={toggleModal}
+          className="text-white clover-hover w-4 h-4 cursor-pointer"
         />
+        {openModal ? <Modal isOpen={openModal} children={firkloever} /> : null}
       </div>
     </footer>
   );

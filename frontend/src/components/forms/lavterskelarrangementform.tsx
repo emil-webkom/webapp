@@ -134,6 +134,7 @@ const LavterskelArrangementForm = ({
                 <option value="Eksternt arrangement">
                   Eksternt arrangement
                 </option>
+                <option value="Bedpress">Bedpress</option>
               </select>
             </div>
 
