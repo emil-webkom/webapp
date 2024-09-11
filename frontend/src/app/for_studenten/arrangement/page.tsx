@@ -370,22 +370,30 @@ const ForStudentenPage = () => {
             </p>
           </div>
           <div className="w-full flex flex-col items-center">
-            <div className="flex justify-start ">
-              <div className="flex gap-x-2 items-center px-4">
+            <div className="flex justify-start flex-wrap">
+              <div className="flex w-full justify-center flex-wrap gap-x-2 gap-y-2 items-center px-4 ">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-sm lg:text-base">Bedpress</span>
+                <span className="text-xs sm:text-sm lg:text-base">
+                  Bedpress
+                </span>
+
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <span className="text-sm lg:text-base">
+                <span className="text-xs sm:text-sm lg:text-base">
                   Offentlige arrangementer
                 </span>
+
                 <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span className="text-sm lg:text-base">Intert arrangement</span>
+                <span className="text-xs sm:text-sm lg:text-base">
+                  Intert arrangement
+                </span>
+
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <span className="text-sm lg:text-base">
+                <span className="text-xs sm:text-sm lg:text-base">
                   Eksterne arrangementer
                 </span>
               </div>
             </div>
+
             <Calendar
               locale="nb"
               className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
