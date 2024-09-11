@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import Logos from "@/components/logosection/komitelogo";
 import { useEffect, useState } from "react";
 import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissionPCSPC";
+import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
+import HeaderImage from "@/components/ForStudenten/headerImage";
 
 const ForStudentenPage = () => {
   const [logos, setLogos] = useState<any[]>([]); // Use a more specific type if available
@@ -28,34 +30,29 @@ const ForStudentenPage = () => {
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <div className="w-full px-4 lg:px-8">
-        <img
+    <div className="w-full text-white flex flex-col items-center justify-center">
+      <div className="w-full flex flex-col justify-center items-center px-12 pb-10 space-y-6">
+        <HeaderImage 
           src="/image/Komiteer/komiteer.jpg"
           alt="Komitearrangement"
-          className="w-full rounded-md h-[50vh] object-cover"
-        />
-      </div>
-      <div className="max-w-[512px] w-full px-4 lg:px-8">
-        <h1 className="text-white text-center font-semibold py-2 text-xl sm:text-2xl w-full">
-          Komiteene
-        </h1>
-        <p className="text-white text-sm text-left">
-          Emil har et rikt utvalg av komiteer som alle har lav terskel for å bli
+          backgroundPos="0% 50%"/>
+        <HeaderText className="text-3xl">Komiteene</HeaderText>
+        <p className="text-white max-w-lg">
+        EMIL har et rikt utvalg av komiteer som alle har lav terskel for å bli
           medlem av. Enkelte komiteer er mer forpliktende enn andre, men de
           drives av og for studenter så det er godt mulig å holde på med
           frivillig verv i linjeforeningen på siden.
           <br />
           <br />
-          Unikt for emil er engasjementet som eksisterer i linjeforeningen. Emil
+          Unikt for EMIL er engasjementet som eksisterer i linjeforeningen. EMIL
           har blant de høyeste andelen studenter som er med i linjeforeningen.
           Dette er til dels hvor enkelt det er å starte en egen komite for
           akkurat det du er interessert i!
         </p>
       </div>
       <SmallTransissionPCSPC />
-      <div className="w-full bg-[#225654] rounded-b-xl flex items-center justify-center">
-        <div className="w-[95%] lg:w-[60%] pb-8">
+      <div className="w-full bg-green-mid rounded-b-xl flex items-center justify-center py-10">
+        <div className="w-[95%] lg:w-[60%] pb">
           {logos.length > 0 ? (
             <Logos data={logos} />
           ) : (

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const MineBookingerPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center bg-[#225654] rounded-b-md gap-y-4 p-4">
+    <div className="flex flex-col items-center justify-center bg-green-mid rounded-b-md gap-y-4 p-4">
       <div className="flex justify-between w-full ">
         <Link
           href="/for_studenten/booking/soundbox"

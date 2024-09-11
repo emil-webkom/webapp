@@ -19,6 +19,10 @@ import SmallTransissionPCSPC from "@/components/hero/transissions/smallTransissi
 import LavterskelArrangementForm from "@/components/forms/lavterskelarrangementform";
 import EventCalendarView from "@/components/event/eventCalendarview";
 import { LavterskelArrangement } from "@prisma/client";
+import TextLink from "@/components/ui/textLink";
+import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
+import HeaderImage from "@/components/ForStudenten/headerImage";
+import { Ticket } from "lucide-react";
 
 const ForStudentenPage = () => {
   const [arrangementer, setArrangementer] = useState<Arrangement[]>([]);
@@ -151,60 +155,10 @@ const ForStudentenPage = () => {
 
   return (
     <div className=" flex flex-col justify-center w-full text-white">
-      <div className="w-full pt-12 px-4 lg:px-8">
-        <img
-          src="/image/arrangement/Arrangement.jpg"
-          alt="Arrangement forsidebilde"
-          className="rounded-md object-cover object-[0_15%] w-full h-[19rem]"
-        />
-      </div>
-      <div className="flex flex-col justify-center items-center gap-y-3 py-3">
-        <div className="flex justify-center items-center text-2xl font-bold gap-x-3">
-          <p>Arrangementer</p>
-          <svg
-            width="25"
-            height="25"
-            viewBox="0 0 25 25"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="icon/ticket">
-              <path
-                id="Vector"
-                d="M3.5 7.5V9.5C4.29565 9.5 5.05871 9.81607 5.62132 10.3787C6.18393 10.9413 6.5 11.7044 6.5 12.5C6.5 13.2956 6.18393 14.0587 5.62132 14.6213C5.05871 15.1839 4.29565 15.5 3.5 15.5V17.5C3.5 18.6 4.4 19.5 5.5 19.5H19.5C20.0304 19.5 20.5391 19.2893 20.9142 18.9142C21.2893 18.5391 21.5 18.0304 21.5 17.5V15.5C20.7044 15.5 19.9413 15.1839 19.3787 14.6213C18.8161 14.0587 18.5 13.2956 18.5 12.5C18.5 11.7044 18.8161 10.9413 19.3787 10.3787C19.9413 9.81607 20.7044 9.5 21.5 9.5V7.5C21.5 6.96957 21.2893 6.46086 20.9142 6.08579C20.5391 5.71071 20.0304 5.5 19.5 5.5H5.5C4.96957 5.5 4.46086 5.71071 4.08579 6.08579C3.71071 6.46086 3.5 6.96957 3.5 7.5Z"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                id="Vector_2"
-                d="M13.5 5.5V7.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                id="Vector_3"
-                d="M13.5 17.5V19.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                id="Vector_4"
-                d="M13.5 11.5V13.5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </g>
-          </svg>
-        </div>
-        <div className="flex flex-col max-w-[512px] space-y-3 text-sm lg:text-l px-4">
+      <div className="flex flex-col justify-center items-center p-12 space-y-6">
+        <HeaderImage src={"/image/arrangement/Arrangement.jpg"} alt={"Arrangement forsidebilde"} backgroundPos="0% 20%"/>
+        <HeaderText className="flex text-3xl flex-row justify-center items-center gap-2">Arrangementer <Ticket/></HeaderText>
+        <div className="flex flex-col max-w-lg space-y-3 text-md">
           <p>
             Linjeforeningen arrangerer en rekke ulike arrangementer og disse kan
             være for kun komiteene eller hele linjeforeningen. Ofte arrangerer
@@ -213,25 +167,20 @@ const ForStudentenPage = () => {
           </p>
           <p>
             Påmelding til arrangementer skjer både gjennom nettsiden og gjennom
-            emils
-            <span className="text-[#9DDBAD] text-underscore">
-              <a href="https://www.facebook.com/groups/emilntnu/?locale=nb_NO">
-                {" "}
-                Facebookgruppe
-              </a>
-            </span>
+            emils{" "}
+            <TextLink href={"https://www.facebook.com/groups/emilntnu/?locale=nb_NO"}>
+            facebookgruppe
+            </TextLink>
             . Ved spørsmål angående arrangementer kan man henvende seg til
             arrangør eller hovedstyret.
           </p>
           <p>
             Typen arrangementer som holdes kan være alt fra sosiale
             arrangementer, faglige arrangementer, ekskursjoner og
-            bedriftspresentasjoner. Sistnevnte her er det
-            <span className="text-[#9DDBAD]">
-              <a href="https://www.emil-link.no/"> Emil Link</a>
-            </span>
+            bedriftspresentasjoner. Sistnevnte her er det{" "}
+            <TextLink href="https://www.emil-link.no/">EMIL-Link</TextLink>{" "}
             som er ansvarlig for. Uansett hvilket arrangement man skal delta på
-            har vi retningslinjer på Emil som må følges uavhengig av hva som
+            har vi retningslinjer på EMIL som må følges uavhengig av hva som
             gjennomføres.
           </p>
         </div>
@@ -247,14 +196,13 @@ const ForStudentenPage = () => {
           ]}
         />
         <SmallTransissionHighlightSPC />
+
         <div
           id="Regler"
-          className="bg-[#225654] flex flex-col items-center justify-center pt-8 px-12"
+          className="bg-green-mid flex flex-col items-center justify-center py-10 px-12"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4">
-            <p>Arrangementsregler</p>
-          </div>
-          <div className="flex justify-center items-center max-w-[512px]">
+          <HeaderText className="mb-6">Arrangementsregler</HeaderText>
+          <div className="flex justify-center items-center">
             <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-4 gap-4 justify-center py-4">
               <NyStudentCard
                 title={
@@ -308,24 +256,19 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Aktive arrangementer"
-          className="flex flex-col items-center justify-center py-6 px-12"
+          className="flex flex-col items-center justify-center py-10 px-12"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-6">
-            <p>Aktive arrangementer</p>
-          </div>
+          <HeaderText className="mb-2">Aktive arrangementer</HeaderText>
           <div className="max-w-[512px] w-full ">
-            <p className="pb-4">
+            <p className="pb-6 text-center">
               Aktive arrangementer publiseres her og i relevante{" "}
-              <span className="text-[#579783] text-underscore">
-                <a
-                  href="https://www.facebook.com/groups/emilntnu"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+              <TextLink href="https://www.facebook.com/groups/emilntnu">
+
                   facebookgrupper
-                </a>
-              </span>
-              . Klikk på et arrangement for å lese mer!
+
+                  </TextLink>
+
+              . <span>Klikk på et arrangement for å lese mer!</span>
             </p>
             {loading ? (
               <div className="flex flex-col items-center justify-center">
@@ -343,29 +286,20 @@ const ForStudentenPage = () => {
         <SmallTransissionPCSPC />
         <div
           id="Lavterskelkalender"
-          className="bg-[#225654] flex flex-col items-center justify-center py-6"
+          className="bg-green-mid flex flex-col items-center justify-center py-10 px-12"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 ">
-            <p>Lavterskelkalender</p>
-          </div>
-          <div className="max-w-[512px] w-full pb-6">
-            <p className="pb-4 px-12">
-              Emil har en lavterskelkalender som kan brukes for å planlegge
+          <HeaderText className="mb-4">Lavterskekalender</HeaderText>
+          <div className="max-w-lg w-full mb-6">
+            <p className="">
+              EMIL har en lavterskelkalender som kan brukes for å planlegge
               arrangementer og happenings framover i tid. Den skal være
-              tilgjengelig for hele Emil og skal kunne brukes av alle. Alle
-              tilbud og aktiviteter som skjer på Emil skal kunne legges inn her
+              tilgjengelig for hele EMIL og skal kunne brukes av alle. Alle
+              tilbud og aktiviteter som skjer på EMIL skal kunne legges inn her
               og sees av hele linjen slik at man kan koordinere rundt det. Den
-              finnes også i excelformat{" "}
-              <span className="text-[#9DDBAD] text-underscore">
-                <a
-                  href="https://docs.google.com/spreadsheets/d/1NPX4qDA5BDv0QHx1QYmXG62Jl1SCMuAiCBoRrJQH3QQ/edit?gid=1062059690#gid=1062059690"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {" "}
-                  her
-                </a>
-              </span>
+              finnes også i{" "}
+              <TextLink href="https://docs.google.com/spreadsheets/d/1NPX4qDA5BDv0QHx1QYmXG62Jl1SCMuAiCBoRrJQH3QQ/edit?gid=1062059690#gid=1062059690">
+                excelformat
+              </TextLink>
               .
             </p>
           </div>
@@ -396,14 +330,14 @@ const ForStudentenPage = () => {
 
             <Calendar
               locale="nb"
-              className="bg-[#225654] text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
+              className="bg-green-mid text-white p-4 rounded-md flex items-center justify-center flex-col gap-y-4 lg:px-12"
               onClickDay={handleDateClick}
               tileClassName={({ date, view }) => {
                 const dateString = date.toDateString();
                 const isToday = dateString === new Date().toDateString();
 
                 return view === "month" && isToday
-                  ? "bg-[#579783] text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
+                  ? "bg-green-light text-white font-bold border border-white lg:h-[5rem] p-2 flex flex-col justify-center items-center relative"
                   : "hover:bg-slate-400 p-2 border border-white h-[5rem] flex flex-col justify-center items-center relative";
               }}
               tileContent={({ date, view }) => {
@@ -453,7 +387,7 @@ const ForStudentenPage = () => {
             />
 
             {selectedDate && (
-              <div className="fixed inset-0 bg-[#579783] bg-opacity-30 flex items-center justify-center z-50">
+              <div className="fixed inset-0 bg-green-light bg-opacity-30 flex items-center justify-center z-50">
                 <div className="bg-white text-primary rounded-lg shadow-lg px-3 py-6 w-[300px] lg:w-1/3">
                   <h2 className="text-xl font-bold mb-4">
                     {
@@ -505,14 +439,12 @@ const ForStudentenPage = () => {
         <SmallTransissionSPCPC />
         <div
           id="Årlige arrangementer"
-          className="flex flex-col items-center justify-center py-6 gap-y-4"
+          className="flex flex-col items-center justify-center py-10"
         >
-          <div className="flex justify-center items-center text-2xl font-bold gap-x-3 py-4 px-12">
-            <p>Årlige arrangementer</p>
-          </div>
-          <div className="max-w-[512px] w-full px-12">
-            <p className="pb-4">
-              Emil har også mange faste arrangementer som går gjennom året. Det
+          <HeaderText className="mb-4">Årlige arrangementer</HeaderText>
+          <div className="max-w-lg w-full px-12">
+            <p className="mb-6">
+              EMIL har også mange faste arrangementer som går gjennom året. Det
               varierer fra fest og morro til mer seriøse samlinger hvor vi
               diskuterer linjeforeningens drift, mål og andre sentrale spørsmål.
               Under finner du en oversikt.

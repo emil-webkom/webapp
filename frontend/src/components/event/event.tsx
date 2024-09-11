@@ -21,7 +21,7 @@ const Event = ({
   return (
     <>
       <Link
-        className="w-full flex justify-between rounded-md h-18 bg-[#003A42] hover:bg-[#426e72] cursor-pointer"
+        className="w-full flex justify-between rounded-md h-18 bg-green-dark hover:bg-[#426e72] cursor-pointer"
         href={`/for_studenten/arrangement/${id}`}
       >
         <div className="flex flex-col w-1/2 text-left p-2">

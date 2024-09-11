@@ -25,6 +25,9 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        grayed: "#cbcbcb",
+        black: "#001D21",
+
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -52,6 +55,16 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        
+        
+        green: {
+          darkest:{DEFAULT:'#001D21'},
+          dark: {DEFAULT:'#003A42', backdrop:"#00333A"},
+
+          mid: {DEFAULT:'#225654', backdrop:"#25504F"},
+          light: '#579783',
+          lightest: '#9DDBAD',
         },
       },
 

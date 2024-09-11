@@ -39,7 +39,7 @@ const HomePage = () => {
             <Image
               src="/image/sponsorer/logo.png"
               fill
-              alt="Emil Logo"
+              alt="EMIL Logo"
               className="object-contain"
             />
           </div>
@@ -62,7 +62,7 @@ const HomePage = () => {
       <div className="w-full background-dark p-8 flex flex-col justify-center items-center">
         <div className="flex flex-col w-[90%] lg:w-[65%] gap-y-6 max-w-[60rem]">
           <div className="text-2xl font-semibold text-white pl-1">
-            Hva skjer på Emil?
+            Hva skjer på EMIL?
           </div>
           <div className="gap-4 flex justify-center">
             <div className="flex justify-center items-center w-full h-fit">
@@ -82,7 +82,7 @@ const HomePage = () => {
           </div>
           <div className="w-full flex flex-col gap-y-6 justify-center items-center">
             <div className="w-full flex text-xl font-semibold text-white justify-center">
-              Søk Emil da vel!
+              Søk EMIL da vel!
             </div>
             <VideoPlayer />
           </div>

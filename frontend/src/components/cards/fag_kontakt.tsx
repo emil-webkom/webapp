@@ -21,7 +21,7 @@ const Fagkontakt: FC<CardProps> = ({
   nummer,
 }) => {
   return (
-    <div className="w-[80%] lg:w-[40%] flex flex-col items-center bg-[#003A42] rounded-md py-6 lg:space-y-3">
+    <div className="w-[80%] lg:w-[40%] flex flex-col items-center bg-green-dark rounded-md py-6 lg:space-y-3">
       <div className="text-xl font-bold overflow-hidden">{name}</div>
       <div className="flex flex-col items-center space-y-3">
         <div className="flex items-center justify-center py-3">

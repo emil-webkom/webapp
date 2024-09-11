@@ -43,11 +43,11 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
           <div className="w-screen lg:w-full lg:relative px-3">
             {/* Left gradient: only visible if not scrolled all the way to the left */}
             {!isScrolledToLeft && (
-              <div className="absolute top-0 left-0 rounded-xl lg:w-12 h-full bg-gradient-to-r from-[#003A42] to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 left-0 rounded-xl lg:w-12 h-full bg-gradient-to-r from-green-dark to-transparent pointer-events-none"></div>
             )}
             {/* Right gradient: only visible if not scrolled all the way to the right */}
             {!isScrolledToRight && (
-              <div className="absolute top-0 right-0 w-12 h-full rounded-xl bg-gradient-to-l from-[#003A42] to-transparent pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-12 h-full rounded-xl bg-gradient-to-l from-green-dark to-transparent pointer-events-none"></div>
             )}
             <div
               ref={scrollContainerRef}

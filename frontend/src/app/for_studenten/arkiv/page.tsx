@@ -1,5 +1,6 @@
 "use client";
 
+import HeaderText from "@/components/ForStudenten/nyStudent/headerText";
 import MenuCard, {
   MenuCardProps,
 } from "@/components/ForStudenten/ui/menu-card";
@@ -87,18 +88,16 @@ const ArkivPage = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="flex max-w-[512px] flex-col justify-center items-center space-y-4 pb-0 p-12">
-        <h1 className="text-white text-center font-semibold text-4xl w-full">
-          Viktige dokumenter
-        </h1>
-        <p className="text-white text-md text-center">
-          Her ligger alle viktige dokumenter som Emil publiserer hvert år. For å
-          se Diplomundersøkelsen må du trykke på “Se rapporter”.
+    <div className="flex flex-col items-center justify-center text-white">
+      <div className="w-full flex flex-col justify-center items-center px-12 py-10">
+        <HeaderText className="text-3xl">Viktige dokumenter</HeaderText>
+        <p className="text-white font-normal text-center max-w-lg pt-4">
+        Her ligger alle viktige dokumenter som EMIL publiserer hvert år. For å
+        se Diplomundersøkelsen må du trykke på “Se rapporter”.
         </p>
-      </div>
-      <div className="p-8">
-        <MenuCardView cards={cards} />
+        <div className="mt-10">
+          <MenuCardView cards={cards} />
+        </div>
       </div>
       <SmallTransissionPCSPC />
       <div className="w-full flex flex-col items-center justify-center text-white bg-[#225654] px-2 lg:px-4 gap-y-4 pb-4">
@@ -236,7 +235,7 @@ const ArkivPage = () => {
           <p className="text-white text-sm text-left">
             Hvert år deler linjeforeningen ut ærespris og fortjenestemedajle til
             medlemmene som har bemerket seg i linjeforeningen. Under finner du
-            emil's wall of fame
+            EMIL's wall of fame
           </p>
         </div>
         <div className="p-2 lg:px-4 rounded-md items-center justify-center w-full lg:w-2/3 bg-[#25504E]">
@@ -267,14 +266,14 @@ const ArkivPage = () => {
                       <tbody>
                         {paginatedData.map((aeresemiler) => (
                           <tr key={aeresemiler.id}>
-                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
+                            <td className="px-2 lg:px-6 py-4 border-b border-green-dark">
                               {aeresemiler.aar}
                             </td>
-                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42]">
+                            <td className="px-2 lg:px-6 py-4 border-b border-green-dark">
                               {aeresemiler.type.charAt(0).toUpperCase() +
                                 aeresemiler.type.slice(1).toLowerCase()}
                             </td>
-                            <td className="px-2 lg:px-6 py-4 border-b border-[#003A42] whitespace-normal break-words">
+                            <td className="px-2 lg:px-6 py-4 border-b border-green-dark whitespace-normal break-words">
                               {aeresemiler.navn}
                             </td>
                           </tr>

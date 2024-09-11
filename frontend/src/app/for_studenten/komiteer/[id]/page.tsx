@@ -64,17 +64,17 @@ const KomitePage = ({ params }: { params: { id: string } }) => {
       </div>
       <div className='max-w-[512px] px-4 space-y-4'>
         <h1 className="text-3xl font-bold text-center py-4">{data?.navn}</h1>
-        <div className='w-full rounded-md p-4 bg-[#001D21]'>
+        <div className='w-full rounded-md p-4 bg-green-darkest'>
           <p>{data?.text2}</p>
         </div>
       </div>
       <SmallTransissionPCSPC />
-      <div className="w-full bg-[#225654] rounded-b-xl flex flex-col items-center justify-center p-4 gap-y-4">
+      <div className="w-full bg-green-mid rounded-b-xl flex flex-col items-center justify-center p-4 gap-y-4">
         <div className='max-w-[512px] flex items-center justify-center px-2 lg:px-4'>
           <p className='text-sm'>{data?.text3}</p>
         </div>
         <div className='w-full flex flex-col items-center justify-center'>
-          <div className='max-w-[512px] p-4 bg-[#3333] rounded-md text-center'>
+          <div className='max-w-[512px] p-4 bg-green-mid-backdrop rounded-md text-center'>
               {leder ? (
                 <>
                   <p className='font-bold text-base'>Leder: {data?.leder}</p>

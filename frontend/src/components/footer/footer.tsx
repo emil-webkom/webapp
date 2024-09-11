@@ -85,11 +85,11 @@ const Footer: FC = () => {
 
   return (
     <footer>
-      <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-[#001D21] text-white px-10 font-bold py-5">
-        {/* Emil section */}
+      <div className="flex flex-col md:flex-row lg:flex-row justify-between bg-green-darkest text-white px-10 font-bold py-5">
+        {/* EMIL section */}
         <div className="flex flex-col lg:w-[20%] md:w-[20%] pt-6">
           <div className="flex justify-left">
-            <div>Emil</div>
+            <div>EMIL</div>
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-left font-light text-[10px] space-y-1">
@@ -116,7 +116,7 @@ const Footer: FC = () => {
               {leder?.User.nummer || "Utilgjengelig"}, styret@emilweb.no
             </p>
             <p>
-              Bedriftskontakt Emil-Link: Markus Eliassen, link-styret@emilweb.no
+              Bedriftskontakt EMIL-Link: Markus Eliassen, link-styret@emilweb.no
             </p>
             <p>NTNU GLØSHAUGEN, Elektrobygget, 7491, Trondheim</p>
           </div>
@@ -131,7 +131,7 @@ const Footer: FC = () => {
           <ul className="text-[10px] font-light space-y-1 object-cover">
             <li>
               <Link href="/om_emil" className="text-underscore">
-                Om Emil
+                Om EMIL
               </Link>
             </li>
             <li>
@@ -184,7 +184,7 @@ const Footer: FC = () => {
       </div>
 
       {/* Social media links */}
-      <div className="bg-[#001D21] color-white py-4">
+      <div className="bg-green-darkest color-white py-4">
         <div className="flex justify-center space-x-4">
           <a
             href="https://www.instagram.com/emilelgen/"

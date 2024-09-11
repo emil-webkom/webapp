@@ -12,12 +12,12 @@ export default function Layout({
       <div className="flex flex-col">
         <Hero2
           title="For studenten"
-          undertitle="Her finner du alt du trenger som student på Emil"
+          undertitle="Her finner du alt du trenger som student på EMIL"
         />
       </div>
       <Banner />
       <div className="grid place-items-center">
-        <div className="lg:w-[65%] bg-[#003A42] flex flex-col items-center rounded-xl ">
+        <div className="lg:w-[65%] bg-green-dark flex flex-col items-center rounded-xl ">
           {children}
         </div>
       </div>

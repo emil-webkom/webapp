@@ -46,7 +46,7 @@ const NavBar: FC = () => {
         <div className="flex gap-x-6">
           <div className="flex space-x-10">
             <Link href="/" onClick={() => handleSetSelectedLink("")}>
-              <Leaf size={24} strokeWidth={1.8} className="stroke-[#003A42]" />
+              <Leaf size={24} strokeWidth={1.8} className="stroke-green-dark" />
             </Link>
           </div>
           {!menuOpen && (

@@ -6,7 +6,7 @@ const ForStudentenPage = () => {
     <div className="text-white w-full bg-white flex flex-col justify-center items-center p-16 ">
       <img
         src="/image/sponsorer/logo.png"
-        alt="Emil Logo"
+        alt="EMIL Logo"
         className="w-[12rem]"
       />
     </div>
