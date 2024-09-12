@@ -135,6 +135,9 @@ const LavterskelArrangementForm = ({
                   Eksternt arrangement
                 </option>
                 <option value="Bedpress">Bedpress</option>
+                <option value="Offentlig arrangement">
+                  Offentlig arrangement
+                </option>
               </select>
             </div>
 
