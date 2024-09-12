@@ -74,25 +74,33 @@ const EventCalendarView: React.FC<EventCalendarViewProps> = ({
 
                 {arrangementColor === "bg-yellow-500" ? (
                   <div className="w-full flex justify-between items-center">
-                    <a
+                    {/* <a
                       href={`arrangement/${arrangement.id}`}
                       className="text-underscore flex flex-col w-[80%]"
-                    >
-                      <h2 className="font-bold text-base lg:text-lg">
-                        {arrangement.navn}
-                        <span className="font-normal">
-                          {" "}
-                          -{" "}
-                          {new Date(arrangement.dato).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
-                        </span>
-                      </h2>
-                      <p className="font-normal text-base">
-                        {arrangement.sted}
-                      </p>
-                    </a>
+                    > */}
+                    <h2 className="font-bold text-base lg:text-lg">
+                      {arrangement.navn}
+                      <span className="font-normal">
+                        {" "}
+                        -{" "}
+                        {new Date(arrangement.dato).toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </span>
+                    </h2>
+                    <p className="font-normal text-base">{arrangement.sted}</p>
+                    {/* </a> */}
+                    {"userId" in arrangement &&
+                      user?.id &&
+                      checkOwnsLTA(arrangement.userId as string, user.id) && (
+                        <button
+                          onClick={() => handleDelete(arrangement.id)}
+                          className="font-normal py-1 px-3 rounded-md mt-2 text-underscore"
+                        >
+                          Slett?
+                        </button>
+                      )}
                   </div>
                 ) : (
                   <div className="w-full flex justify-between items-center ">
