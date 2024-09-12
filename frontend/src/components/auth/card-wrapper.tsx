@@ -28,11 +28,11 @@ export const CardWrapper = ({
         <Header title={headerTitle} label={headerLabel}></Header>
       </CardHeader>
       <CardContent>{children}</CardContent>
-      {showSocial && (
+      {/* {showSocial && (
         <CardFooter>
           <Social />
         </CardFooter>
-      )}
+      )} */}
       <CardFooter>
         <BackButton label={backButtonLabel} href={backButtonHref} />
       </CardFooter>
