@@ -23,12 +23,11 @@ const BrukerComponent = () => {
   const finduser = (id: string): UserPrisma | null => {
     return (data?.data || []).find(user => user.id === id) || null;
   };
-  
+
   const handleSlett = async (id: string) => {
     const user = finduser(id);
     const confirmed = window.confirm(`Er du sikker på at du vil slette ${user?.name}?`);
 
-    
     if (confirmed) {
       try {
         const response = await fetch(`/api/users/${id}`, {
@@ -43,9 +42,8 @@ const BrukerComponent = () => {
       } catch (error) {
         console.error("Internal server error:", error);
       }
-    } 
+    }
   };
-  
 
   const handleRediger = (user: UserPrisma) => {
     setUser(user);
@@ -53,25 +51,20 @@ const BrukerComponent = () => {
   };
 
   const toggleForm = () => {
-    setOpenForm((prevState) => !prevState);
+    setOpenForm(prevState => !prevState);
   };
 
   const handleConfirmStatus = async (id: string) => {
-    const data = {
-      kontigent: "BETALT",
-    };
+    const data = { kontigent: "BETALT" };
     try {
       const response = await fetch(`/api/users/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       if (response.status !== 200) {
         console.error("Could not save data:", response.statusText);
       } else {
-        // Trigger a data refresh
         setRefreshKey(prev => prev + 1);
       }
     } catch (error) {
@@ -80,48 +73,44 @@ const BrukerComponent = () => {
   };
 
   const handleCancleStatus = async (id: string) => {
-    const data = {
-      kontigent: "UBETALT",
-    };
+    const data = { kontigent: "UBETALT" };
     try {
       const response = await fetch(`/api/users/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       if (response.status !== 200) {
         console.error("Could not save data:", response.statusText);
       } else {
-        // Trigger a data refresh
         setRefreshKey(prev => prev + 1);
       }
     } catch (error) {
       console.error("Internal server error:", error);
     }
   };
-  const save = () => {
-    setTimeout(() => {
-      setRefreshKey(prev => prev + 1);
-    }, 2000);
-    toggleForm();
-  }
 
-  // Function to handle filtering by both kontigent and role
+  const save = () => {
+    setTimeout(() => setRefreshKey(prev => prev + 1), 2000);
+    toggleForm();
+  };
+
+  // Function to filter and sort users by name
   const filteredData = () => {
-    return (data?.data || []).filter((user) => {
-      const matchKontigent = kontigentFilter === "ALL" || user.kontigent === kontigentFilter;
-      const matchRole = roleFilter === "ALL" || user.role === roleFilter;
-      return matchKontigent && matchRole;
-    });
+    return (data?.data || [])
+      .filter((user) => {
+        const matchKontigent = kontigentFilter === "ALL" || user.kontigent === kontigentFilter;
+        const matchRole = roleFilter === "ALL" || user.role === roleFilter;
+        return matchKontigent && matchRole;
+      })
+      .sort((a, b) => (a?.name || "").localeCompare(b?.name || "")); // Sort by name (case insensitive)
   };
 
   if (loading) {
-    return <div>Loading</div>;
+    return <div>Loading...</div>;
   }
   if (error) {
-    return <div>Error</div>;
+    return <div>Error...</div>;
   }
 
   return (
@@ -165,33 +154,37 @@ const BrukerComponent = () => {
       </div>
 
       <div className="flex flex-col w-full p-4">
-        <div className="flex justify-between bg-[#AEE0D0] rounded-md p-2">
-          <div className="font-semibold">Navn:</div>
-          <div className="font-semibold">Mail:</div>
-          <div className="font-semibold">Kontigent status</div>
-          <div className="font-semibold">Rolle</div>
-          <div className="font-semibold">Endre?</div>
+        <div className="flex justify-f gap-x-4 bg-[#AEE0D0] rounded-md p-2">
+          <div className="flex gap-x-4 w-[450px] overflow-hidden justify-between">
+            <div className="font-semibold">Navn:</div>
+            <div className="font-semibold">Mail:</div>
+          </div>
+          <div className="flex w-[250px] gap-x-4">
+            <div className="font-semibold">Kontigent status</div>
+          </div>
+          <div className="w-[300px] flex justify-between">
+            <div className="font-semibold">Rolle</div>
+            <div className="font-semibold">Endre?</div>
+          </div>
         </div>
 
         {user && (
           <Modal
             isOpen={openForm}
-            children={
-              <EditUserForm user={user} handleCloseForm={save} />
-            }
+            children={<EditUserForm user={user} handleCloseForm={save} />}
           />
         )}
 
-        {filteredData().map((item) => (
-          item.emailVerified != null ? (
+        {filteredData().map((item) =>
+          item.emailVerified ? (
             <div key={item.id} className="flex justify-between w-full gap-x-10 border-b-2 border-[#25504E] p-2">
               <div className="flex gap-4">
                 <div className="flex gap-x-4 w-[450px] overflow-hidden justify-between">
                   <div className="flex-none">{item.name}</div>
-                  <div className="">{item.email}</div>
+                  <div>{item.email}</div>
                 </div>
                 <div className="flex w-[250px] gap-x-4">
-                  <div className="">{item.kontigent}</div>
+                  <div>{item.kontigent}</div>
                   {item.kontigent === "AVVENTER_BEKREFTELSE" && (
                     <div className="flex gap-x-4">
                       <Check onClick={() => handleConfirmStatus(item.id)} className="text-green-500 icon-hover cursor-pointer" />
@@ -209,7 +202,7 @@ const BrukerComponent = () => {
               </div>
             </div>
           ) : null
-        ))}
+        )}
       </div>
     </div>
   );

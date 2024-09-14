@@ -29,7 +29,6 @@ export async function PATCH(
 export async function DELETE(req: NextRequest,
   { params }: { params: { id: string } },
 ) {
-  console.log("Dowegethere")
   try {
     await db.user.delete({
       where: { id: params.id },

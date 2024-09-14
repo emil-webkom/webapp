@@ -1,6 +1,7 @@
 'use client'
 
 import { Dashboard } from "@/components/admin/admin-dashboard";
+import TransissionIn from "@/components/hero/transissions/transissionIn";
 import { useCurrentRole } from "@/hooks/use-current-role";
 import { redirect } from "next/navigation";
 
@@ -9,7 +10,12 @@ const AdminPage = () => {
   if(rolle !=="ADMIN"){
     redirect("/");
   }
-  return <Dashboard />;
+  return (
+    <div>
+      <Dashboard />
+    <TransissionIn/>
+    </div>
+);
 };
 
 export default AdminPage;

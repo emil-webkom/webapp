@@ -77,9 +77,11 @@ const AeresEmilerComponent = () => {
           Oversikt over Æresemilere og utdelte fortjenestemedaljer
         </h1>
       </div>
-      <button onClick={handleLeggTilClick} className="flex w-full px-6 text-underscore ">
-        Legg til?
-      </button>
+      <div className="flex w-full px-6">
+        <button onClick={handleLeggTilClick} className="text-underscore ">
+          Legg til?
+        </button>
+      </div>
       <div className="flex flex-col w-full p-4 ">
         <div className="flex bg-[#AEE0D0] rounded-md p-2">
           <div className="w-[30%] font-semibold">Navn:</div>
