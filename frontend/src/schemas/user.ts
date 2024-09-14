@@ -5,7 +5,7 @@ const UserRole = z.enum(["USER", "ADMIN", "SUPER_USER"]); // Modify the roles ba
 const Kontigent = z.enum(["UBETALT", "BETALT", "AVVENTER_BEKREFTELSE"]); // Modify the roles based on your actual enum
 
 // Zod schema for the `User` model
-const userPrismaSchema = z.object({
+export const userPrismaSchema = z.object({
   id: z.string().cuid(), // cuid for id
   name: z.string().nullable().optional(), // Nullable and optional string
   email: z.string().email(), // Unique email
