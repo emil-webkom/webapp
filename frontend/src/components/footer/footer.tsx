@@ -46,6 +46,7 @@ const Footer: FC = () => {
     try {
       const response = await fetch("/api/styret");
       const result = await response.json();
+      setKomite();
       if (response.ok) {
         setStyret(result.data); // Assuming the API returns { data: hovedstyret[] }
       } else {
@@ -58,7 +59,6 @@ const Footer: FC = () => {
 
   useEffect(() => {
     fetchStyretData();
-    setKomite();
 
     if (samarbeidspartnerData) {
       setLogos(samarbeidspartnerData?.data);
