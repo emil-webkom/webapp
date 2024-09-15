@@ -20,6 +20,7 @@ import SmallTransissionSPCPC from "@/components/hero/transissions/smallTransissi
 import StickyNavbar from "@/components/navbar/stickyNavbar";
 import { Button } from "@/components/ui/button";
 import TextLink from "@/components/ui/textLink";
+import { Hovedstyret } from "@/schemas/hovedstyret";
 import {
   ArrowUpLeft,
   ArrowUpRight,
@@ -34,10 +35,33 @@ import {
   Wifi,
 } from "lucide-react";
 import Link from "next/link";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { FaFacebookF } from "react-icons/fa";
 
 const ForStudentPage = () => {
+  const [styret, setStyret] = useState<Hovedstyret[]>([]);
+  const [hyrd, setHyrd] = useState<Hovedstyret>();
+
+  useEffect(() => {
+    fetchStyretData();
+  }, []);
+
+  const fetchStyretData = async () => {
+    try {
+      const response = await fetch("/api/styret");
+      const result = await response.json();
+      if (response.ok) {
+        const foundHyrd = result.data.find(
+          (item: Hovedstyret) => item.rolle === "Hyrd fadderansvarlig",
+        );
+        setHyrd(foundHyrd);
+      } else {
+        console.error("Error fetching styret data:", result.message);
+      }
+    } catch (error) {
+      console.error("Error fetching styret data:", error);
+    }
+  };
   const unnagjortCards: nyStudentCardProps[] = [
     {
       title: "Registrere deg og betale semesteravgift",
@@ -405,9 +429,9 @@ const ForStudentPage = () => {
             <p>
               <span className="font-semibold">Fadderansvarlig:</span>
               <br />
-              Vegard Jensen
+              {hyrd?.User.name}
               <br />
-              +47 123 45 678
+              {hyrd?.User.nummer}
             </p>
             <Button
               onClick={() => window.open("mailto:styret@emilweb.no")}

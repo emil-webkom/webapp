@@ -6,24 +6,33 @@ import {
   apiAuthPrefix,
   authRoutes,
   publicRoutes,
+  adminRoutes,
 } from "@/routes";
+import { useSession } from "next-auth/react";
+import { useCurrentRole } from "./hooks/use-current-role";
+import { UserRole } from "@prisma/client";
+// import { isAdmin } from "./utils/isadmin";
 
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-  // const isLoggedIn = !!req.auth;
-  // console.log("ROUTE: ", req.nextUrl.pathname);
-  // console.log("IS LOGGED IN: ", isLoggedIn);
+
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
+  // const isAdmin = req.auth?.user.role;
+
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  const isAdminRoute = adminRoutes.includes(nextUrl.pathname);
 
   if (isApiAuthRoute) {
     return;
   }
+  // if (isAdminRoute && !isAdmin){
+  //   return Response.redirect(new URL("/for_studenten", nextUrl));
+  // }
 
   if (isAuthRoute) {
     if (isLoggedIn) {

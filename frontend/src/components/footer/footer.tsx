@@ -8,6 +8,7 @@ import { FC, useEffect, useState } from "react";
 import { Clover } from "lucide-react";
 import Modal from "../ui/modal";
 import { Button } from "../ui/button";
+import { Komite } from "@/schemas/komite";
 
 interface dataProps {
   message: string;
@@ -17,12 +18,28 @@ interface dataProps {
 const Footer: FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [logos, setLogos] = useState<Samarbeidspartner[]>([]);
-  const { data, loading, error } = useFetch<dataProps | null>(
-    "/api/samarbeidspartner",
-  );
+  const {
+    data: samarbeidspartnerData,
+    loading: samarbeidspartnerLoading,
+    error: samarbeidspartnerError,
+  } = useFetch<dataProps | null>("/api/samarbeidspartner");
+  const {
+    data: komiteData,
+    loading: komiteLoading,
+    error: komiteError,
+  } = useFetch<Komite[] | null>("/api/komite");
 
   const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [leder, setLeder] = useState<Hovedstyret | undefined>();
+
+  const [komiteLeder, setKomiteLeder] = useState<Komite>();
+
+  const setKomite = () => {
+    if (komiteData) {
+      const komite = komiteData.find((item) => item.navn === "Emil Link");
+      setKomiteLeder(komite);
+    }
+  };
 
   // Fetch and set Hovedstyret data
   const fetchStyretData = async () => {
@@ -41,11 +58,12 @@ const Footer: FC = () => {
 
   useEffect(() => {
     fetchStyretData();
+    setKomite();
 
-    if (data) {
-      setLogos(data?.data);
+    if (samarbeidspartnerData) {
+      setLogos(samarbeidspartnerData?.data);
     }
-  }, [data]);
+  }, [samarbeidspartnerData]);
 
   useEffect(() => {
     // Find and set the leader (Kongsknekt leder)
@@ -116,7 +134,8 @@ const Footer: FC = () => {
               {leder?.User.nummer || "Utilgjengelig"}, styret@emilweb.no
             </p>
             <p>
-              Bedriftskontakt EMIL-Link: Markus Eliassen, link-styret@emilweb.no
+              Bedriftskontakt EMIL-Link: {komiteLeder?.leder},{" "}
+              {komiteLeder?.mail}
             </p>
             <p>NTNU GLØSHAUGEN, Elektrobygget, 7491, Trondheim</p>
           </div>
@@ -162,7 +181,9 @@ const Footer: FC = () => {
             <img src="/svg/arrow-up-right.svg" alt="Link" className="h-6 w-6" />
           </div>
           <div className="text-[10px] space-y-1 font-light">
-            {!loading && !error && logos.length > 0 ? (
+            {!samarbeidspartnerLoading &&
+            !samarbeidspartnerError &&
+            logos.length > 0 ? (
               logos.map((partner) => (
                 <p key={partner.id} className="text-underscore">
                   <a
@@ -174,7 +195,7 @@ const Footer: FC = () => {
                   </a>
                 </p>
               ))
-            ) : loading ? (
+            ) : samarbeidspartnerLoading ? (
               <div>Loading data...</div>
             ) : (
               <div>No available data</div>

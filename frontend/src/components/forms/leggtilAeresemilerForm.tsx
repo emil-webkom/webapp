@@ -130,7 +130,7 @@ interface AeresEmilerFormProps {
             type="submit"
             className="bg-primary hover:bg-slate-400 text-white font-normal py-2 px-4 rounded-md"
           >
-            Send inn
+            Legg til
           </button>
   
           {/* Close Form Button */}
