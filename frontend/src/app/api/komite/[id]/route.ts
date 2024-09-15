@@ -1,33 +1,19 @@
 import { NextResponse, NextRequest } from "next/server";
 import { db } from "@/lib/db";
 
-export async function DELETE(request: NextRequest) {
-  const url = new URL(request.url);
-  const komite = url.searchParams.get("komite");
-
-  if (!komite) {
-    return NextResponse.json(
-      { error: "Komite name is required" },
-      { status: 400 },
-    );
-  }
+export async function DELETE(req: NextRequest,
+  { params }: { params: { id: string } },
+) {
   try {
     await db.komite.delete({
-      where: { navn: komite },
+      where: { id: params.id }
     });
-    return NextResponse.json(
-      { message: "Komite successfully deleted" },
-      { status: 200 },
-    );
+
+    return NextResponse.json({message: "Successfully deleted komite:"}, { status: 200 });
   } catch (error) {
-    console.error("Error deleting komite from database:", error);
-    return NextResponse.json(
-      { message: "Internal server error" },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }
-
 export async function GET(request: NextRequest, { params }: { params: { id: string }}) {
   const komiteId = params.id
   if (!komiteId) {
@@ -53,6 +39,48 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
     console.error("Error fetching komite from database:", error);
     return NextResponse.json(
       { message: "Internal server error" },
+      { status: 500 }
+    );
+  }
+}
+
+export async function PATCH(
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  try {
+    console.log(params.id);
+    const body = await req.json();
+
+    // Ensure the required fields are included and properly structured
+    const komiteData = {
+      navn: body.navn,
+      leder: body.leder ?? null,
+      text1: body.text1 ?? null,
+      text2: body.text2 ?? null,
+      text3: body.text3 ?? null,
+      bilde: body.bilde,
+      mail: body.mail ?? null,
+      mappe: body.mappe ?? null,
+    };
+
+    // Create a new komite entry in the database
+    const komite = await db.komite.update({
+      where: {id: params.id},
+      data: komiteData,
+    });
+
+    return NextResponse.json(
+      {
+        message: "Komite updated successfully",
+        data: komite,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error updating komite", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
       { status: 500 }
     );
   }

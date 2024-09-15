@@ -5,13 +5,7 @@ import { Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import {
   Table,
@@ -35,16 +29,12 @@ import KomiteComponent from "./komiteComponent";
 import HovedstyreComponent from "./hovedstyret";
 import LavterskelarrangementComponent from "./lavterskelarrangement";
 
-
 export function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-    
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-            
             <Tabs defaultValue="Bruker">
               <div className="flex items-center">
                 <TabsList>
@@ -52,54 +42,59 @@ export function Dashboard() {
                   <TabsTrigger value="Hovedstyret">Hovedstyret</TabsTrigger>
                   <TabsTrigger value="Komité">Komité</TabsTrigger>
                   <TabsTrigger value="Arrangement">Arrangement</TabsTrigger>
-                  <TabsTrigger value="Lavterskelarrangement">Lavterskelarrangement</TabsTrigger>
+                  <TabsTrigger value="Lavterskelarrangement">
+                    Lavterskelarrangement
+                  </TabsTrigger>
                   <TabsTrigger value="Booking">Booking</TabsTrigger>
-                  <TabsTrigger value="Samarbeidspartnere">Samarbeidspartnere</TabsTrigger>
-                  <TabsTrigger value="Hovedsamarbeidspartnere">Hovedsamarbeidspartnere</TabsTrigger>
+                  <TabsTrigger value="Samarbeidspartnere">
+                    Samarbeidspartnere
+                  </TabsTrigger>
+                  <TabsTrigger value="Hovedsamarbeidspartnere">
+                    Hovedsamarbeidspartnere
+                  </TabsTrigger>
                   <TabsTrigger value="Æresemiler">Æresemiler</TabsTrigger>
                 </TabsList>
-                <div className="ml-auto flex items-center gap-2">
-                  
-                </div>
+                <div className="ml-auto flex items-center gap-2"></div>
               </div>
               <TabsContent value="Bruker">
-                <BrukerComponent/>
-                </TabsContent>
+                <BrukerComponent />
+              </TabsContent>
 
-                <TabsContent value="Hovedstyret">
-                <HovedstyreComponent/>
-                </TabsContent>
+              <TabsContent value="Hovedstyret">
+                <HovedstyreComponent />
+              </TabsContent>
 
-                <TabsContent value="Komité">
-                <KomiteComponent></KomiteComponent>
-                </TabsContent>
-                <TabsContent value="Arrangementer">
+              <TabsContent value="Komité">
+                <KomiteComponent />
+              </TabsContent>
+
+              <TabsContent value="Arrangementer">
                 <div>Arrangementer</div>
-                </TabsContent>
+              </TabsContent>
 
-                <TabsContent value="Lavterskelarrangement">
+              <TabsContent value="Lavterskelarrangement">
                 <LavterskelarrangementComponent></LavterskelarrangementComponent>
-                </TabsContent>
+              </TabsContent>
 
-                <TabsContent value="Booking">
+              <TabsContent value="Booking">
                 <BookingComponent></BookingComponent>
-                </TabsContent>
+              </TabsContent>
 
-                <TabsContent value="Samarbeidspartnere">
-               <SamarbeidspartnereComponent></SamarbeidspartnereComponent>
-                </TabsContent>
+              <TabsContent value="Samarbeidspartnere">
+                <SamarbeidspartnereComponent></SamarbeidspartnereComponent>
+              </TabsContent>
 
-                <TabsContent value="Hovedsamarbeidspartnere">
-                  <HovedsamarbeidspartnerComponent/>
-                </TabsContent>
+              <TabsContent value="Hovedsamarbeidspartnere">
+                <HovedsamarbeidspartnerComponent />
+              </TabsContent>
 
-                <TabsContent value="Æresemiler">
+              <TabsContent value="Æresemiler">
                 <div className="w-full">
-                  <AeresEmilerComponent/>
+                  <AeresEmilerComponent />
                 </div>
-                </TabsContent>
+              </TabsContent>
 
-            {/*     <Card x-chunk="dashboard-05-chunk-3">
+              {/*     <Card x-chunk="dashboard-05-chunk-3">
                   <CardHeader className="px-7">
                     <CardTitle>Orders</CardTitle>
                   </CardHeader>
@@ -187,9 +182,7 @@ export function Dashboard() {
                 </Card> */}
             </Tabs>
           </div>
-          <div>
-            
-          </div>
+          <div></div>
         </main>
       </div>
     </div>
