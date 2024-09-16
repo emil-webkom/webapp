@@ -73,11 +73,11 @@ export function Dashboard() {
               </TabsContent>
 
               <TabsContent value="Lavterskelarrangement">
-                <LavterskelarrangementComponent></LavterskelarrangementComponent>
+                <LavterskelarrangementComponent />
               </TabsContent>
 
               <TabsContent value="Booking">
-                <BookingComponent></BookingComponent>
+                <BookingComponent />
               </TabsContent>
 
               <TabsContent value="Samarbeidspartnere">
