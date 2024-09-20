@@ -1,6 +1,8 @@
 import { NextResponse, NextRequest } from "next/server";
 import { db } from "@/lib/db";
 
+export const revalidate = 0;
+
 export async function DELETE(req: NextRequest,
   { params }: { params: { id: string } },
 ) {

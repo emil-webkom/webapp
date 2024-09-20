@@ -2,6 +2,8 @@ import { db } from "@/lib/db";
 import { createlavterskelArrangementSchema } from "@/schemas/lavterskelArrangement";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0;
+
 export async function GET(req: NextRequest) {
   try {
     const lavterskelArrangementer = await db.lavterskelArrangement.findMany();

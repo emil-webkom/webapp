@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0;
+
  /**
  * Deletes a given instance in AeresEmiler table
  * @param id: string

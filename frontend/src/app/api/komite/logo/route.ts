@@ -2,6 +2,8 @@ import { NextResponse, NextRequest } from "next/server";
 import fetchKomite from "@/utils/komite/fetchers";
 import { db } from "@/lib/db";
 
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   try {
     const data = await fetchKomite();
