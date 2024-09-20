@@ -7,6 +7,8 @@ import {
 import { id } from "date-fns/locale";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0;
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } },

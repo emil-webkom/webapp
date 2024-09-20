@@ -2,6 +2,8 @@ import { db } from "@/lib/db";
 import { createlavterskelArrangementSchema } from "@/schemas/lavterskelArrangement";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0;
+
 /**
  * Function for fetching all objects active objects in hovedsamarbeidsamarbeidspartnere
  * @returns An array of all objects active objects in the table hovedsamarbeidspartnere

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
+export const revalidate = 0;
 /**
  * Function for fetching all objects in AeresEmiler
  * @returns An array of all objects in the table AeresEmiler

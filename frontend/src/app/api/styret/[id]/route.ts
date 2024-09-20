@@ -3,6 +3,8 @@ import { getUserByEmail } from "@/data/user";
 import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
+export const revalidate = 0;
+
 export async function PATCH(
   req: NextRequest,
   { params }: { params: { rolle: string } }

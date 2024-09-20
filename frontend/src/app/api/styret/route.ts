@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
 
+export const revalidate = 0;
+
 export async function GET(request: NextRequest) {
   try {
     const hovedstyret = await db.hovedstyret.findMany({

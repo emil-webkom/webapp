@@ -2,6 +2,8 @@ import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import { updateBookingSchema, deleteBookingSchema } from "@/schemas/booking";
 
+export const revalidate = 0;
+
 export async function GET(
   req: NextRequest,
   { params }: { params: { id: string } },

@@ -95,7 +95,7 @@ const EventCalendarView: React.FC<EventCalendarViewProps> = ({
                       user?.id &&
                       checkOwnsLTA(arrangement.userId as string, user.id) && (
                         <button
-                          onClick={() => handleDelete(arrangement.id)}
+                          onClick={() => handleDelete(arrangement.id || "")}
                           className="font-normal py-1 px-3 rounded-md mt-2 text-underscore"
                         >
                           Slett?
@@ -125,7 +125,7 @@ const EventCalendarView: React.FC<EventCalendarViewProps> = ({
                       user?.id &&
                       checkOwnsLTA(arrangement.userId as string, user.id) && (
                         <button
-                          onClick={() => handleDelete(arrangement.id)}
+                          onClick={() => handleDelete(arrangement.id || "")}
                           className="font-normal py-1 px-3 rounded-md mt-2 text-underscore"
                         >
                           Slett?
