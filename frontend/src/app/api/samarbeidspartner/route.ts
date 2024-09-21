@@ -32,22 +32,21 @@ export async function GET(req: NextRequest) {
  * @param data: { FILL OUT LATER}
  * @returns An instance of the object created or generic error message.
  */
-// export async function POST(req: NextRequest) {
-//      try {
-//        const requestData = await req.json();
- 
-//        const parsedData = createlavterskelArrangementSchema.parse(requestData);
-//        const newLavterskelArrangement = await db.lavterskelArrangement.create({
-//          data: parsedData,
-//        });
- 
-//        return NextResponse.json({
-//          success: true,
-//          message: "Arrangement created",
-//          data: newLavterskelArrangement,
-//        });
-//      } catch (error) {
-//        console.log("Error in the POST request");
-//        return NextResponse.json({ error: error }, { status: 400 });
-//      }
-//    }
+export async function POST(req: NextRequest) {
+  try {
+    const requestData = await req.json();
+
+    const HSP = await db.samarbeidspartner.create({
+      data: requestData,
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "SP created",
+      data: HSP,
+    });
+  } catch (error) {
+    console.log("Error in the POST request");
+    return NextResponse.json({ error: error }, { status: 400 });
+  }
+}
