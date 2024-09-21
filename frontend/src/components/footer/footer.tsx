@@ -34,19 +34,10 @@ const Footer: FC = () => {
 
   const [komiteLeder, setKomiteLeder] = useState<Komite>();
 
-  const setKomite = () => {
-    if (komiteData) {
-      const komite = komiteData.find((item) => item.navn === "Emil Link");
-      setKomiteLeder(komite);
-    }
-  };
-
-  // Fetch and set Hovedstyret data
   const fetchStyretData = async () => {
     try {
       const response = await fetch("/api/styret");
       const result = await response.json();
-      setKomite();
       if (response.ok) {
         setStyret(result.data); // Assuming the API returns { data: hovedstyret[] }
       } else {
@@ -60,16 +51,22 @@ const Footer: FC = () => {
   useEffect(() => {
     fetchStyretData();
 
-    if (samarbeidspartnerData) {
-      setLogos(samarbeidspartnerData?.data);
+    if (komiteData) {
+      const komite = komiteData.find((item) => item.navn === "Emil Link");
+      setKomiteLeder(komite);
     }
-  }, [samarbeidspartnerData]);
 
-  useEffect(() => {
-    // Find and set the leader (Kongsknekt leder)
-    const foundLeder = styret.find((item) => item.rolle === "Kongsknekt leder");
-    setLeder(foundLeder);
-  }, [styret]);
+    if (samarbeidspartnerData) {
+      setLogos(samarbeidspartnerData.data);
+    }
+
+    if (styret.length > 0) {
+      const foundLeder = styret.find(
+        (item) => item.rolle === "Kongsknekt leder",
+      );
+      setLeder(foundLeder);
+    }
+  }, [komiteData, samarbeidspartnerData]);
 
   const toggleModal = () => {
     setOpenModal((prevState) => !prevState);

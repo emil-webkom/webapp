@@ -94,7 +94,7 @@ export const RegisterForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="ola@gmail.no"
+                      placeholder="ola.nordmann@stud.ntnu.no"
                       type="email"
                     />
                   </FormControl>

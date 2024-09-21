@@ -95,7 +95,7 @@ export const LoginForm = () => {
                     <Input
                       {...field}
                       disabled={isPending}
-                      placeholder="emil@elgen.no"
+                      placeholder="Kari.nordmann@stud.ntnu.no"
                       type="email"
                     />
                   </FormControl>
