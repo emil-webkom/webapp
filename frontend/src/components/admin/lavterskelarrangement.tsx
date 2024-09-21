@@ -48,11 +48,11 @@ const LavterskelarrangementComponent = () => {
         </h1>
       </div>
       <div className="w-full px-6 mb-4 text-center">
-        <div className="font-semibold:">Filtrer</div>
+        <div className="font-semibold:">Filtrer:</div>
         <select
           value={showPastEvents ? "future" : "all"}
           onChange={(e) => setShowPastEvents(e.target.value === "future")}
-          className=""
+          className="p-2 border border-gray-300 rounded"
         >
           <option value="all">Kommende arrangementer</option>
           <option value="future">Alle arrangementer</option>
