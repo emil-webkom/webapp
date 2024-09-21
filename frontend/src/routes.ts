@@ -12,6 +12,7 @@ export const publicRoutes = [
   "/naeringsliv",
   "/auth/new-verification",
   "/api/styret",
+  "/api/komite",
   "/api/komite/logo",
   "/api/arrangementer",
   "/api/samarbeidspartner",
@@ -31,9 +32,7 @@ export const authRoutes = [
   "/auth/new-password",
 ];
 
-export const adminRoutes = [
-  "/admin",
-]
+export const adminRoutes = ["/admin"];
 
 /**
  * The prefix for API authentication routes
