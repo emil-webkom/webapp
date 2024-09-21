@@ -9,11 +9,6 @@ const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 let verificationInProgress = false;
 
 export const newVerification = async (token: string) => {
-  if (verificationInProgress) {
-    console.log("Verification is already in progress.");
-    return;
-  }
-
   verificationInProgress = true;
   console.log("Starting verification process for token:", token);
 
@@ -41,11 +36,11 @@ export const newVerification = async (token: string) => {
 
   if (existingUser.emailVerified) {
     console.log("Email already verified");
+    window.location.href = "/auth/login";
     return { error: "Email allerede registrert!" };
   }
 
   try {
-    // Update the user to mark the email as verified
     await db.user.update({
       where: { id: existingUser.id },
       data: {
@@ -54,7 +49,7 @@ export const newVerification = async (token: string) => {
       },
     });
 
-    await delay(3000); // 30,000 milliseconds = 30 seconds
+    await delay(3000);
 
     return { success: "Email verified and token deleted!" };
   } catch (error) {
