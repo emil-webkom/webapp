@@ -147,7 +147,9 @@ const OmEmilPage = () => {
             <div id="Top" className="font-semibold text-l lg:text-2xl">
               Studiet er et fem-årig sivilingeniørstudie ved NTNU i Trondheim.
               Det kombinerer{" "}
-              <span className="text-green-light">energi- og prosessteknikk</span>{" "}
+              <span className="text-green-light">
+                energi- og prosessteknikk
+              </span>{" "}
               med <span className="text-green-light">elkraftteknikk</span> som
               gjør at du får en unik forståelse av energisystemet som helhet.
             </div>
@@ -257,10 +259,11 @@ const OmEmilPage = () => {
               </div>
               <div className="flex flex-col space-y-2 lg:space-y-4">
                 <p className="font-semibold text-base lg:text-base px-3">
-                  er linjeforeningens øverste organ og har ansvaret for driften
-                  og ledelsen av organisasjonen i det daglige. Styret består av
-                  syv faste medlemmer med ansvarsområder innenfor alt fra
-                  arrangement og fadderuker, til økonomi og næringsliv.
+                  Hovedstyret er linjeforeningens øverste organ og har ansvaret
+                  for driften og ledelsen av organisasjonen i det daglige.
+                  Styret består av syv faste medlemmer med ansvarsområder
+                  innenfor alt fra arrangement og fadderuker, til økonomi og
+                  næringsliv.
                 </p>
                 <p className="font-extralight text-sm lg:text-base px-3">
                   Alle styremedlemmene fungerer på lik linje, med alle de

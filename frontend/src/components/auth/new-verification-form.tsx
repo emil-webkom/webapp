@@ -19,7 +19,7 @@ export const NewVerificationForm = () => {
 
   const token = searchParams.get("token");
 
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     if (success || error) return;
 
     if (!token) {
@@ -27,20 +27,22 @@ export const NewVerificationForm = () => {
       return;
     }
 
-    newVerification(token)
-      .then(async (data) => {
-        setSuccess(data!.success);
-        if (success) {
-          const existingToken = await getVerificationTokenByToken(token);
-          await db.verificationToken.delete({
-            where: { id: existingToken!.id },
-          });
-        }
-        setError(data!.error);
-      })
-      .catch(() => {
-        setError("Something went wrong");
-      });
+    try {
+      const data = await newVerification(token);
+      setSuccess(data!.success);
+
+      if (data!.success) {
+        // Check success from `data`, not `success` since it is updated asynchronously
+        const existingToken = await getVerificationTokenByToken(token);
+        await db.verificationToken.delete({
+          where: { id: existingToken!.id },
+        });
+      }
+
+      setError(data!.error);
+    } catch (error) {
+      setError("Something went wrong");
+    }
   }, [token, success, error]);
 
   useEffect(() => {
@@ -49,10 +51,10 @@ export const NewVerificationForm = () => {
 
   return (
     <CardWrapper
-      headerLabel="Confirming your verification"
+      headerLabel="Bekrefter mailen din"
       backButtonHref="/auth/login"
-      backButtonLabel="Back to login"
-      headerTitle="Verify"
+      backButtonLabel="Tilbake til innlogging"
+      headerTitle="Bekreft mail"
     >
       <div className="p-4 flex items-center w-full justify-center">
         {!success && !error && <BeatLoader />}

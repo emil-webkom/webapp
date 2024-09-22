@@ -16,7 +16,7 @@ const BigCard = ({ title, description, ...rest }: BigCardProps) => {
         <div className="flex flex-col gap-y-4 p-4 flex-1">
           <div className="font-medium text-white text-2xl">{title}</div>
           <div className=" text-white">{description}</div>
-          <div>
+          <div className="w-full flex justify-center">
             <Link href="/for_studenten/komiteer">
               <Button>Finn deg en komité</Button>
             </Link>

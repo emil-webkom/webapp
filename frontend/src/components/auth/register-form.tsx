@@ -32,6 +32,7 @@ export const RegisterForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      password2: "",
       name: "",
     },
   });
@@ -40,20 +41,25 @@ export const RegisterForm = () => {
     setError("");
     setSuccess("");
 
-    startTransition(() => {
-      register(values)
-        .then((data) => {
-          if (data) {
-            setError(data.error ?? "");
-            setSuccess(data.success ?? "");
-          } else {
-            setError("An unexpected error occurred.");
-          }
-        })
-        .catch((error) => {
-          setError("An error occurred during registration.");
-        });
-    });
+    if (values.password === values.password2) {
+      startTransition(() => {
+        register(values)
+          .then((data) => {
+            if (data) {
+              setError(data.error ?? "");
+              setSuccess(data.success ?? "");
+            } else {
+              setError("An unexpected error occurred.");
+            }
+          })
+          .catch((error) => {
+            setError("An error occurred during registration.");
+          });
+      });
+    } else {
+      console.error("Passwords need to match!");
+      setError("Passord må matche");
+    }
   };
 
   return (
@@ -108,6 +114,24 @@ export const RegisterForm = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Passord</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      disabled={isPending}
+                      placeholder="******"
+                      type="password"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password2"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Gjenta passord</FormLabel>
                   <FormControl>
                     <Input
                       {...field}
