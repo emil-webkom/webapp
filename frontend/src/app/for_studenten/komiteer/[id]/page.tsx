@@ -2,6 +2,7 @@
 
 import HSCard from '@/components/cards/styretCard';
 import SmallTransissionPCSPC from '@/components/hero/transissions/smallTransissionPCSPC';
+import { Button } from '@/components/ui/button';
 import useFetch from '@/hooks/use-fetch';
 import { Komite } from '@/schemas/komite';
 import { useEffect, useState } from 'react';
@@ -92,8 +93,19 @@ const KomitePage = ({ params }: { params: { id: string } }) => {
                 </>
               )}
           </div>
-</div>
-
+          {data?.mappe && (
+            <div className='flex flex-col justify-center items-center p-4 gap-y-4'>
+              <p>{data.navn} har opptak!</p>
+              <a
+                href={data.mappe.startsWith('http') ? data.mappe : `https://${data.mappe}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button>Her kan du søke {data.navn}</Button>
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import z from "zod";
 import { Button } from "../ui/button";
 import { Booking, BookingSchema } from "@/schemas/booking";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import { UserPrisma } from "@/schemas/user";
 
 enum BookedItem {
   KONTOR,
@@ -10,16 +11,19 @@ enum BookedItem {
   TWO_SOUNDBOXES,
 }
 
-interface leggTilBookingProps {
+interface editBookingFormProps {
   handleCloseForm: () => void;
+  item : Booking
+  users : Record<string, string>;
 }
-const LeggTilBooking: React.FC<leggTilBookingProps> = ({ handleCloseForm }) => {
+const EditBookingForm: React.FC<editBookingFormProps> = ({ handleCloseForm, item, users }) => {
   const user = useCurrentUser();
   const [formData, setFormData] = useState<Booking>({
-    userID: user?.id || "",
-    item: "KONTOR",
-    bookedAt: new Date(),
-    status: "PENDING",
+    id: item.id,
+    userID: item.userID,
+    item: item.item,
+    bookedAt: item.bookedAt,
+    status: item.status,
     komiteID: undefined,
     duration: undefined,
   });
@@ -38,17 +42,17 @@ const LeggTilBooking: React.FC<leggTilBookingProps> = ({ handleCloseForm }) => {
 
   const saveData = async (booking: Booking) => {
     try {
-      const response = await fetch(`/api/bookings`, {
-        method: "POST",
+      const response = await fetch(`/api/bookings/${item.id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(booking),
       });
-      if (response.status !== 201) {
+      if (response.status !== 200) {
         console.error("Could not save data:", response.statusText);
       } else {
-        console.log("Successfully added new booking");
+        console.log("Successfully updated booking");
       }
     } catch (error) {
       console.error("Internal server error:", error);
@@ -85,8 +89,20 @@ const LeggTilBooking: React.FC<leggTilBookingProps> = ({ handleCloseForm }) => {
       className="flex flex-col gap-4 p-6 rounded-md"
     >
       <div>
+        <label htmlFor="userID" className="block font-semibold mb-1">Bruker</label>
+        <input
+          type="text"
+          id="userID"
+          name="userID"
+          value={users[formData.userID]}
+          readOnly
+          className="border rounded p-2 w-full bg-gray-200"
+        />
+      </div>
+
+      <div>
         <label htmlFor="item" className="block font-semibold mb-1">
-          Hva ønsker du å booke?
+          Har booket:
         </label>
         <select
           id="item"
@@ -103,7 +119,7 @@ const LeggTilBooking: React.FC<leggTilBookingProps> = ({ handleCloseForm }) => {
       {/* Booking Date */}
       <div>
         <label htmlFor="bookedAt" className="block font-semibold mb-1">
-          Når (Bruk kalenderen)
+          Når
         </label>
         <input
           type="datetime-local"
@@ -124,14 +140,17 @@ const LeggTilBooking: React.FC<leggTilBookingProps> = ({ handleCloseForm }) => {
         <label htmlFor="status" className="block font-semibold mb-1">
           Status
         </label>
-        <input
-          type="text"
+        <select
           id="status"
           name="status"
-          value={(formData.status = "CONFIRMED")}
-          readOnly
-          className="border rounded p-2 w-full bg-gray-200"
-        />
+          value={formData.status}
+          onChange={handleChange}
+          className="border rounded p-2 w-full"
+        >
+          <option value="CONFIRMED">CONFIRMED</option>
+          <option value="PENDING">PENDING</option>
+          <option value="REJECTED">REJECTED</option>
+        </select>
       </div>
 
       <div className="flex justify-between gap-2">
@@ -144,4 +163,4 @@ const LeggTilBooking: React.FC<leggTilBookingProps> = ({ handleCloseForm }) => {
   );
 };
 
-export default LeggTilBooking;
+export default EditBookingForm;

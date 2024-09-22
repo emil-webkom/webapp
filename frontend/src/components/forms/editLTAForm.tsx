@@ -171,7 +171,7 @@ const EditLTAForm: React.FC<editLTAForm> = ({ handleCloseForm, LTA }) => {
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="dato"
               >
-                Dato
+                Dato (Bruk kalenderen)
               </label>
               <input
                 name="dato"

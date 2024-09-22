@@ -7,6 +7,7 @@ import { Check, Trash2, X } from "lucide-react";
 import { UserPrisma } from "@/schemas/user";
 import Modal from "../ui/modal";
 import LeggTilBooking from "../forms/leggTilBooking";
+import EditBookingForm from "../forms/editBookingForm";
 
 interface dataProps {
   message: string;
@@ -186,7 +187,7 @@ const BookingComponent = () => {
               <div className="w-[10%]">
                 {new Date(item.bookedAt).toISOString().split("T")[0]}
               </div>
-              <div className="w-[25%]">
+              <div className="w-[40%]">
                 {item.status === "PENDING" ? (
                   <div className="flex gap-x-4">
                     {item.status}
@@ -227,6 +228,11 @@ const BookingComponent = () => {
           ))
         ) : (
           <div>No bookings found</div>
+        )}
+        {openForm && booked && (
+          <Modal isOpen={openForm} children={
+            <EditBookingForm users={userIdToNameMap} item={booked} handleCloseForm={() => save("")}/>
+          }/>
         )}
       </div>
     </div>
