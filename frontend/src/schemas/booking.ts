@@ -3,11 +3,11 @@ import { format } from "date-fns";
 import { nb } from "date-fns/locale";
 
 export const BookingSchema = z.object({
-  id: z.string(),
+  id: z.string().optional(),
   userID: z.string(),
   komiteID: z.string().nullable().optional(),
   item: z.enum(["KONTOR", "ONE_SOUNDBOX", "TWO_SOUNDBOXES"]),
-  bookedAt: z.string().transform((str) => new Date(str)),
+  bookedAt: z.union([z.string().transform((str) => new Date(str)), z.date()]),
   status: z.enum(["PENDING", "CONFIRMED", "REJECTED"]),
   duration: z.number().optional(),
 });
