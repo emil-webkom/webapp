@@ -5,12 +5,12 @@ export const revalidate = 0;
 
 export async function GET(request: NextRequest) {
   try {
-    const hovedstyret = await db.user.findMany();
+    const users = await db.user.findMany();
 
-    if (!hovedstyret || hovedstyret.length === 0) {
+    if (!users || users.length === 0) {
       return NextResponse.json({ message: "No data found" }, { status: 404 });
     }
-    return NextResponse.json({ data: hovedstyret }, { status: 200 });
+    return NextResponse.json({ status: 200, data: users });
   } catch (error) {
     console.error("Error fetching users data:", error);
     return NextResponse.json(
