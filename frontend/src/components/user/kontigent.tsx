@@ -80,9 +80,8 @@ const KontigentView = () => {
             Denne kontigenten kan i følge vedtektene vedtatt på
             generalforsamling variere avhengig av økonomien til linjeforeningen.
             Kontigenten er et engangsbeløp, og må betales for å kunne delta i
-            linjeforeningen. For{" "}
-            <span className="underline">{kontigentpris?.aar}</span> ligger
-            beløpet på <span className="underline">{kontigentpris?.pris}</span>
+            linjeforeningen. For tiden ligger beløpet på{" "}
+            <span className="underline">{kontigentpris?.pris}</span>
             ,- NOK.
           </p>
           <br />

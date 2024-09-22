@@ -7,10 +7,11 @@ import LeggtilAeresemilerForm from "../forms/leggtilAeresemilerForm";
 import Modal from "../ui/modal";
 import { Trash2 } from "lucide-react";
 
-
 const AeresEmilerComponent = () => {
   const [openForm, setOpenForm] = useState<boolean>(false);
-  const { data, loading, error } = useFetch<AeresEmiler[] | null>("/api/aeresemiler");
+  const { data, loading, error } = useFetch<AeresEmiler[] | null>(
+    "/api/aeresemiler",
+  );
 
   // Store sorted data in state
   const [sortedData, setSortedData] = useState<AeresEmiler[]>([]);
@@ -27,11 +28,11 @@ const AeresEmilerComponent = () => {
   const handleSlett = async (id: string): Promise<void> => {
     try {
       const response = await fetch(`/api/aeresemiler/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
       });
 
       if (!response.ok) {
-        throw new Error('Failed to delete the item');
+        throw new Error("Failed to delete the item");
       }
 
       console.log(`Item with id ${id} was deleted successfully`);
@@ -39,7 +40,7 @@ const AeresEmilerComponent = () => {
       // Remove the deleted item from the local state
       setSortedData((prevData) => prevData.filter((item) => item.id !== id));
     } catch (error) {
-      console.error('Error deleting item:', error);
+      console.error("Error deleting item:", error);
     }
   };
 
@@ -52,7 +53,7 @@ const AeresEmilerComponent = () => {
     });
 
     toggleForm();
-    window.location.reload()
+    window.location.reload();
   };
 
   const handleLeggTilClick = () => {
@@ -82,20 +83,28 @@ const AeresEmilerComponent = () => {
           Legg til?
         </button>
       </div>
-      <div className="flex flex-col w-full p-4 ">
+      <div className="flex justify-between flex-col w-full p-4 ">
         <div className="flex bg-[#AEE0D0] rounded-md p-2">
-          <div className="w-[30%] font-semibold">Navn:</div>
-          <div className="w-[30%] font-semibold">Type pris</div>
+          <div className="w-[33%] font-semibold">Navn:</div>
+          <div className="w-[34%] font-semibold">Type pris</div>
           <div className="w-[30%] font-semibold">År:</div>
         </div>
         {openForm && (
           <Modal
             isOpen={openForm}
-            children={<LeggtilAeresemilerForm handleCloseForm={toggleForm} handleSubmit={handleLeggTil} />}
+            children={
+              <LeggtilAeresemilerForm
+                handleCloseForm={toggleForm}
+                handleSubmit={handleLeggTil}
+              />
+            }
           />
         )}
         {sortedData.map((item) => (
-          <div key={item.id} className="flex w-full border-b-2 border-[#25504E] p-2">
+          <div
+            key={item.id}
+            className="flex w-full justify-between border-b-2 border-[#25504E] p-2"
+          >
             <div className="w-[30%]">{item.navn}</div>
             <div className="w-[30%]">{item.type}</div>
             <div className="w-[30%]">{item.aar}</div>

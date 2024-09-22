@@ -111,7 +111,7 @@ const HovedsamarbeidspartnerComponent = () => {
       )}
 
       <div className="flex flex-col w-full p-4 ">
-        <div className="flex gap-x-4 bg-[#AEE0D0] rounded-md p-2">
+        <div className="flex justify-between gap-x-4 bg-[#AEE0D0] rounded-md p-2">
           <div className="w-[130px] font-semibold ">Bedrift</div>
           <div className="w-[130px] font-semibold">Beskrivelse</div>
 
