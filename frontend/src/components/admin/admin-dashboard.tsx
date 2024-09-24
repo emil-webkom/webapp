@@ -28,6 +28,7 @@ import BookingComponent from "./booking";
 import KomiteComponent from "./komiteComponent";
 import HovedstyreComponent from "./hovedstyret";
 import LavterskelarrangementComponent from "./lavterskelarrangement";
+import ArrangementComponent from "./arrangement";
 
 export function Dashboard() {
   return (
@@ -68,8 +69,8 @@ export function Dashboard() {
                 <KomiteComponent />
               </TabsContent>
 
-              <TabsContent value="Arrangementer">
-                <div>Arrangementer</div>
+              <TabsContent value="Arrangement">
+                <ArrangementComponent />
               </TabsContent>
 
               <TabsContent value="Lavterskelarrangement">
