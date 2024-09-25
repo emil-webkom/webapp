@@ -158,7 +158,7 @@ const NavBar: FC = () => {
               className={`text-zinc-400 link-hover-effect ${activeLink === "Logg inn" ? "selected-state" : ""}`}
               onClick={() => handleSetSelectedLink("Logg inn")}
             >
-              Login
+              Logg inn
             </Link>
           )}
         </div>

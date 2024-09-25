@@ -1,11 +1,11 @@
 import { z } from 'zod';
 
-const SamarbeidspartnerSchema = z.object({
-  id: z.string().cuid().optional(), 
+export const SamarbeidspartnerSchema = z.object({
+  id: z.string().optional(),
   navn: z.string().min(1),
   active: z.boolean(),
-  logo: z.string().url(), 
-  homepage: z.string().url(), 
+  logo: z.string(),
+  homepage: z.string(),
 });
 
 export type Samarbeidspartner = z.infer<typeof SamarbeidspartnerSchema>;

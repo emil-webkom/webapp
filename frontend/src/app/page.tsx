@@ -16,16 +16,15 @@ import useFetch from "@/hooks/use-fetch";
 import { Arrangement, ArrangementPaamelding } from "@/schemas/arrangement";
 
 interface arrangementProps {
-  status: string,
-  data: Arrangement[],
+  status: string;
+  data: Arrangement[];
 }
 const HomePage = () => {
   const dataS = JSON.parse(cardData);
 
   const [date, setDate] = React.useState<Date | undefined>(new Date());
-  const { data, loading, error } = useFetch<arrangementProps>(
-    "/api/arrangementer",
-  );
+  const { data, loading, error } =
+    useFetch<arrangementProps>("/api/arrangementer");
 
   return (
     <div className="flex flex-col items-center">
@@ -61,7 +60,7 @@ const HomePage = () => {
       <TransissionIn />
       <div className="w-full background-dark p-8 flex flex-col justify-center items-center">
         <div className="flex flex-col w-[90%] lg:w-[65%] gap-y-6 max-w-[60rem]">
-          <div className="text-2xl font-semibold text-white pl-1">
+          <div className="text-2xl text-center font-semibold text-white pl-1">
             Hva skjer på EMIL?
           </div>
           <div className="gap-4 flex justify-center">

@@ -4,32 +4,74 @@ import useFetch from "@/hooks/use-fetch";
 import { lavTerskelArrangement } from "@/schemas/lavterskelArrangement";
 import { Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
+import Modal from "../ui/modal";
+import LeggTilLTAForm from "../forms/leggTilLTA";
+import EditLTAForm from "../forms/editLTAForm";
 
 const LavterskelarrangementComponent = () => {
+  const [leggTil, setLeggTil] = useState<boolean>(false);
   const [openForm, setOpenForm] = useState<boolean>(false);
+  const [refreshKey, setRefreshKey] = useState<number>(0);
   const { data, loading, error } = useFetch<{
     data: lavTerskelArrangement[];
-  } | null>("/api/lavterskelarrangement");
+  } | null>("/api/lavterskelarrangement", refreshKey);
+  const [LTData, setLTData] = useState<lavTerskelArrangement>();
+  const [showPastEvents, setShowPastEvents] = useState<boolean>(false);
+  const LT = data ? data.data : [];
 
-  const [LTData, setLTData] = useState<lavTerskelArrangement[]>([]);
-  const [showPastEvents, setShowPastEvents] = useState<boolean>(false); // State to toggle between past/future events
+  const handleClick = async ({
+    type,
+    data,
+  }: {
+    type: string;
+    data?: lavTerskelArrangement;
+  }) => {
+    if (type === "slett" && data) {
+      const confirmed = window.confirm(
+        `Er du sikker på at du vil slette ${data.navn}?`,
+      );
 
-  useEffect(() => {
-    if (data && data.data) {
-      setLTData(data.data);
+      if (confirmed) {
+        try {
+          const response = await fetch(
+            `/api/lavterskelarrangement/${data.id}`,
+            {
+              method: "DELETE",
+            },
+          );
+          if (response.status !== 200) {
+            console.error("Could not delete HSP:", response.statusText);
+          } else {
+            // Trigger a data refresh
+            setRefreshKey((prev) => prev + 1);
+          }
+        } catch (error) {
+          console.error("Internal server error:", error);
+        }
+      }
+    } else if (type === "rediger" && data) {
+      const formattedData = {
+        ...data,
+        dato: new Date(data.dato).toISOString().slice(0, 16),
+      };
+      setLTData(formattedData);
+      toggleForm();
+    } else if (type === "legg til") {
+      setLeggTil((prevState) => !prevState);
     }
-  }, [data]);
-
-  const handleRediger = (id: string) => {
-    null;
   };
 
-  const handleSlett = (id: string) => {
-    null;
+  const save = (type: string) => {
+    setRefreshKey((prev) => prev + 1);
+    if (type === "leggtil") {
+      handleClick({ type: "legg til" });
+    } else {
+      toggleForm();
+    }
   };
 
-  const handleLeggTilClick = () => {
-    null;
+  const toggleForm = () => {
+    setOpenForm((prevState) => !prevState);
   };
 
   const filterEvents = (events: lavTerskelArrangement[]) => {
@@ -60,12 +102,19 @@ const LavterskelarrangementComponent = () => {
       </div>
       <div className="flex w-full px-6">
         <button
-          onClick={() => handleLeggTilClick()}
+          onClick={() => handleClick({ type: "legg til" })}
           className="text-underscore "
         >
           Legg til?
         </button>
       </div>
+      {leggTil && (
+        <Modal
+          isOpen={leggTil}
+          children={<LeggTilLTAForm handleCloseForm={() => save("leggtil")} />}
+        />
+      )}
+
       <div className="flex flex-col w-full p-4">
         <div className="flex bg-[#AEE0D0] rounded-md p-2">
           <div className="w-[20%] font-semibold">Navn</div>
@@ -75,14 +124,13 @@ const LavterskelarrangementComponent = () => {
           <div className="w-[30%] font-semibold">Beskrivelse</div>
         </div>
 
-        {/* Render filtered events */}
-        {filterEvents(LTData)
+        {filterEvents(LT)
           .sort(
             (a, b) => new Date(a.dato).getTime() - new Date(b.dato).getTime(),
           )
           .map((item) => (
             <div
-              key={item.userId}
+              key={item.id}
               className="flex w-full border-b-2 border-[#25504E] p-2"
             >
               <div className="w-[20%]">{item.navn}</div>
@@ -94,13 +142,13 @@ const LavterskelarrangementComponent = () => {
               <div className="w-[30%] text-wrap">{item.beskrivelse}</div>
               <div className="">
                 <button
-                  onClick={() => handleRediger(item.id || "")}
+                  onClick={() => handleClick({ type: "rediger", data: item })}
                   className="text-underscore px-2"
                 >
                   Rediger?
                 </button>
                 <button
-                  onClick={() => handleSlett(item.id || "")}
+                  onClick={() => handleClick({ type: "slett", data: item })}
                   className="icon-hover"
                 >
                   <Trash2 className="text-red-600 h-4 w-4" />
@@ -108,6 +156,11 @@ const LavterskelarrangementComponent = () => {
               </div>
             </div>
           ))}
+        {openForm && LTData && (
+          <Modal isOpen={openForm}>
+            <EditLTAForm LTA={LTData} handleCloseForm={() => save("")} />
+          </Modal>
+        )}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
 import { getVerificationTokenByToken } from "@/data/verification-token";
+import { redirect } from "next/navigation";
 
 // Utility function to create a delay
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -26,18 +27,15 @@ export const newVerification = async (token: string) => {
   if (hasExpired) {
     return { error: "Token har gått ut!" };
   }
-
   const existingUser = await getUserByEmail(existingToken.email);
-  console.log("Existing user:", existingUser);
 
   if (!existingUser) {
     return { error: "Email eksisterer ikke!" };
   }
 
-  if (existingUser.emailVerified) {
-    console.log("Email already verified");
-    window.location.href = "/auth/login";
-    return { error: "Email allerede registrert!" };
+  if (verificationInProgress && existingUser.emailVerified) {
+    // redirect("/auth/login");
+    return { success: "Email Bekreftet" };
   }
 
   try {
