@@ -99,11 +99,11 @@ model Arrangement {
   bilde        String?
   kapasitet    Int?
   beskrivelse  String
-  arrangorID   String
+  arrangorID   String?
   createdAt    DateTime                @default(now())
   updatedAt    DateTime                @updatedAt
   trinn        Int[]                   @default([])
-  arrangor     komite                  @relation(fields: [arrangorID], references: [id])
+  arrangor     komite?                 @relation(fields: [arrangorID], references: [id])
   paameldinger ArrangementPaamelding[]
 }
 

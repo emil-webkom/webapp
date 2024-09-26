@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   updateArrangementSchema,
   deleteArrangementSchema,
+  createArrangementSchema,
 } from "@/schemas/arrangement";
 import { z } from "zod";
 
@@ -57,7 +58,7 @@ export async function PUT(
   try {
     const { id } = params;
     const body = await req.json();
-    const validatedData = updateArrangementSchema.parse({
+    const validatedData = createArrangementSchema.parse({
       ...body,
     });
 

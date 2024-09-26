@@ -27,57 +27,37 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// export async function POST(req: NextRequest) {
-//   try {
-//     const data = await req.json();
-
-//     const validatedData = createArrangementSchema.parse({
-//       ...data,
-//       paameldinger: {
-//         create: data.paameldinger || [],
-//       },
-//     });
-
-//     const newEvent = await db.arrangement.create({
-//       data: {
-//         ...validatedData,
-//         paameldinger: {
-//           create: validatedData.paameldinger,
-//         },
-//       },
-//     });
-//     return NextResponse.json(newEvent, { status: 201 });
-//   } catch (error) {
-//     console.error("Error creating event:", error);
-//     return NextResponse.json(
-//       { error: "Internal Server Error" },
-//       { status: 500 }
-//     );
-//   }
-// }
-
 export async function POST(req: NextRequest) {
   try {
-    const data = await req.json();
+    const body = await req.json();
+    console.log("Received body:", body);
 
-    // Validate the input data
-    const validatedData = createArrangementSchema.parse(data);
+    const parsedBody = {
+      ...body,
+      dato: body.dato ? new Date(body.dato) : undefined,
+    };
 
-    // Create the new event
+    const validatedData = createArrangementSchema.parse(parsedBody);
+    console.log("Validated data:", validatedData);
+
     const newEvent = await db.arrangement.create({
       data: {
         ...validatedData,
         paameldinger: {
-          create: validatedData.paameldinger || [],
+          create: [],
         },
-      },
-      include: {
-        paameldinger: true,
       },
     });
 
-    return NextResponse.json(newEvent, { status: 201 });
+    console.log("New event created:", newEvent);
+
+    return NextResponse.json(
+      { message: "Arrangement created successfully", data: newEvent },
+      { status: 201 },
+    );
   } catch (error) {
+    console.error("Error in POST /api/arrangementer:", error);
+
     if (error instanceof ZodError) {
       return NextResponse.json(
         { error: "Validation error", details: error.errors },
@@ -85,9 +65,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    console.error("Error creating event:", error);
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { error: "Database error", message: error.message },
+        { status: 500 },
+      );
+    }
+
     return NextResponse.json(
-      { error: "Internal Server Error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }

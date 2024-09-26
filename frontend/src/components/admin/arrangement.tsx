@@ -28,7 +28,6 @@ export default function EventDashboard() {
   const [selectedEvent, setSelectedEvent] = useState<Arrangement | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-  // const [showParticipants, setShowParticipants] = useState<string | null>(null);
   const [currentEventId, setCurrentEventId] = useState<string | null>(null);
   const [selectedTrinn, setSelectedTrinn] = useState<number[]>([]);
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -83,8 +82,6 @@ export default function EventDashboard() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    // formData.set("trinn", selectedTrinn.join(","));
-
     let imageUrl = selectedEvent?.bilde || "";
 
     if (imageFile) {
@@ -103,9 +100,10 @@ export default function EventDashboard() {
       beskrivelse: formData.get("beskrivelse") as string,
       bilde: imageUrl || undefined,
       trinn: selectedTrinn,
-      kapasitet: parseInt(formData.get("kapasitet") as string, 10) || undefined,
-      arrangorID: selectedEvent?.arrangorID || "default-arrangor-id", // Replace with actual logic
-      paameldinger: [], // Add this line
+      kapasitet: formData.get("kapasitet")
+        ? Number(formData.get("kapasitet"))
+        : undefined,
+      arrangorID: selectedEvent?.arrangorID || "default-arranger-id", // Replace with actual default or logged-in user ID
     };
 
     try {
@@ -115,6 +113,9 @@ export default function EventDashboard() {
       const method = isEditMode ? "PUT" : "POST";
       const response = await fetch(url, {
         method,
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(eventData),
       });
 
@@ -133,9 +134,11 @@ export default function EventDashboard() {
         setImageFile(null);
       } else {
         console.error("Failed to save event");
+        // Optionally, you can show an error message to the user here
       }
     } catch (error) {
       console.error("Error saving event:", error);
+      // Optionally, you can show an error message to the user here
     }
   };
 
@@ -201,7 +204,7 @@ export default function EventDashboard() {
         <Button onClick={handleCreateEvent}>Lag nytt arrangement</Button>
       </div>
 
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
+      <div className="bg-white rounded-lg overflow-hidden">
         <div className="grid grid-cols-8 gap-4 p-4 bg-[#AEE0D0] font-semibold">
           <div className="col-span-1">Navn</div>
           <div className="col-span-1">Dato</div>
