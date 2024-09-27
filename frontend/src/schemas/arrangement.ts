@@ -21,8 +21,7 @@ export const ArrangementSchema = z.object({
     .number()
     .int()
     .positive("Kapasitet må være et positivt heltall")
-    .optional()
-    .nullable(),
+    .optional(),
   beskrivelse: z.string().min(1, "Beskrivelse er påkrevd"),
   trinn: z.array(z.number()).default([]),
   arrangorID: z.string().optional(),

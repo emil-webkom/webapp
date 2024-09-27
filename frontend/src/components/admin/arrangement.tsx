@@ -34,7 +34,6 @@ export default function EventDashboard() {
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
   const [eventToDelete, setEventToDelete] = useState<string | null>(null);
   const [participants, setParticipants] = useState<UserPrisma[]>([]);
-
   const { data, loading, error } = useFetch<{ data: Arrangement[] }>(
     "/api/arrangementer",
   );
@@ -267,7 +266,7 @@ export default function EventDashboard() {
           <DialogHeader>
             <DialogTitle>Påmeldte deltakere</DialogTitle>
           </DialogHeader>
-          <div className="mt-4">
+          <div className="">
             <table className="w-full">
               <thead>
                 <tr className="bg-gray-100">
@@ -307,7 +306,7 @@ export default function EventDashboard() {
       </Dialog>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent>
+        <DialogContent className="flex py-0">
           <DialogHeader>
             <DialogTitle>
               {isEditMode ? "Rediger arrangement" : "Lag nytt arrangement"}

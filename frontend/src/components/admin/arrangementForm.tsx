@@ -231,18 +231,6 @@ const ArrangementComponentNew = () => {
       setImageFile(null);
       setImagePreview(null);
       setIsModalOpen(false);
-
-      if (isEditMode) {
-        // Update the existing event in the events array
-        setEvents((prevEvents) =>
-          prevEvents.map((event) =>
-            event.id === responseData.id ? responseData : event,
-          ),
-        );
-      } else {
-        // Add the new event to the events array
-        setEvents((prevEvents) => [...prevEvents, responseData]);
-      }
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
@@ -254,7 +242,7 @@ const ArrangementComponentNew = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx p-4">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Arrangementer</h1>
         <Button onClick={handleCreateEvent}>Lag nytt arrangement</Button>
@@ -278,7 +266,9 @@ const ArrangementComponentNew = () => {
           >
             <div className="col-span-1">{event.navn}</div>
             <div className="col-span-1">
-              {format(new Date(event.dato), "PPP", { locale: nb })}
+              {event.dato && !isNaN(new Date(event.dato).getTime())
+                ? format(new Date(event.dato), "PPP", { locale: nb })
+                : "Invalid date"}
             </div>
             <div className="col-span-1">{event.sted}</div>
             <div className="col-span-1 truncate">{event.beskrivelse}</div>
@@ -291,7 +281,7 @@ const ArrangementComponentNew = () => {
                 onClick={() => toggleParticipants(event.id)}
               >
                 <BookUser className="mr-2 h-4 w-4" />
-                {`${event.paameldinger.length}/${event.kapasitet}`}
+                {`${event.paameldinger?.length || 0}/${event.kapasitet}`}
               </Button>
               <Button
                 variant="outline"
@@ -323,7 +313,7 @@ const ArrangementComponentNew = () => {
           <DialogHeader>
             <DialogTitle>Påmeldte deltakere</DialogTitle>
           </DialogHeader>
-          <div className="mt-4">
+          <div className="">
             <table className="w-full">
               <thead>
                 <tr className="bg-gray-100">
