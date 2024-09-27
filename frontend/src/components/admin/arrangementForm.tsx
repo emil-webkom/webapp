@@ -93,7 +93,6 @@ const ArrangementComponentNew = () => {
     setImageFile(null);
     setIsModalOpen(true);
 
-    // Pre-populate form with event data
     form.reset({
       navn: event.navn,
       sted: event.sted,
@@ -147,7 +146,6 @@ const ArrangementComponentNew = () => {
       const file = e.target.files[0];
       setImageFile(file);
 
-      // Create a preview URL for the selected image
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result as string);
@@ -175,15 +173,12 @@ const ArrangementComponentNew = () => {
   };
 
   const onSubmit = async (values: z.infer<typeof createArrangementSchema>) => {
-    console.log("onSubmit function called with values:", values);
     setIsSubmitting(true);
     let imageUrl = values.bilde || "";
 
     if (imageFile) {
       try {
-        console.log("Uploading image...");
         imageUrl = await uploadArrangementImage(imageFile);
-        console.log("Image uploaded successfully:", imageUrl);
       } catch (error) {
         console.error("Error uploading image:", error);
         setIsSubmitting(false);
@@ -191,26 +186,22 @@ const ArrangementComponentNew = () => {
       }
     }
 
-    console.log("Preparing form data to send...");
     const formData = {
       ...values,
       bilde: imageUrl,
     };
-    console.log("Form data prepared:", formData);
 
     try {
       let response;
       if (isEditMode && selectedEvent) {
-        // Update existing event
         response = await fetch(`/api/arrangementer/${selectedEvent.id}`, {
-          method: "PUT", // or "PATCH" depending on your API
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
       } else {
-        // Create new event
         response = await fetch("/api/arrangementer", {
           method: "POST",
           headers: {
@@ -226,7 +217,6 @@ const ArrangementComponentNew = () => {
         throw new Error(`Error: ${JSON.stringify(responseData)}`);
       }
 
-      // Reset form and close modal
       form.reset();
       setImageFile(null);
       setImagePreview(null);
@@ -242,39 +232,45 @@ const ArrangementComponentNew = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="container mx p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Arrangementer</h1>
+    <div className="container mx-auto p-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold mb-2 sm:mb-0">Arrangementer</h1>
         <Button onClick={handleCreateEvent}>Lag nytt arrangement</Button>
       </div>
 
       <div className="bg-white rounded-lg overflow-hidden">
-        <div className="grid grid-cols-8 gap-4 p-4 bg-[#AEE0D0] font-semibold">
-          <div className="col-span-1">Navn</div>
-          <div className="col-span-1">Dato</div>
-          <div className="col-span-1">Sted</div>
-          <div className="col-span-1">Beskrivelse</div>
-          <div className="col-span-1">Bilde</div>
-          <div className="col-span-1">Trinn</div>
-          <div className="col-span-2">Handlinger</div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4 p-4 bg-[#AEE0D0] font-semibold">
+          <div className="col-span-2 sm:col-span-1">Navn</div>
+          <div className="col-span-2 sm:col-span-1">Dato</div>
+          <div className="col-span-2 sm:col-span-1">Sted</div>
+          <div className="col-span-2 sm:col-span-1">Beskrivelse</div>
+          <div className="col-span-2 sm:col-span-1 md:col-span-1">Bilde</div>
+          <div className="col-span-2 sm:col-span-1 md:col-span-1">Trinn</div>
+          <div className="col-span-2 sm:col-span-2">Handlinger</div>
         </div>
 
         {events.map((event) => (
           <div
             key={event.id}
-            className="grid grid-cols-8 gap-4 p-4 border-b items-center"
+            className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4 p-4 border-b items-center"
           >
-            <div className="col-span-1">{event.navn}</div>
-            <div className="col-span-1">
+            <div className="col-span-2 sm:col-span-1">{event.navn}</div>
+            <div className="col-span-2 sm:col-span-1">
               {event.dato && !isNaN(new Date(event.dato).getTime())
                 ? format(new Date(event.dato), "PPP", { locale: nb })
                 : "Invalid date"}
             </div>
-            <div className="col-span-1">{event.sted}</div>
-            <div className="col-span-1 truncate">{event.beskrivelse}</div>
-            <div className="col-span-1 truncate">{event.bilde}</div>
-            <div className="col-span-1">{formatTrinn(event.trinn)}</div>
-            <div className="col-span-2 flex space-x-2">
+            <div className="col-span-2 sm:col-span-1">{event.sted}</div>
+            <div className="col-span-2 sm:col-span-1 truncate">
+              {event.beskrivelse}
+            </div>
+            <div className="col-span-2 sm:col-span-1 md:col-span-1 truncate">
+              {event.bilde}
+            </div>
+            <div className="col-span-2 sm:col-span-1 md:col-span-1">
+              {formatTrinn(event.trinn)}
+            </div>
+            <div className="col-span-2 sm:col-span-2 flex flex-wrap gap-2">
               <Button
                 variant="outline"
                 size="sm"
@@ -309,11 +305,11 @@ const ArrangementComponentNew = () => {
         open={currentEventId !== null}
         onOpenChange={() => setCurrentEventId(null)}
       >
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="w-full max-w-4xl">
           <DialogHeader>
             <DialogTitle>Påmeldte deltakere</DialogTitle>
           </DialogHeader>
-          <div className="">
+          <div className="mt-4 overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="bg-gray-100">
@@ -353,7 +349,7 @@ const ArrangementComponentNew = () => {
       </Dialog>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>
               {isEditMode ? "Rediger arrangement" : "Lag nytt arrangement"}
@@ -361,15 +357,7 @@ const ArrangementComponentNew = () => {
           </DialogHeader>
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit(
-                (data) => {
-                  console.log("Form is valid. Submitting with data:", data);
-                  onSubmit(data);
-                },
-                (errors) => {
-                  console.log("Form has errors:", errors);
-                },
-              )}
+              onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col space-y-4"
             >
               <FormField
@@ -394,7 +382,7 @@ const ArrangementComponentNew = () => {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[240px] pl-3 text-left font-normal text-black",
+                              "w-full pl-3 text-left font-normal text-black",
                               !field.value && "text-muted-foreground",
                             )}
                           >
@@ -468,7 +456,7 @@ const ArrangementComponentNew = () => {
                       />
                     </FormControl>
                     {imagePreview && (
-                      <div className="mt-2 max-w-[200px] max-h-[200px] overflow-hidden">
+                      <div className="mt-2 max-w-full h-40 overflow-hidden">
                         <img
                           src={imagePreview}
                           alt="Preview"
@@ -511,7 +499,7 @@ const ArrangementComponentNew = () => {
                 render={() => (
                   <FormItem>
                     <FormLabel>Trinn</FormLabel>
-                    <div className="flex flex-wrap items-center gap-6">
+                    <div className="flex flex-wrap items-center gap-4">
                       {TRINN_OPTIONS.map((option) => (
                         <FormField
                           key={option.value}
@@ -545,7 +533,7 @@ const ArrangementComponentNew = () => {
                                 <FormLabel
                                   className={cn(
                                     "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-                                    "cursor-pointer", // Make the label clickable
+                                    "cursor-pointer",
                                   )}
                                 >
                                   {option.label}
@@ -560,7 +548,7 @@ const ArrangementComponentNew = () => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isSubmitting}>
+              <Button type="submit" disabled={isSubmitting} className="w-full">
                 {isSubmitting
                   ? "Sender..."
                   : isEditMode
@@ -581,7 +569,7 @@ const ArrangementComponentNew = () => {
               handlingen kan ikke angres.
             </DialogDescription>
           </DialogHeader>
-          <DialogFooter>
+          <DialogFooter className="sm:justify-end">
             <Button
               variant="outline"
               onClick={() => setDeleteConfirmOpen(false)}
