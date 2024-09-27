@@ -3,7 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   updateArrangementSchema,
   deleteArrangementSchema,
+  createArrangementSchema,
 } from "@/schemas/arrangement";
+import { z } from "zod";
 
 export const revalidate = 0;
 
@@ -37,11 +39,50 @@ export async function DELETE(
 ) {
   try {
     const parsedData = deleteArrangementSchema.parse({ id: params.id });
-    await db.booking.delete({
+    await db.arrangement.delete({
       where: { id: parsedData.id },
     });
-    return NextResponse.json({ message: "Booking deleted" }, { status: 200 });
+    return NextResponse.json(
+      { message: "Arrangement deleted" },
+      { status: 200 },
+    );
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 400 });
+  }
+}
+
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { id: string } },
+) {
+  try {
+    const { id } = params;
+    const body = await req.json();
+    // console.log(body);
+    // const validatedData = createArrangementSchema.parse({
+    //   ...body,
+    // });
+    const updatedEvent = await db.arrangement.update({
+      where: { id },
+      data: body,
+    });
+
+    if (!updatedEvent) {
+      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(updatedEvent, { status: 200 });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Something went wrong" },
+        { status: 400 },
+      );
+    }
+    console.error("Error updating event:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }

@@ -17,8 +17,8 @@ model User {
   role                   UserRole                @default(USER)
   nummer                 Int?
   isActive               Boolean                 @default(true)
-  kontigent              Kontigent               @default(UBETALT)
   username               String?                 @unique
+  kontigent              Kontigent               @default(UBETALT)
   accounts               Account[]
   paameldinger           ArrangementPaamelding[]
   bookings               Booking[]
@@ -99,11 +99,11 @@ model Arrangement {
   bilde        String?
   kapasitet    Int?
   beskrivelse  String
-  arrangorID   String
+  arrangorID   String?
   createdAt    DateTime                @default(now())
   updatedAt    DateTime                @updatedAt
   trinn        Int[]                   @default([])
-  arrangor     komite                  @relation(fields: [arrangorID], references: [id])
+  arrangor     komite?                 @relation(fields: [arrangorID], references: [id])
   paameldinger ArrangementPaamelding[]
 }
 
@@ -171,9 +171,10 @@ model aeresEmiler {
   navn String
   aar  Int
 }
-model Kontigentpris{
-  id String @id @default(cuid())
-  aar String
+
+model Kontigentpris {
+  id   String @id @default(cuid())
+  aar  String
   pris Int
 }
 
@@ -200,7 +201,7 @@ enum UserRole {
   SUPER_USER
 }
 
-enum Kontigent{
+enum Kontigent {
   BETALT
   UBETALT
   AVVENTER_BEKREFTELSE
