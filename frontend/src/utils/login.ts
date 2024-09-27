@@ -56,7 +56,7 @@ export const login = async (
         case "CredentialsSignin":
           return { error: "Ugyldige initialer" };
         default:
-          return { error: "Something went wrong" };
+          return { error: "Feil passord eller brukernavn" };
       }
     }
     throw error; // important to remember
