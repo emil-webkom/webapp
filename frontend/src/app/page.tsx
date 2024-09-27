@@ -14,10 +14,15 @@ import { cardData } from "@/static/landingInfo";
 import VideoPlayer from "@/components/landing/video-player";
 import useFetch from "@/hooks/use-fetch";
 import { Arrangement, ArrangementPaamelding } from "@/schemas/arrangement";
+import { Hovedsamarbeidspartner } from "@/schemas/hovedsamarbeidspartner";
 
 interface arrangementProps {
   status: string;
   data: Arrangement[];
+}
+interface HSPProps {
+  data: Hovedsamarbeidspartner[];
+  message: string;
 }
 const HomePage = () => {
   const dataS = JSON.parse(cardData);
@@ -25,10 +30,16 @@ const HomePage = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
   const { data, loading, error } =
     useFetch<arrangementProps>("/api/arrangementer");
+  const {
+    data: dataHSP,
+    loading: loadingHSP,
+    error: errorHSP,
+  } = useFetch<HSPProps>("api/hovedsamarbeidspartner");
+  const HSP = dataHSP ? dataHSP.data : [];
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex flex-col m-6 lg:m-14 items-left justify-center">
+      <div className="flex flex-col m-6 lg:m-14 items-left justify-center relative">
         <div className="flex flex-col items-center space-y-6 lg:flex-row lg:space-x-6">
           <Hero
             title="Energi og Miljø"
@@ -43,18 +54,43 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <div className="flex justify-center space-x-5 pt-6 text-center lg:justify-start lg:text-left ">
-          <div className="flex lg:items-left space-x-2 items-center">
-            <div className="font-bold text-sm lg:text-xl tracking-tighter">
+        <div className="flex flex-col lg:flex-row justify-between">
+          <div className="flex justify-center items-center py-4 pr-4 gap-x-4">
+            <div className="font-bold text-sm lg:text-xl shrink-0">
               Ny Student?
             </div>
+            <Link href="/for_studenten/ny_student">
+              <Button className="text-sm lg:text-md ">
+                Les mer
+                <ArrowRight className="h-4 w-4 ml-2" />
+              </Button>
+            </Link>
           </div>
-          <Link href="/for_studenten/ny_student">
-            <Button className="text-sm lg:text-md">
-              Les mer
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </Link>
+          <div className="flex justify-center items-center gap-x-4">
+            <p className="text-xs font-medium">I samarbeid med:</p>
+
+            <div className="flex items-center gap-x-2">
+              {loadingHSP ? (
+                // Maintain the space for the logos by wrapping in a fixed-size container
+                <div className="animate-ping h-8 lg:w-48 bg-blue-400 rounded-full"></div>
+              ) : (
+                HSP.map((index: any) => (
+                  <div
+                    key={index.navn}
+                    className="hover:opacity-50 transition duration-300 ease-in-out w-20"
+                  >
+                    <a
+                      href={index.hjemmeside}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img src={index.logo} alt={index.navn} className="w-20" />
+                    </a>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
       </div>
       <TransissionIn />
