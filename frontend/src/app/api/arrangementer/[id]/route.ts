@@ -58,13 +58,13 @@ export async function PUT(
   try {
     const { id } = params;
     const body = await req.json();
-    const validatedData = createArrangementSchema.parse({
-      ...body,
-    });
-
+    // console.log(body);
+    // const validatedData = createArrangementSchema.parse({
+    //   ...body,
+    // });
     const updatedEvent = await db.arrangement.update({
       where: { id },
-      data: validatedData,
+      data: body,
     });
 
     if (!updatedEvent) {

@@ -57,8 +57,10 @@ const ArrangementComponentNew = () => {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isEditMode, setIsEditMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [refreshKey, setRefreshKey] = useState<number>(0);
   const { data, loading, error } = useFetch<{ data: Arrangement[] }>(
     "/api/arrangementer",
+    refreshKey,
   );
 
   const form = useForm<z.infer<typeof createArrangementSchema>>({
@@ -78,7 +80,7 @@ const ArrangementComponentNew = () => {
     if (data && data.data) {
       setEvents(data.data);
     }
-  }, [data]);
+  }, [data, refreshKey]);
 
   const handleCreateEvent = () => {
     setSelectedEvent(null);
@@ -221,6 +223,7 @@ const ArrangementComponentNew = () => {
       setImageFile(null);
       setImagePreview(null);
       setIsModalOpen(false);
+      setRefreshKey((prevState) => prevState + 1);
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
@@ -349,7 +352,7 @@ const ArrangementComponentNew = () => {
       </Dialog>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-scroll">
           <DialogHeader>
             <DialogTitle>
               {isEditMode ? "Rediger arrangement" : "Lag nytt arrangement"}
