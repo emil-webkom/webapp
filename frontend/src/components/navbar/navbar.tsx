@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 
 const NavBar: FC = () => {
   const currentUser = useCurrentUser();
+  const [isSuperUser, setIsSuperUser] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [activeLink, setActiveLink] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,6 +39,7 @@ const NavBar: FC = () => {
 
   useEffect(() => {
     setIsAdmin(currentUser?.role === "ADMIN");
+    setIsSuperUser(currentUser?.role === "SUPER_USER");
   }, [currentUser]);
 
   return (
@@ -79,6 +81,15 @@ const NavBar: FC = () => {
                   onClick={() => handleSetSelectedLink("admin")}
                 >
                   Admin
+                </Link>
+              )}
+              {isSuperUser && (
+                <Link
+                  href="/admin/komiteer"
+                  className={`text-zinc-400 link-hover-effect ${activeLink === "admin" ? "selected-state" : ""}`}
+                  onClick={() => handleSetSelectedLink("admin")}
+                >
+                  Komiteer
                 </Link>
               )}
             </div>

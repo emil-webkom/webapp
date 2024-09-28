@@ -97,7 +97,6 @@ const LeggTilKomiteForm: React.FC<leggTilKomiteFormProps> = ({
   return (
     <form onSubmit={handleFormSubmit} className="flex flex-col gap-4 p-4">
       <h2 className="text-xl font-bold">Legg til ny komite</h2>
-
       <div className="flex w-full  gap-x-4 justify-between">
         <div className="flex w-[30%] flex-col">
           <label htmlFor="rolle" className="font-semibold">
@@ -185,7 +184,7 @@ const LeggTilKomiteForm: React.FC<leggTilKomiteFormProps> = ({
       <div className="flex gap-4 items-center ">
         <div className="flex flex-col w-full">
           <label htmlFor="bilde" className="font-semibold">
-            Bilde:
+            Bilde (obligatorisk):
           </label>
           {imagePreview && (
             <div className="mb-4">
