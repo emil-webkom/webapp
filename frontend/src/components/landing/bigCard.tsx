@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import MiniCard from "./miniCard";
+import { useEffect, useState } from "react";
+import { Hovedstyret } from "@/types/interfaces";
+import { Komite } from "@/schemas/komite";
 
 type BigCardProps = {
   title?: string;
@@ -10,6 +13,27 @@ type BigCardProps = {
 };
 
 const BigCard = ({ title, description, ...rest }: BigCardProps) => {
+  const [logos, setLogos] = useState<any[]>([]); // Use a more specific type if available
+
+  const fetchAndSetData = async () => {
+    const [logosData] = await Promise.all([
+      fetch("../api/komite/logo").then((response) => response.json()),
+    ]);
+    return logosData;
+  };
+
+  useEffect(() => {
+    const initData = async () => {
+      try {
+        const logosData = await fetchAndSetData();
+        setLogos(logosData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    initData();
+  }, []);
+
   return (
     <>
       <div className="p-4 lg:p-8 flex flex-row rounded-md bg-green-dark w-[100%] lg:w-[60rem] text-left">
@@ -25,54 +49,14 @@ const BigCard = ({ title, description, ...rest }: BigCardProps) => {
         <div className=" hidden md:block p-4 space-x-4 justify-center">
           <div className="flex-col space-y-4 ">
             <div className="grid grid-cols-3 grid-rows-2 gap-3">
-              <div>
+              {logos.slice(0, 6).map((komite: Komite) => (
                 <MiniCard
-                  label={"Høystemt"}
-                  comitee={"Mannskoret"}
-                  img="/image/Komiteer/Høystemt.png"
+                  label={komite.navn}
+                  comitee={komite.navn}
+                  img={komite.bilde}
                   link="/for_studenten/komiteer"
                 />
-              </div>
-              <div>
-                <MiniCard
-                  label={"Pikestrøm"}
-                  comitee={"pikestrøm"}
-                  img="/image/Komiteer/pikestrøm.png"
-                  link="/for_studenten/komiteer"
-                />
-              </div>
-              <div>
-                <MiniCard
-                  label={"Klovneløpet"}
-                  comitee={"klovnen"}
-                  img="/image/Komiteer/klovneløpet.png"
-                  link="/for_studenten/komiteer"
-                />
-              </div>
-              <div>
-                <MiniCard
-                  label={"Ølkom"}
-                  comitee={"olkom"}
-                  img="/image/Komiteer/ølkom.png"
-                  link="/for_studenten/komiteer"
-                />
-              </div>
-              <div>
-                <MiniCard
-                  label={"Brettkom"}
-                  comitee={"spillogmoro"}
-                  img="/image/Komiteer/Brettkom.png"
-                  link="/for_studenten/komiteer"
-                />
-              </div>
-              <div>
-                <MiniCard
-                  label={"Kvinnekom"}
-                  comitee={"morendin"}
-                  img="/image/Komiteer/pikestrøm.png"
-                  link="/for_studenten/komiteer"
-                />
-              </div>
+              ))}
             </div>
           </div>
         </div>

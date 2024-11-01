@@ -31,7 +31,6 @@ const Footer: FC = () => {
 
   const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [leder, setLeder] = useState<Hovedstyret | undefined>();
-
   const [komiteLeder, setKomiteLeder] = useState<Komite>();
 
   const fetchStyretData = async () => {
@@ -39,7 +38,7 @@ const Footer: FC = () => {
       const response = await fetch("/api/styret");
       const result = await response.json();
       if (response.ok) {
-        setStyret(result.data); // Assuming the API returns { data: hovedstyret[] }
+        setStyret(result.data);
       } else {
         console.error("Error fetching styret data:", result.message);
       }
@@ -67,6 +66,8 @@ const Footer: FC = () => {
       setLeder(foundLeder);
     }
   }, [komiteData, samarbeidspartnerData]);
+
+  console.log(leder);
 
   const toggleModal = () => {
     setOpenModal((prevState) => !prevState);
@@ -128,7 +129,8 @@ const Footer: FC = () => {
           <div className="text-left font-light text-[10px] space-y-1">
             <p>
               Leder: {leder?.User.name || "Utilgjengelig"}, +47{" "}
-              {leder?.User.nummer || "Utilgjengelig"}, styret@emilweb.no
+              {leder?.User.nummer || "Utilgjengelig"},{" "}
+              {leder?.User.email || "Utilgjengelig"}
             </p>
             <p>
               Bedriftskontakt EMIL-Link: {komiteLeder?.leder},{" "}

@@ -40,7 +40,7 @@ const OmEmilPage = () => {
         const { styretData, logosData } = await fetchAndSetData();
 
         // Log fetched data before setting state
-        console.log("Fetched styretData:", styretData);
+        // console.log("Fetched styretData:", styretData);
 
         setStyret(styretData);
         setLogos(logosData);
@@ -51,9 +51,6 @@ const OmEmilPage = () => {
 
     initData();
   }, []);
-
-  // Log the updated styret value when it changes
-  useEffect(() => {}, [styret]);
 
   const fagkontakt = [
     {
