@@ -171,68 +171,80 @@ const BookingComponent = () => {
         </div>
 
         {bookings.length > 0 ? (
-          bookings.map((item: Booking) => (
-            <div
-              key={item.id}
-              className="flex w-full border-b-2 border-[#25504E] p-2"
-            >
-              <div className="w-[25%]">{userIdToNameMap[item.userID]}</div>
-              <div className="w-[15%]">
-                {item.item === "ONE_SOUNDBOX" ? (
-                  <p>1 soundbox</p>
-                ) : (
-                  <p>2 soundbox</p>
-                )}
-              </div>
-              <div className="w-[10%]">
-                {new Date(item.bookedAt).toISOString().split("T")[0]}
-              </div>
-              <div className="w-[40%]">
-                {item.status === "PENDING" ? (
-                  <div className="flex gap-x-4">
-                    {item.status}
+          bookings
+            .sort(
+              (a, b) =>
+                new Date(a.bookedAt).getTime() - new Date(b.bookedAt).getTime(),
+            )
+            .map((item: Booking) => (
+              <div
+                key={item.id}
+                className="flex w-full border-b-2 border-[#25504E] p-2"
+              >
+                <div className="w-[25%]">{userIdToNameMap[item.userID]}</div>
+                <div className="w-[15%]">
+                  {item.item === "ONE_SOUNDBOX" ? (
+                    <p>1 soundbox</p>
+                  ) : (
+                    <p>2 soundbox</p>
+                  )}
+                </div>
+                <div className="w-[10%]">
+                  {new Date(item.bookedAt).toISOString().split("T")[0]}
+                </div>
+                <div className="w-[40%]">
+                  {item.status === "PENDING" ? (
                     <div className="flex gap-x-4">
-                      <Check
-                        onClick={() =>
-                          handleClick({ type: "confirm", data: item })
-                        }
-                        className="text-green-500 icon-hover cursor-pointer"
-                      />
-                      <X
-                        onClick={() =>
-                          handleClick({ type: "reject", data: item })
-                        }
-                        className="text-red-500 icon-hover cursor-pointer"
-                      />
+                      {item.status}
+                      <div className="flex gap-x-4">
+                        <Check
+                          onClick={() =>
+                            handleClick({ type: "confirm", data: item })
+                          }
+                          className="text-green-500 icon-hover cursor-pointer"
+                        />
+                        <X
+                          onClick={() =>
+                            handleClick({ type: "reject", data: item })
+                          }
+                          className="text-red-500 icon-hover cursor-pointer"
+                        />
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <div>{item.status}</div>
-                )}
+                  ) : (
+                    <div>{item.status}</div>
+                  )}
+                </div>
+                <div className="">
+                  <button
+                    onClick={() => handleClick({ type: "rediger", data: item })}
+                    className="text-underscore px-2"
+                  >
+                    Rediger?
+                  </button>
+                  <button
+                    onClick={() => handleClick({ type: "slett", data: item })}
+                    className="icon-hover"
+                  >
+                    <Trash2 className="text-red-600 h-4 w-4" />
+                  </button>
+                </div>
               </div>
-              <div className="">
-                <button
-                  onClick={() => handleClick({ type: "rediger", data: item })}
-                  className="text-underscore px-2"
-                >
-                  Rediger?
-                </button>
-                <button
-                  onClick={() => handleClick({ type: "slett", data: item })}
-                  className="icon-hover"
-                >
-                  <Trash2 className="text-red-600 h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          ))
+            ))
         ) : (
           <div>No bookings found</div>
         )}
         {openForm && booked && (
-          <Modal isOpen={openForm} children={
-            <EditBookingForm users={userIdToNameMap} item={booked} handleCloseForm={() => save("")}/>
-          }/>
+          <Modal
+            isOpen={openForm}
+            children={
+              <EditBookingForm
+                users={userIdToNameMap}
+                item={booked}
+                handleCloseForm={() => save("")}
+              />
+            }
+          />
         )}
       </div>
     </div>

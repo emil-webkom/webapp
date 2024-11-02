@@ -9,10 +9,15 @@ import { Clover } from "lucide-react";
 import Modal from "../ui/modal";
 import { Button } from "../ui/button";
 import { Komite } from "@/schemas/komite";
+import { Hovedsamarbeidspartner } from "@prisma/client";
 
 interface dataProps {
   message: string;
   data: Samarbeidspartner[];
+}
+interface HSPProps {
+  data: Hovedsamarbeidspartner[];
+  message: string;
 }
 
 const Footer: FC = () => {
@@ -28,6 +33,13 @@ const Footer: FC = () => {
     loading: komiteLoading,
     error: komiteError,
   } = useFetch<Komite[] | null>("/api/komite");
+
+  const {
+    data: dataHSP,
+    loading: loadingHSP,
+    error: errorHSP,
+  } = useFetch<HSPProps>("api/hovedsamarbeidspartner");
+  const HSP = dataHSP ? dataHSP.data : [];
 
   const [styret, setStyret] = useState<Hovedstyret[]>([]);
   const [leder, setLeder] = useState<Hovedstyret | undefined>();
@@ -202,7 +214,27 @@ const Footer: FC = () => {
           </div>
         </div>
       </div>
-
+      <div className="flex items-center gap-x-2 bg-green-darkest justify-center">
+        {loadingHSP ? (
+          // Maintain the space for the logos by wrapping in a fixed-size container
+          <div className="animate-ping h-8 lg:w-48 bg-blue-400 rounded-full"></div>
+        ) : (
+          HSP.map((index: any) => (
+            <div
+              key={index.navn}
+              className="hover:opacity-50 transition duration-300 ease-in-out w-20"
+            >
+              <a
+                href={index.hjemmeside}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={index.logo} alt={index.navn} className="w-24" />
+              </a>
+            </div>
+          ))
+        )}
+      </div>
       {/* Social media links */}
       <div className="bg-green-darkest color-white py-4">
         <div className="flex justify-center space-x-4">
@@ -252,7 +284,6 @@ const Footer: FC = () => {
           </a>
         </div>
       </div>
-
       <div className="flex max-w-screen items-center justify-center bg-[#001D21] p-2">
         <Clover
           onClick={toggleModal}
