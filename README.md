@@ -1,60 +1,121 @@
-# Webapp
+# Energi og miljø nettside
 
-Nettsiden for energi og miljø-studentenes linjeforening
+This repository is the repository for EmilNTNU.no. It is a [Next.js](https://nextjs.org/) application that uses prisma for database management with a PostgreSQL database and firebase for dynamic file storage. This document gives an introduction to how to get started with development.
 
-## API
+## Table of Contents
 
-Alle endpoints som treffes av applikasjonen er definert som API Routes, gjennom Next.js dynamisk routing; gjennom mappestruktur.
+- [About](#about)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Configuration](#configuration)
+- [Technologies Used](#technologies-used)
 
-f. eks vil en mappestruktur:
+---
+
+## About
+
+This project is a Next.js application designed as a student organisational website. The app includes authentication, reusable components, and organized modules. As this is a next.js project it suuports dynamic routing through the app-folder. This is where the route of the project lies with each page containing it's own page.tsx and occasionally layout.tsx file.
+
+This project is made by [Maria Wembstad](https://github.com/MariaWembstad), [Nicolai Faye](), [Emil Lunde Bakke](https://github.com/emillub) and [Mauritz Skogøy](https://github.com/Mauritzskog) for the ownership and usage of Energi og Miljøstudentenes linjeforening, represented by [Trubadur](https://github.com/EMIL-Trubadur). For any issues, questions and other inqueries feel free to contact of the developers as they are responsible for functionality untill summer 2026.
+
+---
+
+## Project Structure
+
+The project files are organized as follows:
 
 ```
-app
-└── api
-    └── arrangementer
+src/
+├── app/                # Application entry points and page components
+│   ├── layout.tsx      # Root layout for all pages
+│   ├── page.tsx        # Default page component
+│   └── globals.css     # Global CSS styles
+├── components/         # Reusable UI components
+├── data/               # Static and dynamic data definitions
+├── hooks/              # Custom React hooks for shared logic
+├── lib/                # Shared libraries or utilities
+├── schemas/            # Type and schema definitions for data validation
+├── static/             # Static assets such as images
+├── tests/              # Unit and integration tests
+├── types/              # TypeScript custom types
+└── utils/              # General utility functions
 ```
 
-gi et endpoint:
+### Key Files
 
-```
-https://localhost:3000/api/arrangementer
-```
+- **`auth.ts`**: Manages authentication logic.
+- **`routes.ts`**: Defines application routes and related logic.
+- **`middleware.ts`**: Includes middleware functions for server-side processing.
 
-For RestAPI manipulasjon bruker vi følgende måte å transportere informasjon avhengig av http metode:
+---
 
-- POST: request.body
-- GET: Ingen informasjon sendes
-- DELETE: URL parameter
-- PUT/PATCH: request.body
+## Getting Started
 
-## Authentication
+### Prerequisites
 
-Autentisering er implementert med [Auth JS](https://authjs.dev/getting-started/migrating-to-v5) (tidligere Next Auth). Støtter OAuth providers (Google per nå) og innlogging med email & passord. Bruker [Resend](https://resend.com/docs/send-with-nextjs) for email-verification og tilbakestilling av glemt passord.
+Ensure you have the following installed:
 
-For å hente brukerinformasjon i en client component kan man bruke: `useCurrentUser()` hooken i `@/hooks/use-current-user.ts`
-Samme kan gjøres for å hente info om bruker er Admin med: `useCurrentRole()`.
+- [Node.js](https://nodejs.org/) (v14 or newer)
+- [Git](https://git-scm.com/)
 
-Info:
+### Installation
 
-- _I **Production** er ikke Google konfigurert ferdig, dvs at man nektes innlogging i \_Production_ (emilntnu.vercel.app). Trenger DNS-domenet og litt config for å få dette ferdig.\_
-- _I **Dev** funker innlogging med Google som normalt._
+1. Clone the repository:
 
-## UI
+   ```bash
+   git clone https://github.com/emil-webkom/webapp.git
+   ```
 
-Vi bruker for det meste [shadcn-ui](https://ui.shadcn.com/docs/components/accordion) for de mest primitive UI-komponentene og endrer disse til vår smak.
+2. Navigate to the project directory:
 
-- Konvensjon: Alle shadcn-ui komponenter havner i `@/components/ui`
+   ```bash
+   cd webapp
+   ```
 
-For å innstallere en komponent brukes kommandoen: `npx shadcn-ui@latest add "component"` her kan man også legge til flere komponenter i samme kommando.
+3. Navigate to the frontend directory:
 
-Anbefaler å lese [docs](https://ui.shadcn.com/docs)
+   ```bash
+   cd ./frontend
+   ```
 
-## Color palette
+4. Install the dependencies:
 
-- Main dark `#001D21`
-- Main secondary `#003A42`
-- Highlight `#9DDBAD`
+   ```bash
+   npm install
+   ```
 
-## Icons
+5. Run the application in development mode:
+   ```bash
+   npm run dev
+   ```
 
-Vi bruker for det meste `lucide-react` ikoner. Link [her](https://lucide.dev/icons/) men er ikke begrenset til kun disse. Finnes masse bra der ute.
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Scripts
+
+- `npm run dev`: Runs the application in development mode.
+- `npm run build`: Builds the application for production.
+- `npm run start`: Starts the production build.
+- `npm run test`: Runs the test suite. As the backend is quite simple, the project consisted in large parts of exploratory testing and ther are not a lot of written test except for some backend functions.
+
+---
+
+## Configuration
+
+Configuration files are located in the `config/` directory. Update these files to change the application's settings.
+
+---
+
+## Technologies Used
+
+- **Next.js**: React framework for server-rendered applications.
+- **TypeScript**: Static typing for JavaScript.
+- **NextAuth.js**: Authentication for Next.js.
+- **Prisma**: Database toolkit and ORM.
+- **React Query**: Data fetching and state management.
+- **Radix UI**: Accessible and customizable UI primitives.
+- **React Hook Form**: Form handling in React.
+- **Tailwind CSS**: Utility-first CSS framework.
