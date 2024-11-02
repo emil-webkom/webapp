@@ -17,7 +17,7 @@ This repository is the repository for EmilNTNU.no. It is a [Next.js](https://nex
 
 This project is a Next.js application designed as a student organisational website. The app includes authentication, reusable components, and organized modules. As this is a next.js project it suuports dynamic routing through the app-folder. This is where the route of the project lies with each page containing it's own page.tsx and occasionally layout.tsx file.
 
-This project is made by [Maria Wembstad](https://github.com/MariaWembstad), [Nicolai Faye](), [Emil Lunde Bakke](https://github.com/emillub) and [Mauritz Skogøy](https://github.com/Mauritzskog) for the ownership and usage of Energi og Miljøstudentenes linjeforening, represented by [Trubadur](https://github.com/EMIL-Trubadur). For any issues, questions and other inqueries feel free to contact of the developers as they are responsible for functionality untill summer 2026.
+This project is made by [Maria Wembstad](https://github.com/MariaWembstad), [Nicolai Faye](https://github.com/nicohfaye), [Emil Lunde Bakke](https://github.com/emillub) and [Mauritz Skogøy](https://github.com/Mauritzskog) for the ownership and usage of Energi og Miljøstudentenes linjeforening, represented by [Trubadur](https://github.com/EMIL-Trubadur). For any issues, questions and other inqueries feel free to contact of the developers as they are responsible for functionality untill summer 2026.
 
 ---
 
