@@ -150,7 +150,7 @@ const soeknaderPage = () => {
               <p className="font-thin">Søknader sendes til styret:</p>
               <div className="flex items-center justify-items gap-2 pt-2">
                 <Mail className="h-4 w-4 text-green-lightest"></Mail>
-                <p className="">styret@emilweb.no</p>
+                <p className="">styret@emilntnu.no</p>
               </div>
             </div>
 
