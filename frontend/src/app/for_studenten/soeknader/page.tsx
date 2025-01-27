@@ -52,7 +52,7 @@ const soeknaderPage = () => {
       title: "Info",
       description: (
         <div>
-          Du kan også sende en mail til styret på @styret@emilweb.no hvor du må
+          Du kan også sende en mail til styret via styret@emilntnu.no hvor du må
           ha med:
           <ul className="list-disc px-4">
             <li>Navn</li>
