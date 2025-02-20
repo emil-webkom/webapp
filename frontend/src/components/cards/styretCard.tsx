@@ -88,7 +88,7 @@ const HSCard: FC<HSCardProps> = ({ data }) => {
                         Kontakt: {item.User.email}
                       </p>
                       <p className="text-xs lg:text-sm font-light">
-                        Tlf: +78{item.User.nummer}
+                        Tlf: +47 {item.User.nummer}
                       </p>
                     </div>
                   </div>
