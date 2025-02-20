@@ -31,7 +31,7 @@ const BookingPage = () => {
       title: "Kontoret",
       logo: <Coffee />,
       description:
-        "EMIL-kontoret kan bookes hver dag fra 12 - 20. Dersom det skal drikkes alkohol inne på kontoret må man sende melding til vaktmesteren på gløs for å få dette godkjent på forhånd",
+        "EMIL-kontoret kan bookes hver dag utenom tiden mellom 08 - 14. Dersom det skal drikkes alkohol inne på kontoret må man kontakte sittende gjøgler for å få dette godkjent på forhånd",
       buttonLabel: "Book kontoret",
       href: "https://docs.google.com/spreadsheets/d/1iTiJEgOG2_s4J4E_RQ00xvkrdbzLuMY_Wmy-Uo-3mSw/edit?usp=sharing",
     },
