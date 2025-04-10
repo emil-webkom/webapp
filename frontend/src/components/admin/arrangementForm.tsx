@@ -312,7 +312,7 @@ const ArrangementComponentNew = () => {
           <DialogHeader>
             <DialogTitle>Påmeldte deltakere</DialogTitle>
           </DialogHeader>
-          <div className="mt-4 overflow-x-auto">
+          <div className="mt-4 overflow-auto max-h-[70vh]">
             <table className="w-full">
               <thead>
                 <tr className="bg-gray-100">
