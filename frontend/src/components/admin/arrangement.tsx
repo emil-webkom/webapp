@@ -266,7 +266,7 @@ export default function EventDashboard() {
           <DialogHeader>
             <DialogTitle>Påmeldte deltakere</DialogTitle>
           </DialogHeader>
-          <div className="">
+          <div className="mt-4 overflow-auto max-h-[70vh]">
             <table className="w-full">
               <thead>
                 <tr className="bg-gray-100">
