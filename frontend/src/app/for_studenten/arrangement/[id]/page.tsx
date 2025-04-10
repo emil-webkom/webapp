@@ -122,7 +122,7 @@ const ArrangementPage = ({ params }: { params: { id: string } }) => {
             <div>
               <h3 className="font-bold text-lg">Spesielle bemerkelser</h3>
               <p className="text-sm lg:text-base">
-                Tilgjengelige plasser: {data?.kapasitet}
+                Antall plasser: {data?.kapasitet}
               </p>
             </div>
             {isSignedUp ? (
