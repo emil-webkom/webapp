@@ -57,7 +57,7 @@ const forStudentenPage = () => {
         </div>
         <div className="pt-7 flex justify-center items-center">
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdWNMJfhXHVgU8BsmglSnnMrU4h3ERB-8Fr5RLlAzcOy6484g/viewform"
+            href="https://forms.gle/TqWf4gMBtQ3vLdfDA"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white font-thin text-base text-center"
