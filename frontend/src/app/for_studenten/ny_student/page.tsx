@@ -67,7 +67,7 @@ const ForStudentPage = () => {
       title: "Registrere deg og betale semesteravgift",
       description:
         "Når du har fått plass på studiet må semesteravgiften betales og fag må velges. Logg deg inn på StudentWeb og følg instruksjonene.",
-      frist: "15. sep (høst) og 1. feb (vår)",
+      frist: "1. sep (høst) og 1. feb (vår)",
       icon: <Coins className="h-5 text-green-lightest" />,
       buttons: [
         {
@@ -80,7 +80,7 @@ const ForStudentPage = () => {
       title: "Opprette bruker hos NTNU",
       description:
         "Når du har registrert deg på studentweb kan du opprette din NTNU-brukerkonto. Dette gir deg tilgang til NTNUs IT-tjenester.",
-      frist: "15. sep (høst) og 1. feb (vår)",
+      
       icon: <User className="h-5 text-green-lightest" />,
       buttons: [
         {
@@ -151,8 +151,8 @@ const ForStudentPage = () => {
       icon: <FaFacebookF className="h-5 text-green-lightest" />,
       buttons: [
         {
-          text: "EMIL ‘24",
-          href: "https://www.facebook.com/groups/1128521504910742",
+          text: "EMIL ‘25",
+          href: "https://www.facebook.com/groups/Ntnuemil",
         },
         { text: "Hele EMIL", href: "https://www.facebook.com/groups/Ntnuemil" },
       ],
@@ -163,8 +163,8 @@ const ForStudentPage = () => {
     {
       title: "Immatrikulering",
       content:
-        "Skoleåret begynner med felles samling og immatrikulering på Gløshaugen. Dette skjer mandag 14. august i EL5 fra 12:00-13:00",
-      time: "14. august 12:00 - 13:00",
+        "Skoleåret begynner med felles samling og immatrikulering på Gløshaugen. Dette skjer mandag 11. august i EL5 fra 12:00-13:00",
+      time: "11. august 12:00 - 13:00",
       place: "Gløshaugen EL5",
       oneLiner:
         "Skoleåret begynner med felles samling og immatrikulering på...",
@@ -205,7 +205,7 @@ const ForStudentPage = () => {
           </div>
         </div>
       ),
-      time: "14. august - 25. august",
+      time: "11. august - 24. august",
     },
     {
       title: "Renselsen",
@@ -222,7 +222,7 @@ const ForStudentPage = () => {
     {
       title: "Teknostart",
       content:
-        "Teknostart er et obligatorisk oppstartsprogram for førsteårs sivilingeniørstudenter ved NTNU, og vil i 2024 pågå i den første uken av semesteret. Det arrangeres av NTNU, ikke linjeforeningenen. Den faglige starten er den andre uken av semesteret og er en introduksjon til fagene studentene skal ha.",
+        "Teknostart er et obligatorisk oppstartsprogram for førsteårs sivilingeniørstudenter ved NTNU, og vil i 2025 pågå i den første uken av semesteret. Det arrangeres av NTNU, ikke linjeforeningenen. Den faglige starten er den andre uken av semesteret og er en introduksjon til fagene studentene skal ha.",
       time: "Første uke",
     },
   ];
