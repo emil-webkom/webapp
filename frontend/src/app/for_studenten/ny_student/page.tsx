@@ -139,8 +139,8 @@ const ForStudentPage = () => {
       icon: <Shirt className="h-6 text-green-lightest" />,
       buttons: [
         {
-          text: "Påmeldingsskjema",
-          href: "https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform",
+          text: "Påmeldingsskjema kommer snart",
+          href: "",
         },
       ],
     },
@@ -151,7 +151,7 @@ const ForStudentPage = () => {
       icon: <FaFacebookF className="h-5 text-green-lightest" />,
       buttons: [
         {
-          text: "EMIL ‘25",
+          text: "EMIL ‘25 gruppen kommer snart",
           href: "https://www.facebook.com/groups/Ntnuemil",
         },
         { text: "Hele EMIL", href: "https://www.facebook.com/groups/Ntnuemil" },
