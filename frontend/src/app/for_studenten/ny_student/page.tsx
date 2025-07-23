@@ -182,10 +182,10 @@ const ForStudentPage = () => {
               terskelen for å hilse på nye folk er ikke-eksisterende.
             </p>
             <p>
-              Husk å melde deg på ved å fylle ut påmeldingskjema{" "}
+              Husk å melde deg på ved å fylle ut påmeldingskjema (kommer snart) {" "}
               <Link
                 href={
-                  "https://docs.google.com/forms/d/e/1FAIpQLScS8x6cBvKwrlFHGMF5nAFCfWh_DVnuJFQC67lITu8JiEycQA/viewform"
+                  ""
                 }
                 target="_blank"
                 rel="noopener norefferer"
