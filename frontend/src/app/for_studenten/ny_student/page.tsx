@@ -139,8 +139,8 @@ const ForStudentPage = () => {
       icon: <Shirt className="h-6 text-green-lightest" />,
       buttons: [
         {
-          text: "Påmeldingsskjema kommer snart",
-          href: "",
+          text: "Påmeldingsskjema",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSfKi9ZIsBYXt8_w8sg3mDy6jBhybv-jUPahZZi2etvl4qa_RA/viewform",
         },
       ],
     },
@@ -151,8 +151,8 @@ const ForStudentPage = () => {
       icon: <FaFacebookF className="h-5 text-green-lightest" />,
       buttons: [
         {
-          text: "EMIL ‘25 gruppen kommer snart",
-          href: "https://www.facebook.com/groups/Ntnuemil",
+          text: "EMIL ‘25",
+          href: "https://www.facebook.com/groups/1085163816902598/",
         },
         { text: "Hele EMIL", href: "https://www.facebook.com/groups/Ntnuemil" },
       ],
@@ -199,7 +199,7 @@ const ForStudentPage = () => {
           <div className="">
             <img
               className="rounded-md"
-              src="/image/EMIL/fadderukaPlan.png"
+              src="/image/EMIL/fadderuke2025.png"
               alt=""
             />
           </div>
