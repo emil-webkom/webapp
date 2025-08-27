@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { Komite } from "@/schemas/komite";
 import Link from "next/link";
@@ -8,7 +8,9 @@ interface InfoAndScrollbarWithButtonProps {
   komiteer: Komite[];
 }
 
-const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({ komiteer }) => {
+const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
+  komiteer,
+}) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [scrollWidth, setScrollWidth] = useState(0);
@@ -16,7 +18,8 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
   const handleScroll = () => {
     const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
-      const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      const maxScrollLeft =
+        scrollContainer.scrollWidth - scrollContainer.clientWidth;
       setScrollPosition(scrollContainer.scrollLeft);
       setScrollWidth(maxScrollLeft);
     }
@@ -26,9 +29,9 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
     const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       handleScroll();
-      scrollContainer.addEventListener('scroll', handleScroll);
+      scrollContainer.addEventListener("scroll", handleScroll);
       return () => {
-        scrollContainer.removeEventListener('scroll', handleScroll);
+        scrollContainer.removeEventListener("scroll", handleScroll);
       };
     }
   }, [komiteer]);
@@ -51,7 +54,7 @@ const InfoAndScrollbarWithButton: React.FC<InfoAndScrollbarWithButtonProps> = ({
             )}
             <div
               ref={scrollContainerRef}
-              className="flex overflow-x-auto scrollbar-hide custom-scrollbar border-b border-white gap-x-3 lg:gap-x-6"
+              className="flex overflow-x-auto scrollbar border-b border-white gap-x-3 lg:gap-x-6"
             >
               {komiteer.map((komite) => (
                 <Link
