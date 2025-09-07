@@ -33,7 +33,7 @@ const BookingPage = () => {
       description:
         "EMIL-kontoret kan bookes hver dag utenom tiden mellom 08 - 14. Dersom det skal drikkes alkohol inne på kontoret må man kontakte sittende gjøgler for å få dette godkjent på forhånd",
       buttonLabel: "Book kontoret",
-      href: "https://docs.google.com/spreadsheets/d/1iTiJEgOG2_s4J4E_RQ00xvkrdbzLuMY_Wmy-Uo-3mSw/edit?usp=sharing",
+      href: "https://docs.google.com/spreadsheets/d/16G4bELBsfx8oUBkFpFuieetl08Ohk3eikPgh0d5MGVQ/edit?usp=sharing",
     },
     {
       title: "Hytte",
