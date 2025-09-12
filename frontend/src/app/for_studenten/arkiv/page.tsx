@@ -73,9 +73,9 @@ const ArkivPage = () => {
       title: "Rapporter",
       logo: <Archive />,
       description:
-        "Se arkivet for en oversikt over gamle rapporter f. eks. diplomundersøkelsen og trivselsrapporter.",
+        "Se arkivet for en oversikt over gamle rapporter f. eks. diplomundersøkelsen og trivselsrapporter. (NB! arkivet er ikke fikset enda, så det er bare den nyeste Diplomundersøkelsen som ligger der nå)",
       buttonLabel: "Se rapporter",
-      href: "https://emilweb.no/wp-content/uploads/2023/04/Diplomundersokelsen-2023-1.pdf",
+      href: "gs://emilweb-3181b.appspot.com/diplomundersøkelsen2025.pdf",
     },
     {
       title: "Hvordan føre bilag",
