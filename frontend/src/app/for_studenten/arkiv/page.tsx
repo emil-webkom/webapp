@@ -75,7 +75,7 @@ const ArkivPage = () => {
       description:
         "Se arkivet for en oversikt over gamle rapporter f. eks. diplomundersøkelsen og trivselsrapporter. (NB! arkivet er ikke fikset enda, så det er bare den nyeste Diplomundersøkelsen som ligger der nå)",
       buttonLabel: "Se rapporter",
-      href: "https://emilweb-3181b.appspot.com/diplomundersøkelsen2025.pdf",
+      href: "https://firebasestorage.googleapis.com/v0/b/emilweb-3181b.appspot.com/o/diplomunders%C3%B8kelsen2025.pdf?alt=media&token=2f0dcc92-c031-475d-b02c-08c6dce0abaa",
     },
     {
       title: "Hvordan føre bilag",
