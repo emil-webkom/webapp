@@ -125,9 +125,9 @@ const Footer: FC = () => {
               Foreningen for Studentene ved Energi og Miljø, OS. Bragstads plass
               2, 7034 Trondheim. Org.nr. 991 212 736
             </p>
-            <p className="mt-4">Foreningen for Studentene ved Emil © 2024</p>
+            <p className="mt-4">Foreningen for Studentene ved Emil © 2025</p>
             <p className="text-[11px]">
-              Ved bugs ta kontakt med: trubadur@emilweb.no
+              Ved bugs ta kontakt med: trubadur@emilntnu.no
             </p>
           </div>
         </div>
@@ -140,7 +140,7 @@ const Footer: FC = () => {
           </div>
           <div className="text-left font-light text-[10px] space-y-1">
             <p>
-              Leder: {leder?.User.name || "Utilgjengelig"}, +47{" "}
+              Leder: {leder?.User.name || "Utilgjengeli"}, +47{" "}
               {leder?.User.nummer || "Utilgjengelig"},{" "}
               {leder?.User.email || "Utilgjengelig"}
             </p>
