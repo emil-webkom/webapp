@@ -59,7 +59,7 @@ const ArkivPage = () => {
       description:
         "Nedenfor finner du vedtektene til EMIL. Disse blir gjennomgått hvert år på budsjett- og vedtektsmøtet.",
       buttonLabel: "Se vedtekter",
-      href: "https://docs.google.com/document/d/e/2PACX-1vSWq9cOIjpmuImkfUpt0d1G-DVt1IIFrh1SyQazGKn87Bg8DGg49wpDRYeeMX41UjRbuhl-CQeXC9Fx/pub",
+      href: "https://docs.google.com/document/d/1TMySFeQ1BiEUGMRPxrBAmm1IRKbv9wV5kKZj3YECDYo/edit?tab=t.0",
     },
     {
       title: "Søknader",
