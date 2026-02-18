@@ -249,7 +249,7 @@ const OmEmilPage = () => {
             <div className="flex flex-col justify-between py-6 gap-y-3 lg:flex-row lg:gap-x-10 ">
               <div className="flex items-center justify-center">
                 <img
-                  src="/image/Komiteer/HS/Felles_edited.jpg"
+                  src="/image/Komiteer/Felles_edited.jpg"
                   alt="Hovedstyret fellesbilde"
                   className="rounded-md object-cover w-[100rem] h-[19rem]"
                 />
