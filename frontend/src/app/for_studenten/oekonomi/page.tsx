@@ -54,7 +54,7 @@ const forStudentenPage = () => {
       buttons: [
         {
           text: "Se budsjett",
-          href: "https://docs.google.com/spreadsheets/d/16HKzAcb_DmmLmKDYoGRmUGRXxLCUSeGLLHdjtv24h1s/edit?gid=0#gid=0",
+          href: "https://docs.google.com/spreadsheets/d/15nFZ9p5-UL2jwq9wCV3T8o7IDT0XdcpLtYT2kZhrwwc/edit?gid=0#gid=0",
         },
       ],
     },
