@@ -77,7 +77,7 @@ const Footer: FC = () => {
       );
       setLeder(foundLeder);
     }
-  }, [komiteData, samarbeidspartnerData]);
+  }, [komiteData, samarbeidspartnerData, styret]);
 
   console.log(leder);
 
