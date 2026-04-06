@@ -140,9 +140,9 @@ const Footer: FC = () => {
           </div>
           <div className="text-left font-light text-[10px] space-y-1">
             <p>
-              Leder: {leder?.User.name || "Utilgjengeli"}, +47{" "}
-              {leder?.User.nummer || "Utilgjengelig"},{" "}
-              {leder?.User.email || "Utilgjengelig"}
+              Leder: {leder?.User.name || "Rasmus Lind"}, +47{" "}
+              {leder?.User.nummer || "97593017"},{" "}
+              {leder?.User.email || "kongsknekt@emilntnu.no"}
             </p>
             <p>
               Bedriftskontakt EMIL-Link: {komiteLeder?.leder},{" "}
