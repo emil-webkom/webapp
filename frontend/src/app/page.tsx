@@ -43,7 +43,7 @@ const HomePage = () => {
         <div className="flex flex-col items-center space-y-6 lg:flex-row lg:space-x-6">
           <Hero
             title="Energi og Miljø"
-            undertitle="Velkommen til energi og miljøstudentenes linjeforening!"
+            undertitle="Velkommen til Energi- og Miljøingeniørenes Linjeforening!"
           />
           <div className="relative w-[6rem] h-[6rem] lg:w-[8rem] lg:h-[8rem]">
             <Image
