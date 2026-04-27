@@ -141,7 +141,7 @@ const Footer: FC = () => {
           <div className="text-left font-light text-[10px] space-y-1">
             <p>
               Leder: {leder?.User.name || "Rasmus Lind"}, +47{" "}
-              {leder?.User.nummer || "97593017"},{" "}
+              {leder?.User.nummer || " "},{" "}
               {leder?.User.email || "kongsknekt@emilntnu.no"}
             </p>
             <p>
