@@ -61,25 +61,29 @@ const Footer: FC = () => {
 
   useEffect(() => {
     fetchStyretData();
+  }, []);
 
+  useEffect(() => {
     if (komiteData) {
       const komite = komiteData.find((item) => item.navn === "Emil Link");
       setKomiteLeder(komite);
     }
+  }, [komiteData]);
 
+  useEffect(() => {
     if (samarbeidspartnerData) {
       setLogos(samarbeidspartnerData.data);
     }
+  }, [samarbeidspartnerData]);
 
+  useEffect(() => {
     if (styret.length > 0) {
       const foundLeder = styret.find(
         (item) => item.rolle === "Kongsknekt leder",
       );
       setLeder(foundLeder);
     }
-  }, [komiteData, samarbeidspartnerData, styret]);
-
-  console.log(leder);
+  }, [styret]);
 
   const toggleModal = () => {
     setOpenModal((prevState) => !prevState);
