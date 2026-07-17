@@ -258,7 +258,7 @@ const OmEmilPage = () => {
                 <p className="font-semibold text-base lg:text-base px-3">
                   Hovedstyret er linjeforeningens øverste organ og har ansvaret
                   for driften og ledelsen av organisasjonen i det daglige.
-                  Styret består av syv faste medlemmer med ansvarsområder
+                  Styret består av åtte faste medlemmer med ansvarsområder
                   innenfor alt fra arrangement og fadderuker, til økonomi og
                   næringsliv.
                 </p>
