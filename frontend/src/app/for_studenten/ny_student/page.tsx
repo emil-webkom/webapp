@@ -151,8 +151,8 @@ const ForStudentPage = () => {
       icon: <FaFacebookF className="h-5 text-green-lightest" />,
       buttons: [
         {
-          text: "EMIL ‘25",
-          href: "https://www.facebook.com/groups/1085163816902598/",
+          text: "EMIL ‘26",
+          href: "https://www.facebook.com/share/g/14pehg4g8v4/?mibextid=wwXIfr",
         },
         { text: "Hele EMIL", href: "https://www.facebook.com/groups/Ntnuemil" },
       ],
@@ -164,7 +164,7 @@ const ForStudentPage = () => {
       title: "Immatrikulering",
       content:
         "Skoleåret begynner med felles samling og immatrikulering på Gløshaugen. Dette skjer mandag 11. august i EL5 fra 12:00-13:00",
-      time: "11. august 12:00 - 13:00",
+      time: "10. august 12:00 - 13:00",
       place: "Gløshaugen EL5",
       oneLiner:
         "Skoleåret begynner med felles samling og immatrikulering på...",
@@ -289,7 +289,7 @@ const ForStudentPage = () => {
       thumbnailButton: [
         {
           title: "Samfundet",
-          oneliner: "Verdens åttends støreste utested",
+          oneliner: "Verdens åttends største utested",
           link: "https://samfundet.no",
         },
       ],
