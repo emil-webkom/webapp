@@ -16,7 +16,7 @@ const forStudentenPage = () => {
           <HeaderText className="text-3xl text-white">Varsling</HeaderText>
         </div>
         <p className="text-white w-full max-w-[512px] font-normal pt-4">
-          Ved uønskede hendelser, ønsker vi i styret at du tar kontakt med oss.
+          Ved uønskede hendelser, ønsker vi i styret at du tar kontakt med oss eller en vi stoler på.
         </p>
 
         <div className="bg-green-mid rounded-md text-sm lg:text-base p-6 text-left">
@@ -40,13 +40,13 @@ const forStudentenPage = () => {
               Enhver hendelse som meldes inn til oss vil bli tatt på alvor.{" "}
             </span>
             Du kan velge å holde det anonymt, eller å skrive ditt navn for at
-            linjeforeningsstyret kan følge opp hendelsen/situasjonen videre med
+            linjeforeningslederen eller tillitsvalgt kan følge opp hendelsen/situasjonen videre med
             deg. Uansett vil vi i denne prosessen ta hensyn til deg og andre
             berørte.
           </p>
 
           <p className="text-white font-thin pb-10">
-            Svaret ditt vil være synlig for styret. De har taushetsplikt, og vil
+            Svaret ditt vil være synlig for enten leder eller tillitsvalgt. De har taushetsplikt, og vil
             ikke dele personlig informasjon med andre uten samtykke. Unntaket er
             om det er fare for liv/helse.
           </p>
@@ -63,7 +63,7 @@ const forStudentenPage = () => {
             className="text-white font-thin text-base text-center"
           >
             <Button className="bg-green-darkest text-white hover:bg-[#80b0b7] hover:text-white ">
-              Varsle styret her
+              Varsle leder her
             </Button>
           </a>
         </div>
