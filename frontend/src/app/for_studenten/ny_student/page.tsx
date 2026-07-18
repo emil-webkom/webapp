@@ -450,7 +450,7 @@ const ForStudentPage = () => {
       <div className="text-white w-full">
         <div className="p-12 justify-center flex flex-col items-center space-y-6">
           <HeaderImage
-            src={"/image/EMIL/nyStudentHeader.jpg"}
+            src={"/image/EMIL/StudentHeader2026.jpg"}
             alt={"EMIL linjeforeningen"}
             backgroundPos="0% 30%"
           />
