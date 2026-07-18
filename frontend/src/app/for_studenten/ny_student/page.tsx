@@ -452,7 +452,7 @@ const ForStudentPage = () => {
           <HeaderImage
             src={"/image/EMIL/StudentHeader2026.jpg"}
             alt={"EMIL linjeforeningen"}
-            backgroundPos="0% 30%"
+            backgroundPos="center"
           />
           <HeaderText className="text-3xl">
             Velkommen til{" "}
