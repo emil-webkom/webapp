@@ -199,7 +199,7 @@ const ForStudentPage = () => {
           <div className="">
             <img
               className="rounded-md"
-              src="/image/EMIL/fadderuke2025.jpg"
+              src="/image/EMIL/fadderuke2026.jpg"
               alt=""
             />
           </div>
