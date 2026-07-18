@@ -205,7 +205,7 @@ const ForStudentPage = () => {
           </div>
         </div>
       ),
-      time: "11. august - 24. august",
+      time: "10. august - 23. august",
     },
     {
       title: "Renselsen",
