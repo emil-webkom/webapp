@@ -185,7 +185,7 @@ const ForStudentPage = () => {
               Husk å melde deg på ved å fylle ut påmeldingskjema {" "}
               <Link
                 href={
-                  "https://docs.google.com/forms/d/e/1FAIpQLSfKi9ZIsBYXt8_w8sg3mDy6jBhybv-jUPahZZi2etvl4qa_RA/viewform"
+                  "https://docs.google.com/forms/d/e/1FAIpQLSfA8xxZNEzXRbPw0xRUzUm9GndBqBUzbQOapOPZbp1M9H1Y7Q/viewform?pli=1"
                 }
                 target="_blank"
                 rel="noopener norefferer"
