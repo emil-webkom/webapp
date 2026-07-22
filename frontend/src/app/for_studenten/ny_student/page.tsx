@@ -140,7 +140,7 @@ const ForStudentPage = () => {
       buttons: [
         {
           text: "Påmeldingsskjema",
-          href: "https://docs.google.com/forms/d/e/1FAIpQLSfKi9ZIsBYXt8_w8sg3mDy6jBhybv-jUPahZZi2etvl4qa_RA/viewform",
+          href: "https://docs.google.com/forms/d/e/1FAIpQLSfA8xxZNEzXRbPw0xRUzUm9GndBqBUzbQOapOPZbp1M9H1Y7Q/viewform?pli=1",
         },
       ],
     },
@@ -199,7 +199,7 @@ const ForStudentPage = () => {
           <div className="">
             <img
               className="rounded-md"
-              src="/image/EMIL/fadderuke2026.jpg"
+              src="/image/EMIL/fadderuke2026.png"
               alt=""
             />
           </div>
